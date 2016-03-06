@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+
+    <cc:interface>
+
+        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.ItfAcaoDoSistema" />
+        <cc:attribute name="armazenamentoAcaoExecutada" default="#{null}" />
+        <cc:attribute name="metodo" method-signature="void listener()"  />
+        <cc:attribute name="update"  default="#{null}" />
+        <cc:attribute name="javaScriptOncomplete"  default="#{null}" />
+        <cc:attribute name="tipoVisualizacao" default="#{tipos.tipoVisualBotao.iconeENome}"/>
+        <cc:attribute name="cor" default="#{null}"/>
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <c:set var="btIcone" value="#{cc.attrs.acao.iconeAcao}" />
+        <c:set var="btLabel" value="#{cc.attrs.acao.nomeAcao}" />
+
+        <c:if test="#{cc.attrs.acao.cor!=null}" >
+            <c:set var="estilo" value="color:  #{cc.attrs.acao.cor}" />
+        </c:if>
+        <c:if test="#{cc.attrs.acao.cor!=null}" >
+            <c:set var="estilo" value="" />
+        </c:if>
+
+
+        <c:choose >
+            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasIcone}">
+                <c:set var="btLabel" value="#{null}" />
+            </c:when>
+
+
+
+            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasNome}">
+                <c:set var="btIcone" value="#{null}" />
+            </c:when>
+
+            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasDescricao}">
+                <c:set var="btIcone" value="#{null}" />
+                <c:set var="btLabel" value="#{cc.attrs.acao.descricao}" />
+            </c:when>
+
+
+
+        </c:choose>
+
+        <c:if test="#{!cc.attrs.acao.umaAcaoPrincipal}" >
+            <p:commandButton onmousedown="esconderTooltips();"
+                             id="btAcao#{cc.id}"
+                             style="margin-top: 5px; #{estilo}"
+                             icon="#{btIcone}"
+                             action="#{cc.attrs.metodo}"
+                             update="#{cc.attrs.update}"
+
+                             value="#{btLabel}"
+                             oncomplete="#{cc.attrs.javaScriptOncomplete}"
+
+                             >
+
+
+
+
+
+
+                <c:if test="#{cc.attrs.armazenamentoAcaoExecutada!=null}" >
+                    <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}" value="#{cc.attrs.acao}"  />
+                </c:if>
+                <c:choose >
+                    <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasIcone}">
+                        <p:tooltip for="btAcao#{cc.id}" value="#{cc.attrs.acao.nomeAcao}"/>
+                    </c:when>
+                    <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasNome}">
+                        <p:tooltip for="btAcao#{cc.id}" value="#{cc.attrs.acao.descricao}"/>
+                    </c:when>
+
+                    <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasDescricao}">
+
+                    </c:when>
+
+
+
+                    <c:otherwise>
+
+                    </c:otherwise>
+
+
+
+
+                </c:choose>
+            </p:commandButton>
+        </c:if>
+
+
+
+
+        <c:if test="#{cc.attrs.acao.umaAcaoPrincipal}" >
+
+            <p:button value="#{cc.attrs.acao.nomeAcao}" href="#{pgUtil.navegar(cc.attrs.acao)}" />
+
+
+
+        </c:if>
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+
