@@ -135,6 +135,12 @@
             </c:when>
 
 
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.verdadeiroFalso}">
+                verdadeiro ou falso
+                <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
+            </c:when>
+
+
 
 
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUPMULTIPLO}"  >
