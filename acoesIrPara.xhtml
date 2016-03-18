@@ -15,6 +15,7 @@
         <cc:attribute name="opcaoSelecionada" required="true" type="com.super_bits.Controller.Interfaces.ItfAcaoDoSistema" />
         <cc:attribute name="pid" default="#{cc.attrs.id}" />
         <cc:attribute name="visualizacaoBotao" default="#{tipos.tipoVisualBotao.padrao}" />
+        <cc:attribute name="update"  default="#{null}" />
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
@@ -27,14 +28,63 @@
 
                     <p:commandButton  onmousedown="esconderTooltips();" id="btIcon#{cc.id}"  icon="#{opc.iconeAcao}"    action="#{cc.attrs.acao}">
                         <f:setPropertyActionListener  target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"  />
-                        <f:ajax />
+                        <c:if test="#{cc.attrs.update!=null}">
+                            <f:ajax execute="@form"/>
+                        </c:if>
+
+
                     </p:commandButton>
                     <p:tooltip for="btIcon#{cc.id}" value="#{opc.nomeAcao}" trackMouse="true" />
                 </c:when>
+
+
+                <c:when test="#{cc.attrs.visualizacaoBotao==tipos.tipoVisualBotao.botaoGigante}">
+
+
+
+                    <p:commandLink action="#{cc.attrs.acao}" >
+                        <div class="ContainerIndent">
+                            <div class="Container25 Responsive">
+                                <div class="ContainerIndent">
+                                    <div class="Card RedBack SoftRed TexAlCenter HoverEffect">
+                                        <div class="EmptyBox5"></div>
+                                        <i class="#{opc.iconeAcao} Fs50"></i>
+                                        <div class="EmptyBox5"></div>
+                                        <div class="FontRobotoLight Fs16 SoftRed DispBlock ClearBoth">#{opc.nomeAcao}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <f:setPropertyActionListener target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"/>
+
+                        <c:if test="#{cc.attrs.update!=null}">
+                            <f:ajax execute="#{cc.attrs.update}"/>
+                        </c:if>
+
+
+                    </p:commandLink>
+
+
+
+
+
+
+
+
+                </c:when>
+
+
                 <c:otherwise>
-                    <p:commandButton id="btIcon#{cc.id}" value="#{opc.nomeAcao}"  icon="#{opc.iconeAcao}"  action="#{cc.attrs.acao}"   >
-                        <f:setPropertyActionListener target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"  />
-                        <f:ajax execute="@form"/>
+                    <p:commandButton style="margin-bottom: 5px; "
+                                     id="btIcon#{cc.id}"
+                                     value="#{opc.nomeAcao}"
+                                     icon="#{opc.iconeAcao}"
+                                     action="#{cc.attrs.acao}"   >
+                        <f:setPropertyActionListener target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"/>
+                        <c:if test="#{cc.attrs.update!=null}">
+                            <f:ajax execute="@form"/>
+                        </c:if>
+
                     </p:commandButton>
 
                     <p:tooltip for="btIcon#{cc.id}" value="#{opc.descricao}"/>

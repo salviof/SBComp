@@ -3,7 +3,7 @@
 /* loguin */
 #login-menu {
     width: 250px;
-    background-color :  #{pgUtil.cores.corBackground};
+    /*  background-color :  #{pgUtil.cores.corBackground};*/
     position: relative;
 
 }
@@ -18,13 +18,13 @@
     display: block;
 }
 #login-menu label{
-    font: 1.3em bold; 
+    font: 1.3em bold;
 }
 .lembre-me {
     padding: 5px 10px;
 }
 
-input[type=text]{   
+input[type=text]{
     background: #efefef;
     color: #555;
 }

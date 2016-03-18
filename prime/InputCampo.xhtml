@@ -28,6 +28,8 @@
 
 
         <c:set var="idcompInput" value="#{cc.attrs.pid}"/>
+        IDINPUT=#{idcompInput}<br/>
+
 
         <c:choose >
             <c:when test="#{cc.getValueExpression('metodoExecutarAoAlterarValor') ne null}">
@@ -46,12 +48,14 @@
                 <c:set var="possuiIDAtualizacao" value="#{false}"/>
             </c:otherwise>
         </c:choose>
-
+        IDINPUT=#{idcompInput}<br/>
 
 
 
 
         <c:choose>
+
+
 
 
 
@@ -136,7 +140,7 @@
 
 
             <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.verdadeiroFalso}">
-                verdadeiro ou falso
+
                 <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
             </c:when>
 
