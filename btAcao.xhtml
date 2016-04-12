@@ -19,9 +19,15 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <h:form >
-            <p:commandButton onmousedown="esconderTooltips();" id="btAcao#{cc.id}" icon="#{cc.attrs.acao.iconeAcao}" action="#{cc.attrs.metodo}" value="#{cc.attrs.acao.nomeAcao}" >
+            <p:commandButton onmousedown="esconderTooltips();"
+                             id="btAcao#{cc.id}"
+                             icon="#{cc.attrs.acao.iconeAcao}"
+                             action="#{cc.attrs.metodo}"
+                             value="#{cc.attrs.acao.nomeAcao}" >
 
-                <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}" value="#{cc.attrs.acao}"  />
+                <f:setPropertyActionListener
+                    target="#{cc.attrs.armazenamentoAcaoExecutada}"
+                    value="#{cc.attrs.acao}"  />
 
             </p:commandButton>
         </h:form>
