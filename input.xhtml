@@ -29,10 +29,22 @@
         <c:if test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.LOOKUP}" >
 
         </c:if>
-        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:inputCampo#{cc.attrs.id}:componenteInputDado" var="caminhoBase" />
+
+
+        <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
+        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:componenteInputDado"
+               var="caminhoBase" />
 
 
         <c:set var="caminho"  value="#{caminhoBase}"/>
+
+        For ==== #{caminho} <br/>
+        Diferencial #{cc.attrs.diferencialID}  <br/>
+        IDddd:: #{idInputCampo}<br/>
+
+
+
+
 
         <c:choose>
 
@@ -44,7 +56,11 @@
                     <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.registro.label}: "/>
 
 
-                    <SBp:InputCampo registro="#{cc.attrs.registro}" id="inputCampo#{cc.attrs.id}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"  desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"  campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
+                    <SBp:InputCampo registro="#{cc.attrs.registro}"
+                                    id="#{idInputCampo}"
+                                    tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"
+                                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
 
 
 
@@ -58,7 +74,7 @@
 
 
                 <p:outputLabel   for="#{caminho}" id="labelLBSup" value="#{cc.attrs.registro.label}: "/>
-                <SBp:InputCampo registro="#{cc.attrs.registro}" id="inputCampo#{cc.attrs.id}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"   desabilitarEdicao="#{cc.attrs.desabilitarEdicao}" campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
+                <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"   desabilitarEdicao="#{cc.attrs.desabilitarEdicao}" campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
                 <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
 
 
@@ -70,7 +86,7 @@
                 <p:outputLabel   styleClass="invisivel" for="#{caminho}"  value="#{cc.attrs.registro.label}"/>
 
 
-                <SBp:InputCampo registro="#{cc.attrs.registro}" id="inputCampo#{cc.attrs.id}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}" desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"  campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
+                <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}" desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"  campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
 
 
                 <p:watermark for="#{caminho}" value="#{cc.attrs.registro.label}" />
