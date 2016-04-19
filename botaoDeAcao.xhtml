@@ -53,7 +53,7 @@
 
         </c:choose>
 
-        <c:if test="#{!cc.attrs.acao.acaoGestaoDominio}" >
+        <c:if test="#{!cc.attrs.acao.umaAcaoGestaoDominio}" >
             <p:commandButton onmousedown="esconderTooltips();"
                              id="btAcao#{cc.id}"
                              style="margin-top: 5px; #{estilo}"
@@ -102,7 +102,7 @@
 
 
 
-        <c:if test="#{cc.attrs.acao.acaoGestaoDominio}" >
+        <c:if test="#{cc.attrs.acao.umaAcaoGestaoDominio}" >
 
             <p:button value="#{cc.attrs.acao.nomeAcao}" href="#{pgUtil.navegar(cc.attrs.acao)}" />
 
