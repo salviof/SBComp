@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:SBMenu="http://xmlns.jcp.org/jsf/composite/SBComp/SBMenu"
+       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+       xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="menuBasico" type="com.super_bits.view.menu.ItfMenuSB" required="true" />
+        <cc:attribute name="menuExtendido" type="com.super_bits.view.menu.ItfMenuSB" />
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+
+        <c:if test="#{cc.attrs.menuBasico!=null}" >
+            <SBMenu:SBmenuPadraoBasico transient="#{true}" menu="#{cc.attrs.menuBasico}"/>
+        </c:if>
+
+
+        <SBMenu:SBmenuPadraoExtendido transient="#{true}" menu="#{cc.attrs.menuExtendido}"/>
+
+
+
+
+    </cc:implementation>
+
+
+</html>
