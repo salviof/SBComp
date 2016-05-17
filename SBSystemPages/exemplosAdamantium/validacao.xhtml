@@ -4,9 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
 
@@ -26,36 +25,21 @@
 
 
 
-            <h:panelGroup id="demonstracao">
+            <SBComp:input registro="#{pgCompradorGerenciar.compradorSelecionado.getCampoInstanciadoByAnotacao('')}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelSuperior}"/>
+            <div class="Card" >
+                <div class="CardTopic">
+                    Selecione uma empresa para: #{pgCRM.acaoInicialSelecionada.nomeAcao},
+                    <i class="#{pgCRM.acaoInicialSelecionada.iconeAcao} Fs40 Fleft MarRight10"></i>
+                </div>
 
-                <ui:include src="#{pgDemoComponente.formulario}" />
-
-            </h:panelGroup>
 
 
-            <h:form >
-                <p:selectOneMenu value="#{pgDemoComponente.formulario}">
-                    <f:selectItems value="#{pgDemoComponente.listaFormularios}" var="tipo" itemValue="#{tipo}"/>
-                </p:selectOneMenu>
-                <p:commandButton value="Atualizar" action="#{pgDemoComponente.validacao()}" update="#{pgUtil.makeCaminhoCompletoID('demonstracao')}"/>
+
+
+            </div>
+            <h:form>
+                <ui:include src="/resources/SBComp/SBSystemPages/exemplosAdamantium/demonstracaoLayout.xhtml"/>
             </h:form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </ui:define>
     </ui:composition>
 </html>
