@@ -39,7 +39,10 @@
 
 
 
-        <p:selectOneMenu  styleClass="seletorResponsivo" id="#{cc.attrs.pid}CB"  disabled="#{cc.attrs.desabilitarEdicao}"  required="#{cc.attrs.obrigatorio}" value="#{cc.attrs.registro}"    converter="conversorGenerico" var="it"   >
+        <p:selectOneMenu  styleClass="seletorResponsivo" id="#{cc.attrs.pid}CB"
+                          disabled="#{cc.attrs.desabilitarEdicao}"
+                          required="#{cc.attrs.obrigatorio}" value="#{cc.attrs.registro}"
+                          converter="conversorGenerico" var="it"  converterMessage="Erro ao converter objeto" >
 
             <f:selectItem   itemLabel="não Selecionado"  />
             <f:selectItems value="#{cc.attrs.lista}" var="item" itemLabel="#{item.nomeCurto}" itemValue="#{item}" />

@@ -122,6 +122,10 @@
             </c:when>
 
 
+            <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.COR}"  >
+                <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  />
+            </c:when>
+
 
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUP}"  >
 
