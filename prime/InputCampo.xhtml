@@ -4,6 +4,7 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pr="http://xmlns.jcp.org/jsf/composite/SBComp/prime"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
@@ -144,7 +145,23 @@
                 <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
             </c:when>
 
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.HTML}">
+                <pe:ckEditor id="#{idcompInput}"
+                             required="true"
+                             value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
 
+                             >
+                </pe:ckEditor>
+            </c:when>
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.QUANTIDADE}">
+                <p:spinner id="#{idcompInput}"
+                           required="true"
+                           value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
+
+                           >
+
+                </p:spinner>
+            </c:when>
 
 
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUPMULTIPLO}"  >
