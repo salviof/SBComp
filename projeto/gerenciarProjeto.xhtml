@@ -63,17 +63,19 @@
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
-            <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
-                --#{modulo.nome} <br/>
+            <SBcomp
+
+                <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
+                    --#{modulo.nome} <br/>
 
 
 
 
-                <c:forEach var="acao" items="#{modulo.acoes}" >
-                    --  #{acao.nome} #{acao.iconeAcao}
-                    <br/>
+                    <c:forEach var="acao" items="#{modulo.acoes}" >
+                        --  #{acao.nome} #{acao.iconeAcao}
+                        <br/>
+                    </c:forEach>
                 </c:forEach>
-            </c:forEach>
         </ui:define>
     </ui:composition>
 </html>
