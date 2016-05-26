@@ -27,10 +27,50 @@
         <ui:define name="divConteudo">
 
             #{pgProjetoSBVisaoGeral.modulosDoSistema}
+
+            <div class="ContainerIndent">
+                <div class="Card">
+                    <div class="CardTopic">Toggleable FieldSet - AccordionPanel</div>
+                    <div class="SeparatorFull"></div>
+                    <div class="Container50 Responsive50">
+                        <div class="ContainerIndent">
+                            <c:forEach items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" var="modulo" >
+                                <div class="Container100">
+                                    <div class="ContainerIndent">
+                                        <div class="Wid100 MarAuto">
+
+                                            <div class="ContainerIndent">
+                                                <div class="Container25 Responsive">
+                                                    <div class="ContainerIndent">
+                                                        <div class="Card RedBack SoftRed TexAlCenter HoverEffect">
+                                                            <div class="EmptyBox5"></div>
+                                                            <i class="icon-cloud Fs50"></i>
+                                                            <div class="EmptyBox5"></div>
+                                                            <div class="FontRobotoLight Fs16 SoftRed DispBlock ClearBoth">#{modulo.nome}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
             <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
-                #{modulo.nome} <br/>
+                --#{modulo.nome} <br/>
+
+
+
+
                 <c:forEach var="acao" items="#{modulo.acoes}" >
-                    #{acao.nome} #{acao.iconeAcao}
+                    --  #{acao.nome} #{acao.iconeAcao}
                     <br/>
                 </c:forEach>
             </c:forEach>
