@@ -63,19 +63,25 @@
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
-            <SBcomp
-
-                <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
-                    --#{modulo.nome} <br/>
 
 
 
 
-                    <c:forEach var="acao" items="#{modulo.acoes}" >
-                        --  #{acao.nome} #{acao.iconeAcao}
-                        <br/>
-                    </c:forEach>
+
+            <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
+                --#{modulo.nome} <br/>
+
+                <SBComp:seletorDeAcoes metodo="#{pgProjetoSBVisaoGeral.}" opcaoSelecionada="#{pgProjetoSBVisaoGeral.moduloSelecionado}" opcoes="#{pgProjetoSBVisaoGeral.modulosDoSistema}"/>
+
+
+
+
+
+                <c:forEach var="acao" items="#{modulo.acoes}" >
+                    --  #{acao.nome} #{acao.iconeAcao}
+                    <br/>
                 </c:forEach>
+            </c:forEach>
         </ui:define>
     </ui:composition>
 </html>
