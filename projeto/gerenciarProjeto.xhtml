@@ -51,7 +51,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -71,8 +70,10 @@
             <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
                 --#{modulo.nome} <br/>
 
-                <SBComp:seletorDeAcoes metodo="#{pgProjetoSBVisaoGeral.}" opcaoSelecionada="#{pgProjetoSBVisaoGeral.moduloSelecionado}" opcoes="#{pgProjetoSBVisaoGeral.modulosDoSistema}"/>
 
+                <h:form>
+                    <SBComp:seletorItem  atualizaFormOnChange="#{true}" parametroIdOnChange="#{pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada}" />
+                </h:form>
 
 
 
