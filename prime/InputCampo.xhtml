@@ -199,7 +199,7 @@
 
 
                     <p:inputMask class="campoResponsivo  TexAlCenter"  mask="#{cc.attrs.registro.mascaraJqueryMode}" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}"  >
-                        <pr:propriedadesInputs registro="#{cc.attrs.registro}" />
+
                     </p:inputMask>
 
                 </c:if>
@@ -207,7 +207,7 @@
                 <c:if test="#{!cc.attrs.registro.temMascara}">
                     <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
 
-                        <pr:propriedadesInputs registro="#{cc.attrs.registro}" />
+
 
                     </p:inputText>
                 </c:if>
