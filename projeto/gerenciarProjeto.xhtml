@@ -71,7 +71,16 @@
             <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
                 --#{modulo.nome} <br/>
 
-                <SBComp:seletorDeAcoes metodo="#{} opcaoSelecionada="#{pgProjetoSBVisaoGeral.moduloSelecionado}" opcoes="#{pgProjetoSBVisaoGeral.modulosDoSistema}"/>
+                <p:panel  header="#{modulo.nome}" >
+
+                    <SBComp:seletorDeAcoes metodo="#{pgProjetoSBVisaoGeral.selecionarAcaoGerenciada()}"
+                                           opcaoSelecionada="${pgProjetoSBVisaoGeral.acaoSelecionada}"
+                                           opcoes="#{modulo.acoesGestaoMB}"
+                                           visualizacaoBotao="#{tipos.tipoVisualBotao.botaoGigante}"
+                                           />
+
+                    <p:progressBar value="2" labelTemplate="{value} %(Sem conexao com Jira)" displayOnly="true"/>
+                </p:panel>
 
 
 
