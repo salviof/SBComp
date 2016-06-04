@@ -1,113 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:SBp="http://xmlns.jcp.org/jsf/composite/SBComp/prime">
-
-    <!-- INTERFACE -->
-    <cc:interface>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
 
 
-        <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado" default="#{pgUtil.campoNaoImplementado}" />
-        <cc:attribute name="diferencialID" default="" />
-        <cc:attribute name="pid" default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
-        <cc:attribute name="tipoExibicaoCampo" default="#{tipos.tipoVisualCampo.padrao}" />
-        <cc:attribute name="campoLocalizacaoCEP"  />
-        <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
-        <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
+    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml">
 
 
-    </cc:interface>
-    <!-- IMPLEMENTATION -->
-    <cc:implementation>
-
-
-        <c:if test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.LOOKUP}" >
-
-        </c:if>
-
-
-        <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
-        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:componenteInputDado"
-               var="caminhoBase" />
-
-
-        <c:set var="caminho"  value="#{caminhoBase}"/>
+        <ui:define name="conteudo">
 
 
 
+            [pntos de função]
 
 
-        <c:choose>
-
-
-            <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelEsquerda}">
-
-
-                <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
-                    <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.registro.label}: "/>
-
-
-                    <SBp:InputCampo registro="#{cc.attrs.registro}"
-                                    id="#{idInputCampo}"
-                                    tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"
-                                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
-
-
-
-                    <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
-                </h:panelGrid>
-                <p:message for="#{caminho}" />
-
-            </c:when>
-
-            <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelSuperior}">
-
-
-                <p:outputLabel   for="#{caminho}" id="labelLBSup" value="#{cc.attrs.registro.label}: "/>
-                <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"   desabilitarEdicao="#{cc.attrs.desabilitarEdicao}" campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
-                <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
-
-
-                <p:message for="#{caminho}" />
-            </c:when>
-
-
-            <c:otherwise>
-                <p:outputLabel   styleClass="invisivel" for="#{caminho}"  value="#{cc.attrs.registro.label}"/>
-
-
-                <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}" desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"  campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
-
-
-                <p:watermark for="#{caminho}" value="#{cc.attrs.registro.label}" />
-
-                <p:tooltip for="#{caminho}" id="#{cc.attrs.id}tooltip" value="#{cc.attrs.registro.descricao}" />
-
-                <p:message for="#{caminho}" />
-
-            </c:otherwise>
-
-        </c:choose>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </cc:implementation>
+        </ui:define>
+    </ui:composition>
 </html>
 
 

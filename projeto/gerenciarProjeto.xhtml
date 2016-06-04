@@ -3,63 +3,33 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:pe="http://primefaces.org/ui/extensions"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
 
-    <ui:composition template="/resources/SBComp/template/basico/modeloAnonimo.xhtml">
-
-        <ui:define name="head"  >
-            <style>
-                .botaoBox {
-
-                    margin-top: 3px;
-                }
-            </style>
+    <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
 
 
-        </ui:define>
 
         <ui:define name="divConteudo">
 
-            #{pgProjetoSBVisaoGeral.modulosDoSistema}
 
-            <div class="ContainerIndent">
-                <div class="Card">
-                    <div class="CardTopic">Toggleable FieldSet - AccordionPanel</div>
-                    <div class="SeparatorFull"></div>
-                    <div class="Container50 Responsive50">
-                        <div class="ContainerIndent">
-                            <c:forEach items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" var="modulo" >
-                                <div class="Container100">
-                                    <div class="ContainerIndent">
-                                        <div class="Wid100 MarAuto">
 
-                                            <div class="ContainerIndent">
-                                                <div class="Container25 Responsive">
-                                                    <div class="ContainerIndent">
-                                                        <div class="Card RedBack SoftRed TexAlCenter HoverEffect">
-                                                            <div class="EmptyBox5"></div>
-                                                            <i class="icon-cloud Fs50"></i>
-                                                            <div class="EmptyBox5"></div>
-                                                            <div class="FontRobotoLight Fs16 SoftRed DispBlock ClearBoth">#{modulo.nome}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <h:form >
+                <SBComp:seletorDeAcoes metodo="#{pgProjetoSBVisaoGeral.executarAcaoSelecionada()}"
+                                       opcaoSelecionada="#{pgProjetoSBVisaoGeral.acaoSelecionada}"
+                                       opcoes="#{pgProjetoSBVisaoGeral.tiposVisualizacao}"
+                                       visualizacaoBotao="#{tipos.tipoVisualBotao.iconeENome}"
+                                       update="#{pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada}"
+                                       />
+            </h:form>
+            <h:panelGroup id="#{pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada}">
+
+
+
+
+                XHTML ATUAL#{pgProjetoSBVisaoGeral.xhtmlAcaoAtual}<br/>
 
 
 
@@ -67,36 +37,15 @@
 
 
 
-            <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
-                --#{modulo.nome} <br/>
 
-<<<<<<< HEAD
-=======
-                <p:panel  header="#{modulo.nome}" >
-
-                    <SBComp:seletorDeAcoes metodo="#{pgProjetoSBVisaoGeral.selecionarAcaoGerenciada()}"
-                                           opcaoSelecionada="${pgProjetoSBVisaoGeral.acaoSelecionada}"
-                                           opcoes="#{modulo.acoesGestaoMB}"
-                                           visualizacaoBotao="#{tipos.tipoVisualBotao.botaoGigante}"
-                                           />
-
-                    <p:progressBar value="2" labelTemplate="{value} %(Sem conexao com Jira)" displayOnly="true"/>
-                </p:panel>
->>>>>>> 3dedd4d87f2f2c9704e9d044c17e7804ddc6c995
-
-                <h:form>
-                    <SBComp:seletorItem  atualizaFormOnChange="#{true}" parametroIdOnChange="#{pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada}" />
-                </h:form>
+                Acao selecionada: Atual:#{pgProjetoSBVisaoGeral.acaoSelecionada}<br/>
+                Visualizar:#{pgProjetoSBVisaoGeral.acaoVisisaoGeral.xhtml}<br/>
 
 
-
-
-                <c:forEach var="acao" items="#{modulo.acoes}" >
-                    --  #{acao.nome} #{acao.iconeAcao}
-                    <br/>
-                </c:forEach>
-            </c:forEach>
+                <ui:include src="#{pgProjetoSBVisaoGeral.xhtmlAcaoAtual}" />
+            </h:panelGroup>
         </ui:define>
+
     </ui:composition>
 </html>
 

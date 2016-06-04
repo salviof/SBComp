@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml">
+
+
+        <ui:define name="conteudo">
+            <br/><h1>asdfkljasldkfjalksdjflkjasdklfj</h1>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            asdasdsd
+            [ visão geral ]
+            <h:panelGrid columns="2" >
+                <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
+
+
+
+
+
+                    <p:panel  header="#{modulo.nome}" >
+                        <p:panelGrid columns="2">
+
+                            <p:fieldset legend="Escolha um bloco de ações para obter mais detalhes">
+                                <SBComp:seletorDeAcoes  metodo="#{pgUtil.atualizaTelaPorID(pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada)}"
+                                                        opcoes="#{modulo.acoesGestaoMB}" opcaoSelecionada="#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada}"/>
+                            </p:fieldset>
+                            <p:fieldset legend="Detalhes de: #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.nome}">
+                                <a href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}" target="projSuperBitsDocumentacao" >
+                                    Ver Documentacao   #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}    </a> <br/>
+                                #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}  <br/>
+                                #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}   <br/>
+                                Teste Gestão Relalizado? <p:inputSwitch /> <br/>
+                                Horas Programadas <br/>
+                                Nome programador executou tarefa: <br/>
+                                Horas Previstas no desenvolvimento: 50<br/>
+
+                                <br/>
+
+
+
+                                <p:progressBar value="2" labelTemplate="{value} % Sem Conexao)" displayOnly="true"  />
+                            </p:fieldset>
+                        </p:panelGrid>
+                        <br/>
+                        <br/>
+
+                        <p:progressBar value="2" labelTemplate="{value} %(Sem conexao com Jira)" displayOnly="true"/>
+                    </p:panel>
+
+
+
+
+
+                </c:forEach>
+
+            </h:panelGrid>
+
+
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+
+
+
+
+
+
+
+
