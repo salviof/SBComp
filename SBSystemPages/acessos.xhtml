@@ -37,7 +37,7 @@
 
 
                         <br/><br/>
-                        <SBComp:CRUDNavegador crud="#{pgAcessos.grupoUsuariosCrud}" metodoMudaRegistro="#{pgAcessos.mudaListaTeste()}"/>
+                <!--        <SBComp:CRUDNavegador crud="#{pgAcessos.grupoUsuariosCrud}" metodoMudaRegistro="#{pgAcessos.mudaListaTeste()}"/>-->
                     </h:form>
 
 
@@ -63,7 +63,7 @@
 
 
                             <br/><br/>
-                            <SBComp:CRUDNavegador crud="#{pgAcessos.usuariosCrud}"/>
+<!--                            <SBComp:CRUDNavegador crud="#{pgAcessos.usuariosCrud}"/> -->
 
                         </p:fieldset>
                     </h:form>
@@ -86,7 +86,7 @@
                                 </h:form>
                             </p:fieldset>
 
-                            <br /><br />
+                            <br />
 
 
                             <h:panelGroup id="id-panelGroup-acessos">
@@ -222,7 +222,7 @@
                                 <h1>
                                     <h:outputText value="#{pgAcessos.crudPaginasAcesso.registro.nomePagina}" />
                                 </h1>
-                                <SBComp:CRUDNavegador crud="#{pgAcessos.crudPaginasAcesso}" metodoMudaRegistro="#{pgAcessos.mudaRegistroPaginas()}" />
+                             <!--   <SBComp:CRUDNavegador crud="#{pgAcessos.crudPaginasAcesso}" metodoMudaRegistro="#{pgAcessos.mudaRegistroPaginas()}" /> -->
                                 <SBComp:seletorItens pickList="#{pgAcessos.pickListUsuarioPagina}" NomeItensSelecionados="Usuarios Permitidos" NomeOrigemItens="Usuários Disponiveis" />
 
                                 <SBComp:seletorItens pickList="#{pgAcessos.pickListGrupoUsuarioPagina}" NomeItensSelecionados="Grupos Permitidos" NomeOrigemItens="Grupos Disponíveis" />
