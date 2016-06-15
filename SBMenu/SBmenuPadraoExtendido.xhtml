@@ -27,12 +27,15 @@
                             <c:forEach items="#{sessao.acoes}" var="acao" >
 
                                 <c:if test="#{acao.umaAcaoSessaoMenu}" >
-                                    <p:submenu label="#{acao.nomeAcao}"  icon="#{acao.iconeAcao}">
+                                    <p:submenu label="#{acao.nomeAcao}"   icon="#{acao.iconeAcao}">
 
                                         <c:forEach   items="#{acao.acoes}"  var="subAcao" >
 
                                             <c:if test="#{subAcao.umaAcaoGestaoDominio}">
-                                                <p:menuitem  value="#{subAcao.nomeAcao}  " icon="#{subAcao.iconeAcao}" url="#{infoWebApp.getAcaoManagedBean(subAcao.nomeUnico).urlDeAcesso}" />
+                                                <p:menuitem 
+                                                    value="#{subAcao.nomeAcao}"
+                                                    icon="#{subAcao.iconeAcao}"
+                                                    url="#{infoWebApp.getAcaoManagedBean(subAcao.nomeUnico).urlDeAcesso}" />
                                             </c:if>
                                             <c:if test="#{!subAcao.umaAcaoGestaoDominio}">
                                                 <p:menuitem  value="#{subAcao.nomeAcao}  " icon="#{subAcao.iconeAcao}" action="#{pgUtil.abrirXHTML(subAcao.XHTMLAcao)}" />
@@ -44,7 +47,10 @@
                                 </c:if>
                                 <c:if test="#{!acao.umaAcaoSessaoMenu}" >
                                     <c:if test="#{acao.umaAcaoGestaoDominio}">
-                                        <p:menuitem  value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" url="#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso}" />
+
+                                        <p:menuitem  value="#{acao.nomeAcao}url=#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso} " icon="#{acao.iconeAcao}" url="#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso}"
+
+                                                     />
 
                                     </c:if>
                                     <c:if test="#{!acao.umaAcaoGestaoDominio}">
