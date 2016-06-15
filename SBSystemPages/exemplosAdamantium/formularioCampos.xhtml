@@ -25,7 +25,7 @@
             <c:forEach  var="grupo" items="#{pgDemoComponente.acaoFormularioTeste.gruposDeCampos}">
                 <p:panel header="#{grupo.nomeGrupo}" >
                     <c:forEach items="#{grupo.campos}" var="campo">
-                        <SBComp:input registro="#{pgDemoComponente.registroFormularioTeste.getCampoByNomeOuAnotacao(campo.caminhoCompletoString)}"/>
+                        <SBComp:input registro="#{pgDemoComponente.registroFormularioTeste.getCampoByNomeOuAnotacao('campo.caminhoCompletoString')}"/>
                     </c:forEach>
                 </p:panel>
 
