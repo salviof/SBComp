@@ -9,21 +9,24 @@
     <cc:interface>
 
         <cc:attribute name="acao" required="true" type="com.super_bits.Controller.Interfaces.permissoes.ItfAcaoFormulario" />
+        <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples" />
         <cc:attribute name="tipoVisualizacao" default="#{tipos.tipoVisualFormulario.padrao}" />
+        <cc:attribute name="somenteLeitura" default="#{true}" />
+        <cc:attribute name="tipoVisualizacaoLabel" default="#{tipos.tipoVisualCampo.padrao}" />
 
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <c:if test="#{tipos.tipoVisualFormulario.gruposCampos==cc.attrs.tipoVisualizacao}">
+        <c:if test="#{tipos.tipoVisualFormulario.gruposCampos == cc.attrs.tipoVisualizacao}">
 
-            <SBFormulario:formularioSimples acao="#{cc.attrs.acao}" />
+            <SBFormulario:formularioSimples acao="#{cc.attrs.acao}" registro="#{cc.attrs.registro}" somenteLeitura="#{cc.attrs.somenteLeitura}" tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
 
         </c:if>
 
-        <c:if test="#{tipos.tipoVisualFormulario.gruposCampos==cc.attrs.tipoVisualizacao}">
-            <SBFormulario:formularioWizard  acao="#{cc.attrs.acao}" />
+        <c:if test="#{tipos.tipoVisualFormulario.assistente ==cc.attrs.tipoVisualizacao}">
+            <SBFormulario:formularioWizard  acao="#{cc.attrs.acao}" registro="#{cc.attrs.registro}" somenteLeitura="#{cc.attrs.somenteLeitura}" tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
         </c:if>
 
 
@@ -40,3 +43,4 @@
 
 
 
+</html>
