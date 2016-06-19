@@ -8,45 +8,23 @@
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <ui:composition template="/resources/SBComp/template/basico/conteudo.xhtml"  >
-        <ui:define name="parametros">
-            <ui:param name="iconeConteudo" value="#{pgComponenteLab.acaoVinculada.iconeAcao}" />
-        </ui:define>
+    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml"  >
+
+        <ui:define name="conteudo">
 
 
+            <SBFormulario:formularioLista
 
+                acaoPrincipal="#{pgComponenteLab.acaoSelecionada}"
+                metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                pagina="#{pgComponenteLab}"
 
-        <ui:define name="titulo">
-            Gestão de BeanExemplo </ui:define>
-        <ui:define name="subtitulo">
+                />
 
-        </ui:define>
-
-        <ui:define name="conteudoDireita">
-
-            <div class="ContainerIndent">
-
-                <h:form>
-
-                    <SBComp:botaoDeAcao
-
-                        acao="#{pgComponenteLab.acaoNovoRegistro}"
-                        tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
-                        armazenamentoAcaoExecutada="#{pgComponenteLab.acaoSelecionada}">
-
-                    </SBComp:botaoDeAcao>
-
-                </h:form>
-
-            </div>
-
-        </ui:define>
-
-        <ui:define name="conteudoCard">
 
         </ui:define>
 

@@ -6,7 +6,7 @@
 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
@@ -39,6 +39,20 @@
         </ui:define>
 
         <ui:define name="conteudoCard">
+
+            asdaosidoaijsdoijasd
+
+            <h:form>
+
+                <SBFormulario:formularioCard
+
+                    pagina="#{pgComponenteLab}"
+                    acaoPrincipal="#{pgComponenteLab.acaoSalvarAlteracoes}"
+                    metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+
+                    />
+
+            </h:form>
 
         </ui:define>
 

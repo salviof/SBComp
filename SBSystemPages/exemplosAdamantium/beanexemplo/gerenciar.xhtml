@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      >
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
 
     <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
@@ -25,7 +26,46 @@
 
             <h:panelGroup id="formulario">
 
-                <ui:include src="#{pgComponenteLab.xhtmlAcaoAtual}" />
+                <h:form>
+                    <SBComp:botaoDeAcao
+
+                        acao="#{pgComponenteLab.acaoNovoRegistro}"
+                        armazenamentoAcaoExecutada="#{pgComponenteLab.acaoSelecionada}"
+                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                        tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+
+                        />
+
+                </h:form>
+
+                <h:form>
+
+                    <SBComp:seletorDeAcoes
+
+                        opcoes="#{pgComponenteLab.acoesDaPagina}"
+                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                        opcaoSelecionada="#{pgComponenteLab.acaoSelecionada}"
+
+                        />
+                </h:form>
+
+                <br/>
+
+                <h:form>
+
+                    <SBComp:seletorDeAcoes
+
+                        opcoes="#{pgComponenteLab.acoesRegistros}"
+                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                        opcaoSelecionada="#{pgComponenteLab.acaoSelecionada}"
+
+                        />
+
+                </h:form>
+
+                <br/>
+                #{pgComponenteLab.xhtmlAcaoAtual}
+                <ui:include src="#{pgComponenteLab.xhtmlAcaoAtual}"/>
 
             </h:panelGroup>
 

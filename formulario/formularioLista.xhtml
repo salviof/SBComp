@@ -39,7 +39,7 @@
                 </span>
 
                 <h:panelGroup styleClass="Fright">
-                    <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
+                    <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoNovoRegistro}"
                                         metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                                         tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
                                         armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
@@ -52,32 +52,41 @@
 
             <div class="ContainerIndent">
 
+                #{cc.attrs.pagina.entidadesListadas}
+
                 <h:form>
-                    <SBComp:formulario
 
-                        acao="#{cc.attrs.pagina.acaoSelecionada}"
-                        registro="#{cc.attrs.pagina.entidadeSelecionada}"
-                        tipoVisualizacao="#{tipos.tipoVisualFormulario.gruposCampos}"
-                        tipoVisualizacaoLabel="#{tipos.tipoVisualCampo.labelEsquerda}"
-                        somenteLeitura="#{cc.attrs.pagina.podeEditar}">
+                    <p:dataTable sortMode="multiple"
+                                 value="#{cc.attrs.pagina.entidadesListadas}"
+                                 var="listada"
+                                 emptyMessage="Nenhuma Entidade Listada"
+                                 paginator="true" >
 
-                    </SBComp:formulario>
+                        <c:forEach
 
-                    Nome acao principal = #{cc.attrs.acaoPrincipal.nome}
+                            items="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}"
+                            var="coluna">
 
-                    <br/>
+                            <p:column  headerText="#{listada.getCampoByNomeOuAnotacao(coluna).label} #{coluna}" width="50"   >
+                                <center>
 
-                    Icone acao principal = #{cc.attrs.acaoPrincipal.iconeAcao}
+                                    <SBComp:input
 
-                    <div style="float: right">
-                        <SBComp:botaoDeAcao
+                                        registro="#{listada.getCampoByNomeOuAnotacao(coluna).valor}"
+                                        desabilitarEdicao="#{true}"
+                                        tipoExibicaoCampo="#{tipos.tipoVisualCampo.resumido}"
 
-                            acao="#{cc.attrs.acaoPrincipal}"
-                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
-                            tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                        />
 
-                            />
-                    </div>
+                                </center>
+                            </p:column>
+
+                        </c:forEach>
+
+
+
+                    </p:dataTable>
+
                 </h:form>
 
             </div>
