@@ -26,45 +26,6 @@
 
             <h:panelGroup id="formulario">
 
-                <h:form>
-                    <SBComp:botaoDeAcao
-
-                        acao="#{pgComponenteLab.acaoNovoRegistro}"
-                        armazenamentoAcaoExecutada="#{pgComponenteLab.acaoSelecionada}"
-                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
-                        tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-
-                        />
-
-                </h:form>
-
-                <h:form>
-
-                    <SBComp:seletorDeAcoes
-
-                        opcoes="#{pgComponenteLab.acoesDaPagina}"
-                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
-                        opcaoSelecionada="#{pgComponenteLab.acaoSelecionada}"
-
-                        />
-                </h:form>
-
-                <br/>
-
-                <h:form>
-
-                    <SBComp:seletorDeAcoes
-
-                        opcoes="#{pgComponenteLab.acoesRegistros}"
-                        metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
-                        opcaoSelecionada="#{pgComponenteLab.acaoSelecionada}"
-
-                        />
-
-                </h:form>
-
-                <br/>
-                #{pgComponenteLab.xhtmlAcaoAtual}
                 <ui:include src="#{pgComponenteLab.xhtmlAcaoAtual}"/>
 
             </h:panelGroup>

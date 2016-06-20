@@ -16,15 +16,17 @@
 
         <ui:define name="conteudo">
 
+            <h:form>
 
-            <SBFormulario:formularioLista
+                <SBFormulario:formularioLista
 
-                acaoPrincipal="#{pgComponenteLab.acaoSelecionada}"
-                metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
-                pagina="#{pgComponenteLab}"
+                    acaoPrincipal="#{pgComponenteLab.acaoSelecionada}"
+                    metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                    pagina="#{pgComponenteLab}"
 
-                />
+                    />
 
+            </h:form>
 
         </ui:define>
 

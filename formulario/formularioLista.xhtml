@@ -6,7 +6,8 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:SBp="http://xmlns.jcp.org/jsf/composite/SBComp/prime"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -52,7 +53,7 @@
 
             <div class="ContainerIndent">
 
-                #{cc.attrs.pagina.entidadesListadas}
+
 
                 <h:form>
 
@@ -60,32 +61,92 @@
                                  value="#{cc.attrs.pagina.entidadesListadas}"
                                  var="listada"
                                  emptyMessage="Nenhuma Entidade Listada"
-                                 paginator="true" >
+                                 paginator="true">
 
-                        <c:forEach
 
-                            items="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}"
-                            var="coluna">
 
-                            <p:column  headerText="#{listada.getCampoByNomeOuAnotacao(coluna).label} #{coluna}" width="50"   >
-                                <center>
+
+                        <p:columns value="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}" var="coluna" width="200"   >
+
+                            <f:facet name="header" >
+
+                                <h:outputText value="#{coluna.label}" />
+
+                            </f:facet>
+
+                            <SBComp:input
+
+                                registro="#{listada.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse)}"
+                                desabilitarEdicao="#{true}"
+
+                                />
+
+                        </p:columns>
+
+
+                        <p:column headerText="Ações">
+
+                            <SBComp:seletorDeAcoes
+
+                                opcoes="#{cc.attrs.pagina.acoesRegistros}"
+                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
+
+                                />
+
+                        </p:column>
+
+                    </p:dataTable>
+
+                </h:form>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <!-- comentario -->
+                <h:form>
+                    <p:dataGrid var="dados" value="#{cc.attrs.pagina.entidadesListadas}" columns="3" layout="grid"
+                                rows="12" paginator="true" id="dad"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            #{dados.label}
+                        </f:facet>
+
+                        <p:panel header="#{coluna.label}" style="text-align:center">
+                            <h:panelGrid columns="2" style="width:100%">
+
+                                <c:forEach items="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}" var="campos">
 
                                     <SBComp:input
 
-                                        registro="#{listada.getCampoByNomeOuAnotacao(coluna).valor}"
+                                        registro="#{dados.getCampoByNomeOuAnotacao(campos.caminhoSemNomeClasse)}"
                                         desabilitarEdicao="#{true}"
-                                        tipoExibicaoCampo="#{tipos.tipoVisualCampo.resumido}"
 
                                         />
-
-                                </center>
-                            </p:column>
-
-                        </c:forEach>
+                                </c:forEach>
+                            </h:panelGrid>
 
 
 
-                    </p:dataTable>
+                            <SBComp:seletorDeAcoes
+
+                                opcoes="#{cc.attrs.pagina.acoesRegistros}"
+                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
+
+                                />
+
+
+
+                        </p:panel>
+
+                    </p:dataGrid>
 
                 </h:form>
 

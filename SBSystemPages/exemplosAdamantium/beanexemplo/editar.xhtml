@@ -3,52 +3,25 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
 
 
 
 
-    <ui:composition template="/resources/SBComp/template/basico/conteudo.xhtml"  >
+    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml"  >
 
-        <ui:define name="parametros">
 
-            <ui:param name="iconeConteudo" value="#{pgCompradorGerenciar.acaoVinculada.iconeAcao}" />
-
-        </ui:define>
-
-        <ui:define name="titulo">
-
-        </ui:define>
-
-        <ui:define name="subtitulo">
-
-            Edição de BeanExemplo
-
-        </ui:define>
-
-        <ui:define name="conteudoDireita">
-
-        </ui:define>
-
-        <ui:define name="conteudoCard">
-
-            asdaosidoaijsdoijasd
-
+        <ui:define name="conteudo">
             <h:form>
 
                 <SBFormulario:formularioCard
 
                     pagina="#{pgComponenteLab}"
-                    acaoPrincipal="#{pgComponenteLab.acaoSalvarAlteracoes}"
-                    metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                    acaoFormulario="#{pgComponenteLab.acaoSelecionada}"
 
                     />
 

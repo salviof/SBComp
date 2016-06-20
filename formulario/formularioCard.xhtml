@@ -3,18 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:SBp="http://xmlns.jcp.org/jsf/composite/SBComp/prime"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <!-- INTERFACE -->
     <cc:interface>
 
         <cc:attribute name="pagina" required="#{true}" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.siteMap.ItfPaginaGerenciarEntidade" />
-        <cc:attribute name="acaoPrincipal" required="#{false}" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"/>
-        <cc:attribute name="acaoAlternativa" required="#{false}"/>
-        <cc:attribute name="metodo" method-signature="void listener()"  />
+        <cc:attribute name="acaoFormulario" required="#{true}" type="com.super_bits.Controller.Interfaces.permissoes.ItfAcaoFormulario"/>
 
 
     </cc:interface>
@@ -52,33 +49,16 @@
 
             <div class="ContainerIndent">
 
-                <h:form>
-                    <SBComp:formulario
 
-                        acao="#{cc.attrs.pagina.acaoSelecionada}"
-                        registro="#{cc.attrs.pagina.entidadeSelecionada}"
-                        tipoVisualizacao="#{tipos.tipoVisualFormulario.gruposCampos}"
-                        tipoVisualizacaoLabel="#{tipos.tipoVisualCampo.labelEsquerda}"
-                        somenteLeitura="#{cc.attrs.pagina.podeEditar}">
+                <SBFormulario:formularioSimples
 
-                    </SBComp:formulario>
+                    acao="#{cc.attrs.acaoFormulario}"
+                    registro="#{cc.attrs.pagina.entidadeSelecionada}"
+                    somenteLeitura="#{cc.attrs.pagina.somenteLeitura}"
+                    tipoVisualizacaoLabel="#{tipos.tipoVisualCampo.labelEsquerda}"
 
-                    Nome acao principal = #{cc.attrs.acaoPrincipal.nome}
+                    />
 
-                    <br/>
-
-                    Icone acao principal = #{cc.attrs.acaoPrincipal.iconeAcao}
-
-                    <div style="float: right">
-                        <SBComp:botaoDeAcao
-
-                            acao="#{cc.attrs.acaoPrincipal}"
-                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
-                            tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-
-                            />
-                    </div>
-                </h:form>
 
             </div>
         </div>
