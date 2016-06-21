@@ -56,27 +56,30 @@
 
         <c:choose>
 
-
-
-
-
-
-
             <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.EMAIL}">
+
                 <p:inputText  class="campoResponsivo  TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
 
                     <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+
                         <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
-                    </c:if>
-                    <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
-                        <f:validateLength maximum="#{cc.attrs.registro}"  />
-                    </c:if>
-                    <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
-                        <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
                     </c:if>
 
+                    <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
+
+                        <f:validateLength maximum="#{cc.attrs.registro}"  />
+
+                    </c:if>
+
+                    <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
+
+                        <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
+                    </c:if>
 
                 </p:inputText>
+
             </c:when>
 
             <c:when test="#{ tipos.tipoCampo.LCCEP.equals(cc.attrs.registro.tipoCampoSTR)}">
@@ -90,15 +93,24 @@
                              >
 
                     <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+
                         <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
+
                     </c:if>
+
                     <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
+
                         <f:validateLength maximum="#{cc.attrs.registro}"  />
+
                     </c:if>
+
                     <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
+
                         <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
                     </c:if>
                     <c:if test="#{cc.attrs.campoLocalizacaoCEP!=null}" >
+
                         <p:ajax event="valueChange"
                                 partialSubmit="true"
                                 process="@this"
@@ -109,27 +121,30 @@
                     </c:if>
 
                 </p:inputMask>
+
                 <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+
                     <f:facet name="start">
+
                         <p:graphicImage name="images/preloader.gif" library="adamantium-layout"/>
+
                     </f:facet>
 
                     <f:facet name="complete">
 
                     </f:facet>
+
                 </p:ajaxStatus>
 
             </c:when>
 
-
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.COR}"  >
+
                 <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  />
+
             </c:when>
 
-
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUP}"  >
-
-
 
                 <SBComp:seletorItem label="#{cc.attrs.registro.label}"
                                     id="#{idcompInput}"
@@ -140,7 +155,6 @@
                                     obrigatorio="#{cc.attrs.registro.obrigatorio}"
                                     mostrarMensagemValidacao="#{true}" />
 
-
             </c:when>
 
 
@@ -149,7 +163,7 @@
                 <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
             </c:when>
 
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.html}">
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.HTML}">
                 asdasdasdas
                 <pe:ckEditor id="#{idcompInput}"
                              required="true"
