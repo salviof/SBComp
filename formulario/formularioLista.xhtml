@@ -39,7 +39,8 @@
 
                 </span>
 
-                <h:panelGroup styleClass="Fright">
+                <h:panelGroup styleClass="Fright" style="margin-top: -2%">
+
                     <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoNovoRegistro}"
                                         metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                                         tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
@@ -64,38 +65,40 @@
                                  paginator="true">
 
 
+                        <div class="Container100 Responsive">
+
+                            <p:columns value="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}" var="coluna" width="200"   >
+
+                                <f:facet name="header" >
+
+                                    <h:outputText value="#{coluna.label}" />
+
+                                </f:facet>
+
+                                <SBComp:input
+
+                                    registro="#{listada.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse)}"
+                                    desabilitarEdicao="#{true}"
+
+                                    />
+
+                            </p:columns>
 
 
-                        <p:columns value="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}" var="coluna" width="200"   >
+                            <p:column headerText="Ações" width="100">
 
-                            <f:facet name="header" >
+                                <SBComp:seletorDeAcoes
 
-                                <h:outputText value="#{coluna.label}" />
+                                    opcoes="#{cc.attrs.pagina.acoesRegistros}"
+                                    metodo="#{cc.attrs.pagina.executarAcao(listada)}"
+                                    opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
 
-                            </f:facet>
-
-                            <SBComp:input
-
-                                registro="#{listada.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse)}"
-                                desabilitarEdicao="#{true}"
-
-                                />
-
-                        </p:columns>
+                                    />
 
 
-                        <p:column headerText="Ações">
 
-                            <SBComp:seletorDeAcoes
-
-                                opcoes="#{cc.attrs.pagina.acoesRegistros}"
-                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
-                                opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
-
-                                />
-
-                        </p:column>
-
+                            </p:column>
+                        </div>
                     </p:dataTable>
 
                 </h:form>
@@ -108,18 +111,24 @@
                 <br/>
 
                 <!-- comentario -->
-                <h:form>
-                    <p:dataGrid var="dados" value="#{cc.attrs.pagina.entidadesListadas}" columns="3" layout="grid"
-                                rows="12" paginator="true" id="dad"
-                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                rowsPerPageTemplate="6,12,16">
 
-                        <f:facet name="header">
-                            #{dados.label}
-                        </f:facet>
 
-                        <p:panel header="#{coluna.label}" style="text-align:center">
-                            <h:panelGrid columns="2" style="width:100%">
+                <p:dataGrid var="dados" value="#{cc.attrs.pagina.entidadesListadas}" columns="3" layout="grid"
+                            rows="12" paginator="true" id="dad"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="6,12,16">
+
+                    <f:facet name="header">
+
+                        #{dados.label}
+
+                    </f:facet>
+
+                    <p:panel header="#{coluna.label}" style="text-align:center">
+
+                        <h:panelGrid columns="2" style="width:100%">
+
+                            <h:form>
 
                                 <c:forEach items="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}" var="campos">
 
@@ -129,29 +138,29 @@
                                         desabilitarEdicao="#{true}"
 
                                         />
+
                                 </c:forEach>
-                            </h:panelGrid>
 
+                            </h:form>
 
+                        </h:panelGrid>
 
-                            <SBComp:seletorDeAcoes
+                        <SBComp:seletorDeAcoes
 
-                                opcoes="#{cc.attrs.pagina.acoesRegistros}"
-                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
-                                opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
+                            opcoes="#{cc.attrs.pagina.acoesRegistros}"
+                            metodo="#{cc.attrs.pagina.executarAcao(dados)}"
+                            opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
 
-                                />
+                            />
 
+                    </p:panel>
 
-
-                        </p:panel>
-
-                    </p:dataGrid>
-
-                </h:form>
+                </p:dataGrid>
 
             </div>
+
         </div>
+
     </cc:implementation>
 
 </html>

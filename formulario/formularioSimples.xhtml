@@ -25,19 +25,19 @@
         FORMULARIO SIMPLES: = #{cc.attrs.somenteLeitura} <BR/>
         <c:forEach  var="grupo" items="#{cc.attrs.acao.gruposDeCampos}">
 
-            <p:panel style="margin: 2%">
+            <p:fieldset style="margin: 2%" legend="#{grupo.nomeGrupo}">
 
                 <f:facet name="header" >
 
-                    #{grupo.nomeGrupo}
+
 
                 </f:facet>
 
-                <SBFormulario:camposDoGrupo registro="#{cc.attrs.registro}" grupoCampos="#{grupo}" somenteLeitura="#{cc.attrs.somenteLeitura}"/>
+                <SBFormulario:camposDoGrupo registro="#{cc.attrs.registro}" grupoCampos="#{grupo}" somenteLeitura="#{cc.attrs.somenteLeitura}" tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
 
                 <div class="EmptyBox10"/>
 
-            </p:panel>
+            </p:fieldset>
 
         </c:forEach>
 

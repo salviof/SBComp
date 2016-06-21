@@ -12,6 +12,7 @@
 
         <cc:attribute name="pagina" required="#{true}" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.siteMap.ItfPaginaGerenciarEntidade" />
         <cc:attribute name="acaoFormulario" required="#{true}" type="com.super_bits.Controller.Interfaces.permissoes.ItfAcaoFormulario"/>
+        <cc:attribute name="tipoVisualizacaoLabel" default="#{tipos.tipoVisualCampo.padrao}" />
 
 
     </cc:interface>
@@ -31,16 +32,18 @@
                 <div class="EmptyBox10 ShowOnMobile"></div>
 
                 <span class="CardSubTopic">
+
                     #{cc.attrs.pagina.acaoSelecionada.descricao}
 
                 </span>
 
                 <h:panelGroup styleClass="Fright">
-                    <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
-                                        metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
-                                        tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                                        armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
-
+                    <h:form>
+                        <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
+                                            metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                            tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
+                    </h:form>
                 </h:panelGroup>
 
             </div>
@@ -49,16 +52,18 @@
 
             <div class="ContainerIndent">
 
+                <h:form>
 
-                <SBFormulario:formularioSimples
+                    <SBFormulario:formularioSimples
 
-                    acao="#{cc.attrs.acaoFormulario}"
-                    registro="#{cc.attrs.pagina.entidadeSelecionada}"
-                    somenteLeitura="#{cc.attrs.pagina.somenteLeitura}"
-                    tipoVisualizacaoLabel="#{tipos.tipoVisualCampo.labelEsquerda}"
+                        acao="#{cc.attrs.acaoFormulario}"
+                        registro="#{cc.attrs.pagina.entidadeSelecionada}"
+                        somenteLeitura="#{cc.attrs.pagina.somenteLeitura}"
+                        tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"
 
-                    />
+                        />
 
+                </h:form>
 
             </div>
         </div>

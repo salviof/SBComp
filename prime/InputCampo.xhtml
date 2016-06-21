@@ -149,7 +149,8 @@
                 <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
             </c:when>
 
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.HTML}">
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.html}">
+                asdasdasdas
                 <pe:ckEditor id="#{idcompInput}"
                              required="true"
                              value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
