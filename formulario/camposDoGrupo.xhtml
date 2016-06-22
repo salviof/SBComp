@@ -29,7 +29,10 @@
 
                 <p:panel style="margin: 1%">
 
-                    <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}" tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}" desabilitarEdicao="#{cc.attrs.somenteLeitura}" />
+                    <SBComp:input
+                        registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
+                        tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
+                        desabilitarEdicao="#{cc.attrs.somenteLeitura}" />
 
                 </p:panel>
 
