@@ -5,7 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
       xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -13,6 +14,8 @@
         <cc:attribute name="pagina" required="#{true}" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.siteMap.ItfPaginaGerenciarEntidade" />
         <cc:attribute name="acaoFormulario" required="#{true}" type="com.super_bits.Controller.Interfaces.permissoes.ItfAcaoFormulario"/>
         <cc:attribute name="tipoVisualizacaoLabel" default="#{tipos.tipoVisualCampo.padrao}" />
+        <cc:attribute name="acaoPrincipal" required="#{false}" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"/>
+        <cc:attribute name="acaoAlternativa" required="#{false}"/>
 
 
     </cc:interface>
@@ -62,6 +65,30 @@
                         tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"
 
                         />
+                    <c:if test="#{cc.attrs.acaoPrincipal != null}">
+                        <div class="Fright">
+
+                            <SBComp:botaoDeAcao
+                                acao="#{cc.attrs.acaoPrincipal}"
+                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+
+                                />
+                        </div>
+                    </c:if>
+
+                    <c:if test="#{cc.attrs.acaoAlternativa != null}">
+
+                        <SBComp:seletorDeAcoes
+                            metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                            opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
+                            opcoes="#{cc.attrs.acaoAlternativa}"
+                            visualizacaoBotao="#{tipos.tipoVisualBotao.iconeENome}"
+
+                            />
+
+                    </c:if>
 
                 </h:form>
 

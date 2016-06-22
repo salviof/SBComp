@@ -13,8 +13,6 @@
     <cc:interface>
 
         <cc:attribute name="pagina" required="#{true}" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.siteMap.ItfPaginaGerenciarEntidade" />
-        <cc:attribute name="acaoPrincipal" required="#{false}" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"/>
-        <cc:attribute name="acaoAlternativa" required="#{false}"/>
         <cc:attribute name="metodo" method-signature="void listener()"  />
 
 
@@ -22,11 +20,7 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-
-
         <div class="Card">
-
-
 
             <div class="CardTopic">
                 #{cc.attrs.pagina.acaoSelecionada.nomeAcao}
@@ -54,8 +48,6 @@
 
             <div class="ContainerIndent">
 
-
-
                 <h:form>
 
                     <p:dataTable sortMode="multiple"
@@ -65,7 +57,7 @@
                                  paginator="true">
 
 
-                        <div class="Container100 Responsive">
+                        <div class="Container100 Responsive" >
 
                             <p:columns value="#{cc.attrs.pagina.acaoListarRegistros.gruposDeCampos[1].campos}" var="coluna" width="200"   >
 
