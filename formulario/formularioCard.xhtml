@@ -6,7 +6,8 @@
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
       xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -41,12 +42,15 @@
                 </span>
 
                 <h:panelGroup styleClass="Fright">
+
                     <h:form>
+
                         <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
                                             metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                                             tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
                                             armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
                     </h:form>
+
                 </h:panelGroup>
 
             </div>
@@ -65,10 +69,12 @@
                         tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"
 
                         />
+
                     <c:if test="#{cc.attrs.acaoPrincipal != null}">
                         <div class="Fright">
 
                             <SBComp:botaoDeAcao
+
                                 acao="#{cc.attrs.acaoPrincipal}"
                                 metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                                 tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
@@ -81,6 +87,7 @@
                     <c:if test="#{cc.attrs.acaoAlternativa != null}">
 
                         <SBComp:seletorDeAcoes
+
                             metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                             opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
                             opcoes="#{cc.attrs.acaoAlternativa}"
@@ -93,6 +100,9 @@
                 </h:form>
 
             </div>
+
+
+
         </div>
     </cc:implementation>
 
