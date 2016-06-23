@@ -24,6 +24,19 @@
 
         <ui:define name="divConteudo">
 
+            <p:panel header="Selecione o Modelo de pagina para visualização">
+
+                <h:form >
+                    <p:selectOneMenu value="#{pgDemoComponente.formulario}">
+                        <f:selectItems value="#{pgDemoComponente.listaFormularios}" var="tipo" itemValue="#{tipo}"/>
+                    </p:selectOneMenu>
+                    <p:commandButton value="Atualizar" actionListener="#{pgDemoComponente.validacao()}"
+                                     oncomplete="javascript:Location.reload();"
+                                     update="demonstracao"/>
+                </h:form>
+
+            </p:panel>
+            <p:separator/>
 
 
             <h:panelGroup id="demonstracao">
@@ -31,22 +44,6 @@
                 <ui:include src="#{pgDemoComponente.formulario}" />
 
             </h:panelGroup>
-
-
-            <h:form >
-                <p:selectOneMenu value="#{pgDemoComponente.formulario}">
-                    <f:selectItems value="#{pgDemoComponente.listaFormularios}" var="tipo" itemValue="#{tipo}"/>
-                </p:selectOneMenu>
-                <p:commandButton value="Atualizar" action="#{pgDemoComponente.validacao()}" update="#{pgUtil.makeCaminhoCompletoID('demonstracao')}"/>
-            </h:form>
-
-
-
-
-
-
-
-
 
 
 

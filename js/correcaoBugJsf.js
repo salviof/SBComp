@@ -1,11 +1,11 @@
 jsf.ajax.addOnEvent(function (data) {
-    if (data.status == "success") {
+    if (data.status === "success") {
         var viewState = getViewState(data.responseXML);
 
         for (var i = 0; i < document.forms.length; i++) {
             var form = document.forms[i];
 
-            if (form.method == "post" && !hasViewState(form)) {
+            if (form.method === "post" && !hasViewState(form)) {
                 createViewState(form, viewState);
             }
         }

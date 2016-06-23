@@ -10,7 +10,7 @@
 
     <cc:interface>
 
-        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.ItfAcaoDoSistema" />
+        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema" />
         <cc:attribute name="armazenamentoAcaoExecutada" default="#{null}" />
         <cc:attribute name="metodo" method-signature="void listener()"  />
         <cc:attribute name="update"  default="#{null}" />
@@ -53,7 +53,7 @@
 
         </c:choose>
 
-        <c:if test="#{!cc.attrs.acao.umaAcaoPrincipal}" >
+        <c:if test="#{!cc.attrs.acao.umaAcaoGestaoDominio}" >
             <p:commandButton onmousedown="esconderTooltips();"
                              id="btAcao#{cc.id}"
                              style="margin-top: 5px; #{estilo}"
@@ -102,7 +102,7 @@
 
 
 
-        <c:if test="#{cc.attrs.acao.umaAcaoPrincipal}" >
+        <c:if test="#{cc.attrs.acao.umaAcaoGestaoDominio}" >
 
             <p:button value="#{cc.attrs.acao.nomeAcao}" href="#{pgUtil.navegar(cc.attrs.acao)}" />
 

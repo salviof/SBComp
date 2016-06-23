@@ -4,6 +4,7 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
       xmlns:pr="http://xmlns.jcp.org/jsf/composite/SBComp/prime"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
@@ -28,7 +29,7 @@
 
 
         <c:set var="idcompInput" value="#{cc.attrs.pid}"/>
-        IDINPUT=#{idcompInput}<br/>
+        <br/>
 
 
         <c:choose >
@@ -48,34 +49,37 @@
                 <c:set var="possuiIDAtualizacao" value="#{false}"/>
             </c:otherwise>
         </c:choose>
-        IDINPUT=#{idcompInput}<br/>
+        <br/>
 
 
 
 
         <c:choose>
 
-
-
-
-
-
-
             <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.EMAIL}">
-                <p:inputText  class="campoResponsivo  TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
+
+                <p:inputText  class="campoResponsivo  TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}">
 
                     <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+
                         <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
-                    </c:if>
-                    <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
-                        <f:validateLength maximum="#{cc.attrs.registro}"  />
-                    </c:if>
-                    <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
-                        <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
                     </c:if>
 
+                    <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
+
+                        <f:validateLength maximum="#{cc.attrs.registro}"  />
+
+                    </c:if>
+
+                    <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
+
+                        <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
+                    </c:if>
 
                 </p:inputText>
+
             </c:when>
 
             <c:when test="#{ tipos.tipoCampo.LCCEP.equals(cc.attrs.registro.tipoCampoSTR)}">
@@ -89,15 +93,24 @@
                              >
 
                     <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+
                         <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
+
                     </c:if>
+
                     <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
+
                         <f:validateLength maximum="#{cc.attrs.registro}"  />
+
                     </c:if>
+
                     <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
+
                         <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
                     </c:if>
                     <c:if test="#{cc.attrs.campoLocalizacaoCEP!=null}" >
+
                         <p:ajax event="valueChange"
                                 partialSubmit="true"
                                 process="@this"
@@ -108,23 +121,30 @@
                     </c:if>
 
                 </p:inputMask>
+
                 <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+
                     <f:facet name="start">
+
                         <p:graphicImage name="images/preloader.gif" library="adamantium-layout"/>
+
                     </f:facet>
 
                     <f:facet name="complete">
 
                     </f:facet>
+
                 </p:ajaxStatus>
 
             </c:when>
 
+            <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.COR}"  >
 
+                <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  />
+
+            </c:when>
 
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUP}"  >
-
-
 
                 <SBComp:seletorItem label="#{cc.attrs.registro.label}"
                                     id="#{idcompInput}"
@@ -135,7 +155,6 @@
                                     obrigatorio="#{cc.attrs.registro.obrigatorio}"
                                     mostrarMensagemValidacao="#{true}" />
 
-
             </c:when>
 
 
@@ -144,7 +163,24 @@
                 <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
             </c:when>
 
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.HTML}">
+                asdasdasdas
+                <pe:ckEditor id="#{idcompInput}"
+                             required="true"
+                             value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
 
+                             >
+                </pe:ckEditor>
+            </c:when>
+            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.QUANTIDADE}">
+                <p:spinner id="#{idcompInput}"
+                           required="true"
+                           value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
+
+                           >
+
+                </p:spinner>
+            </c:when>
 
 
             <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUPMULTIPLO}"  >
@@ -178,7 +214,7 @@
 
 
                     <p:inputMask class="campoResponsivo  TexAlCenter"  mask="#{cc.attrs.registro.mascaraJqueryMode}" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}"  >
-                        <pr:propriedadesInputs registro="#{cc.attrs.registro}" />
+
                     </p:inputMask>
 
                 </c:if>
@@ -186,7 +222,7 @@
                 <c:if test="#{!cc.attrs.registro.temMascara}">
                     <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
 
-                        <pr:propriedadesInputs registro="#{cc.attrs.registro}" />
+
 
                     </p:inputText>
                 </c:if>
