@@ -26,9 +26,23 @@
 
             <h:panelGroup id="formulario">
 
-                <ui:include src="#{pgComponenteLab.xhtmlAcaoAtual}"/>
+                <ui:include src=""/>
+
 
             </h:panelGroup>
+
+            <h:form>
+
+                <SBComp:botaoDeAcao acao="#{pgComponenteLab.acaoAutoCompletador}"
+                                    armazenamentoAcaoExecutada="#{pgComponenteLab.acaoSelecionada}"
+                                    metodo="#{pgComponenteLab.executarAcao(pgComponenteLab.entidadeSelecionada)}"
+                                    tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+
+                                    />
+
+            </h:form>
+
+            #{pgComponenteLab.xhtmlAcaoAtual}
 
         </ui:define>
 
