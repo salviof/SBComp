@@ -33,6 +33,19 @@
 
                 </span>
 
+                <c:if test="#{cc.attrs.pagina.temPesquisa}">
+
+                    <h:panelGroup styleClass="Fleft" style="margin-top: -2%">
+
+                        <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
+                                            metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                            tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
+
+                    </h:panelGroup>
+
+                </c:if>
+
                 <h:panelGroup styleClass="Fright" style="margin-top: -2%">
 
                     <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoNovoRegistro}"
