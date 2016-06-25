@@ -4,36 +4,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      >
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
 
     <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
 
         <ui:define name="head"  >
+
             <style>
+
                 .botaoBox {
                     margin-top: 3px;
                 }
-            </style>
 
+            </style>
 
         </ui:define>
 
         <ui:define name="divConteudo">
 
-<<<<<<< HEAD
             <h:panelGroup id="formulario">
-                <ui:include src="#{pgIps.xhtmlAcaoAtual}" />
-=======
 
-            <h:panelGroup id="formulario">
-                <ui:include src="#{pgAssuntoFaleConosco.xhtmlAcaoAtual}" />
->>>>>>> 4d220ff7209c38d773342df956697ef35c0004e7
+                AREA PARA INCLUSAO DA PAGINA DE GERENCIAMENTO
+
+                <!-- <ui:include /> -->
 
             </h:panelGroup>
 
         </ui:define>
+
     </ui:composition>
+
 </html>
 
 

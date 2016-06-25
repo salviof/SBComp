@@ -10,7 +10,6 @@
     <!-- INTERFACE -->
     <cc:interface>
 
-
         <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado" default="#{pgUtil.campoNaoImplementado}" />
         <cc:attribute name="diferencialID" default="" />
         <cc:attribute name="pid" default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
@@ -20,16 +19,15 @@
         <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
         <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
 
-
     </cc:interface>
-    <!-- IMPLEMENTATION -->
-    <cc:implementation>
 
+    <!-- IMPLEMENTATION -->
+
+    <cc:implementation>
 
         <c:if test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.LOOKUP}" >
 
         </c:if>
-
 
         <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
         <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:componenteInputDado"
@@ -38,19 +36,13 @@
 
         <c:set var="caminho"  value="#{caminhoBase}"/>
 
-
-
-
-
         <c:choose>
-
 
             <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelEsquerda}">
 
-
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
-                    <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.registro.label}: "/>
 
+                    <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.registro.label}: "/>
 
                     <SBp:InputCampo registro="#{cc.attrs.registro}"
                                     id="#{idInputCampo}"
@@ -59,31 +51,31 @@
                                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
 
 
-
                     <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
+
                 </h:panelGrid>
+
                 <p:message for="#{caminho}" />
 
             </c:when>
 
             <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelSuperior}">
 
+                <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.registro.label}: " style="line-height: -20%"/>
 
-                <p:outputLabel   for="#{caminho}" id="labelLBSup" value="#{cc.attrs.registro.label}: "/>
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"   desabilitarEdicao="#{cc.attrs.desabilitarEdicao}" campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
+
                 <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
 
-
                 <p:message for="#{caminho}" />
+
             </c:when>
 
-
             <c:otherwise>
+
                 <p:outputLabel   styleClass="invisivel" for="#{caminho}"  value="#{cc.attrs.registro.label}"/>
 
-
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}" desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"  campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
-
 
                 <p:watermark for="#{caminho}" value="#{cc.attrs.registro.label}" />
 
@@ -95,19 +87,8 @@
 
         </c:choose>
 
-
-
-
-
-
-
-
-
-
-
-
-
     </cc:implementation>
+
 </html>
 
 

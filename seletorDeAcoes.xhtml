@@ -27,7 +27,7 @@
 
                 <c:when test="#{cc.attrs.visualizacaoBotao==tipos.tipoVisualBotao.apenasIcone}">
 
-                    <p:commandButton  onmousedown="esconderTooltips();" id="btIcon#{cc.id}"  icon="#{opc.iconeAcao}"    action="#{cc.attrs.acao}">
+                    <p:commandButton  onmousedown="esconderTooltips();" id="btIcon#{cc.id}"  icon="#{opc.iconeAcao}"    action="#{cc.attrs.metodo}">
                         <f:setPropertyActionListener  target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"  />
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="@form"/>
@@ -43,7 +43,7 @@
 
 
 
-                    <p:commandLink action="#{cc.attrs.acao}" >
+                    <p:commandLink action="#{cc.attrs.metodo}" >
                         <div class="ContainerIndent">
                             <div class="Container25 Responsive">
                                 <div class="ContainerIndent">
@@ -80,7 +80,7 @@
                                      id="btIcon#{cc.id}"
                                      value="#{opc.nomeAcao}"
                                      icon="#{opc.iconeAcao}"
-                                     action="#{cc.attrs.acao}"   >
+                                     action="#{cc.attrs.metodo}"   >
                         <f:setPropertyActionListener target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"/>
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="@form"/>

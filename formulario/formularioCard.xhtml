@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+        <cc:attribute name="pagina" required="#{true}" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.siteMap.ItfPaginaGerenciarEntidade" />
+        <cc:attribute name="acaoFormulario" required="#{true}" type="com.super_bits.Controller.Interfaces.permissoes.ItfAcaoFormulario"/>
+        <cc:attribute name="tipoVisualizacaoLabel" default="#{tipos.tipoVisualCampo.padrao}" />
+        <cc:attribute name="acaoPrincipal" required="#{false}" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"/>
+        <cc:attribute name="acaoAlternativa" required="#{false}"/>
+
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+
+        <div class="Card">
+
+
+
+            <div class="CardTopic">
+                #{cc.attrs.pagina.acaoSelecionada.nomeAcao}
+                <i class="#{cc.attrs.pagina.acaoSelecionada} Fs30 Fleft MarRight10"></i>
+                <br/>
+                <div class="EmptyBox10 ShowOnMobile"></div>
+
+                <span class="CardSubTopic">
+
+                    #{cc.attrs.pagina.acaoSelecionada.descricao}
+
+                </span>
+
+                <h:panelGroup styleClass="Fright">
+
+                    <h:form>
+
+                        <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
+                                            metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                            tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
+                    </h:form>
+
+                </h:panelGroup>
+
+            </div>
+
+            <div class="SeparatorFull"></div>
+
+            <div class="ContainerIndent">
+
+                <h:form>
+
+                    <SBFormulario:formularioSimples
+
+                        acao="#{cc.attrs.acaoFormulario}"
+                        registro="#{cc.attrs.pagina.entidadeSelecionada}"
+                        somenteLeitura="#{cc.attrs.pagina.somenteLeitura}"
+                        tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"
+
+                        />
+
+                    <c:if test="#{cc.attrs.acaoPrincipal != null}">
+                        <div class="Fright">
+
+                            <SBComp:botaoDeAcao
+
+                                acao="#{cc.attrs.acaoPrincipal}"
+                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+
+                                />
+                        </div>
+                    </c:if>
+
+                    <c:if test="#{cc.attrs.acaoAlternativa != null}">
+
+                        <SBComp:seletorDeAcoes
+
+                            metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                            opcaoSelecionada="#{cc.attrs.pagina.acaoSelecionada}"
+                            opcoes="#{cc.attrs.acaoAlternativa}"
+                            visualizacaoBotao="#{tipos.tipoVisualBotao.iconeENome}"
+
+                            />
+
+                    </c:if>
+
+                </h:form>
+
+            </div>
+
+
+
+        </div>
+    </cc:implementation>
+
+</html>
+
+
+
+
+
+
+
+
+
+
