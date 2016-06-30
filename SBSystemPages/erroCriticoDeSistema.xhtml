@@ -14,6 +14,13 @@
                     Erro #{infoErroCritico.beanErroCritico.mensagemErro}
                     Titulo #{infoErroCritico.beanErroCritico.tituloErro}
                     Msg  #{infoErroCritico.mensagemErro} <br/>
+                    <h4>Caminho Resumido </h4> <br/>
+                    #{infoErroCritico.printStack}
+                    <br/>
+                    #{infoErroCritico}
+                    <h4>Caminho Completo</h4> <br/>
+
+
                     PrintStack  #{infoErroCritico.printStack} <br/>
                     Titulo:  #{infoErroCritico.tituloErro} <br/>
                     #{infoWebApp.urlPagina}
@@ -21,8 +28,8 @@
                 </font>
             </h1>
             <br/>
-            #{infoErroCritico}
-            <h4>Caminho</h4>
+
+
 
             <h:form id="infoPrin">
                 <h1> <font  color="blue">
