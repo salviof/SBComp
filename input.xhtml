@@ -18,6 +18,7 @@
         <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
         <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
+        <cc:attribute name="label" required="false"  default="#{cc.attrs.registro.label}"/>
 
     </cc:interface>
 
@@ -42,7 +43,7 @@
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
-                    <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.registro.label}: "/>
+                    <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.label}: "/>
 
                     <SBp:InputCampo registro="#{cc.attrs.registro}"
                                     id="#{idInputCampo}"
@@ -61,7 +62,7 @@
 
             <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelSuperior}">
 
-                <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.registro.label}: " style="line-height: -20%"/>
+                <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.label}: " style="line-height: -20%"/>
 
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"   desabilitarEdicao="#{cc.attrs.desabilitarEdicao}" campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
 
@@ -73,11 +74,11 @@
 
             <c:otherwise>
 
-                <p:outputLabel   styleClass="invisivel" for="#{caminho}"  value="#{cc.attrs.registro.label}"/>
+                <p:outputLabel   styleClass="invisivel" for="#{caminho}"  value="#{cc.attrs.label}"/>
 
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}" desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"  campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
 
-                <p:watermark for="#{caminho}" value="#{cc.attrs.registro.label}" />
+                <p:watermark for="#{caminho}" value="#{cc.attrs.label}" />
 
                 <p:tooltip for="#{caminho}" id="#{cc.attrs.id}tooltip" value="#{cc.attrs.registro.descricao}" />
 
