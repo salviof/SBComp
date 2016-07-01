@@ -70,9 +70,9 @@
 
 
 
-                <c:if test="#{cc.attrs.armazenamentoAcaoExecutada!=null}" >
-                    <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}" value="#{cc.attrs.acao}"  />
-                </c:if>
+
+                <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}" value="#{cc.attrs.acao}"  />
+
                 <c:choose >
                     <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasIcone}">
                         <p:tooltip for="btAcao#{cc.id}" value="#{cc.attrs.acao.nomeAcao}"/>
