@@ -71,18 +71,25 @@
                         />
 
                     <c:if test="#{cc.attrs.acaoPrincipal != null}">
-                        <div class="Fright">
+                        <c:if test="#{!cc.attrs.pagina.somenteLeitura}">
+                            <div class="Fright">
 
-                            <SBComp:botaoDeAcao
+                                <SBComp:botaoDeAcao
 
-                                acao="#{cc.attrs.acaoPrincipal}"
-                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
-                                tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                                armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+                                    acao="#{cc.attrs.acaoPrincipal}"
+                                    metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                    tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                    armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
 
-                                />
-                        </div>
+                                    />
+                            </div>
+                        </c:if>
                     </c:if>
+
+                </h:form>
+
+                <h:form>
+
 
                     <c:if test="#{cc.attrs.acaoAlternativa != null}">
 
