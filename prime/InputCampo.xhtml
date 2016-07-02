@@ -91,6 +91,15 @@
                 </pe:case>
 
 
+                <pe:case value="#{tipos.tipoCampo.PERCENTUA}" id="cp#{tipos.tipoCampo.PERCENTUA}">
+
+                    <h:outputText id="output" value="#{cc.attrs.registro.valor}%" />
+
+                    <h:inputHidden id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
+
+                    <p:slider for="#{idcompInput}" display="output" style="width: 200px" displayTemplate=" {value}%" />
+
+                </pe:case>
 
 
                 <pe:case value="#{tipos.tipoCampo.LOOKUP}" id="cp#{tipos.tipoCampo.LOOKUP}" >
