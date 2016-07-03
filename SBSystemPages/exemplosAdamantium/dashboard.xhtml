@@ -24,11 +24,11 @@
                 };
                 this.cfg.seriesDefaults = {
                     shadow: false,
-                    lineWidth:1,
+                    lineWidth: 1,
                     markerOptions: {
                         shadow: false,
-                        size:7,
-                        style:'circle'
+                        size: 7,
+                        style: 'circle'
                     }
                 }
             }
@@ -55,13 +55,13 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
     </ui:define>
-    
+
     <ui:define name="subheader">
         Dashboard
     </ui:define>
 
     <ui:define name="content">
-        
+
         <div class="Container100">
             <div class="ContainerIndent">
                 <h:form>
@@ -69,15 +69,15 @@
                         <p:menuitem value="My Settings" icon="fa fa-cogs" />
                         <p:menuitem value="Uploaded Codes" icon="fa fa-cloud-upload" />
                         <p:menuitem value="Download Codes" icon="fa fa-cloud-download" />
-                    </p:splitButton> 
+                    </p:splitButton>
                 </h:form>
                 <div class="EmptyBox10 ShowOnMobile"></div>
                 <p:button value="Code Editor" icon="fa fa-cubes" styleClass="Fright BrownButton FloatNoneOnMobile"/>
                 <p:button value="Cloud System" icon="fa fa-cloud-download" styleClass="Fright GreenButton FloatNoneOnMobile"/>
-                <p:button value="Git Forks" icon="fa fa-code-fork" styleClass="Fright FloatNoneOnMobile"/>              
+                <p:button value="Git Forks" icon="fa fa-code-fork" styleClass="Fright FloatNoneOnMobile"/>
             </div>
         </div>
-        
+
         <!-- Left -->
         <div class="Container50 Responsive100">
             <div class="Container100">
@@ -92,7 +92,7 @@
                             Development Cycles Of Applications <br/>
                             <span class="CardSubTopic">Charts Of All Adamantium Applications Development Levels </span> </div>
                         <div class="SeparatorFull"></div>
-                        
+
                         <div class="Container33 Responsive50">
                             <div class="ContainerIndent">
                                 <div class="Card SoftGrayBack">
@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="Container33 Responsive50">
                             <div class="ContainerIndent">
                                 <div class="Card SoftGrayBack">
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="Container33 Responsive50">
                             <div class="ContainerIndent">
                                 <div class="Card SoftGrayBack">
@@ -131,9 +131,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="EmptyBox20"></div>
-                        <p:chart type="bar" model="#{chartView.barModel}" style="height:270px;" responsive="true"/>
+                        <p:chart type="bar" model="#{chartView.barModel}" style="height:270px;" />
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="Container50 Responsive50">
                 <div class="ContainerIndent">
                     <div class="Card">
@@ -270,18 +270,18 @@
                         <div class="CardTopic"> <i class="icon-cloud-upload Fs30 Fleft MarRight10"></i> Data Usage Of Applications On Cloud <br/>
                             <span class="CardSubTopic">Data Usage Chart Of Adamantium Applications On Amazon Cloud Servers </span> </div>
                         <div class="SeparatorFull"></div>
-                        <p:chart type="line" model="#{chartView.lineModel1}" style="height:270px;" responsive="true"/>
+                        <p:chart type="line" model="#{chartView.lineModel1}" style="height:270px;" />
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
-        
+
         <!-- Right -->
         <div class="Container50 Responsive100">
             <div class="Container50 Responsive100">
                 <div class="ContainerIndent">
                     <div class="Card">
-                        <div class="CardTopic"> <i class="icon-book-alt Fs30 Fleft MarRight10"></i> 
+                        <div class="CardTopic"> <i class="icon-book-alt Fs30 Fleft MarRight10"></i>
                             <p:button icon="fa fa-plus White" styleClass=" Fright GreenButton"/>
                             Address Book <br/>
                             <span class="CardSubTopic">Get All Contacts And Add New</span>
@@ -322,7 +322,7 @@
                             <span class="Fs12 FontAdamantiumLight DispInherit">+90555 123 4 567</span>
                         </div>
                         <div class="EmptyBox10"></div>
-                        
+
                         <div class="SeparatorFull"></div>
                         <div class="CardTopicMini">Mostly Used Contacts</div>
                         <div class="EmptyBox20"></div>
@@ -336,7 +336,7 @@
                             <span class="Fs12 FontAdamantiumBold">John Carpenter</span><br/>
                             <span class="Fs12 FontAdamantiumLight DispInherit">+90555 123 4 567</span>
                         </div>
-                        
+
                         <div class="EmptyBox10"></div>
                         <div class="SeparatorFull"></div>
                         <p:button value="Get All Contacts" class="CyanButton Fright"/>
@@ -360,12 +360,12 @@
                         <p:selectBooleanCheckbox value="accept" styleClass="Fleft" itemLabel="Send Mail To Samuel For Tests - 14:20"/>
                         <p:selectBooleanCheckbox value="accept" styleClass="Fleft" itemLabel="Hangout with Sr. Manager at - 15:30"/>
                         <p:selectBooleanCheckbox value="accept" styleClass="Fleft" itemLabel="Dinner With John - 18:30"/>
-                        
+
                         <div class="EmptyBox20"></div>
                         <p:button value="Show All" class="CyanButton Fright"/>
                         <span class="Red FontAdamantiumBold Fs18">35</span><br/>
                         <span class="Fs12 FontAdamantiumRegular">More Reminders</span>
-                        
+
                         <div class="SeparatorFull"></div>
                         <div class="CardTopicMini">Tasks</div>
                         <div class="EmptyBox20"></div>
@@ -373,7 +373,7 @@
                         <p:selectBooleanCheckbox value="accept" styleClass="Fleft" itemLabel="Dinner With John - 18:30"/>
                         <p:selectBooleanCheckbox value="accept" styleClass="Fleft" itemLabel="Hangout with Sr. Manager at - 15:30"/>
                         <p:selectBooleanCheckbox value="accept" styleClass="Fleft" itemLabel="Send Mail To Samuel For Tests - 14:20"/>
-                        
+
                         <div class="EmptyBox20"></div>
                         <p:button value="Show All" class="CyanButton Fright"/>
                         <span class="Red FontAdamantiumBold Fs18">29</span><br/>
@@ -394,11 +394,11 @@
                                 <f:selectItem itemLabel="SecuX" itemValue="6" />
                             </p:selectCheckboxMenu>
                             <i class="icon-dial Fs30 Fleft MarRight10"></i> Usage Metrics Of Applications <br/>
-                            <span class="CardSubTopic">All Usage Metrics And Analysis </span> 
+                            <span class="CardSubTopic">All Usage Metrics And Analysis </span>
                         </div>
                         <div class="SeparatorFull"></div>
                         <div class="EmptyBox10"></div>
-                        
+
                         <div class="Container100">
                             <div class="Container40">
                                 <i class="icon-pin-alt Pink Fs50 Fleft MarRight10"></i>
@@ -427,9 +427,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="Separator"></div>
-                        
+
                         <div class="Container100">
                             <div class="Container40">
                                 <i class="icon-cmd Blue Fs50 Fleft MarRight10"></i>
@@ -458,9 +458,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="Separator"></div>
-                        
+
                         <div class="Container100">
                             <div class="Container40">
                                 <i class="icon-dribbble Orange Fs50 Fleft MarRight10"></i>
@@ -489,9 +489,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="Separator"></div>
-                        
+
                         <div class="Container100">
                             <div class="Container40">
                                 <i class="icon-instagram Purple Fs50 Fleft MarRight10"></i>
@@ -530,7 +530,7 @@
                             <p:button icon="fa fa-comment-o White" styleClass="Fright GreenButton"/>
                             <p:button icon="fa fa-bars White" styleClass="Fright GreenButton"/>
                             Developers Network <br/>
-                            <span class="CardSubTopic">Test Commits And Application Development Teams Management </span> 
+                            <span class="CardSubTopic">Test Commits And Application Development Teams Management </span>
                         </div>
                     </div>
                 </div>
@@ -625,9 +625,9 @@
                         </div>
                     </div>
                 </div>
-            </div>          
+            </div>
         </div>
-        
+
     </ui:define>
 
 </ui:composition>
