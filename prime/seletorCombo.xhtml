@@ -64,7 +64,7 @@
                 </c:when>
                 <c:when test="#{cc.attrs.atualizaPeloMetodoOnChange == true}">
 
-                    <p:ajax global="true"   event="valueChange"   listener="#{pgCRM.alterarStatusRelacionamento}" rendered="" >
+                    <p:ajax global="true"   event="valueChange"   listener="#{cc.attrs.parametroMetodoOnChange}">
 
 
                     </p:ajax>

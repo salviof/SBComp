@@ -62,11 +62,8 @@
             <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelSuperior}">
 
                 <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.registro.label}: " style="line-height: -20%"/>
-
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}" tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"   desabilitarEdicao="#{cc.attrs.desabilitarEdicao}" campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
-
                 <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
-
                 <p:message for="#{caminho}" />
 
             </c:when>
