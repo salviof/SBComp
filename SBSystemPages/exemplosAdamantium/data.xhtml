@@ -8,9 +8,9 @@
     <ui:define name="subheader">
         Data Components
     </ui:define>
-    
-    <ui:define name="content">        
-        
+
+    <ui:define name="content">
+
         <div class="Container50 Responsive50">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -19,10 +19,10 @@
                     <div class="Container100">
                         <div class="ContainerIndent">
                             <h:form id="form1">
-                                <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
-                                    rows="12" paginator="true" id="cars"
-                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                    rowsPerPageTemplate="3,6,9,12,16">
+                                <p:dataGrid var="car" value="#{dataGridView.cars}" columns="3"
+                                            rows="12" paginator="true" id="cars"
+                                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                            rowsPerPageTemplate="3,6,9,12,16">
 
                                     <f:facet name="header">
                                         Cars For Sale
@@ -46,7 +46,7 @@
                                     <p:outputPanel id="carDetail" style="text-align:center;">
                                         <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
                                             <f:facet name="header">
-                                                <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                                                <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/>
                                             </f:facet>
 
                                             <h:outputText value="Id:" />
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container50 Responsive50">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -107,7 +107,7 @@
                                         <p:outputPanel id="carDetail" style="text-align:center;">
                                             <p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value">
                                                 <f:facet name="header">
-                                                    <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/> 
+                                                    <p:graphicImage name="demo/images/car/#{dataListView.selectedCar.brand}-big.gif"/>
                                                 </f:facet>
 
                                                 <h:outputText value="Id:" />
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container100">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -142,7 +142,7 @@
                             <h2 class="BigTopic">PickList</h2>
                             <h:form>
                                 <p:pickList id="pickList" value="#{pickListView.cities}" var="cities" itemLabel="#{cities}" itemValue="#{cities}"
-                                                showSourceControls="true" showTargetControls="true" showSourceFilter="true" showTargetFilter="true">
+                                            showSourceControls="true" showTargetControls="true" showSourceFilter="true" showTargetFilter="true">
                                     <f:facet name="sourceCaption">From</f:facet>
                                     <f:facet name="targetCaption">To</f:facet>
                                 </p:pickList>
@@ -162,7 +162,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container100">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -202,7 +202,7 @@
                                     .carItem > table {
                                         border: 1px solid #e5ebf0 !important;
                                     }
-                                    
+
                                     .carouselAdvanced .carItem {
                                         width: 250px;
                                         height: 195px;
@@ -231,7 +231,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container100">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -240,7 +240,7 @@
                     <div class="Container100">
                         <div class="ContainerIndent">
                             <h:form>
-                                <p:panelGrid columns="2" layout="grid" style="border:0px none;background:none">
+                                <p:panelGrid columns="2" style="border:0px none;background:none">
                                     <p:tree value="#{treeSelectionView.root1}" var="doc"
                                             selectionMode="single">
                                         <p:treeNode expandedIcon="ui-icon-folder-open" collapsedIcon="ui-icon-folder-collapsed">
@@ -285,7 +285,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container100">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -317,7 +317,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container50 Responsive50">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -347,7 +347,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container50 Responsive50">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -377,7 +377,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="Container100">
             <div class="ContainerIndent">
                 <div class="Card">
@@ -406,7 +406,7 @@
                 </div>
             </div>
         </div>
-        
+
     </ui:define>
 
 </ui:composition>

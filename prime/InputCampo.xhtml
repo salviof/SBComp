@@ -9,6 +9,7 @@
       xmlns:pr="http://xmlns.jcp.org/jsf/composite/SBComp/prime"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
+
     <!-- INTERFACE -->
     <cc:interface>
 
@@ -21,6 +22,7 @@
         <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
         <cc:attribute name="campoLocalizacaoCEP"  />
         <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
+        <cc:attribute name="label" required="false"  default="#{cc.attrs.registro.label}"/>
 
 
     </cc:interface>
@@ -174,8 +176,9 @@
             </c:when>
             <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.QUANTIDADE}">
                 <p:spinner id="#{idcompInput}"
-                           required="true"
-                           value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
+                           required="#{cc.attrs.registro.obrigatorio}"
+                           disabled="#{cc.attrs.desabilitarEdicao}"
+                           value="#{cc.attrs.registro.valor}"
 
                            >
 
