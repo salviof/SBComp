@@ -51,23 +51,42 @@
                 <c:set var="possuiIDAtualizacao" value="#{false}"/>
             </c:otherwise>
         </c:choose>
-        <br/>
-
 
 
         <c:if test="#{!cc.attrs.modoDebug}" >
 
 
-            <pe:switch  value="#{cc.attrs.registro.tipoCampo.toString()}" >
+
+            <pe:switch  value="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}" >
+                <pe:case value="#{tipos.tipoCampo.TEXTO_SIMPLES}" id="cp#{tipos.tipoCampo.TEXTO_SIMPLES}" >
+
+
+                    <c:if test="#{cc.attrs.registro.temMascara}">
+
+
+                        <p:inputMask class="campoResponsivo  TexAlCenter"  mask="#{cc.attrs.registro.mascaraJqueryMode}" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}"  >
+
+                        </p:inputMask>
+
+                    </c:if>
+
+                    <c:if test="#{!cc.attrs.registro.temMascara}">
+                        <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
 
 
 
-                <pe:defaultCase  >
-                    <c:set var="exibicaoPadrao" value="#{true}"  />
-                    <c:set var="exibicaoPadrao" value="#{true}"  />
-                    <c:set var="exibicaoPadrao" value="#{true}"  />
-                    <c:set var="exibicaoPadrao" value="#{true}"  />
-                </pe:defaultCase>
+                        </p:inputText>
+                    </c:if>
+
+
+                </pe:case>
+            </pe:switch>
+
+
+
+            <pe:switch  value="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}" rendered="#{tipos.tipoCampo.TEXTO_SIMPLES!=cc.attrs.registro.tipoCampo.strTipoInputCampo}" >
+
+
 
 
 
@@ -86,7 +105,10 @@
 
                 <pe:case value="#{tipos.tipoCampo.EMAIL}" id="cp#{tipos.tipoCampo.EMAIL}" >
                     <c:set var="exibicaoPadrao" value="#{false}"  />
-                    <p:inputText  class="campoResponsivo TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}">
+                    <p:inputText  class="campoResponsivo TexAlCenter"  autocomplete="false" id="#{idcompInput}"
+                                  validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"
+                                  required="#{cc.attrs.registro.obrigatorio}"
+                                  disabled="#{cc.attrs.desabilitarEdicao}">
                         <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
                             <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
                         </c:if>
@@ -185,7 +207,10 @@
                 </pe:case>
 
                 <pe:case value="#{tipos.tipoCampo.descritivo}" id="cp#{tipos.tipoCampo.descritivo}" >
-                    <p:inputTextarea   styleClass="campoResponsivo"  rows="2" id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}" disabled="#{cc.attrs.desabilitarEdicao}" />
+                    <p:inputTextarea   styleClass="campoResponsivo"
+                                       rows="2" id="#{idcompInput}"
+                                       value="#{cc.attrs.registro.valor}"
+                                       required="#{cc.attrs.registro.obrigatorio}" disabled="#{cc.attrs.desabilitarEdicao}" />
                 </pe:case>
 
                 <pe:case value="#{tipos.tipoCampo.senha}" id="cp#{tipos.tipoCampo.senha}"  >
@@ -205,21 +230,13 @@
             </pe:switch>
 
 
-            <c:if test="#{exibicaoPadrao}==#{true}" >
-
-                Verdadeiro
-
-
-            </c:if>
-
-
 
         </c:if>
 
 
         <c:if test="#{cc.attrs.modoDebug}"  >
-            <pe:switch id="inputTipos" value="#{cc.attrs.registro.tipoCampo.toString()}"  >
-                <pe:defaultCase  id="cp#{cc.attrs.registro.tipoCampo}" >
+            <pe:switch id="inputTipos" value="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"  >
+                <pe:defaultCase  id="cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}" >
                     <p:outputLabel id ="#{idcompInput}" value="#{component.clientId}"/><br/>
                 </pe:defaultCase>
 

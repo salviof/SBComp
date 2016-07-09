@@ -29,7 +29,7 @@
 
 
         <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}" />
-        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:cp#{cc.attrs.registro.tipoCampo}:componenteInputDado"
+        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"
                var="caminhoBase" />
 
 

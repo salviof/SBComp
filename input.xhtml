@@ -24,7 +24,7 @@
     <cc:implementation>
 
         <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
-        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:cp#{cc.attrs.registro.tipoCampo}:componenteInputDado"
+        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"
                var="caminhoBase" />
         <c:set var="caminho"  value="#{caminhoBase}"/>
         <c:choose>
@@ -33,7 +33,7 @@
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
-                    <p:outputLabel    id="labelLBEsquerda" value="#{cc.attrs.label}"/>
+                    <p:outputLabel  for="#{caminho}"  id="labelLBEsquerda" value="#{cc.attrs.label}"/>
 
                     <SBp:InputCampo registro="#{cc.attrs.registro}"
                                     id="#{idInputCampo}"
@@ -41,35 +41,38 @@
                                     desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
                                     />
+
+                    <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
+                    <p:message for="#{caminho}"  />
                 </h:panelGrid>
             </c:when>
 
             <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelSuperior}">
-              <!--   <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.label}: " style="line-height: -20%"/> -->
+                <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.label}: " style="line-height: -20%"/>
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}"
                                 tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"
                                 desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                                 campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"/>
 
-                <!--<p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" /> -->
-                <!-- <p:message for="#{caminho}" /> -->
+                <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{caminho}" />
 
             </c:when>
 
             <c:otherwise>
 
-                <!--<p:outputLabel   styleClass="invisivel" for="#{caminho}"  value="#{cc.attrs.label}"/> -->
+
                 <SBp:InputCampo registro="#{cc.attrs.registro}"
                                 id="#{idInputCampo}"
                                 tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"
                                 desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                                 campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
 
-                <!--<p:watermark for="#{caminho}" value="#{cc.attrs.label}" /> -->
+                <p:watermark for="#{caminho}" value="#{cc.attrs.label}" /> -->
 
-                <!--<p:tooltip for="#{caminho}" id="#{cc.attrs.id}tooltip" value="#{cc.attrs.registro.descricao}" /> -->
+                <p:tooltip for="#{caminho}" id="#{cc.attrs.id}tooltip" value="#{cc.attrs.registro.descricao}" />
 
-                <!--<p:tooltip <p:message for="#{caminho}" /> -->
+                <p:message for="#{caminho}" />
 
             </c:otherwise>
 
