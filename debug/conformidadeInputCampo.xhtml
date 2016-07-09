@@ -44,64 +44,70 @@ and open the template in the editor.
                 </p:panelGrid>
             </h:form>
             <h:panelGroup id="Assistente">
-                #{pgTestesCampo.entidadeCarregada}
-                <h:form>
+                <p:fieldset legend="Assitente para Busca de Campo">
+                    #{pgTestesCampo.entidadeCarregada}
+
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Selecione a ação de Gestão" />
+                        <h:form>
+                            <p:selectOneMenu  value="#{pgTestesCampo.acaoGestaoSelecionada}"  effect="fold" converter="conversorGenerico"
+                                              var="acaoGestao"
+                                              >
+                                <f:selectItem itemLabel="Selecione uma Ação de Gestão do sistema" itemValue="" />
+                                <f:selectItems value="#{pgTestesCampo.acoesDeGestaoDoSistema}" />
+                                <p:column style="width:10%">
+                                    <h:form>
+                                        <p:commandButton icon="#{acaoGestao.iconeAcao}" disabled="#{true}" />
+                                    </h:form>
+                                </p:column>
 
-                        <p:selectOneMenu  value="#{pgTestesCampo.acaoGestaoSelecionada}"  effect="fold" converter="conversorGenerico"
-                                          var="acaoGestao"
-                                          >
-                            <f:selectItem itemLabel="Selecione uma Ação de Gestão do sistema" itemValue="" />
-                            <f:selectItems value="#{pgTestesCampo.acoesDeGestaoDoSistema}" />
-                            <p:column style="width:10%">
-                                <h:form>
-                                    <p:commandButton icon="#{acaoGestao.iconeAcao}" disabled="#{true}" />
-                                </h:form>
-                            </p:column>
-
-                            <p:column style="width:10%">
-                                #{acaoGestao.nomeAcao}
-                            </p:column>
-
-
-                        </p:selectOneMenu>
-
-                        <p:outputLabel value="Selecione o formulario onde deseja listar campos" />
-
-                        <p:selectOneMenu  value="#{pgTestesCampo.acaoGestaoSelecionada}"  effect="fold" converter="conversorGenerico"
-                                          var="acaoGestao"
-                                          >
-                            <f:selectItem itemLabel="Selecione uma Ação do formulário" itemValue="" />
-                            <f:selectItems value="#{pgTestesCampo.acoesFormularioDaGestao}" />
-                            <p:column style="width:10%">
-                                <h:form>
-                                    <p:commandButton icon="#{acaoGestao.iconeAcao}" disabled="#{true}" />
-                                </h:form>
-                            </p:column>
-
-                            <p:column style="width:10%">
-                                #{acaoGestao.nomeAcao}
-                            </p:column>
+                                <p:column style="width:10%">
+                                    #{acaoGestao.nomeAcao}
+                                </p:column>
 
 
-                        </p:selectOneMenu>
-
-                        <p:outputLabel value="Selecione o Grupo que deseja Visualizar" />
-                        <p:selectOneMenu  value="#{pgTestesCampo.grupoSelecionado}"  effect="fold" converter="conversorGenerico"
-                                          var="grupo"
-                                          >
-                            <f:selectItem itemLabel="Selecione um campo que deseja exibir" itemValue="" />
-                            <f:selectItems value="#{pgTestesCampo.acaoSelecionada.comoFormulario.gruposDeCampos}"  var="#{grupo}"/>
+                            </p:selectOneMenu>
+                        </h:form>
 
 
-                            <p:column style="width:10%">
-                                #{grupo}
-                            </p:column>
+                        <h:form>
+                            <p:outputLabel value="Selecione o formulario onde deseja listar campos" />
+
+                            <p:selectOneMenu  value="#{pgTestesCampo.acaoGestaoSelecionada}"  effect="fold" converter="conversorGenerico"
+                                              var="acaoGestao"
+                                              >
+                                <f:selectItem itemLabel="Selecione uma Ação do formulário" itemValue="" />
+                                <f:selectItems value="#{pgTestesCampo.acoesFormularioDaGestao}" />
+                                <p:column style="width:10%">
+                                    <h:form>
+                                        <p:commandButton icon="#{acaoGestao.iconeAcao}" disabled="#{true}" />
+                                    </h:form>
+                                </p:column>
+
+                                <p:column style="width:10%">
+                                    #{acaoGestao.nomeAcao}
+                                </p:column>
 
 
-                        </p:selectOneMenu>
+                            </p:selectOneMenu>
+                        </h:form>
 
+                        <h:form>
+                            <p:outputLabel value="Selecione o Grupo que deseja Visualizar" />
+                            <p:selectOneMenu  value="#{pgTestesCampo.grupoSelecionado}"  effect="fold" converter="conversorGenerico"
+                                              var="grupo"
+                                              >
+                                <f:selectItem itemLabel="Selecione um campo que deseja exibir" itemValue="" />
+                                <f:selectItems value="#{pgTestesCampo.acaoSelecionada.comoFormulario.gruposDeCampos}"  var="#{grupo}"/>
+
+
+                                <p:column style="width:10%">
+                                    #{grupo}
+                                </p:column>
+
+
+                            </p:selectOneMenu>
+                        </h:form>
 
                         <p:outputLabel value="Selecione o Campo campo que deseja visualizar" />
                         <p:selectOneMenu  value="#{pgTestesCampo.campoSelecionado}"  effect="fold" converter="conversorGenerico"
@@ -117,30 +123,43 @@ and open the template in the editor.
 
 
                         </p:selectOneMenu>
-                        <p:outputLabel value="Selecione o formulario campo que deseja visualizar" />
+                        <p:outputLabel value="Navegação de campos" />
+                        <h:panelGroup >
+                            <h:form>
+                                <p:commandButton action="#{pgTestesCampo.verProximoCampo()}" value=">>Proximo Campo>>"/>
+                                <p:commandButton action="#{pgTestesCampo.verCampoAnterior()}" value="<<Campo Anterior<<"/>
+                                <p:commandButton action="#{pgTestesCampo.verProximoGrupo()}" value=">> Proximo grupo>>"/>
+                                <p:commandButton action="#{pgTestesCampo.verGrupoAnterior()}" value="<<Grupo Anterior<<"/>
+                            </h:form>
+                        </h:panelGroup>
 
 
                     </p:panelGrid>
 
 
-                </h:form>
+
+                </p:fieldset>
+
 
                 <h:panelGroup id="acoes">
-                    <h:form>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Nome do Campo" />
-                            <p:inputText value="#{pgTestesCampo.strNomeCampo}"/>
-                        </p:panelGrid>
+                    <p:fieldset legend="Ações">
+                        <h:form>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Nome do Campo" />
+                                <p:inputText value="#{pgTestesCampo.strNomeCampo}"/>
+                            </p:panelGrid>
 
-                        <SBComp:seletorDeAcoes metodo="#{pgTestesCampo.executarAcaoSelecionada()}"
-                                               opcaoSelecionada="#{pgTestesCampo.acaoSelecionada}"
-                                               opcoes="#{pgTestesCampo.acoesParaCampo}"
-                                               />
+                            <SBComp:seletorDeAcoes metodo="#{pgTestesCampo.executarAcaoSelecionada()}"
+                                                   opcaoSelecionada="#{pgTestesCampo.acaoSelecionada}"
+                                                   opcoes="#{pgTestesCampo.acoesParaCampo}"
+                                                   />
 
 
 
-                    </h:form>
+                        </h:form>
+                    </p:fieldset>
                 </h:panelGroup>
+
 
             </h:panelGroup>
 
