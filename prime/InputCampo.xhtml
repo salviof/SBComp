@@ -86,7 +86,9 @@
 
             <pe:switch  value="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}" rendered="#{tipos.tipoCampo.TEXTO_SIMPLES!=cc.attrs.registro.tipoCampo.strTipoInputCampo}" >
 
-
+                <pe:case value="#{tipos.tipoCampo.DATA}" id="cp#{tipos.tipoCampo.DATA}" >
+                    <p:calendar id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  />
+                </pe:case>
 
 
 
@@ -216,8 +218,9 @@
                 <pe:case value="#{tipos.tipoCampo.MOEDAReal}" id="cp#{tipos.tipoCampo.MOEDAReal}">
                     <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" />
 
-
                 </pe:case>
+
+
 
                 <pe:case value="#{tipos.tipoCampo.senha}" id="cp#{tipos.tipoCampo.senha}"  >
                     <p:password  class="campoResponsivo  TexAlCenter"  id="#{idcompInput}" value="#{cc.attrs.registro.valor}"
