@@ -56,35 +56,50 @@
 
 
 
-        <c:choose>
 
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.EMAIL}">
 
+        <pe:switch id="inputTipos" value="#{cc.attrs.registro.tipoCampo.toString()}" >
+
+
+            <pe:defaultCase >
+                <c:if test="#{cc.attrs.registro.temMascara}">
+                    <p:inputMask class="campoResponsivo  TexAlCenter"  mask="#{cc.attrs.registro.mascaraJqueryMode}" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}"  >
+                    </p:inputMask>
+                </c:if>
+                <c:if test="#{!cc.attrs.registro.temMascara}">
+                    <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
+                    </p:inputText>
+                </c:if>
+            </pe:defaultCase>
+
+
+            <pe:case value="#{tipos.tipoCampo.LOOKUP}">
+
+                <SBComp:seletorItem label="#{cc.attrs.registro.label}"
+                                    id="#{idcompInput}"
+                                    TIPO_VIEW_COMBO="true"
+                                    registro="#{cc.attrs.registro.valor}"
+                                    lista="#{cc.attrs.registro.listaDeOpcoes}"
+                                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                                    obrigatorio="#{cc.attrs.registro.obrigatorio}"
+                                    mostrarMensagemValidacao="#{true}" />
+            </pe:case>
+
+            <pe:case value="#{tipos.tipoCampo.EMAIL}">
                 <p:inputText  class="campoResponsivo TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}">
-
                     <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
-
                         <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
-
                     </c:if>
-
                     <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
-
                         <f:validateLength maximum="#{cc.attrs.registro}"  />
-
                     </c:if>
-
                     <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
-
                         <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
-
                     </c:if>
-
                 </p:inputText>
+            </pe:case>
 
-            </c:when>
-
-            <c:when test="#{ tipos.tipoCampo.LCCEP.equals(cc.attrs.registro.tipoCampoSTR)}">
+            <pe:case value="#{tipos.tipoCampo.LCCEP}">
 
                 <p:inputMask class="campoResponsivo TexAlCenter"
                              id="#{idcompInput}"
@@ -138,43 +153,27 @@
 
                 </p:ajaxStatus>
 
-            </c:when>
 
-            <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.COR}"  >
+            </pe:case>
 
-                <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  />
+            <pe:case value="#{tipos.tipoCampo.COR}">
+                <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"   />
+            </pe:case>
 
-            </c:when>
-
-            <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUP}"  >
-
-                <SBComp:seletorItem label="#{cc.attrs.registro.label}"
-                                    id="#{idcompInput}"
-                                    TIPO_VIEW_COMBO="true"
-                                    registro="#{cc.attrs.registro.valor}"
-                                    lista="#{cc.attrs.registro.listaDeOpcoes}"
-                                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                                    obrigatorio="#{cc.attrs.registro.obrigatorio}"
-                                    mostrarMensagemValidacao="#{true}" />
-
-            </c:when>
-
-
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.verdadeiroFalso}">
-
+            <pe:case value="#{tipos.tipoCampo.verdadeiroFalso}">
                 <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
-            </c:when>
+            </pe:case>
 
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.HTML}">
-                asdasdasdas
+            <pe:case value="#{tipos.tipoCampo.HTML}">
                 <pe:ckEditor id="#{idcompInput}"
                              required="true"
                              value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
 
                              >
                 </pe:ckEditor>
-            </c:when>
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.QUANTIDADE}">
+            </pe:case>
+
+            <pe:case value="#{tipos.tipoCampo.QUANTIDADE}">
                 <p:spinner id="#{idcompInput}"
                            required="#{cc.attrs.registro.obrigatorio}"
                            disabled="#{cc.attrs.desabilitarEdicao}"
@@ -183,22 +182,13 @@
                            >
 
                 </p:spinner>
-            </c:when>
+            </pe:case>
 
-
-            <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.LOOKUPMULTIPLO}"  >
-
-
-
-            </c:when>
-
-            <c:when test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.descritivo}">
-
+            <pe:case value="#{tipos.tipoCampo.descritivo}">
                 <p:inputTextarea   styleClass="campoResponsivo"  rows="2" id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}" disabled="#{cc.attrs.desabilitarEdicao}" />
+            </pe:case>
 
-            </c:when>
-
-            <c:when test="#{cc.attrs.registro.tipoCampo == tipos.tipoCampo.senha}"  >
+            <pe:case value="#{tipos.tipoCampo.senha}">
                 <p:password  class="campoResponsivo  TexAlCenter"  id="#{idcompInput}" value="#{cc.attrs.registro.valor}"
                              autocomplete="false"
                              redisplay="true"
@@ -210,49 +200,9 @@
                              goodLabel="Esta senha é uma boa senha, você pode melhora-la adcionando numeros, caracteres especiais e letras" strongLabel="Parabéns, esta senha é muito difícil de ser quebrada" >
                     <f:validateLength minimum="6" />
                 </p:password>
-            </c:when>
+            </pe:case>
 
-            <c:otherwise>
-                <c:if test="#{cc.attrs.registro.temMascara}">
-
-
-                    <p:inputMask class="campoResponsivo  TexAlCenter"  mask="#{cc.attrs.registro.mascaraJqueryMode}" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}"  >
-
-                    </p:inputMask>
-
-                </c:if>
-
-                <c:if test="#{!cc.attrs.registro.temMascara}">
-                    <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
-
-
-
-                    </p:inputText>
-                </c:if>
-
-            </c:otherwise>
-
-        </c:choose>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </pe:switch>
 
     </cc:implementation>
 </html>
