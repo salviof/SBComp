@@ -26,9 +26,7 @@
 
     <cc:implementation>
 
-        <c:if test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.LOOKUP}" >
 
-        </c:if>
 
         <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
         <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:componenteInputDado"
