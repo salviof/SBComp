@@ -25,13 +25,19 @@
     <!-- IMPLEMENTATION -->
 
     <cc:implementation>
+<<<<<<< HEAD
 
 
+=======
+        #{cc.attrs.registro.tipoCampo}
+        <c:if test="#{cc.attrs.registro.tipoCampo==tipos.tipoCampo.LOOKUP}" >
+            asdfasdfasdfasdf
+        </c:if>
+>>>>>>> f169c4a2a4fa71de17274cc1d000adcb2e90dc36
 
         <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
         <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:componenteInputDado"
                var="caminhoBase" />
-
 
         <c:set var="caminho"  value="#{caminhoBase}"/>
 
@@ -41,7 +47,7 @@
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
-                    <p:outputLabel   for="#{caminho}" id="labelLBEsquerda" value="#{cc.attrs.label}: "/>
+                    <p:outputLabel    id="labelLBEsquerda" value="#{cc.attrs.label}: #{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:componenteInputDado" "/>
 
                     <SBp:InputCampo registro="#{cc.attrs.registro}"
                                     id="#{idInputCampo}"
@@ -50,11 +56,11 @@
                                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
 
 
-                    <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
+
 
                 </h:panelGrid>
 
-                <p:message for="#{caminho}" />
+
 
             </c:when>
 
