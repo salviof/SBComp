@@ -6,7 +6,8 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
     <!-- INTERFACE -->
@@ -21,8 +22,7 @@
         <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
         <cc:attribute name="campoLocalizacaoCEP"  />
         <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
-
-
+        <cc:attribute name="modoDebug" default="#{false}" shortDescription="Exibe o campo em modo debug.." expert="#{true}" />
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
@@ -30,8 +30,8 @@
 
 
         <c:set var="idcompInput" value="#{cc.attrs.pid}"/>
+        <c:set var="exibicaoPadrao" value="#{false}" />
 
-        <br/>
 
 
         <c:choose >
@@ -55,154 +55,178 @@
 
 
 
+        <c:if test="#{!cc.attrs.modoDebug}" >
+
+
+            <pe:switch  value="#{cc.attrs.registro.tipoCampo.toString()}" >
 
 
 
-        <pe:switch id="inputTipos" value="#{cc.attrs.registro.tipoCampo.toString()}" >
+                <pe:defaultCase  >
+                    <c:set var="exibicaoPadrao" value="#{true}"  />
+                    <c:set var="exibicaoPadrao" value="#{true}"  />
+                    <c:set var="exibicaoPadrao" value="#{true}"  />
+                    <c:set var="exibicaoPadrao" value="#{true}"  />
+                </pe:defaultCase>
 
 
-            <pe:defaultCase >
-                <c:if test="#{cc.attrs.registro.temMascara}">
-                    <p:inputMask class="campoResponsivo  TexAlCenter"  mask="#{cc.attrs.registro.mascaraJqueryMode}" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}"  >
-                    </p:inputMask>
-                </c:if>
-                <c:if test="#{!cc.attrs.registro.temMascara}">
-                    <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}" >
+
+
+                <pe:case value="#{tipos.tipoCampo.LOOKUP}" id="cp#{tipos.tipoCampo.LOOKUP}" >
+
+                    <SBComp:seletorItem label="#{cc.attrs.registro.label}"
+                                        id="#{idcompInput}"
+                                        TIPO_VIEW_COMBO="true"
+                                        registro="#{cc.attrs.registro.valor}"
+                                        lista="#{cc.attrs.registro.listaDeOpcoes}"
+                                        desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                                        obrigatorio="#{cc.attrs.registro.obrigatorio}"
+                                        mostrarMensagemValidacao="#{true}" />
+                </pe:case>
+
+                <pe:case value="#{tipos.tipoCampo.EMAIL}" id="cp#{tipos.tipoCampo.EMAIL}" >
+                    <c:set var="exibicaoPadrao" value="#{false}"  />
+                    <p:inputText  class="campoResponsivo TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}">
+                        <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+                            <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
+                        </c:if>
+                        <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
+                            <f:validateLength maximum="#{cc.attrs.registro}"  />
+                        </c:if>
+                        <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
+                            <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+                        </c:if>
                     </p:inputText>
-                </c:if>
-            </pe:defaultCase>
+                </pe:case>
+
+                <pe:case value="#{tipos.tipoCampo.LCCEP}" id="cp#{tipos.tipoCampo.LCCEP}" >
+
+                    <p:inputMask class="campoResponsivo TexAlCenter"
+                                 id="#{idcompInput}"
+                                 value="#{cc.attrs.registro.valor}"
+                                 mask="#{cc.attrs.registro.mascaraJqueryMode}"
+                                 required="#{cc.attrs.registro.obrigatorio}"
+                                 disabled="#{cc.attrs.desabilitarEdicao}"
+                                 >
+
+                        <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+
+                            <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
+
+                        </c:if>
+
+                        <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
+
+                            <f:validateLength maximum="#{cc.attrs.registro}"  />
+
+                        </c:if>
+
+                        <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
+
+                            <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
+
+                        </c:if>
+                        <c:if test="#{cc.attrs.campoLocalizacaoCEP!=null}" >
+
+                            <p:ajax event="valueChange"
+                                    partialSubmit="true"
+                                    process="@this"
+                                    listener="#{pgUtil.preencherEndereco(cc.attrs.registro.valor, cc.attrs.campoLocalizacaoCEP)}"
+                                    update="#{pgUtil.makeCaminhoCompletoID('endereco')}" />
 
 
-            <pe:case value="#{tipos.tipoCampo.LOOKUP}">
+                        </c:if>
 
-                <SBComp:seletorItem label="#{cc.attrs.registro.label}"
-                                    id="#{idcompInput}"
-                                    TIPO_VIEW_COMBO="true"
-                                    registro="#{cc.attrs.registro.valor}"
-                                    lista="#{cc.attrs.registro.listaDeOpcoes}"
-                                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                                    obrigatorio="#{cc.attrs.registro.obrigatorio}"
-                                    mostrarMensagemValidacao="#{true}" />
-            </pe:case>
+                    </p:inputMask>
 
-            <pe:case value="#{tipos.tipoCampo.EMAIL}">
-                <p:inputText  class="campoResponsivo TexAlCenter"  autocomplete="false" id="#{idcompInput}" validatorMessage="E-mail Inválido" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}"  disabled="#{cc.attrs.desabilitarEdicao}">
-                    <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
-                        <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
-                    </c:if>
-                    <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
-                        <f:validateLength maximum="#{cc.attrs.registro}"  />
-                    </c:if>
-                    <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
-                        <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
-                    </c:if>
-                </p:inputText>
-            </pe:case>
+                    <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
 
-            <pe:case value="#{tipos.tipoCampo.LCCEP}">
+                        <f:facet name="start">
 
-                <p:inputMask class="campoResponsivo TexAlCenter"
-                             id="#{idcompInput}"
-                             value="#{cc.attrs.registro.valor}"
-                             mask="#{cc.attrs.registro.mascaraJqueryMode}"
-                             required="#{cc.attrs.registro.obrigatorio}"
-                             disabled="#{cc.attrs.desabilitarEdicao}"
-                             >
+                            <p:graphicImage name="images/preloader.gif" library="adamantium-layout"/>
 
-                    <c:if test="#{cc.attrs.registro.temValidacaoRegex}">
+                        </f:facet>
 
-                        <f:validateRegex pattern="#{cc.attrs.registro.validacaoRegex}"/>
+                        <f:facet name="complete">
 
-                    </c:if>
+                        </f:facet>
 
-                    <c:if test="#{cc.attrs.registro.temValidacaoMaximo}">
-
-                        <f:validateLength maximum="#{cc.attrs.registro}"  />
-
-                    </c:if>
-
-                    <c:if test="#{cc.attrs.registro.temValidacaoMinimo}">
-
-                        <f:validateLength minimum="#{cc.attrs.registro.valorMinimo}" />
-
-                    </c:if>
-                    <c:if test="#{cc.attrs.campoLocalizacaoCEP!=null}" >
-
-                        <p:ajax event="valueChange"
-                                partialSubmit="true"
-                                process="@this"
-                                listener="#{pgUtil.preencherEndereco(cc.attrs.registro.valor, cc.attrs.campoLocalizacaoCEP)}"
-                                update="#{pgUtil.makeCaminhoCompletoID('endereco')}" />
+                    </p:ajaxStatus>
 
 
-                    </c:if>
+                </pe:case>
 
-                </p:inputMask>
+                <pe:case value="#{tipos.tipoCampo.COR}" id="cp#{tipos.tipoCampo.COR}"  >
+                    <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"   />
+                </pe:case>
 
-                <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+                <pe:case value="#{tipos.tipoCampo.verdadeiroFalso}" id="cp#{tipos.tipoCampo.verdadeiroFalso}" >
+                    <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
+                </pe:case>
 
-                    <f:facet name="start">
+                <pe:case value="#{tipos.tipoCampo.HTML}">
+                    <pe:ckEditor id="#{idcompInput}"
+                                 required="true"
+                                 value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
 
-                        <p:graphicImage name="images/preloader.gif" library="adamantium-layout"/>
+                                 >
+                    </pe:ckEditor>
+                </pe:case>
 
-                    </f:facet>
+                <pe:case value="#{tipos.tipoCampo.QUANTIDADE}" id="cp#{tipos.tipoCampo.QUANTIDADE}"  >
+                    <p:spinner id="#{idcompInput}"
+                               required="#{cc.attrs.registro.obrigatorio}"
+                               disabled="#{cc.attrs.desabilitarEdicao}"
+                               value="#{cc.attrs.registro.valor}"
 
-                    <f:facet name="complete">
+                               >
 
-                    </f:facet>
+                    </p:spinner>
+                </pe:case>
 
-                </p:ajaxStatus>
+                <pe:case value="#{tipos.tipoCampo.descritivo}" id="cp#{tipos.tipoCampo.descritivo}" >
+                    <p:inputTextarea   styleClass="campoResponsivo"  rows="2" id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}" disabled="#{cc.attrs.desabilitarEdicao}" />
+                </pe:case>
+
+                <pe:case value="#{tipos.tipoCampo.senha}" id="cp#{tipos.tipoCampo.senha}"  >
+                    <p:password  class="campoResponsivo  TexAlCenter"  id="#{idcompInput}" value="#{cc.attrs.registro.valor}"
+                                 autocomplete="false"
+                                 redisplay="true"
+                                 feedback="true"
+                                 disabled="#{cc.attrs.desabilitarEdicao}"
+                                 validatorMessage="A senha precisa conter 6 caractéres"
+                                 promptLabel="Digite uma senha segura" weakLabel="Você pode melhorar esta senha"
+                                 required="#{cc.attrs.registro.obrigatorio}"
+                                 goodLabel="Esta senha é uma boa senha, você pode melhora-la adcionando numeros, caracteres especiais e letras" strongLabel="Parabéns, esta senha é muito difícil de ser quebrada" >
+                        <f:validateLength minimum="6" />
+                    </p:password>
+                </pe:case>
+
+            </pe:switch>
 
 
-            </pe:case>
+            <c:if test="#{exibicaoPadrao}==#{true}" >
 
-            <pe:case value="#{tipos.tipoCampo.COR}">
-                <p:colorPicker id="#{idcompInput}" value="#{cc.attrs.registro.valor}"   />
-            </pe:case>
+                Verdadeiro
 
-            <pe:case value="#{tipos.tipoCampo.verdadeiroFalso}">
-                <p:selectBooleanCheckbox  id="#{idcompInput}" value="#{cc.attrs.registro.valor}" />
-            </pe:case>
 
-            <pe:case value="#{tipos.tipoCampo.HTML}">
-                <pe:ckEditor id="#{idcompInput}"
-                             required="true"
-                             value="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgEditarComponente.campoSelecionado.caminhoSemNomeClasse).valor}"
+            </c:if>
 
-                             >
-                </pe:ckEditor>
-            </pe:case>
 
-            <pe:case value="#{tipos.tipoCampo.QUANTIDADE}">
-                <p:spinner id="#{idcompInput}"
-                           required="#{cc.attrs.registro.obrigatorio}"
-                           disabled="#{cc.attrs.desabilitarEdicao}"
-                           value="#{cc.attrs.registro.valor}"
 
-                           >
+        </c:if>
 
-                </p:spinner>
-            </pe:case>
 
-            <pe:case value="#{tipos.tipoCampo.descritivo}">
-                <p:inputTextarea   styleClass="campoResponsivo"  rows="2" id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  required="#{cc.attrs.registro.obrigatorio}" disabled="#{cc.attrs.desabilitarEdicao}" />
-            </pe:case>
+        <c:if test="#{cc.attrs.modoDebug}"  >
+            <pe:switch id="inputTipos" value="#{cc.attrs.registro.tipoCampo.toString()}"  >
+                <pe:defaultCase  id="cp#{cc.attrs.registro.tipoCampo}" >
+                    <p:outputLabel id ="#{idcompInput}" value="#{component.clientId}"/><br/>
+                </pe:defaultCase>
 
-            <pe:case value="#{tipos.tipoCampo.senha}">
-                <p:password  class="campoResponsivo  TexAlCenter"  id="#{idcompInput}" value="#{cc.attrs.registro.valor}"
-                             autocomplete="false"
-                             redisplay="true"
-                             feedback="true"
-                             disabled="#{cc.attrs.desabilitarEdicao}"
-                             validatorMessage="A senha precisa conter 6 caractéres"
-                             promptLabel="Digite uma senha segura" weakLabel="Você pode melhorar esta senha"
-                             required="#{cc.attrs.registro.obrigatorio}"
-                             goodLabel="Esta senha é uma boa senha, você pode melhora-la adcionando numeros, caracteres especiais e letras" strongLabel="Parabéns, esta senha é muito difícil de ser quebrada" >
-                    <f:validateLength minimum="6" />
-                </p:password>
-            </pe:case>
+            </pe:switch>
 
-        </pe:switch>
+
+        </c:if>
 
     </cc:implementation>
 </html>
