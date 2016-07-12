@@ -22,14 +22,14 @@
     <cc:implementation>
 
 
-
         <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campo">
 
             <div class="Container33 Responsive" style="position: relative">
 
                 <p:panel  style="margin: 1%">
 
-                    <SBComp:input
+
+                    <SBComp:debugCampo
                         registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
                         tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
                         desabilitarEdicao="#{cc.attrs.somenteLeitura}" />
