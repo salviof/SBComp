@@ -28,11 +28,11 @@
 
                 <p:panel  style="margin: 1%">
 
-
-                    <SBComp:debugCampo
-                        registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
-                        tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
-                        desabilitarEdicao="#{cc.attrs.somenteLeitura}" />
+                    #{campo}
+                    <!--   <SBComp:debugCampo
+                           registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
+                           tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
+                           desabilitarEdicao="#{cc.attrs.somenteLeitura}" /> -->
                 </p:panel>
 
             </div>
