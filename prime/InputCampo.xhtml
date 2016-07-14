@@ -88,6 +88,10 @@
                     <p:calendar id="#{idcompInput}" value="#{cc.attrs.registro.valor}"  />
                 </pe:case>
 
+                <pe:case value="#{tipos.tipoCampo.dataHora}" id="cp#{tipos.tipoCampo.dataHora}" >
+                    <p:calendar id="#{idcompInput}" value="#{cc.attrs.registro.valor}" showHour="true" showMinute="true" />
+                </pe:case>
+
 
                 <pe:case value="#{tipos.tipoCampo.PERCENTUA}" id="cp#{tipos.tipoCampo.PERCENTUA}">
 
