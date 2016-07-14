@@ -22,8 +22,12 @@ and open the template in the editor.
 
         <ui:define name="conteudo">
 
-            VerCampo
 
+            Exibição de:
+            #{pgTestesCampo.strNomeCampo}
+            <h:form>
+                <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)}"/>
+            </h:form>
 
         </ui:define>
 

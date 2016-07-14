@@ -29,12 +29,14 @@ and open the template in the editor.
             </c:if>
 
 
-            <c:if test="#{pgTestesCampo.entidadeCarregada.getBeanSimplesPorNomeCampo(pgTestesCampo.strNomeCampo) eq 'Campo Nao Instanciado'}">
+            <c:if test="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)} eq 'Campo Nao Instanciado'}">
                 Campo não foi localizado
             </c:if>
 
-
-            <SBComp:debugCampo registro="#{pgTestesCampo.entidadeCarregada.getBeanSimplesPorNomeCampo(pgTestesCampo.strNomeCampo)}"/>
+            Ficha tecnica de input campo para:
+            #{pgTestesCampo.strNomeCampo}
+            <SBComp:debugCampo
+                registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)}"/>
 
 
 
