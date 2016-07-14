@@ -32,14 +32,10 @@ and open the template in the editor.
 
 
 
-            <ui:repeat  value="#{pgTestesCampo.acaoFormularioSelecionada.gruposDeCampos}" var="grupo">
-                #{grupo.nomeGrupo} <br/>
-
-                <ui:repeat value="#{grupo.campos}" var="cp">
-
+            <ui:repeat  value="#{pgTestesCampo.acaoFormularioSelecionada.gruposDeCampos}" var="grupo" >
+                #{grupo.nomeGrupo}
+                <ui:repeat value="#{grupo.campos}" var="cp" >
                     <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(cp.caminhoSemNomeClasse)}" />
-
-
                 </ui:repeat>
 
             </ui:repeat>
