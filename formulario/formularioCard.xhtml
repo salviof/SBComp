@@ -66,17 +66,34 @@
                         tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"
                         />
                     <c:if test="#{cc.attrs.acaoPrincipal != null}">
+<<<<<<< HEAD
                         <div class="Fright">
                             <SBComp:botaoDeAcao
+=======
+                        <c:if test="#{!cc.attrs.pagina.somenteLeitura}">
+                            <div class="Fright">
 
-                                acao="#{cc.attrs.acaoPrincipal}"
-                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
-                                tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                                armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+                                <SBComp:botaoDeAcao
+>>>>>>> 1ad983d8542206cea135478cef124b20144b2a8c
 
-                                />
-                        </div>
+                                    acao="#{cc.attrs.acaoPrincipal}"
+                                    metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                    tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                    armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+
+                                    />
+                            </div>
+                        </c:if>
                     </c:if>
+<<<<<<< HEAD
+=======
+
+                </h:form>
+
+                <h:form>
+
+
+>>>>>>> 1ad983d8542206cea135478cef124b20144b2a8c
                     <c:if test="#{cc.attrs.acaoAlternativa != null}">
                         <SBComp:seletorDeAcoes
 
