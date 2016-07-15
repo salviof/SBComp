@@ -4,6 +4,7 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
       xmlns:SBp="http://xmlns.jcp.org/jsf/composite/SBComp/prime">
 
@@ -27,9 +28,9 @@
         <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"
                var="caminhoBase" />
         <c:set var="caminho"  value="#{caminhoBase}"/>
-        <c:choose>
 
-            <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelEsquerda}">
+        <pe:switch  value="#{cc.attrs.tipoExibicaoCampo}" >
+            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}" >
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
@@ -45,9 +46,11 @@
                     <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
                     <p:message for="#{caminho}"  />
                 </h:panelGrid>
-            </c:when>
 
-            <c:when test="#{cc.attrs.tipoExibicaoCampo==tipos.tipoVisualCampo.labelSuperior}">
+            </pe:case>
+
+            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
+
                 <p:outputLabel  for="#{caminho}" id="labelLBSup" value="#{cc.attrs.label}: " style="line-height: -20%"/>
                 <SBp:InputCampo registro="#{cc.attrs.registro}" id="#{idInputCampo}"
                                 tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"
@@ -57,16 +60,17 @@
                 <p:tooltip for="#{caminho}" value="#{cc.attrs.registro.descricao}" />
                 <p:message for="#{caminho}" />
 
-            </c:when>
 
-            <c:otherwise>
+            </pe:case>
 
+            <pe:case value="#{tipos.tipoVisualCampo.resumido}" >
 
                 <SBp:InputCampo registro="#{cc.attrs.registro}"
                                 id="#{idInputCampo}"
                                 tipoExibicaoCampo="#{cc.attrs.tipoExibicaoCampo}"
                                 desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                                campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}" />
+                                campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                                />
 
                 <p:watermark for="#{caminho}" value="#{cc.attrs.label}" />
 
@@ -74,9 +78,12 @@
 
                 <p:message for="#{caminho}" />
 
-            </c:otherwise>
 
-        </c:choose>
+            </pe:case>
+
+
+
+        </pe:switch>
 
     </cc:implementation>
 

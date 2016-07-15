@@ -24,19 +24,26 @@ and open the template in the editor.
         <ui:define name="conteudo">
 
 
-            <c:forEach items="#{pgTestesCampo.acaoFormularioSelecionada.gruposDeCampos}" var="grupo">
+            <p:fieldset style="margin: 2%" legend="#{pgTestesCampo.grupoSelecionado.nomeGrupo}">
+                <h:form>
+                    <SBFormulario:camposDoGrupo registro="#{pgTestesCampo.entidadeCarregada}" grupoCampos="#{pgTestesCampo.grupoSelecionado}" />
+                </h:form>
+            </p:fieldset>
+
+
+
+            <ui:repeat  value="#{pgTestesCampo.acaoFormularioSelecionada.gruposDeCampos}" var="grupo">
                 #{grupo.nomeGrupo} <br/>
 
                 <ui:repeat value="#{grupo.campos}" var="cp">
 
-                    <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(cp.caminhoSemNomeClasse)}"/>
+                    <SBComp:input registro="registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(cp.caminhoSemNomeClasse)}" />
 
 
 
                 </ui:repeat>
 
-            </c:forEach>
-
+            </ui:repeat>
 
         </ui:define>
 
