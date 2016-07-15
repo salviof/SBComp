@@ -6,7 +6,7 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:sb="http://superbitsframework/facelets"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <!-- INTERFACE -->
@@ -28,12 +28,8 @@
             <div class="Container33 Responsive" style="position: relative">
 
                 <p:panel  style="margin: 1%">
+                    <sb:inputSB registro="registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}">
 
-
-                    <SBComp:input
-                        registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
-                        tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
-                        desabilitarEdicao="#{cc.attrs.somenteLeitura}" /> 
                 </p:panel>
 
             </div>

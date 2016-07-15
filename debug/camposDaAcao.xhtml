@@ -24,14 +24,18 @@ and open the template in the editor.
         <ui:define name="conteudo">
 
 
-            <p:fieldset style="margin: 2%" legend="#{pgTestesCampo.grupoSelecionado.nomeGrupo}">
-                <h:form>
-                    <SBFormulario:camposDoGrupo registro="#{pgTestesCampo.entidadeCarregada}" grupoCampos="#{pgTestesCampo.grupoSelecionado}" />
-                </h:form>
-            </p:fieldset>
 
 
+<<<<<<< HEAD
 
+=======
+            <ui:repeat  value="#{pgTestesCampo.acaoFormularioSelecionada.gruposDeCampos}" var="grupo" >
+                <p:fieldset style="margin: 2%" legend="#{grupo.nomeGrupo}">
+                    <SBFormulario:camposDoGrupo registro="#{pgTestesCampo.entidadeCarregada}"
+                                                grupoCampos="#{grupo}" />
+                </p:fieldset>
+            </ui:repeat>
+>>>>>>> 21dc82009dd2a92449c23177f16b15f18ed2e077
 
         </ui:define>
 
