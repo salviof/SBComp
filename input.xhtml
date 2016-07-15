@@ -25,76 +25,23 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}#{cc.attrs.diferencialID}" />
-        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"
-               var="caminhoBase" />
-        <c:set var="caminho"  value="#{caminhoBase}"/>
-
-        <pe:switch  value="#{cc.attrs.tipoExibicaoCampo}" >
-            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}" >
-
-                <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
-
-                    <p:outputLabel  for="#{caminho}"
-                                    id="#{cc.attrs.registro.labelSlug}OutputLabel"
-                                    value="#{cc.attrs.label}"/>
-                    <sb:inputSB registro="#{cc.attrs.registro}" desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                                campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
-
-                                />
-                    <p:tooltip for="#{caminho}"
-                               value="#{cc.attrs.registro.descricao}"
-                               id="#{cc.attrs.registro.labelSlug}tooltip" 
-                               />
-                    <p:message for="#{caminho}"
-                               id="#{cc.attrs.registro.labelSlug}MensagemErro"
-                               />
-                </h:panelGrid>
-
-            </pe:case>
-
-            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
-
-                <p:outputLabel  for="#{caminho}" id="#{cc.attrs.registro.labelSlug}OutputLabel"
-                                value="#{cc.attrs.label}: " style="line-height: -20%"/>
-
-                <sb:inputSB
-                    registro="#{cc.attrs.registro}"
-                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
-                    />
 
 
-                <p:tooltip for="#{caminho}"
-                           value="#{cc.attrs.registro.descricao}"
-                           id="#{cc.attrs.registro.labelSlug}tooltip"  />
-                <p:message for="#{caminho}" id="#{cc.attrs.registro.labelSlug}MensagemErro"  />
+        <c:set var="caminho"
+               value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"/>
 
+        <p:panelGrid columns="1" id="#{cc.attrs.registro.labelSlug}" >
 
-            </pe:case>
-
-            <pe:case value="#{tipos.tipoVisualCampo.resumido}" id="#{tipos.tipoVisualCampo.resumido}" >
-
-
-                <sb:inputSB
-                    registro="#{cc.attrs.registro}"
-                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
-                    />
-
-
-                <p:watermark for="#{caminho}" id="#{cc.attrs.registro.labelSlug}waterMark" value="#{cc.attrs.label}" />
-
-                <p:tooltip for="#{caminho}" id="#{cc.attrs.registro.labelSlug}tooltip" value="#{cc.attrs.label}: #{cc.attrs.registro.descricao}" />
-
-                <p:message for="#{caminho}" id="#{cc.attrs.registro.labelSlug}Mensagem" />
-
-
-            </pe:case>
+            <p:outputLabel value="#{cc.attrs.registro.label}" />
+            <sb:inputSB
+                registro="#{cc.attrs.registro}"
+                desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                />
+        </p:panelGrid>
 
 
 
-        </pe:switch>
 
     </cc:implementation>
 

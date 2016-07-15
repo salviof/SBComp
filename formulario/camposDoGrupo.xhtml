@@ -7,7 +7,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:sb="http://superbitsframework/facelets"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -29,7 +30,9 @@
 
                 <p:panel  style="margin: 1%">
 
-                    <sb:inputSB registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}" desabilitarEdicao="#{false}" />
+                    <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
+                                  tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
+                                  desabilitarEdicao="#{false}" />
 
                 </p:panel>
 

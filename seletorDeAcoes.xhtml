@@ -27,7 +27,10 @@
 
                 <c:when test="#{cc.attrs.visualizacaoBotao==tipos.tipoVisualBotao.apenasIcone}">
 
-                    <p:commandButton  onmousedown="esconderTooltips();" id="btIcon#{cc.id}"  icon="#{opc.iconeAcao}"    action="#{cc.attrs.metodo}">
+                    <p:commandButton  onmousedown="esconderTooltips();"
+                                      id="btIcon#{cc.id}"
+                                      icon="#{opc.iconeAcao}"
+                                      action="#{cc.attrs.metodo}">
                         <f:setPropertyActionListener  target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"  />
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="@form"/>
