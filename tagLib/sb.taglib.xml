@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+<facelet-taglib>
+    <namespace>http://superbitsframework/facelets</namespace>
+    <tag>
+        <tag-name>inputSB</tag-name>
+        <source>tags/com/sb/tagInputCampo.xhtml</source>
+
+        <attribute>
+
+            <description>Objeto do tipo campo instanciado</description>
+            <name>registro</name>
+            <required>true</required>
+            <type>com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado</type>
+        </attribute>
+
+        <attribute>
+            <description></description>
+            <name>id</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+
+
+        <attribute>
+            <description>Desativar edição</description>
+            <name>desabilitarEdicao</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+
+
+        <attribute>
+            <description>Exibir Modo debug</description>
+            <name>modoDebug</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>#{false}</default>
+        </attribute>
+
+
+
+        <attribute>
+            <description>Exibir Modo debug</description>
+            <name>campoLocalizacaoCEP</name>
+            <required>false</required>
+        </attribute>
+
+
+
+
+
+    </tag>
+
+
+</facelet-taglib>
