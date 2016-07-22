@@ -34,68 +34,8 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <pe:switch  value="#{cc.attrs.tipoVisualizacao}" >
-            <pe:case value="#{tipos.tipoVisualBotao.iconeENome}" id="botaoAcao#{tipos.tipoVisualBotao.iconeENome}" >
-                <bta:iconeENome metodo="#{cc.attrs.metodo}"
-                                opcaoSelecionada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                />
-            </pe:case>
-            <pe:case value="#{tipos.tipoVisualBotao.apenasIcone}" id="botaoAcao#{tipos.tipoVisualBotao.apenasIcone}" >
-                <bta:apenasIcone metodo="#{cc.attrs.metodo}"
-                                 opcaoSelecionada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                 trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                 />
-            </pe:case>
-            <pe:case value="#{tipos.tipoVisualBotao.botaoGigante}" id="botaoAcao#{tipos.tipoVisualBotao.botaoGigante}" >
-                <bta:botaoGitante metodo="#{cc.attrs.metodo}"
-                                  opcaoSelecionada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                  trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                  />
-            </pe:case>
-            <pe:case value="#{tipos.tipoVisualBotao.apenasNome}" id="botaoAcao#{tipos.tipoVisualBotao.apenasNome}" >
-                <bta:apenasNome metodo="#{cc.attrs.metodo}"
-                                opcaoSelecionada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                />
-            </pe:case>
-
-        </pe:switch>
 
 
-        <c:if test="#{cc.attrs.acao.umaAcaoGestaoDominio}" >
-            <p:button value="#{cc.attrs.acao.nomeAcao}" href="#{pgUtil.navegar(cc.attrs.acao)}" />
-        </c:if>
-
-
-
-        <c:set var="btIcone" value="#{cc.attrs.acao.iconeAcao}" />
-        <c:set var="btLabel" value="#{cc.attrs.acao.nomeAcao}" />
-
-        <c:if test="#{cc.attrs.acao.cor!=null}" >
-            <c:set var="estilo" value="color:  #{cc.attrs.acao.cor}" />
-        </c:if>
-        <c:if test="#{cc.attrs.acao.cor!=null}" >
-            <c:set var="estilo" value="" />
-        </c:if>
-
-
-        <c:choose >
-            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasIcone}">
-                <c:set var="btLabel" value="#{null}" />
-            </c:when>
-            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasNome}">
-                <c:set var="btIcone" value="#{null}" />
-            </c:when>
-            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasDescricao}">
-                <c:set var="btIcone" value="#{null}" />
-                <c:set var="btLabel" value="#{cc.attrs.acao.descricao}" />
-            </c:when>
-        </c:choose>
-
-        <c:if test="#{!cc.attrs.acao.umaAcaoGestaoDominio}" >
-
-        </c:if>
 
 
 
