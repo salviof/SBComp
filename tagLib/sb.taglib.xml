@@ -7,31 +7,24 @@
     <tag>
         <tag-name>inputSB</tag-name>
         <source>tags/com/sb/tagInputCampo.xhtml</source>
-
         <attribute>
-
             <description>Objeto do tipo campo instanciado</description>
             <name>registro</name>
             <required>true</required>
             <type>com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado</type>
         </attribute>
-
         <attribute>
             <description></description>
             <name>id</name>
             <required>false</required>
             <type>java.lang.String</type>
         </attribute>
-
-
         <attribute>
             <description>Desativar edição</description>
             <name>desabilitarEdicao</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
         </attribute>
-
-
         <attribute>
             <description>Exibir Modo debug</description>
             <name>modoDebug</name>
@@ -39,19 +32,30 @@
             <type>java.lang.Boolean</type>
             <default>#{false}</default>
         </attribute>
-
-
-
         <attribute>
             <description>Exibir Modo debug</description>
             <name>campoLocalizacaoCEP</name>
             <required>false</required>
         </attribute>
+    </tag>
 
 
 
 
 
+    <tag>
+        <tag-name>testeTagOnchange</tag-name>
+        <description><![CDATA[ Componente criado para testar comportamento do metodo onchnage ]]></description>
+        <component>
+            <component-type>testeTagOnChange</component-type>
+            <renderer-type>org.super_bits.tags.TesteTagOnchangeRender</renderer-type>
+        </component>
+
+        <attribute>
+            <description>metodo onchange</description>
+            <name>quandoAlterar</name>
+            <required>false</required>
+        </attribute>
     </tag>
 
 
