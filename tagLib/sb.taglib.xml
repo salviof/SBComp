@@ -44,18 +44,32 @@
 
 
     <tag>
-        <tag-name>testeTagOnchange</tag-name>
+        <tag-name>inputSBTestes</tag-name>
         <description><![CDATA[ Componente criado para testar comportamento do metodo onchnage ]]></description>
+
         <component>
-            <component-type>testeTagOnChange</component-type>
-            <renderer-type>org.super_bits.tags.TesteTagOnchangeRender</renderer-type>
+            <component-type>org.super_bits.tags.InputSB</component-type>
+            <renderer-type>org.super_bits.tags.InputSBRender</renderer-type>
         </component>
 
         <attribute>
+            <name>metodoOnChange</name>
             <description>metodo onchange</description>
-            <name>quandoAlterar</name>
             <required>false</required>
         </attribute>
+
+        <attribute>
+            <name>metodoOnChange</name>
+            <description>metodo onchange</description>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>propriedadeTextoTeste;</name>
+            <description>metodo onchange</description>
+            <required>false</required>
+        </attribute>
+
     </tag>
 
 
