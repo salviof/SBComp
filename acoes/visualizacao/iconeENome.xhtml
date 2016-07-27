@@ -25,10 +25,14 @@
         <cc:attribute name="cor" default="#{null}"
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
-        <cc:attribute name="trasformarAcaoMBemLink" default="#{true}" />
-        <cc:attribute name="armazenarAcaoSelecionada" default="#{true}"
+        <cc:attribute name="trasformarAcaoMBemLink" />
+
+
+        <cc:attribute name="armazenarAcaoSelecionada"
+                      required="#{true}"
                       shortDescription="Indica se ao clicar a ação clicada será armazenada em algum bean"
                       />
+
 
     </cc:interface>
 
@@ -37,15 +41,16 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        METODO:::::
 
 
-        <c:if test="#{pgUtil.isTesteValido(component)}" />
+        <c:if test="#{cc.attrs.armazenarAcaoSelecionada}" >
+            FUNCIONAAAAAAAAA!#{cc.attrs.armazenarAcaoSelecionada} #{cc.attrs.armazenarAcaoSelecionada}
+        </c:if>
 
 
         <c:set  var="caminhocp" value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}"/>
 
-        #{component.clientId} #{cc.id}
+
 
 
 
@@ -58,11 +63,7 @@
             </c:when>
 
 
-
-
-
             <c:otherwise>
-
 
 
                 <p:commandButton onmousedown="esconderTooltips();"

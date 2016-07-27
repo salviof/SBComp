@@ -31,7 +31,9 @@
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
         <cc:attribute name="trasformarAcaoMBemLink" default="#{true}" />
-        <cc:attribute name="armazenarAcaoSelecionada" default="#{true}"
+
+
+        <cc:attribute name="armazenarAcaoSelecionada" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'armazenamentoAcaoExecutada')}"
                       shortDescription="Indica se ao clicar a ação clicada será armazenada em algum bean"
                       />
 
@@ -39,25 +41,18 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-
-        <c:if test="#{pgUtil.isTesteValido(component)}" />  
-
-        teste:::#{cc.attrs}
-        <c:if test= "#{empty cc.attrs.armazenamentoAcaoExecutada}">
-
-
-            ARMAZENAMENTO NÃO É NULO
-
-        </c:if>
-
-
         <pe:switch  value="#{cc.attrs.tipoVisualizacao}" >
+
             <pe:case value="#{tipos.tipoVisualBotao.iconeENome}" id="botaoAcao#{tipos.tipoVisualBotao.iconeENome}" >
+
+
+
                 <bta:iconeENome metodo="#{cc.attrs.metodo}"
                                 armazenamentoAcaoExecutada="#{cc.attrs.armazenamentoAcaoExecutada}"
                                 armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
                                 cor="#{cc.attrs.cor}"
                                 acao="#{cc.attrs.acao}"
+
                                 javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
                                 update="#{cc.attrs.update}"
                                 trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"

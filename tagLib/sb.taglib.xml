@@ -19,6 +19,14 @@
             <required>false</required>
             <type>java.lang.String</type>
         </attribute>
+
+        <attribute>
+            <description>indica se o input possui um metodo para ser executando quando alterar</description>
+            <name>possuiOnchange</name>
+            <required>true</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+
         <attribute>
             <description>Desativar edição</description>
             <name>desabilitarEdicao</name>
