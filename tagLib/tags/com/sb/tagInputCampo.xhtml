@@ -3,7 +3,6 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
@@ -17,14 +16,14 @@
         <c:set var="exibicaoPadrao" value="#{false}" />
 
 
-        --------#{possuiOnchange}-----------
+
 
         <pe:switch  value="#{registro.tipoCampo.strTipoInputCampo}" >
             <pe:case value="#{tipos.tipoCampo.TEXTO_SIMPLES}" id="cp#{tipos.tipoCampo.TEXTO_SIMPLES}" >
 
 
                 <c:if test="#{registro.temMascara}">
-
+                    idd #{component.id}
 
                     <p:inputMask class="campoResponsivo  TexAlCenter"
                                  mask="#{registro.mascaraJqueryMode}"
@@ -39,12 +38,10 @@
                 <c:if test="#{!registro.temMascara}">
 
                     <p:inputText
-
                         class="campoResponsivo  TexAlCenter"
                         id="#{idcompInput}"
                         value="#{registro.valor}"  required="#{registro.obrigatorio}"
                         disabled="#{desabilitarEdicao}" >
-
                     </p:inputText>
                 </c:if>
 

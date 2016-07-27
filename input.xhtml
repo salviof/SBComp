@@ -3,14 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
       xmlns:sb="http://superbitsframework/facelets"
-      >
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado" default="#{pgUtil.campoNaoImplementado}" />
+        <cc:attribute name="registro"
+                      required="true"
+                      type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado"
+                      default="#{pgUtil.campoNaoImplementado}" />
         <cc:attribute name="diferencialID" default="" />
-        <cc:attribute name="pid" default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
+        <cc:attribute name="pid"
+                      default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
         <cc:attribute name="tipoExibicaoCampo" default="#{tipos.tipoVisualCampo.padrao}" />
         <cc:attribute name="campoLocalizacaoCEP" default="#{null}"  />
         <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
@@ -18,23 +24,78 @@
         <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
         <cc:attribute name="temMetodo" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}" />
+        <cc:attribute name="caminhoParaFor"
+                      default="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:#{cc.attrs.registro.tipoCampo.tipo_input_prime.idPadraoComponente}" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <p:panelGrid columns="1"  >
 
-            <p:outputLabel value="#{cc.attrs.registro.label}" />
-            <sb:inputSB
-                registro="#{cc.attrs.registro}"
-                desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
-                possuiOnchange="#{cc.attrs.temMetodo}"
-                />
-        </p:panelGrid>
+        <c:set var="caminhoBase"  value="" />
+        <c:set var="caminho" value="#{caminhoBase}:#{cc.attrs.registro.tipoCampo.tipo_input_prime.idPadraoComponente}" />
+
+        <pe:switch  value="#{cc.attrs.tipoExibicaoCampo}" >
+            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}" >
+
+                <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
+
+                    <p:outputLabel  id="labelEsquerda"  for="#{cc.attrs.caminhoParaFor}" id="labelLBEsquerda" value="#{cc.attrs.label}"/>
+
+                    <sb:inputSB
+                        registro="#{cc.attrs.registro}"
+                        id="#{idInputCampo}"
+                        desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                        campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                        possuiOnchange="#{cc.attrs.temMetodo}"
+                        />
+                    <p:message id="mensagemCampo" for="#{cc.attrs.caminhoParaFor}" />
 
 
+                </h:panelGrid>
+
+            </pe:case>
+
+            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
+
+                <p:outputLabel  for="#{cc.attrs.caminhoParaFor}" id="labelLBSup" value="#{cc.attrs.label}: " style="line-height: -20%"/>
+                <sb:inputSB
+                    registro="#{cc.attrs.registro}"
+                    id="#{idInputCampo}"
+                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                    possuiOnchange="#{cc.attrs.temMetodo}"
+                    />
+                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{cc.attrs.caminhoParaFor}" />
+
+
+            </pe:case>
+
+            <pe:case value="#{tipos.tipoVisualCampo.resumido}" id="inputCampo#{tipos.tipoVisualCampo.resumido}" >
+
+                #{cc.attrs.caminhoParaFor}<br/>
+                <sb:inputSB
+                    registro="#{cc.attrs.registro}"
+                    id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
+                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                    possuiOnchange="#{cc.attrs.temMetodo}"
+                    />
+                <br/>
+
+
+
+
+                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{cc.attrs.caminhoParaFor}" />
+
+
+            </pe:case>
+
+
+
+        </pe:switch>
 
 
     </cc:implementation>
