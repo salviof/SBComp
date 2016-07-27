@@ -40,16 +40,16 @@
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
-                    <p:outputLabel  id="labelEsquerda"  for="#{cc.attrs.caminhoParaFor}" id="labelLBEsquerda" value="#{cc.attrs.label}"/>
+
 
                     <sb:inputSB
                         registro="#{cc.attrs.registro}"
-                        id="#{idInputCampo}"
+                        id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
                         desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                         campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
                         possuiOnchange="#{cc.attrs.temMetodo}"
                         />
-                    <p:message id="mensagemCampo" for="#{cc.attrs.caminhoParaFor}" />
+
 
 
                 </h:panelGrid>
@@ -58,10 +58,12 @@
 
             <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
 
-                <p:outputLabel  for="#{cc.attrs.caminhoParaFor}" id="labelLBSup" value="#{cc.attrs.label}: " style="line-height: -20%"/>
+                <p:outputLabel  for="#{cc.attrs.caminhoParaFor}"
+                                id="labelLBSup" value="#{cc.attrs.label}:"
+                                style="line-height: -20%"/>
                 <sb:inputSB
                     registro="#{cc.attrs.registro}"
-                    id="#{idInputCampo}"
+                    id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
                     desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
                     possuiOnchange="#{cc.attrs.temMetodo}"
