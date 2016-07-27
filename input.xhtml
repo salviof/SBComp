@@ -32,11 +32,8 @@
     <cc:implementation>
 
 
-        <c:set var="caminhoBase"  value="" />
-        <c:set var="caminho" value="#{caminhoBase}:#{cc.attrs.registro.tipoCampo.tipo_input_prime.idPadraoComponente}" />
-
         <pe:switch  value="#{cc.attrs.tipoExibicaoCampo}" >
-            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}" >
+            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}"  id="inputCampo#{tipos.tipoVisualCampo.labelEsquerda}" >
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
@@ -56,11 +53,9 @@
 
             </pe:case>
 
-            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
+            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"   id="inputCampo#{tipos.tipoVisualCampo.labelSuperior}" >
 
-                <p:outputLabel  for="#{cc.attrs.caminhoParaFor}"
-                                id="labelLBSup" value="#{cc.attrs.label}:"
-                                style="line-height: -20%"/>
+
                 <sb:inputSB
                     registro="#{cc.attrs.registro}"
                     id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
@@ -68,15 +63,14 @@
                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
                     possuiOnchange="#{cc.attrs.temMetodo}"
                     />
-                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
-                <p:message for="#{cc.attrs.caminhoParaFor}" />
+
 
 
             </pe:case>
 
             <pe:case value="#{tipos.tipoVisualCampo.resumido}" id="inputCampo#{tipos.tipoVisualCampo.resumido}" >
 
-                #{cc.attrs.caminhoParaFor}<br/>
+
                 <sb:inputSB
                     registro="#{cc.attrs.registro}"
                     id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
@@ -84,13 +78,12 @@
                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
                     possuiOnchange="#{cc.attrs.temMetodo}"
                     />
-                <br/>
 
 
 
 
-                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
-                <p:message for="#{cc.attrs.caminhoParaFor}" />
+
+
 
 
             </pe:case>
