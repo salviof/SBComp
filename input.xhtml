@@ -32,8 +32,9 @@
     <cc:implementation>
 
 
+
         <pe:switch  value="#{cc.attrs.tipoExibicaoCampo}" >
-            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}"  id="inputCampo#{tipos.tipoVisualCampo.labelEsquerda}" >
+            <pe:case value="#{tipos.tipoVisualCampo.labelEsquerda}" >
 
                 <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
 
@@ -53,9 +54,11 @@
 
             </pe:case>
 
-            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"   id="inputCampo#{tipos.tipoVisualCampo.labelSuperior}" >
+            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
 
-
+                <p:outputLabel  for="#{cc.attrs.caminhoParaFor}"
+                                id="labelLBSup" value="#{cc.attrs.label}:"
+                                style="line-height: -20%"/>
                 <sb:inputSB
                     registro="#{cc.attrs.registro}"
                     id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
@@ -63,7 +66,8 @@
                     campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
                     possuiOnchange="#{cc.attrs.temMetodo}"
                     />
-
+                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{cc.attrs.caminhoParaFor}" />
 
 
             </pe:case>
@@ -83,7 +87,8 @@
 
 
 
-
+                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{cc.attrs.caminhoParaFor}" />
 
 
             </pe:case>
