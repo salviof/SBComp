@@ -30,7 +30,7 @@
         <c:set var="caminho"
                value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"/>
 
-        <p:panelGrid columns="1" id="#{cc.attrs.registro.labelSlug}" >
+        <p:panelGrid columns="1" >
 
             <p:outputLabel value="#{cc.attrs.registro.label}" />
             <sb:inputSB
