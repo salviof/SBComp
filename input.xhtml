@@ -34,8 +34,15 @@
 
 
 
+<<<<<<< HEAD
 
         <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
+=======
+                <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
+                    <p:outputLabel  for="#{cc.attrs.caminhoParaFor}"
+                                    id="labelLBEsquerda" value="#{cc.attrs.label}"
+                                    style="line-height: -20%"/>
+>>>>>>> 832fe22e72d539bb7ffb5909f2aaa7be479dca2c
 
             <p:outputLabel value="#{cc.attrs.label}" />
 
@@ -51,7 +58,53 @@
 
         </h:panelGrid>
 
+<<<<<<< HEAD
 
+=======
+            <pe:case value="#{tipos.tipoVisualCampo.labelSuperior}"  >
+                <h:panelGrid columns="1">
+                    <p:outputLabel  for="#{cc.attrs.caminhoParaFor}"
+                                    id="labelLBSup" value="#{cc.attrs.label}:"
+                                    style="line-height: -20%"/>
+                    <sb:inputSB
+                        registro="#{cc.attrs.registro}"
+                        id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
+                        desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                        campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                        possuiOnchange="#{cc.attrs.temMetodo}"
+                        />
+                </h:panelGrid>
+                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{cc.attrs.caminhoParaFor}" />
+
+
+            </pe:case>
+
+            <pe:case value="#{tipos.tipoVisualCampo.resumido}" id="inputCampo#{tipos.tipoVisualCampo.resumido}" >
+
+
+                <sb:inputSB
+                    registro="#{cc.attrs.registro}"
+                    id="#{cc.attrs.registro.tipoCampo.strTipoInputCampo}"
+                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                    possuiOnchange="#{cc.attrs.temMetodo}"
+                    />
+
+
+
+
+
+                <p:tooltip for="#{cc.attrs.caminhoParaFor}" value="#{cc.attrs.registro.descricao}" />
+                <p:message for="#{cc.attrs.caminhoParaFor}" />
+
+
+            </pe:case>
+
+
+
+        </pe:switch>
+>>>>>>> 832fe22e72d539bb7ffb5909f2aaa7be479dca2c
 
 
     </cc:implementation>
