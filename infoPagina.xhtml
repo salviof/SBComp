@@ -140,8 +140,18 @@
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Bean de acesso:"/>
                         <p:outputLabel value="#{paginaAtual.infoPagina.nomeMB}"/>
+                        <p:outputLabel value="xhtml do managedbean vinculado"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.recursoXHTML}"/>
+                        <p:outputLabel value="Xhtml da ação atual"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.xhtmlAcaoAtual}"/>
+                        <p:outputLabel value="Ação vinculada"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.acaoVinculada}"/>
+                        <p:outputLabel value="Ação selecionada"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.acaoSelecionada}"/>
+
 
                     </p:panelGrid>
+                    <p:commandButton update="@form" value="Atualizar" />
                     <p:panel header="IDS NESCESSÁRIOS">
                         <p:panelGrid columns="2">
                             <c:forEach items="#{paginaAtual.infoPagina.infoIds}" var="info">

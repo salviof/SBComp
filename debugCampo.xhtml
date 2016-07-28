@@ -6,20 +6,14 @@
       xmlns:p="http://primefaces.org/ui"
 
       xmlns:SBp="http://xmlns.jcp.org/jsf/composite/SBComp/prime"
-      >
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <!-- INTERFACE -->
     <cc:interface>
 
-        <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado" default="#{pgUtil.campoNaoImplementado}" />
-
-        <cc:attribute name="pid" default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
-        <cc:attribute name="tipoExibicaoCampo" default="#{tipos.tipoVisualCampo.padrao}" />
-
-        <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
-
-        <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
-        <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
+        <cc:attribute name="campoInstanciado" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado" default="#{pgUtil.campoNaoImplementado}" />
+        <cc:attribute name="acao" required="true" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema" />
 
     </cc:interface>
 
@@ -27,41 +21,17 @@
 
     <cc:implementation>
 
+        <!-- inclui o xhtml da ação com o parametro pr Campo, para inspeção -->
+        não está funcionando!!! oq é reinderizado nunca mais some da tela, porque?
 
-        <c:set var="idInputCampo" value="inputCampo#{cc.attrs.id}" />
-        <c:set value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:#{idInputCampo}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"
-               var="caminhoBase" />
+        <br/> DEBUG CAMPO <br/>
+        #{cc.attrs.acao.comoFormulario.xhtml}
+        #{cc.attrs.campoInstanciado.label}
+        <ui:include src="#{cc.attrs.acao.comoFormulario.xhtml}" >
+            <ui:param name="prCampo" value="#{cc.attrs.campoInstanciado}" />
+        </ui:include>
+        <br/> FIM DEBUG CAMPO <br/>
 
-
-        <c:set var="caminho"  value="#{caminhoBase}"/>
-
-        <p:panel header="Informações do campo:">
-            <p:panelGrid columns="2">
-                <p:outputLabel value="Tipo Campo:"/>-- #{cc.attrs.registro.tipoCampo}
-                <p:outputLabel value="Caminho para input"/>-- #{caminho}
-                <p:outputLabel value="msk jqry"/>-- #{cc.attrs.registro.mascaraJqueryMode}
-                <p:outputLabel value="Label"/>-- #{cc.attrs.registro.label}
-                <p:outputLabel value="Validação regex:"/>-- #{cc.attrs.registro.validacaoRegex}
-                <p:outputLabel value="é uma lista de opções? "/>-- #{cc.attrs.registro.listaDeOpcoes}
-                <p:outputLabel value="é uma mascara? "/>-- #{cc.attrs.registro.mascara}
-                <p:outputLabel value="é um numeral? "/>-- #{cc.attrs.registro.numeral}
-                <p:outputLabel value="numero de casas decimais "/>-- #{cc.attrs.registro.numeroDeCasasDecimais}
-                <p:outputLabel value="é do tipo moeda? "/>-- #{cc.attrs.registro.moeda}
-                <p:outputLabel value="é obrigatorio? "/>-- #{cc.attrs.registro.obrigatorio}
-                <p:outputLabel value="tem mascara? "/>-- #{cc.attrs.registro.temMascara}
-                <p:outputLabel value="tem validação maximo? "/>-- #{cc.attrs.registro.temValidacaoMaximo}
-                <p:outputLabel value="tem validação minimo? "/>-- #{cc.attrs.registro.temValidacaoMinimo}
-                <p:outputLabel value="tem validação regex? "/>-- #{cc.attrs.registro.temValidacaoRegex}
-                <p:outputLabel value="qual valor? "/>-- #{cc.attrs.registro.valor}
-
-                <p:outputLabel value="Opções disponiveis"/>-- #{cc.attrs.registro.listaDeOpcoes}
-                <p:outputLabel value="Camminho do For"/> <p:outputLabel value="#{caminho}" />
-                <p:outputLabel value="Caminho Real"/>
-                <SBp:InputCampo id="#{idInputCampo}" registro="#{cc.attrs.registro}" modoDebug="#{true}" />
-
-            </p:panelGrid>
-
-        </p:panel>
 
 
 

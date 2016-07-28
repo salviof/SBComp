@@ -2,24 +2,30 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
       xmlns:sb="http://superbitsframework/facelets"
-      >
 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado" default="#{pgUtil.campoNaoImplementado}" />
+        <cc:attribute name="registro"
+                      required="true"
+                      type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado"
+                      default="#{pgUtil.campoNaoImplementado}" />
         <cc:attribute name="diferencialID" default="" />
-        <cc:attribute name="pid" default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
+        <cc:attribute name="pid"
+                      default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
         <cc:attribute name="tipoExibicaoCampo" default="#{tipos.tipoVisualCampo.padrao}" />
         <cc:attribute name="campoLocalizacaoCEP" default="#{null}"  />
         <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
-        <cc:attribute name="metodoExecutarAoAlterarValor" method-signature="void listener()" required="false" />
+        <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
+        <cc:attribute name="temMetodo" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}" />
+        <cc:attribute name="caminhoParaFor"
+                      default="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:#{cc.attrs.registro.tipoCampo.tipo_input_prime.idPadraoComponente}" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
@@ -27,19 +33,33 @@
 
 
 
-        <c:set var="caminho"
-               value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:componenteInputDado"/>
 
+<<<<<<< HEAD
         <p:panelGrid columns="1" >
+=======
+>>>>>>> a33f60008a2c6fea24280ed4f6ce9180f023c7d7
 
-            <p:outputLabel value="#{cc.attrs.registro.label}" />
-            <sb:inputSB
-                registro="#{cc.attrs.registro}"
-                desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
-                />
-        </p:panelGrid>
 
+
+        <h:panelGroup >
+            <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
+
+
+
+                <p:outputLabel value="#{cc.attrs.label}" />
+
+                <sb:inputSB
+                    registro="#{cc.attrs.registro}"
+
+                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
+                    possuiOnchange="#{cc.attrs.temMetodo}"
+                    />
+
+
+
+            </h:panelGrid>
+        </h:panelGroup>
 
 
 

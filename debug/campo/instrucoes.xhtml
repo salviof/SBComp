@@ -17,21 +17,17 @@ and open the template in the editor.
 
 
 
-    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml"  >
+    <ui:composition  >
 
 
-        <ui:define name="conteudo">
 
+        [Instruções]
 
-            Exibição de:
-            #{pgTestesCampo.strNomeCampo}
-            <h:form>
-                <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)}"/>
-            </h:form>
-
-        </ui:define>
 
 
     </ui:composition>
 
+
+
 </html>
+
