@@ -2,11 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pe="http://primefaces.org/ui/extensions"
-      xmlns:bta="http://xmlns.jcp.org/jsf/composite/SBComp/acoes/visualizacao"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:bta="http://xmlns.jcp.org/jsf/composite/SBComp/acoes/visualizacao">
 
     <!-- INTERFACE -->
 
@@ -52,11 +49,12 @@
                                 armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
                                 cor="#{cc.attrs.cor}"
                                 acao="#{cc.attrs.acao}"
-
                                 javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
                                 update="#{cc.attrs.update}"
-                                trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
+                                linkQuandoMB="#{true}"
                                 />
+
+
             </pe:case>
             <pe:case value="#{tipos.tipoVisualBotao.apenasIcone}" id="botaoAcao#{tipos.tipoVisualBotao.apenasIcone}" >
                 <bta:apenasIcone metodo="#{cc.attrs.metodo}"

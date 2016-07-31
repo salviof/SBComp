@@ -25,7 +25,7 @@
         <cc:attribute name="cor" default="#{null}"
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
-        <cc:attribute name="trasformarAcaoMBemLink" />
+        <cc:attribute name="linkQuandoMB" type="java.lang.Boolean" default="#{true}" />
 
 
         <cc:attribute name="armazenarAcaoSelecionada"
@@ -43,10 +43,6 @@
     <cc:implementation>
 
 
-        <c:if test="#{cc.attrs.armazenarAcaoSelecionada}" >
-            FUNCIONAAAAAAAAA!#{cc.attrs.armazenarAcaoSelecionada} #{cc.attrs.armazenarAcaoSelecionada}
-        </c:if>
-
 
         <c:set  var="caminhocp" value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}"/>
 
@@ -55,10 +51,12 @@
 
 
         <c:choose>
-            <c:when test="#{cc.attrs.trasformarAcaoMBemLink and cc.attrs.acao.umaAcaoGestaoDominio}">
 
-                BOTÃO COM ATALHO
-                <p:button value="#{cc.attrs.acao.nomeAcao}" href="#{pgUtil.navegar(cc.attrs.acao)}" />
+
+
+            <c:when test="#{pgUtil.isTudoVerdadeiro(cc.attrs.linkQuandoMB,cc.attrs.linkQuandoMB)}">
+
+                <p:button value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" href="#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso}"/>
 
             </c:when>
 

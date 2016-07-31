@@ -10,7 +10,6 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:sb="http://superbitsframework/facelets"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
@@ -18,31 +17,9 @@ and open the template in the editor.
 
 
 
-    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml"  >
-
-
+    <ui:composition  >
         <ui:define name="conteudo">
-
-
-            <c:if test="#{!pgTestesCampo.campoValido}" >
-                Sem entidade para exibicao
-
-            </c:if>
-
-
-            <c:if test="#{pgTestesCampo.campoValido}" >
-
-
-                REFEXAO:#{pgTestesCampo.campoInstanciado.campoReflection.type}!!!!!!!!!!
-                Ficha tecnica de input campo para:
-                #{pgTestesCampo.strNomeCampo}
-
-
-                w
-
-
-            </c:if>
-
+            [Laboratorio]
 
 
         </ui:define>
@@ -51,3 +28,6 @@ and open the template in the editor.
     </ui:composition>
 
 </html>
+
+</html>
+

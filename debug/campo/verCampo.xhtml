@@ -18,35 +18,15 @@ and open the template in the editor.
 
 
 
-    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml"  >
+    <ui:composition  >
 
+        <p:panel header="Campo tagLib" >
+            <sb:inputSB registro="#{prCampo}"  possuiOnchange="#{false}"/>
+        </p:panel>
 
-        <ui:define name="conteudo">
-
-
-            <c:if test="#{!pgTestesCampo.campoValido}" >
-                Sem entidade para exibicao
-
-            </c:if>
-
-
-            <c:if test="#{pgTestesCampo.campoValido}" >
-
-
-                REFEXAO:#{pgTestesCampo.campoInstanciado.campoReflection.type}!!!!!!!!!!
-                Ficha tecnica de input campo para:
-                #{pgTestesCampo.strNomeCampo}
-
-
-                w
-
-
-            </c:if>
-
-
-
-        </ui:define>
-
+        <p:panel header="Campo Input" >
+            <SBComp:input registro="#{prCampo}" />
+        </p:panel>
 
     </ui:composition>
 
