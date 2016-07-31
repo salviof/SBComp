@@ -50,7 +50,9 @@
                                       id="btIcon#{cc.id}"
                                       icon="#{opc.iconeAcao}"
                                       action="#{cc.attrs.metodo}">
-                        <f:setPropertyActionListener  target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"  />
+                        <f:setPropertyActionListener
+                            target="#{cc.attrs.opcaoSelecionada}"
+                            value="#{opc}"/>
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="@form"/>
                         </c:if>
@@ -92,14 +94,16 @@
                                      value="#{opc.nomeAcao}"
                                      icon="#{opc.iconeAcao}"
                                      action="#{cc.attrs.metodo}"   >
-                        <f:setPropertyActionListener target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"/>
+                        <f:setPropertyActionListener
+                            target="#{cc.attrs.opcaoSelecionada}"
+                            value="#{opc}"/>
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="@form"/>
                         </c:if>
 
                     </p:commandButton>
 
-                    <p:tooltip for="btIcon#{cc.id}" value="#{opc.descricao}"/>
+
                 </c:otherwise>
 
             </c:choose>
