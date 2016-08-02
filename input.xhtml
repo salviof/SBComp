@@ -7,7 +7,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:sb="http://superbitsframework/facelets"
 
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- INTERFACE -->
     <cc:interface>
         <cc:attribute name="registro"
@@ -24,38 +25,23 @@
         <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
         <cc:attribute name="temMetodo" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}" />
-        <cc:attribute name="caminhoParaFor"
-                      default="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{cc.attrs.registro.tipoCampo.strTipoInputCampo}:#{cc.attrs.registro.tipoCampo.tipo_input_prime.idPadraoComponente}" />
+
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
+        #{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}
+        <ui:include src="/resources/SBComp/input/labelEsquerda.xhtml" >
+            <ui:param name="registro" value="#{cc.attrs.registro}"/>
+            <ui:param name="#{strTipoInputCampo}" value="valorTEste"/>
+        </ui:include>
 
 
 
 
 
 
-        <h:panelGroup >
-            <h:panelGrid columns="2" styleClass="tabelaFormulario" columnClasses="colunaLabel,colunaResponsiva" >
-
-
-
-                <p:outputLabel value="#{cc.attrs.label}" />
-
-                <sb:inputSB
-                    registro="#{cc.attrs.registro}"
-
-                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                    campoLocalizacaoCEP="#{cc.attrs.campoLocalizacaoCEP}"
-                    possuiOnchange="#{cc.attrs.temMetodo}"
-                    />
-
-
-
-            </h:panelGrid>
-        </h:panelGroup>
 
 
 

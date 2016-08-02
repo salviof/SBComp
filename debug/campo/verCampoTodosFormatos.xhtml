@@ -22,19 +22,20 @@ and open the template in the editor.
         <p:panelGrid columns="3" >
             <p:panel header="Marca daqua" >
                 <h:form>
-                    <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)}"/>
+                    <SBComp:input registro="#{prCampo}" />
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
             <p:panel header="Esquerda" >
                 <h:form>
-                    <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)}" tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}"/>
+                    <SBComp:input registro="#{prCampo}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}"/>
+
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
             <p:panel header="Superior" >
                 <h:form>
-                    <SBComp:input registro="#{pgTestesCampo.entidadeCarregada.getCampoByNomeOuAnotacao(pgTestesCampo.strNomeCampo)}" tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelSuperior}"/>
+                    <SBComp:input registro="#{prCampo}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelSuperior}"/>
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
