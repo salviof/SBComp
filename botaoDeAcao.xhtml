@@ -21,16 +21,22 @@
         <cc:attribute name="javaScriptOncomplete"  default="#{null}"
                       shortDescription="Javascript que deve ser executado após a execucao do botão"
                       />
-        <cc:attribute name="tipoVisualizacao" default="#{tipos.tipoVisualBotao.iconeENome}"
+        <cc:attribute name="tipoVisualizacao"
+
+                      type="java.lang.String"
+                      required="#{true}"
                       shortDescription="Tipo de visualização do botão (Utilize #tipos.tipoVisualBotao"
                       />
-        <cc:attribute name="cor" default="#{null}"
+        <cc:attribute name="cor"
+                      default="#{null}"
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
         <cc:attribute name="trasformarAcaoMBemLink" default="#{true}" />
 
 
-        <cc:attribute name="armazenarAcaoSelecionada" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'armazenamentoAcaoExecutada')}"
+        <cc:attribute name="armazenarAcaoSelecionada"
+                      default="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'armazenamentoAcaoExecutada')}"
+                      expert="#{true}"
                       shortDescription="Indica se ao clicar a ação clicada será armazenada em algum bean"
                       />
 
@@ -41,9 +47,6 @@
         <pe:switch  value="#{cc.attrs.tipoVisualizacao}" >
 
             <pe:case value="#{tipos.tipoVisualBotao.iconeENome}" id="botaoAcao#{tipos.tipoVisualBotao.iconeENome}" >
-
-
-
                 <bta:iconeENome metodo="#{cc.attrs.metodo}"
                                 armazenamentoAcaoExecutada="#{cc.attrs.armazenamentoAcaoExecutada}"
                                 armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
@@ -51,10 +54,8 @@
                                 acao="#{cc.attrs.acao}"
                                 javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
                                 update="#{cc.attrs.update}"
-                                linkQuandoMB="#{true}"
+                                linkQuandoMB="#{cc.attrs.trasformarAcaoMBemLink}"
                                 />
-
-
             </pe:case>
             <pe:case value="#{tipos.tipoVisualBotao.apenasIcone}" id="botaoAcao#{tipos.tipoVisualBotao.apenasIcone}" >
                 <bta:apenasIcone metodo="#{cc.attrs.metodo}"
@@ -89,7 +90,6 @@
                                 trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
                                 />
             </pe:case>
-
         </pe:switch>
 
 
