@@ -148,7 +148,21 @@
                         <p:outputLabel value="#{paginaAtual.infoPagina.acaoVinculada}"/>
                         <p:outputLabel value="Ação selecionada"/>
                         <p:outputLabel value="#{paginaAtual.infoPagina.acaoSelecionada}"/>
+                        <p:outputLabel value="Link para Requisito do Formulario " />
+                        <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{paginaAtual.infoPagina.acaoSelecionada.idDescritivoJira}"
+                                value="#{paginaAtual.infoPagina.acaoSelecionada.idDescritivoJira}"
+                                target="requisitoJira:"
+                                >
+                            #{paginaAtual.infoPagina.acaoSelecionada.idDescritivoJira}
+                        </p:link>
 
+                        <p:outputLabel value="Link para Requisito De Gestão" />
+                        <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{paginaAtual.infoPagina.acaoVinculada.idDescritivoJira}"
+                                value="#{paginaAtual.infoPagina.acaoVinculada.idDescritivoJira}"
+                                target="requisitoJira:"
+                                >
+                            #{paginaAtual.infoPagina.acaoVinculada.idDescritivoJira}
+                        </p:link>
 
                     </p:panelGrid>
                     <p:commandButton update="@form" value="Atualizar" />

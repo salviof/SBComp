@@ -54,9 +54,11 @@
 
 
             <c:when test="#{pgUtil.isTudoVerdadeiro(cc.attrs.acao.umaAcaoGestaoDominio,cc.attrs.linkQuandoMB)}">
+
                 <c:if test="#{cc.attrs.acao.umaAcaoGestaoDominio}">
-                    <p:button value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" href="#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso}"/>
+                    <p:button value="#{cc.attrs.acao.nomeAcao}" icon="#{cc.attrs.acao.iconeAcao}" href="#{infoWebApp.getAcaoManagedBean(cc.attrs.acao.nomeUnico).urlDeAcesso}"/>
                 </c:if>
+                lnk
             </c:when>
 
 
@@ -75,7 +77,8 @@
 
 
                     <c:if test="#{cc.attrs.armazenarAcaoSelecionada}" >
-                        <f:setPropertyActionListener target="#{cc.attrs.armazenarAcaoSelecionada}" value="#{cc.attrs.acao}"  />
+                        <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}"
+                                                     value="#{cc.attrs.acao}"  />
                     </c:if>
 
                     <p:tooltip for="btAcao" value=" #{cc.attrs.acao.descricao}"/>
