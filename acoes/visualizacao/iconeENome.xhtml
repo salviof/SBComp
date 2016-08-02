@@ -54,10 +54,10 @@
 
 
 
-            <c:when test="#{pgUtil.isTudoVerdadeiro(cc.attrs.linkQuandoMB,cc.attrs.linkQuandoMB)}">
-
-                <p:button value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" href="#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso}"/>
-
+            <c:when test="#{pgUtil.isTudoVerdadeiro(cc.attrs.acao.umaAcaoGestaoDominio,cc.attrs.linkQuandoMB)}">
+                <c:if test="#{cc.attrs.acao.umaAcaoGestaoDominio}">
+                    <p:button value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" href="#{infoWebApp.getAcaoManagedBean(acao.nomeUnico).urlDeAcesso}"/>
+                </c:if>
             </c:when>
 
 
