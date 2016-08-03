@@ -2,12 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:sb="http://superbitsframework/facelets"
 
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- INTERFACE -->
     <cc:interface>
@@ -25,16 +21,29 @@
         <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
         <cc:attribute name="temMetodo" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}" />
-
+        <cc:attribute name="visualizacaoEspecial" type="com.super_bits.view.fabricasCompVisual"  />
+        <cc:attribute name="temvisualizacaoEspecial" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'visualizacaoEspecial')}" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
 
+
+        <p:panel header="Debug">
+            <p:panelGrid columns="2">
+
+                <p:outputLabel value="Definição Tem Metodo on Change?"/> #{cc.attrs.temMetodo}
+                <p:outputLabel value="DEfinição Tem visualizacao Especial?" #{cc.attrs.temvisualizacaoEspecial}/>
+
+            </p:panelGrid>
+        </p:panel>
+
+
         <ui:include src="/resources/SBComp/input/labelEsquerda.xhtml" >
             <ui:param name="registro" value="#{cc.attrs.registro}"/>
             <ui:param name="#{strTipoInputCampo}" value="valorTEste"/>
+
         </ui:include>
 
 

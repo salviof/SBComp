@@ -6,6 +6,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
 
+
+
         <ui:include rendered="#{registro!=null}" src="#{registro.xhtmlInput}" >
             <ui:param name="registro" value="#{registro}" />
             <ui:param name="idcomp" value="#{registro.tipoCampo}" />
