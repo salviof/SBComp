@@ -16,10 +16,8 @@
         <c:set var="exibicaoPadrao" value="#{false}" />
 
 
-        <p:inputTextarea   styleClass="campoResponsivo"
-                           rows="2" id="#{idcompInput}"
-                           value="#{registro.valor}"
-                           required="#{registro.obrigatorio}" disabled="#{desabilitarEdicao}" />
+        <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{registro.valor}"  required="#{registro.obrigatorio}"  disabled="#{desabilitarEdicao}" />
+
 
 
     </h:body>

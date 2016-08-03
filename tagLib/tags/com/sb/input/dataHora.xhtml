@@ -16,7 +16,9 @@
         <c:set var="exibicaoPadrao" value="#{false}" />
 
 
-        <p:colorPicker id="#{idcompInput}" value="#{registro.valor}"   />
+        <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{registro.valor}"  required="#{registro.obrigatorio}"  disabled="#{desabilitarEdicao}" />
+
+
 
     </h:body>
 

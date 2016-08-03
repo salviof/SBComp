@@ -31,13 +31,11 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        #{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}
+
         <ui:include src="/resources/SBComp/input/labelEsquerda.xhtml" >
             <ui:param name="registro" value="#{cc.attrs.registro}"/>
             <ui:param name="#{strTipoInputCampo}" value="valorTEste"/>
         </ui:include>
-
-
 
 
 

@@ -3,29 +3,14 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pe="http://primefaces.org/ui/extensions"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
 
-        <ui:composition >
-            <c:set var="idcompInput" value="sbInput"/>
-
-
-            <c:if test="#{registro!=null}">
-                #{registro.tipoCampo.tipo_input_prime.xhtml}
-            </c:if>
-        </ui:composition>
-
-
-
+        <ui:include rendered="#{registro!=null}" src="#{registro.xhtmlInput}" >
+            <ui:param name="registro" value="#{registro}" />
+            <ui:param name="idcomp" value="#{registro.tipoCampo}" />
+        </ui:include>
     </h:body>
-
-
-
 </html>
 
 

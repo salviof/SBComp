@@ -16,12 +16,7 @@
         <c:set var="exibicaoPadrao" value="#{false}" />
 
 
-
-        <h:outputText id="output" value="#{registro.valor}%" />
-
-        <h:inputHidden id="#{idcompInput}" value="#{registro.valor}" />
-
-        <p:slider for="#{idcompInput}" display="output" style="width: 200px" displayTemplate=" {value}%" />
+        <p:inputText  class="campoResponsivo  TexAlCenter" id="#{idcompInput}"  value="#{registro.valor}"  required="#{registro.obrigatorio}"  disabled="#{desabilitarEdicao}" />
 
 
 
