@@ -7,8 +7,9 @@
     <h:body>
 
 
-
-        <ui:include rendered="#{registro!=null}" src="#{registro.xhtmlInput}" >
+        #{registro.xhtmlDiferenciado(tipoVisualizacao)}
+        <ui:include rendered="#{registro!=null}" src="#{registro.xhtmlDiferenciado(tipoVisualizacao)}" >
+            <ui:param name="visualizacaoComponente" value="#{tipoVisualizacao}"/>
             <ui:param name="registro" value="#{registro}" />
             <ui:param name="idcomp" value="#{registro.tipoCampo}" />
         </ui:include>

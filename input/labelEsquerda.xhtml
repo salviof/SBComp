@@ -12,12 +12,17 @@
 
         <h:panelGrid columns="2" styleClass="tabelaFormulario"
                      columnClasses="colunaLabel,colunaResponsiva" >
+
+
             <p:outputLabel value="#{registro.label}"/>
+
+
             <sb:inputSB
                 registro="#{registro}"
                 desabilitarEdicao="#{desabilitarEdicao}"
                 campoLocalizacaoCEP="#{campoLocalizacaoCEP}"
                 possuiOnchange="#{temMetodo}"
+
                 />
 
         </h:panelGrid>

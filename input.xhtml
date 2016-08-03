@@ -21,8 +21,8 @@
         <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
         <cc:attribute name="temMetodo" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}" />
-        <cc:attribute name="visualizacaoEspecial" type="com.super_bits.view.fabricasCompVisual"  />
-        <cc:attribute name="temvisualizacaoEspecial" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'visualizacaoEspecial')}" />
+        <cc:attribute name="visualizacaoEspecial" type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"  />
+
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
@@ -34,7 +34,7 @@
             <p:panelGrid columns="2">
 
                 <p:outputLabel value="Definição Tem Metodo on Change?"/> #{cc.attrs.temMetodo}
-                <p:outputLabel value="DEfinição Tem visualizacao Especial?" #{cc.attrs.temvisualizacaoEspecial}/>
+                <p:outputLabel value="DEfinição Tem visualizacao Especial?" /> #{cc.attrs.temvisualizacaoEspecial}
 
             </p:panelGrid>
         </p:panel>
@@ -42,8 +42,7 @@
 
         <ui:include src="/resources/SBComp/input/labelEsquerda.xhtml" >
             <ui:param name="registro" value="#{cc.attrs.registro}"/>
-            <ui:param name="#{strTipoInputCampo}" value="valorTEste"/>
-
+            <ui:param name="temMetodo" value="#{cc.attrs.temMetodo}"/>
         </ui:include>
 
 

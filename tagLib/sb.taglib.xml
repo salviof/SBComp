@@ -27,6 +27,14 @@
             <type>java.lang.Boolean</type>
         </attribute>
 
+
+        <attribute>
+            <description>Tipo de Visualizacao</description>
+            <name>tipoVisualizacao</name>
+            <required>false</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </attribute>
+
         <attribute>
             <description>Desativar edição</description>
             <name>desabilitarEdicao</name>
@@ -73,10 +81,13 @@
         </attribute>
 
         <attribute>
-            <name>propriedadeTextoTeste;</name>
+            <name>propriedadeTextoTeste</name>
             <description>metodo onchange</description>
             <required>false</required>
         </attribute>
+
+
+
 
     </tag>
 
