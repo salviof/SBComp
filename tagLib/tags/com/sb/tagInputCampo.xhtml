@@ -11,13 +11,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
 
+        <ui:composition >
+            <c:set var="idcompInput" value="sbInput"/>
 
-        <c:set var="idcompInput" value="sbInput"/>
 
-
-        <c:if test="#{registro!=null}">
-            <ui:include src="#{registro.tipoCampo.tipo_input_prime.xhtml}"/>
-        </c:if>
+            <c:if test="#{registro!=null}">
+                #{registro.tipoCampo.tipo_input_prime.xhtml}
+            </c:if>
+        </ui:composition>
 
 
 
