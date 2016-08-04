@@ -42,7 +42,7 @@
                     <c:forEach items="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" var="campo" varStatus="rec">
                         <SBComp:input registro="#{campo}" tipoExibicaoCampo="#{pgDemoComponente.tipoVisualizacao}"  diferencialID="#{rec.index}" />
                     </c:forEach>
-                    <SBComp:seletorItem lista="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" registro="#{pgDemoComponente.campoSelecionado}"  />
+                    <SBComp:seletorItem lista="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" itemSelecionado="#{pgDemoComponente.campoSelecionado}"  />
                 </p:panelGrid>
 
 
@@ -95,7 +95,7 @@
 
         <p:panel header="Teste Campo Específico" >
             <h:form >
-                <SBComp:seletorItem lista="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" registro="#{pgDemoComponente.campoSelecionado}"  />
+                <SBComp:seletorItem lista="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" itemSelecionado="#{pgDemoComponente.campoSelecionado}"  />
                 <p:commandButton value="Alterar" action="#{pgDemoComponente.validacao()}"  oncomplete="javascript:location.reload();" />
 
 

@@ -3,12 +3,15 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
 
-
-        #{registro.xhtmlDiferenciado(tipoVisualizacao)}
+        <c:if test="#{registro!=null}">
+            #{registro.xhtmlDiferenciado(tipoVisualizacao)}
+        </c:if>
         <ui:include rendered="#{registro!=null}" src="#{registro.xhtmlDiferenciado(tipoVisualizacao)}" >
+
             <ui:param name="visualizacaoComponente" value="#{tipoVisualizacao}"/>
             <ui:param name="registro" value="#{registro}" />
             <ui:param name="idcomp" value="#{registro.tipoCampo}" />
