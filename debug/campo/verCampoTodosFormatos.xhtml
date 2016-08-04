@@ -20,20 +20,20 @@ and open the template in the editor.
     <ui:composition >
 
         <p:panelGrid columns="3" >
-            <p:panel header="Marca daqua" >
+            <p:panel header="Marca daqua"  id="marca">
                 <h:form>
                     <SBComp:input registro="#{prCampo}" />
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
-            <p:panel header="Esquerda" >
+            <p:panel header="Esquerda"  id="esq">
                 <h:form>
                     <SBComp:input registro="#{prCampo}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}"/>
 
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
-            <p:panel header="Superior" >
+            <p:panel header="Superior"  id="SUp">
                 <h:form>
                     <SBComp:input registro="#{prCampo}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelSuperior}"/>
                 </h:form>

@@ -26,7 +26,7 @@
             <p:panelGrid columns="2">
                 <p:outputLabel value="Tipo Campo:"/>-- #{prCampo.tipoCampo}
                 <p:outputLabel value="Tipo Input:"/>-- #{prCampo.tipoCampo.tipo_input_prime}
-                <p:outputLabel value="Xhtml para input:"/>#{prCampo.tipoCampo.tipo_input_prime.xhtml}
+                <p:outputLabel value="Xhtml para input:"/>#{prCampo.tipoCampo.tipo_input_prime.componente.xhtmlJSF}
                 <p:outputLabel value="Caminho para input"/>-- #{caminho}
                 <p:outputLabel value="msk jqry"/>-- #{prCampo.mascaraJqueryMode}
                 <p:outputLabel value="Label"/>-- #{prCampo.label}
@@ -47,7 +47,7 @@
                 <p:outputLabel value="Camminho do For"/> <p:outputLabel value="#{caminho}" />
 
                 <p:outputLabel value="Caminho for2"/>
-                <p:outputLabel value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{prCampo.tipoCampo.strTipoInputCampo}:#{prCampo.tipoCampo.tipo_input_prime.idPadraoComponente}"/>
+                <p:outputLabel value="#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}:cp#{prCampo.tipoCampo.strTipoInputCampo}:#{prCampo.tipoCampo.tipo_input_prime.componente.caminhoIdHTMLObjetoPrincipal}"/>
                 <p:outputLabel value="Caminho Real"/>
 
             </p:panelGrid>

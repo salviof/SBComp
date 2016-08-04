@@ -7,10 +7,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
         <ui:composition>
-
+            ..
             <p:inputMask rendered="#{registro.temMascara}" class="campoResponsivo  TexAlCenter"
                          mask="#{registro.mascaraJqueryMode}"
-                         id="#{registro.nomeUnicoParaIDHtml}"
+
                          value="#{registro.valor}"  required="#{registro.obrigatorio}"
                          disabled="#{desabilitarEdicao}">
             </p:inputMask>

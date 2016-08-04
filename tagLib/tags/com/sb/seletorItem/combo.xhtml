@@ -4,25 +4,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:sbPr="http://java.sun.com/jsf/composite/SBComp/prime"
-      >
-    <h:body>
 
-        <sbPr:seletorCombo
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition>
+        <h:body>
 
-            mostraSomenteImagem="#{mostraSomenteImagem}"
-            mostraTextoImagem="#{mostraTextoImagem}"
-            obrigatorio="#{obrigatorio}"
-            parametroIdOnChange="#{parametroIdOnChange}"
-            desabilitarEdicao="#{desabilitarEdicao}"
-            registro="#{itemSelecionado}"
-            lista="#{listaOpcoes}"
-            atualizaFormOnChange="#{atualizaFormOnChange}"
-            atualizaPeloMetodoOnChange="#{atualizaPeloMetodoOnChange}"
-            atualizaPorIdOnChange="#{atualizaPorIdOnChange}"
-            statusAjax="#{statusAjax}"
-            parametroMetodoOnChange="#{parametroMetodoOnChange}"
-            tipoLabel="#{tipoLabel}"
-            label="#{label}"
-            />
-    </h:body>
+
+            <sbPr:seletorCombo
+
+                mostraSomenteImagem="#{mostraSomenteImagem}"
+                mostraTextoImagem="#{mostraTextoImagem}"
+                obrigatorio="#{obrigatorio}"
+                parametroIdOnChange="#{parametroIdOnChange}"
+                desabilitarEdicao="#{desabilitarEdicao}"
+                registro="#{itemSelecionado}"
+                lista="#{listaOpcoes}"
+                atualizaFormOnChange="#{atualizaFormOnChange}"
+                atualizaPeloMetodoOnChange="#{atualizaPeloMetodoOnChange}"
+                atualizaPorIdOnChange="#{atualizaPorIdOnChange}"
+                statusAjax="#{statusAjax}"
+                parametroMetodoOnChange="#{parametroMetodoOnChange}"
+                tipoLabel="#{tipoLabel}"
+                label="#{label}"
+                />
+
+        </h:body>
+    </ui:composition>
+
 </html>
