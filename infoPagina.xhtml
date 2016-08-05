@@ -66,7 +66,7 @@
                     <br/><br/><br/><br/>
                     <h:form >
                         <p:panel header="Tema Oficial">
-                            <SBComp:seletorItem registro="#{pgUtil.tema.temaOficial}" lista="#{pgUtil.tema.temasDisponiveis}" TIPO_VIEW_COMBO="true" mostraTextoImagem="true" />
+                            <SBComp:seletorItem itemSelecionado="#{pgUtil.tema.temaOficial}" lista="#{pgUtil.tema.temasDisponiveis}" mostraTextoImagem="true" />
 
                             <p:commandButton value="Alterar sem salvar" />
                             <p:commandButton value="Salvar Permanente neste servidor" />

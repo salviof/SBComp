@@ -31,12 +31,13 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-
+        CAMINHO:#{cc.attrs.visualizacaoEspecial.caminhoIdHTMLObjetoPrincipal}---
         <h:panelGroup >
             <ui:include src="/resources/SBComp/input/labelEsquerda.xhtml" >
                 <ui:param name="registro" value="#{cc.attrs.registro}"/>
                 <ui:param name="temMetodo" value="#{cc.attrs.temMetodo}"/>
                 <ui:param name="visualizacaoEspecial" value="#{cc.attrs.visualizacaoEspecial}" />
+                <ui:param name="idForTeste" value="#{pgUtil.buscaFilhoComEsteID(component,'seletor')}" />
             </ui:include>
         </h:panelGroup>
 

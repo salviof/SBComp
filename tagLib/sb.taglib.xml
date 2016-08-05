@@ -20,6 +20,14 @@
             <type>java.lang.String</type>
         </attribute>
 
+
+        <attribute>
+            <description></description>
+            <name>idDOPai</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+
         <attribute>
             <description>indica se o input possui um metodo para ser executando quando alterar</description>
             <name>possuiOnchange</name>
@@ -54,6 +62,22 @@
             <required>false</required>
         </attribute>
     </tag>
+
+
+    <tag>
+        <tag-name>inputSBTESTEFINAL</tag-name>
+        <source>tags/com/sb/tagInputTeste.xhtml</source>
+        <attribute>
+            <description>id do teste</description>
+            <name>idTeste</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+            <default>#{false}</default>
+        </attribute>
+
+    </tag>
+
+
 
 
 

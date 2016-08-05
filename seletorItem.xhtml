@@ -3,17 +3,10 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:sbPr="http://java.sun.com/jsf/composite/SBComp/prime"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <!--
-    TODO EDUARDO 1- Renomear atributo registro para itemSelecionado e atributo Lista para Itens
-    TODO EDUARDO 2- Verificar possibilidade de realizar essas alterações após a atualização do JSF
-    TODO EDUARDO 2.1- Criar default de visualização como comboBox
-    TODO EDUARDO 2.2- Transformar os Atributos atualizarpeloMetododoOnchange e parametroMetodoOnChange apenas para executaMetodoOnChange="metodo para executar"
-    TODO EDUARDO 2.3- Transformar os Atributos atualizaPorIdOnChange e parametroIdOnChange apenas para atualizaPorIdOnchange="id para Atualizar"
-    -->
 
-    <!-- INTERFACE -->
     <cc:interface>
         <cc:attribute name="itemSelecionado"
                       type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples"
@@ -41,14 +34,17 @@
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
-    <cc:implementation>
 
-        <ui:include src="#{cc.attrs.tipoVisualizacao.xhtmlJSF}">
-            <ui:param name="itemSelecionado" value="#{cc.attrs.itemSelecionado}" />
-            <ui:param name="listaOpcoes" value="#{cc.attrs.lista}" />
-            <ui:param name="desabilitarEdicao" value="#{cc.attrs.desabilitarEdicao}" />
-            <ui:param name="obrigatorio" value="#{cc.attrs.obrigatorio}" />
+    [cc SeletorItem.xhtml 
+    #{cc.attrs.tipoVisualizacao.xhtmlJSF}]
+    <ui:include src="#{cc.attrs.tipoVisualizacao.xhtmlJSF}">
+        <ui:param name="itemSelecionado" value="#{cc.attrs.itemSelecionado}" />
+        <ui:param name="listaOpcoes" value="#{cc.attrs.lista}" />
+        <ui:param name="desabilitarEdicao" value="#{cc.attrs.desabilitarEdicao}" />
+        <ui:param name="obrigatorio" value="#{cc.attrs.obrigatorio}" />
 
-        </ui:include>
-    </cc:implementation>
+    </ui:include>
+
+    [cc fimSeletorItem.xhtml]
+
 </html>

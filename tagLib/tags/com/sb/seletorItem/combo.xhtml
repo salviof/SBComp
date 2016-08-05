@@ -5,11 +5,24 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:sbPr="http://java.sun.com/jsf/composite/SBComp/prime"
 
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
+        [inicio combo.xhtml (temNomeacao)]
         <h:body>
 
 
+            <p:panel header="Detalhes do compoenente combo" transient="#{true}">
+                O caminho para o ID  #{component.id} é:<br/>
+                ClientID #{component.clientId}<br/>
+                MAKE:#{pgUtil.makeCaminhoComponenteByClientID(component.clientId)}<br/>
+                <br/>
+
+
+            </p:panel>
+
+            <c:set var="idPai" value="#{component.id}" />
             <sbPr:seletorCombo
 
                 mostraSomenteImagem="#{mostraSomenteImagem}"
@@ -25,10 +38,11 @@
                 statusAjax="#{statusAjax}"
                 parametroMetodoOnChange="#{parametroMetodoOnChange}"
                 tipoLabel="#{tipoLabel}"
-                label="#{label}"
+                label="#{component.clientId}"
                 />
 
         </h:body>
+        [fim combo.xhtml]
     </ui:composition>
 
 </html>

@@ -7,12 +7,14 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
 
+        [tagInput]
         <ui:include rendered="#{registro!=null}" src="#{registro.getXhtmlDiferenciado(tipoVisualizacao)}" >
 
             <ui:param name="visualizacaoComponente" value="#{tipoVisualizacao}"/>
             <ui:param name="registro" value="#{registro}" />
 
         </ui:include>
+        [/tagInput]
     </h:body>
 </html>
 

@@ -93,13 +93,13 @@
                                      id="btIcon#{cc.id}"
                                      value="#{opc.nomeAcao}"
                                      icon="#{opc.iconeAcao}"
-                                     action="#{cc.attrs.metodo}"   >
+                                     action="#{cc.attrs.metodo}"
+                                     process="@form"
+
+                                     >
                         <f:setPropertyActionListener
                             target="#{cc.attrs.opcaoSelecionada}"
                             value="#{opc}"/>
-                        <c:if test="#{cc.attrs.update!=null}">
-                            <f:ajax execute="@form"/>
-                        </c:if>
 
                     </p:commandButton>
 
