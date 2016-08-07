@@ -5,36 +5,18 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h:body>
-        <ui:composition>
-            ..
-            <p:inputMask rendered="#{registro.temMascara}" class="campoResponsivo  TexAlCenter"
-                         mask="#{registro.mascaraJqueryMode}"
+    <ui:decorate template="#{layout.xhtmlJSF}">
+        <ui:define name="input">
+            <p:inputMask
+                id="#{registro.nomeUnicoParaIDHtml}"
 
-                         value="#{registro.valor}"  required="#{registro.obrigatorio}"
-                         disabled="#{desabilitarEdicao}">
+                rendered="#{registro.temMascara}" class=" campoResponsivo  TexAlCenter "
+                mask="#{registro.mascaraJqueryMode}"
+                value="#{registro.valor}"  required="#{registro.obrigatorio}"
+                disabled="#{desabilitarEdicao}">
             </p:inputMask>
 
 
-
-        </ui:composition>
-
-
-    </h:body>
-
-
+        </ui:define>
+    </ui:decorate>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

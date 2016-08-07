@@ -6,7 +6,7 @@
     <namespace>http://superbitsframework/facelets</namespace>
     <tag>
         <tag-name>inputSB</tag-name>
-        <source>tags/com/sb/tagInputCampo.xhtml</source>
+        <source>tags/com/sb/inputSB.xhtml</source>
         <attribute>
             <description>Objeto do tipo campo instanciado</description>
             <name>registro</name>
@@ -14,106 +14,119 @@
             <type>com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado</type>
         </attribute>
         <attribute>
-            <description></description>
-            <name>id</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-
-
-        <attribute>
-            <description></description>
-            <name>idDOPai</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-
-        <attribute>
-            <description>indica se o input possui um metodo para ser executando quando alterar</description>
-            <name>possuiOnchange</name>
-            <required>true</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-
-
-        <attribute>
-            <description>Tipo de Visualizacao</description>
-            <name>tipoVisualizacao</name>
+            <description>
+                O layout do campo, que podem ser: resumido,esquerda,superior,e automatico
+            </description>
+            <name>layoutCampo</name>
             <required>false</required>
             <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
         </attribute>
 
         <attribute>
-            <description>Desativar edição</description>
+            <description>
+                Alguns campos possuem diversos Layouts especiais, como Seletor de Item,
+                que possui combo, grade, botoes e outos
+            </description>
+            <name>layoutCampoEspecial</name>
+            <required>false</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </attribute>
+
+
+
+        <attribute>
+            <description>Se true desativiva a edição</description>
             <name>desabilitarEdicao</name>
             <required>false</required>
             <type>java.lang.Boolean</type>
         </attribute>
-        <attribute>
-            <description>Exibir Modo debug</description>
-            <name>modoDebug</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-            <default>#{false}</default>
-        </attribute>
-        <attribute>
-            <description>Exibir Modo debug</description>
-            <name>campoLocalizacaoCEP</name>
-            <required>false</required>
-        </attribute>
     </tag>
+
+    <tag>
+        <tag-name>componenteSBItemSimples</tag-name>
+        <source>tags/com/sb/componenteSBGenerico.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>componente</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+        <atribute>
+            <description>O item que será exibido no componente</description>
+            <name>itemSimples</name>
+            <required>true</required>
+            <type>com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples</type>
+        </atribute>
+    </tag>
+
+    <tag>
+        <tag-name>seletorItem</tag-name>
+        <source>tags/com/sb/seletorItem.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>componente</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+        <atribute>
+            <description>
+                O layout do campo, que podem ser: resumido,esquerda,superior,e automatico
+            </description>
+            <name>layoutCampo</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+        <atribute>
+            <description>O item que será exibido no componente</description>
+            <name>itemSelecionado</name>
+            <required>true</required>
+            <type>com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples</type>
+        </atribute>
+        <atribute>
+            <description>O item que será exibido no componente</description>
+            <name>opcoes</name>
+            <required>true</required>
+            <type>java.util.Collection</type>
+        </atribute>
+    </tag>
+
 
 
     <tag>
-        <tag-name>inputSBTESTEFINAL</tag-name>
-        <source>tags/com/sb/tagInputTeste.xhtml</source>
-        <attribute>
-            <description>id do teste</description>
-            <name>idTeste</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-            <default>#{false}</default>
-        </attribute>
-
+        <tag-name>seletorItens</tag-name>
+        <source>tags/com/sb/seletorItem.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>componente</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+        <atribute>
+            <description>
+                O layout do campo, que podem ser: resumido,esquerda,superior,e automatico
+            </description>
+            <name>layoutCampo</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+        <atribute>
+            <description>O item que será exibido no componente</description>
+            <name>itensSelecionados</name>
+            <required>true</required>
+            <type>java.util.Collection</type>
+        </atribute>
+        <atribute>
+            <description>O item que será exibido no componente</description>
+            <name>opcoes</name>
+            <required>true</required>
+            <type>java.util.Collection</type>
+        </atribute>
     </tag>
 
 
 
 
 
-
-
-    <tag>
-        <tag-name>inputSBTestes</tag-name>
-        <description><![CDATA[ Componente criado para testar comportamento do metodo onchnage ]]></description>
-
-        <component>
-            <component-type>org.super_bits.tags.InputSB</component-type>
-            <renderer-type>org.super_bits.tags.InputSBRender</renderer-type>
-        </component>
-
-        <attribute>
-            <name>metodoOnChange</name>
-            <description>metodo onchange</description>
-            <required>false</required>
-        </attribute>
-
-        <attribute>
-            <name>metodoOnChange</name>
-            <description>metodo onchange</description>
-            <required>false</required>
-        </attribute>
-
-        <attribute>
-            <name>propriedadeTextoTeste</name>
-            <description>metodo onchange</description>
-            <required>false</required>
-        </attribute>
-
-
-
-
-    </tag>
 
 
 </facelet-taglib>
