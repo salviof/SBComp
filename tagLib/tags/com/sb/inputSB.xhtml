@@ -7,7 +7,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:body>
-        <c:set var="componenteVisualGerado"  value="#{registro.getComponenteDiferenciado(layoutCampoEspecial)}"/>
+        <c:set var="componenteVisual"  value="#{registro.getComponenteDiferenciado(layoutCampoEspecial)}"/>
         <p:panel header="DadosInput" >
             <p:panelGrid columns="2">
                 <p:outputLabel value="Label REgistro"/><p:outputLabel value="#{registro.label}"/>
@@ -23,7 +23,7 @@
 
             </p:panelGrid>
         </p:panel>
-        <ui:include rendered="#{registro!=null}" src="#{componenteVisualGerado.xhtmlJSF}" >
+        <ui:include rendered="#{registro!=null}" src="#{componenteVisual.xhtmlJSF}" >
 
             <ui:param name="layout" value="#{layoutCampo}"/>
             <ui:param name="registro" value="#{registro}" />
