@@ -6,13 +6,10 @@
     <ui:include
         src="#{layoutBotao.xhtmlJSF}.xhtml"  rendered="#{!mostrarComoLink}">
     </ui:include>
-
     <ui:include
         src="#{layoutBotao.xhtmlJSF}Link.xhtml"  rendered="#{mostrarComoLink}">
-        #{infoWebApp.getAcaoManagedBean(acao)}
+        <ui:param name="acaoComLink"  value="#{infoWebApp.getAcaoComLink(acao)}" />
     </ui:include>
-
-
 </html>
 
 
