@@ -22,7 +22,7 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        FORMULARIO SIMPLES: = #{cc.attrs.somenteLeitura} <BR/>
+
         <c:forEach  var="grupo" items="#{cc.attrs.acao.gruposDeCampos}">
 
             <p:fieldset style="margin: 2%" legend="#{grupo.nomeGrupo}">
@@ -33,7 +33,10 @@
 
                 </f:facet>
 
-                <SBFormulario:camposDoGrupo registro="#{cc.attrs.registro}" grupoCampos="#{grupo}" somenteLeitura="#{cc.attrs.somenteLeitura}" tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
+                <SBFormulario:camposDoGrupo registro="#{cc.attrs.registro}"
+                                            grupoCampos="#{grupo}"
+                                            somenteLeitura="#{cc.attrs.somenteLeitura}"
+                                            tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
 
                 <div class="EmptyBox10"/>
 

@@ -19,14 +19,14 @@
                     Ver Documentacao   #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}    </a> <br/>
                 #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}  <br/>
                 #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}   <br/>
-                Teste Gestão Relalizado? <p:inputSwitch /> <br/>
+                Teste Gestão Relalizado?  <br/>
                 Horas Programadas <br/>
                 Nome programador executou tarefa: <br/>
                 Horas Previstas no desenvolvimento: 50<br/>
 
                 <br/>
 
-
+                #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.acoesVinculadas}
 
 
 
@@ -41,23 +41,14 @@
 
 
                     <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
-
-
-
-
-
                         <p:panel  header="#{modulo.nome}" >
-
-
                             <p:fieldset legend="Escolha um bloco de ações para obter mais detalhes">
                                 <SBComp:seletorDeAcoes  visualizacaoBotao="#{tipos.tipoVisualBotao.iconeENome}" metodo="#{pgUtil.atualizaTelaPorID(pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada)}"
-                                                        opcoes="#{modulo.acoesGestaoMB}" opcaoSelecionada="#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada}"/>
+                                                        opcoes="#{modulo.acoesGestaoMB}"
+                                                        opcaoSelecionada="#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada}"/>
                             </p:fieldset>
-
-
                             <br/>
                             <br/>
-
                             <p:progressBar value="2" labelTemplate="{value} %(Sem conexao com Jira)" displayOnly="true"/>
                         </p:panel>
 

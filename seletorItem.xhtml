@@ -2,20 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:sbPr="http://java.sun.com/jsf/composite/SBComp/prime">
+      xmlns:sbPr="http://java.sun.com/jsf/composite/SBComp/prime"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <!--
-    TODO EDUARDO 1- Renomear atributo registro para itemSelecionado e atributo Lista para Itens
-    TODO EDUARDO 2- Verificar possibilidade de realizar essas alterações após a atualização do JSF
-    TODO EDUARDO 2.1- Criar default de visualização como comboBox
-    TODO EDUARDO 2.2- Transformar os Atributos atualizarpeloMetododoOnchange e parametroMetodoOnChange apenas para executaMetodoOnChange="metodo para executar"
-    TODO EDUARDO 2.3- Transformar os Atributos atualizaPorIdOnChange e parametroIdOnChange apenas para atualizaPorIdOnchange="id para Atualizar"
-    -->
 
-    <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="registro" type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples" />
-        <cc:attribute name="lista" type="java.util.List" />
+        <cc:attribute name="itemSelecionado"
+                      type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples"
+                      shortDescription="Bean onde o item selecionado será armazenado ao postar, e referencia de exibição "
+                      />
+        <cc:attribute name="lista" type="java.util.List"
+                      shortDescription="Lista de opções disponíveis para seleção"
+                      />
+
+        <cc:attribute name="tipoVisualizacao" type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+                      default="#{tipos.componentesJSF.seletorItemComponentes.padrao}"
+                      />
         <cc:attribute name="statusAjax" type="java.lang.Boolean" default="#{null}" />
         <cc:attribute name="atualizaFormOnChange" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="atualizaPorIdOnChange" type="java.lang.Boolean" default="#{false}" />
@@ -24,188 +27,24 @@
         <cc:attribute name="parametroMetodoOnChange" method-signature="void listener()" />
         <cc:attribute name="mostraSomenteImagem" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="mostraTextoImagem" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="TIPO_VIEW_CAROUSEL" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="TIPO_VIEW_MENUBUTTON" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="TIPO_VIEW_AUTO_COMPLETE" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="TIPO_VIEW_GRADE" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="TIPO_VIEW_COMBO" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="TIPO_VIEW_RADIO" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="obrigatorio" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="mostrarMensagemValidacao" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="tipoLabel" default="#{tipos.tipoVisualCampo.labelEsquerda}" />
-        <cc:attribute name="customizacaoCSS"  />
-        <cc:attribute name="classeCSS"  />
-        <cc:attribute name="label" default="#{null}" />
+
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
-    <cc:implementation>
 
-        <c:choose>
+    [cc SeletorItem.xhtml 
+    #{cc.attrs.tipoVisualizacao.xhtmlJSF}]
+    <ui:include src="#{cc.attrs.tipoVisualizacao.xhtmlJSF}">
+        <ui:param name="itemSelecionado" value="#{cc.attrs.itemSelecionado}" />
+        <ui:param name="listaOpcoes" value="#{cc.attrs.lista}" />
+        <ui:param name="desabilitarEdicao" value="#{cc.attrs.desabilitarEdicao}" />
+        <ui:param name="obrigatorio" value="#{cc.attrs.obrigatorio}" />
 
-            <!-- CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL -->
-            <c:when test="#{cc.attrs.TIPO_VIEW_CAROUSEL == true}">
-            </c:when>
-            <!-- CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL CAROUSEL -->
+    </ui:include>
 
+    [cc fimSeletorItem.xhtml]
 
-            <!-- MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON -->
-            <c:when test="#{cc.attrs.TIPO_VIEW_MENUBUTTON == true}">
-                <sbPr:PFSeletorBotoes parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}"></sbPr:PFSeletorBotoes>
-            </c:when>
-            <!-- MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON MENUBUTTON -->
-
-
-            <!-- AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE -->
-            <c:when test="#{cc.attrs.TIPO_VIEW_AUTO_COMPLETE == true}">
-                <sbPr:PFAutoComplet registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}"></sbPr:PFAutoComplet>
-            </c:when>
-            <!-- AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE AUTOCOMPLETE -->
-
-
-            <!-- GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE -->
-            <c:when test="#{cc.attrs.TIPO_VIEW_GRADE == true and cc.attrs.mostraTextoImagem == false and cc.attrs.mostraSomenteImagem == false}">
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" />
-                </c:if>
-            </c:when>
-
-            <c:when test="#{cc.attrs.TIPO_VIEW_GRADE == true and cc.attrs.mostraTextoImagem == true and cc.attrs.mostraSomenteImagem == false}">
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" mostraTextoImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" mostraTextoImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" mostraTextoImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" mostraTextoImagem="true" />
-                </c:if>
-            </c:when>
-
-            <c:when test="#{cc.attrs.TIPO_VIEW_GRADE == true and cc.attrs.mostraTextoImagem == false and cc.attrs.mostraSomenteImagem == true}">
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" mostraSomenteImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" mostraSomenteImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" mostraSomenteImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorGrade registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" mostraSomenteImagem="true" />
-                </c:if>
-            </c:when>
-            <!-- GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE GRADE -->
-
-
-            <!-- COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO -->
-            <c:when test="#{cc.attrs.TIPO_VIEW_COMBO == true}" >
-
-                <sbPr:seletorCombo
-                    mostraSomenteImagem="#{cc.attrs.mostraSomenteImagem}"
-                    mostraTextoImagem="#{cc.attrs.mostraTextoImagem}"
-                    obrigatorio="#{cc.attrs.obrigatorio}"
-                    parametroIdOnChange="#{cc.attrs.parametroIdOnChange}"
-                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                    registro="#{cc.attrs.registro}"
-                    lista="#{cc.attrs.lista}"
-                    atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}"
-                    atualizaPeloMetodoOnChange="#{cc.attrs.atualizaPeloMetodoOnChange}"
-                    atualizaPorIdOnChange="#{cc.attrs.atualizaPorIdOnChange}"
-                    statusAjax="#{cc.attrs.statusAjax}"
-                    parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}"
-                    tipoLabel="#{cc.attrs.tipoLabel}"
-                    label="#{cc.attrs.label}"
-                    />
-
-
-
-
-            </c:when>
-            <!-- COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO -->
-
-
-            <!-- RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO -->
-            <c:when test="#{cc.attrs.TIPO_VIEW_RADIO == true and cc.attrs.mostraTextoImagem == false and cc.attrs.mostraSomenteImagem == false}">
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" />
-                </c:if>
-            </c:when>
-
-            <c:when test="#{cc.attrs.TIPO_VIEW_RADIO == true and cc.attrs.mostraTextoImagem == true and cc.attrs.mostraSomenteImagem == false}">
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" mostraTextoImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" mostraTextoImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" mostraTextoImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" mostraTextoImagem="true" />
-                </c:if>
-            </c:when>
-
-            <c:when test="#{cc.attrs.TIPO_VIEW_RADIO == true and cc.attrs.mostraTextoImagem == false and cc.attrs.mostraSomenteImagem == true}">
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" mostraSomenteImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" mostraSomenteImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" mostraSomenteImagem="true" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorRadio registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" mostraSomenteImagem="true" />
-                </c:if>
-
-            </c:when>
-            <!-- RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO RADIO -->
-
-            <!-- COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO -->
-            <c:otherwise>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == true and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorCombo registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaFormOnChange="#{cc.attrs.atualizaFormOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == true and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorCombo registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPorIdOnChange="true" parametroIdOnChange="#{cc.attrs.parametroIdOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == true}">
-                    <sbPr:seletorCombo registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" statusAjax="#{cc.attrs.statusAjax}" atualizaPeloMetodoOnChange="true" parametroMetodoOnChange="#{cc.attrs.parametroMetodoOnChange}" />
-                </c:if>
-                <c:if test="#{cc.attrs.atualizaFormOnChange == false and cc.attrs.atualizaPorIdOnChange == false and cc.attrs.atualizaPeloMetodoOnChange == false}">
-                    <sbPr:seletorCombo registro="#{cc.attrs.registro}" lista="#{cc.attrs.lista}" />
-                </c:if>
-                <!-- COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO COMBO -->
-
-
-            </c:otherwise>
-
-        </c:choose>
-    </cc:implementation>
 </html>

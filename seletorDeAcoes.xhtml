@@ -11,12 +11,32 @@
     <!-- INTERFACE -->
     <cc:interface>
 
-        <cc:attribute name="metodo"  method-signature="void listener()" required="true"   />
+        <cc:attribute name="metodo"  method-signature="void listener()"
+                      required="true"
+                      shortDescription="Metodo que será chamado ao selecionar uma ação"
+                      />
+
         <cc:attribute name="opcoes" required="true"  />
-        <cc:attribute name="opcaoSelecionada" required="true" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema" />
-        <cc:attribute name="pid" default="#{cc.attrs.id}" />
-        <cc:attribute name="visualizacaoBotao" default="#{tipos.tipoVisualBotao.padrao}" />
-        <cc:attribute name="update"  default="#{null}" />
+
+        <cc:attribute name="opcaoSelecionada"
+                      required="true"
+                      type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"
+                      shortDescription="Bean onde a ação selecionada será armazenada"
+                      />
+
+        <cc:attribute name="pid"
+                      default="#{cc.attrs.id}" />
+
+        <cc:attribute name="visualizacaoBotao"
+                      default="#{tipos.tipoVisualBotao.padrao}"
+                      shortDescription="Tipo de exibição do botão caso o visual do seletor de ações esteja no formato de botões "
+                      />
+
+        <cc:attribute name="visualSeletorAcoes"
+                      default="#{tipos.tipoVisualBotao.padrao}" />
+
+        <cc:attribute name="update"
+                      default="#{null}" />
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
@@ -26,14 +46,16 @@
             <c:choose >
 
                 <c:when test="#{cc.attrs.visualizacaoBotao==tipos.tipoVisualBotao.apenasIcone}">
-
-                    <p:commandButton  onmousedown="esconderTooltips();" id="btIcon#{cc.id}"  icon="#{opc.iconeAcao}"    action="#{cc.attrs.metodo}">
-                        <f:setPropertyActionListener  target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"  />
+                    <p:commandButton  onmousedown="esconderTooltips();"
+                                      id="btIcon#{cc.id}"
+                                      icon="#{opc.iconeAcao}"
+                                      action="#{cc.attrs.metodo}">
+                        <f:setPropertyActionListener
+                            target="#{cc.attrs.opcaoSelecionada}"
+                            value="#{opc}"/>
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="@form"/>
                         </c:if>
-
-
                     </p:commandButton>
                     <p:tooltip for="btIcon#{cc.id}" value="#{opc.nomeAcao}" trackMouse="true" />
                 </c:when>
@@ -61,16 +83,7 @@
                         <c:if test="#{cc.attrs.update!=null}">
                             <f:ajax execute="#{cc.attrs.update}"/>
                         </c:if>
-
-
                     </p:commandLink>
-
-
-
-
-
-
-
 
                 </c:when>
 
@@ -80,15 +93,17 @@
                                      id="btIcon#{cc.id}"
                                      value="#{opc.nomeAcao}"
                                      icon="#{opc.iconeAcao}"
-                                     action="#{cc.attrs.metodo}"   >
-                        <f:setPropertyActionListener target="#{cc.attrs.opcaoSelecionada}" value="#{opc}"/>
-                        <c:if test="#{cc.attrs.update!=null}">
-                            <f:ajax execute="@form"/>
-                        </c:if>
+                                     action="#{cc.attrs.metodo}"
+                                     process="@form"
+
+                                     >
+                        <f:setPropertyActionListener
+                            target="#{cc.attrs.opcaoSelecionada}"
+                            value="#{opc}"/>
 
                     </p:commandButton>
 
-                    <p:tooltip for="btIcon#{cc.id}" value="#{opc.descricao}"/>
+
                 </c:otherwise>
 
             </c:choose>

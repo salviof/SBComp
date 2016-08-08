@@ -48,7 +48,9 @@
                         <SBComp:botaoDeAcao acao="#{cc.attrs.pagina.acaoListarRegistros}"
                                             metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                                             tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}" />
+                                            armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+                                            trasformarAcaoMBemLink="#{false}"
+                                            />
                     </h:form>
 
                 </h:panelGroup>
@@ -58,34 +60,48 @@
             <div class="SeparatorFull"></div>
 
             <div class="ContainerIndent">
-
                 <h:form>
-
                     <SBFormulario:formularioSimples
-
                         acao="#{cc.attrs.acaoFormulario}"
                         registro="#{cc.attrs.pagina.entidadeSelecionada}"
                         somenteLeitura="#{cc.attrs.pagina.somenteLeitura}"
                         tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"
-
                         />
-
                     <c:if test="#{cc.attrs.acaoPrincipal != null}">
+
                         <div class="Fright">
 
-                            <SBComp:botaoDeAcao
 
-                                acao="#{cc.attrs.acaoPrincipal}"
-                                metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
-                                tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                                armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+                            <c:if test="#{!cc.attrs.pagina.somenteLeitura}">
+                                <div class="Fright">
 
-                                />
+                                    <SBComp:botaoDeAcao
+
+
+                                        acao="#{cc.attrs.acaoPrincipal}"
+                                        metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
+                                        tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
+                                        armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
+
+                                        />
+
+                                </div>
+
+                            </c:if>
+
                         </div>
+
                     </c:if>
 
-                    <c:if test="#{cc.attrs.acaoAlternativa != null}">
 
+
+                </h:form>
+
+                <h:form>
+
+
+
+                    <c:if test="#{cc.attrs.acaoAlternativa != null}">
                         <SBComp:seletorDeAcoes
 
                             metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
@@ -94,11 +110,8 @@
                             visualizacaoBotao="#{tipos.tipoVisualBotao.iconeENome}"
 
                             />
-
                     </c:if>
-
                 </h:form>
-
             </div>
 
 

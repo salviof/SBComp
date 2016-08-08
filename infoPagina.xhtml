@@ -66,7 +66,7 @@
                     <br/><br/><br/><br/>
                     <h:form >
                         <p:panel header="Tema Oficial">
-                            <SBComp:seletorItem registro="#{pgUtil.tema.temaOficial}" lista="#{pgUtil.tema.temasDisponiveis}" TIPO_VIEW_COMBO="true" mostraTextoImagem="true" />
+                            <SBComp:seletorItem itemSelecionado="#{pgUtil.tema.temaOficial}" lista="#{pgUtil.tema.temasDisponiveis}" mostraTextoImagem="true" />
 
                             <p:commandButton value="Alterar sem salvar" />
                             <p:commandButton value="Salvar Permanente neste servidor" />
@@ -140,8 +140,32 @@
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Bean de acesso:"/>
                         <p:outputLabel value="#{paginaAtual.infoPagina.nomeMB}"/>
+                        <p:outputLabel value="xhtml do managedbean vinculado"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.recursoXHTML}"/>
+                        <p:outputLabel value="Xhtml da ação atual"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.xhtmlAcaoAtual}"/>
+                        <p:outputLabel value="Ação vinculada"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.acaoVinculada}"/>
+                        <p:outputLabel value="Ação selecionada"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.acaoSelecionada}"/>
+                        <p:outputLabel value="Link para Requisito do Formulario " />
+                        <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{paginaAtual.infoPagina.acaoSelecionada.idDescritivoJira}"
+                                value="#{paginaAtual.infoPagina.acaoSelecionada.idDescritivoJira}"
+                                target="requisitoJira:"
+                                >
+                            #{paginaAtual.infoPagina.acaoSelecionada.idDescritivoJira}
+                        </p:link>
+
+                        <p:outputLabel value="Link para Requisito De Gestão" />
+                        <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{paginaAtual.infoPagina.acaoVinculada.idDescritivoJira}"
+                                value="#{paginaAtual.infoPagina.acaoVinculada.idDescritivoJira}"
+                                target="requisitoJira:"
+                                >
+                            #{paginaAtual.infoPagina.acaoVinculada.idDescritivoJira}
+                        </p:link>
 
                     </p:panelGrid>
+                    <p:commandButton update="@form" value="Atualizar" />
                     <p:panel header="IDS NESCESSÁRIOS">
                         <p:panelGrid columns="2">
                             <c:forEach items="#{paginaAtual.infoPagina.infoIds}" var="info">

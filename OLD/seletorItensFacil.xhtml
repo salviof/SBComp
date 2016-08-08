@@ -32,7 +32,7 @@
                         <p:column >
                             <c:if test="#{empty cc.attrs.seletorItensFacil.itensSelecionados[0]}">
                                 <p:commandLink id="id-outPutLabel-areaItens1" styleClass="botao-pesquisar" onclick="PF('seletorOperadora').show();" action="onClick" >Selecione a Operadora</p:commandLink>
-                            </c:if>  
+                            </c:if>
                             <c:if test="#{not empty cc.attrs.seletorItensFacil.itensSelecionados[0]}">
                                 <div class="fl_left">
                                     <p:graphicImage id="id-graphicImage-areaItens1" value="#{cc.attrs.seletorItensFacil.itensSelecionados[0].imgMedia}" styleClass="operadora-selecionada"  /> <!-- aonde aparece a IMG apos selecionar -->
@@ -42,14 +42,14 @@
                                         <h:graphicImage library="resources/img/" id="id-outPutText-remover1" name="botao_fechar.png" alt=""/>
                                         <f:setPropertyActionListener id="id-setPropertyActionListener-areaItens1" value="0" target="#{cc.attrs.seletorItensFacil.itemRemover}" />
                                     </p:commandLink>
-                                </h:form>   
+                                </h:form>
                             </c:if>
                         </p:column>
 
                         <p:column styleClass="center">
                             <c:if test="#{empty cc.attrs.seletorItensFacil.itensSelecionados[1]}">
                                 <p:commandLink id="id-outPutLabel-areaItens2" styleClass="botao-pesquisar" onclick="PF('seletorOperadora').show();" action="onClick">Selecione a Operadora</p:commandLink>
-                            </c:if> 
+                            </c:if>
 
                             <c:if test="#{not empty cc.attrs.seletorItensFacil.itensSelecionados[1]}">
                                 <div class="fl_left">
@@ -96,7 +96,7 @@
                         <p:outputLabel id="id-outPutLabel-areaItens#{listaOrdenada.nomeJsfAmigavel}" value="#{listaOrdenada.nomeLista}" style="font-family:georgia; color: white; background-color:#39A180; padding: 2px" />
                         <br class="clear"/>
                         <h:form id="id-form-areaItens#{listaOrdenada.nomeJsfAmigavel}">
-                            <sbc:seletorItem id="id-seletorItem-areaItens" TIPO_VIEW_GRADE="true" mostraTextoImagem="true" atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-areaItens" lista="#{listaOrdenada.itens}" registro="#{cc.attrs.seletorItensFacil.itemSelecionado}" />
+                            <sbc:seletorItem id="id-seletorItem-areaItens" mostraTextoImagem="true" atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-areaItens" lista="#{listaOrdenada.itens}"  itemSelecionado="#{cc.attrs.seletorItensFacil.itemSelecionado}" />
                         </h:form>
                     </p:panel>
                 </c:forEach>

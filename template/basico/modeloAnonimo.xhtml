@@ -42,6 +42,15 @@
 
         <h:outputScript name="js/layout.js" library="adamantium-layout" />
 
+        <div id="mensagem">
+
+            <h:panelGroup id="mensagemUsuario">
+                <p:growl/>
+            </h:panelGroup>
+
+
+
+        </div>
 
 
 
@@ -62,17 +71,6 @@
 
 
 
-        <div id="layout-portlets-cover">
-
-            <h:panelGroup id="mensagemUsuario">
-                <p:growl/>
-            </h:panelGroup>
-            <ui:insert name="content">
-
-            </ui:insert>
-
-
-        </div>
 
         <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
             <f:facet name="start">

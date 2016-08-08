@@ -6,6 +6,8 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:sb="http://superbitsframework/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
     <!-- INTERFACE -->
@@ -21,24 +23,28 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        CAMPOS DO GRUPO: = #{!cc.attrs.somenteLeitura} <BR/>
+        <ui:repeat value="#{cc.attrs.grupoCampos.campos}" var="campo" >
 
-        <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campo">
 
             <div class="Container33 Responsive" style="position: relative">
+                #{campo.caminhoSemNomeClasse}
 
-                <p:panel style="margin: 1%">
+                <p:panel  style="margin: 1%">
 
-                    <SBComp:input
-                        registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
-                        tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
-                        desabilitarEdicao="#{cc.attrs.somenteLeitura}" />
+                    <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
+                                  tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
+                                  desabilitarEdicao="#{false}" />
 
                 </p:panel>
 
             </div>
 
-        </c:forEach>
+
+        </ui:repeat>
+
+
+
+
 
     </cc:implementation>
 

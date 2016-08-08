@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:decorate   template="#{layout.xhtmlJSF}">
+
+        <ui:define name="input">
+
+            <p:selectOneMenu
+                styleClass="seletorResponsivo #{componente.classeCSS}"
+                id="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"
+                disabled="#{desabilitarEdicao}"
+                required="#{obrigatorio}"
+                value="#{valor}"
+                converter="conversorGenerico"
+                var="it"
+                converterMessage="Erro ao converter objeto" >
+
+                <f:selectItem
+                    itemLabel=" não Selecionado"  />
+
+                <f:selectItems
+                    value="#{lista}"
+                    var="item"
+                    itemLabel="#{item.nomeCurto}"
+                    itemValue="#{item}" />
+                <c:if test="#{possuiMetodoOnChange}">
+                    <p:ajax rendered="#{possuiMetodoOnChange}"
+                            global="true"
+                            event="valueChange"
+                            listener="#{metodoOnChange}"/>
+                </c:if>
+
+                <c:if test="#{possuiIDOnChange}" >
+                    <p:ajax
+                        rendered="#{possuiIDOnChange}"
+                        global="true"
+                        event="valueChange"
+                        listener="#{idAtualizarOnChange}" />
+                </c:if>
+                <p:column>
+                    #{it.nomeCurto}
+                </p:column>
+
+            </p:selectOneMenu>
+
+
+        </ui:define>
+    </ui:decorate>
+</html>
+
+

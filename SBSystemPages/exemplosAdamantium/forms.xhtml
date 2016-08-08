@@ -27,7 +27,7 @@
                     <div class="Container50 Responsive50">
                         <div class="ContainerIndent">
                             <h2 class="BigTopic">InputText</h2>
-                            <p:panelGrid columns="3" layout="grid" style="border:0px !important; background:none;" styleClass="FormContent">
+                            <p:panelGrid columns="3" style="border:0px !important; background:none;" styleClass="FormContent">
                                 <p:inputText styleClass="Wid90" placeholder="Name"/>
                                 <p:inputText styleClass="Wid90" placeholder="Email"/>
                                 <p:inputText styleClass="Wid90" placeholder="Phone"/>
@@ -65,7 +65,7 @@
                                 <p:outputLabel value="Group:" for="group" />
                                 <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}"
                                                 var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="theme"
-                                                groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
+                                                scrollHeight="250"/>
                             </h:panelGrid>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                     <div class="Container50 Responsive50">
                         <div class="ContainerIndent">
                             <h2 class="BigTopic">MultiSelectListBox</h2>
-                            <p:multiSelectListbox value="#{multiSelectView.selection}" effect="slide" header="Categories" showHeaders="true">
+                            <p:multiSelectListbox value="#{multiSelectView.selection}" effect="slide">
                                 <f:selectItems value="#{multiSelectView.categories}" />
                             </p:multiSelectListbox>
                         </div>
@@ -185,7 +185,7 @@
                     <div class="Container25 Responsive50">
                         <div class="ContainerIndent">
                             <h2 class="BigTopic">Input Switch</h2>
-                            <p:inputSwitch onLabel="on" offLabel="off"/>
+
                         </div>
                     </div>
                     <div class="Container25 Responsive50">

@@ -42,7 +42,7 @@
             <h:form>
                 <c:if test="#{pgPermissoes.bloquearEdicao==false}">
 
-                    <p:panelGrid columns="2" layout="grid" style="border:0px !important; background:none;" styleClass="FormContent">
+                    <p:panelGrid columns="2" style="border:0px !important; background:none;" styleClass="FormContent">
 
                         <SBComp:input  registro="#{pgPermissoes.grupoSelecionado.getCampoByNomeOuAnotacao('nome')}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}" />
                         <SBComp:input registro="#{pgPermissoes.grupoSelecionado.getCampoByNomeOuAnotacao('descricao')}" tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}"  />

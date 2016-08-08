@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+        <cc:attribute name="metodo"  method-signature="void listener()"
+                      required="true"
+                      shortDescription="Metodo que será chamado ao selecionar uma ação"
+                      />
+        <cc:attribute name="opcaoSelecionada"
+                      required="true"
+                      type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"
+                      shortDescription="Bean onde a ação selecionada será armazenada"
+                      />
+        <cc:attribute name="pid"
+                      default="#{cc.attrs.id}" />
+        <cc:attribute name="trasformarAcaoMBemLink"
+                      default="#{true}" />
+        <cc:attribute name="update"
+                      default="#{null}"/>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+
