@@ -1,17 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://java.sun.com/jsf/composite"
-
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
-    <p:panelGrid columns="2" >
-        <p:outputLabel  value="Titulo de #{registro.label} for  " for="#{registro.nomeUnicoParaIDHtml}"  />
-        <ui:insert name="input" />
-        <p:tooltip  value="Titulo de #{registro.label} for " for="#{registro.nomeUnicoParaIDHtml}"  />
-    </p:panelGrid>
-
+    <ui:composition>
+        <p:panelGrid columns="2"  class="inputCampo" columnClasses="colunaLabel,colunaResponsiva">
+            <p:outputLabel  value="#{registro.label} FOR: #{valorFor}"  />
+            Nomeunico=#{registro.getNomeUnicoParaIDHtml(componente)} <br/>
+            VALOR for busca=  #{pgUtil.buscaFilhoComEsteID(component,registro.getNomeUnicoParaIDHtml(componente))}<br/>
+            Variavel:  #{prefixoID} <br/>
+            direto: #{componente.idHTMLObjetoPrincipal}
+            <br/>>>>#{registro.getNomeUnicoParaIDHtml(registro.getComponenteDiferenciado(layoutCampoEspecial))}
+            <ui:insert name="input" />
+            <p:tooltip  value="Info: #{registro.descricao}"  for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
+        </p:panelGrid>
+    </ui:composition>
 
 </html>
 

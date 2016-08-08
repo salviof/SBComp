@@ -2,8 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:p="http://primefaces.org/ui"
 
+      xmlns:sb="http://superbitsframework/facelets"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <!-- INTERFACE -->
@@ -31,17 +31,8 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        CAMINHO:#{cc.attrs.visualizacaoEspecial.caminhoIdHTMLObjetoPrincipal}---
-        <h:panelGroup >
-            <ui:include src="/resources/SBComp/input/labelEsquerda.xhtml" >
-                <ui:param name="registro" value="#{cc.attrs.registro}"/>
-                <ui:param name="temMetodo" value="#{cc.attrs.temMetodo}"/>
-                <ui:param name="visualizacaoEspecial" value="#{cc.attrs.visualizacaoEspecial}" />
-                <ui:param name="idForTeste" value="#{pgUtil.buscaFilhoComEsteID(component,'seletor')}" />
-            </ui:include>
-        </h:panelGroup>
 
-
+        <sb:inputSB registro="#{cc.attrs.registro}"  layoutCampo="#{layoutsComponenteSB.layoutCampo.esquerda}"/>
 
 
     </cc:implementation>

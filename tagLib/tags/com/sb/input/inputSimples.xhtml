@@ -2,19 +2,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:decorate template="#{layout.xhtmlJSF}">
         <ui:define name="input">
             <p:inputText
-                id="#{registro.nomeUnicoParaIDHtml}"
-                class="campoResponsivo  TexAlCenter"
-                value="#{registro.valor}"  required="#{registro.obrigatorio}"
-                disabled="#{desabilitarEdicao}" >
+                class=" campoResponsivo  TexAlCenter #{componenteVisual.classeCSS}"
+                id="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"
+                disabled="#{desabilitarEdicao}"
+                required="#{obrigatorio}"
+                value="#{valor}"
+                >
+                <c:if test="#{possuiMetodoOnChange}">
+                    <p:ajax rendered="#{possuiMetodoOnChange}"
+                            global="true"
+                            event="valueChange"
+                            listener="#{metodoOnChange}"/>
+                </c:if>
+                <c:if test="#{possuiIDOnChange}" >
+                    <p:ajax
+                        rendered="#{possuiIDOnChange}"
+                        global="true"
+                        event="valueChange"
+                        listener="#{idAtualizarOnChange}" />
+                </c:if>
             </p:inputText>
         </ui:define>
     </ui:decorate>
 </html>
-
-

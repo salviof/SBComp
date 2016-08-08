@@ -8,10 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:sb="http://superbitsframework/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     >
 
@@ -22,21 +20,27 @@ and open the template in the editor.
         <p:panelGrid columns="3" >
             <p:panel header="Marca daqua"  >
                 <h:form>
-                    <SBComp:input  registro="#{prCampo}" />
+                    <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+                                layoutCampo="#{layoutsComponenteSB.layoutCampo.resumido}" />
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
             <p:panel header="Esquerda" >
                 <h:form>
-                    <SBComp:input registro="#{prCampo}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}"/>
+                    <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+                                layoutCampo="#{layoutsComponenteSB.layoutCampo.esquerda}" />
 
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
 
-            <p:panel header="Esquerda"  >
+
+
+            <p:panel header="superior"  >
                 <h:form>
-                    <SBComp:input  registro="#{prCampo}"  tipoExibicaoCampo="#{tipos.tipoVisualCampo.labelEsquerda}"/>
+
+                    <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+                                layoutCampo="#{layoutsComponenteSB.layoutCampo.superior}" />
 
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>

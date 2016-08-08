@@ -4,20 +4,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
     <ui:decorate template="#{layout.xhtmlJSF}">
         <ui:define name="input">
 
-            PREFIXO+NOME=#{prefixoID}#{componente.idHTMLObjetoPrincipal}
-            <p:inputMask
-                id="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"
-                class=" campoResponsivo  TexAlCenter #{componente.classeCSS}}"
+            <p:inputNumber
+                id="#{registro.nomeUnicoParaIDHtml}"
+                class="campoResponsivo  TexAlCenter #{componenteVisual.classeCSS}"
+                value="#{registro.valor}"  required="#{registro.obrigatorio}"
                 disabled="#{desabilitarEdicao}"
-                required="#{obrigatorio}"
-                value="#{valor}"
-                mask="#{registro.mascaraJqueryMode}"
+                symbol="R$"
                 >
-            </p:inputMask>
+                </p:inputText>
         </ui:define>
     </ui:decorate>
 </html>
+
+
+
+
+
