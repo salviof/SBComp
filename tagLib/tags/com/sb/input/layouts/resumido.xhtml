@@ -4,9 +4,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <p:panelGrid columns="1"  >
-        <p:outputLabel  value="Titulo de #{registro.label} for  " for="#{registro.nomeUnicoParaIDHtml}"  />
-        <ui:insert name="input" />
-        <p:tooltip  value="Titulo de #{registro.label} for " for="#{registro.nomeUnicoParaIDHtml}"  />
+        <p:watermark value="#{label}" for=""
+                     <p:outputLabel  value="Titulo de #{registro.label}" for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
+            <ui:insert name="input" />
+            <p:tooltip  value="#{label}" for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
     </p:panelGrid>
 </html>
 

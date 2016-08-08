@@ -4,15 +4,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition>
-        <p:panelGrid columns="2"  class="inputCampo" columnClasses="colunaLabel,colunaResponsiva">
-            <p:outputLabel  value="#{registro.label} FOR: #{valorFor}"  />
-            Nomeunico=#{registro.getNomeUnicoParaIDHtml(componente)} <br/>
-            VALOR for busca=  #{pgUtil.buscaFilhoComEsteID(component,registro.getNomeUnicoParaIDHtml(componente))}<br/>
-            Variavel:  #{prefixoID} <br/>
-            direto: #{componente.idHTMLObjetoPrincipal}
-            <br/>>>>#{registro.getNomeUnicoParaIDHtml(registro.getComponenteDiferenciado(layoutCampoEspecial))}
+        <p:panelGrid columns="2"  class="inputCampo"
+                     columnClasses="colunaLabel,colunaResponsiva">
+            <p:outputLabel  value="#{label}" for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}" />
             <ui:insert name="input" />
-            <p:tooltip  value="Info: #{registro.descricao}"  for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
+            <p:tooltip  rendered="#{registro.temDescricao}"
+                        value="Info: #{registro.descricao}"
+                        for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
         </p:panelGrid>
     </ui:composition>
 

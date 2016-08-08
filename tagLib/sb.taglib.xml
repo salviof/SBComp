@@ -33,6 +33,16 @@
         </attribute>
 
 
+        <atribute>
+            <description> informa  o Label do input (nome do campo de entrada)
+            </description>
+            <name>label</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </atribute>
+
+
+
 
         <attribute>
             <description>Se true desativiva a edição</description>

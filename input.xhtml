@@ -2,17 +2,17 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-
       xmlns:sb="http://superbitsframework/facelets"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+      >
     <!-- INTERFACE -->
     <cc:interface>
+
         <cc:attribute name="registro"
                       required="true"
                       type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado"
                       default="#{pgUtil.campoNaoImplementado}" />
-        <cc:attribute name="diferencialID" default="" />
+
         <cc:attribute name="pid"
                       default="#{cc.attrs.id}#{cc.attrs.registro.idComponente}#{cc.attrs.diferencialID}" />
         <cc:attribute name="tipoExibicaoCampo" default="#{tipos.tipoVisualCampo.padrao}" />
@@ -21,7 +21,7 @@
         <cc:attribute name="idAtualizarAoSair"  default="#{null}" />
         <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
-        <cc:attribute name="temMetodo" default="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}" />
+
         <cc:attribute name="visualizacaoEspecial"
                       type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
 
@@ -29,10 +29,18 @@
 
     </cc:interface>
 
+
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <sb:inputSB registro="#{cc.attrs.registro}"  layoutCampo="#{layoutsComponenteSB.layoutCampo.esquerda}"/>
+        <sb:inputSB registro="#{cc.attrs.registro}"
+                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                    layoutCampo="#{layoutsComponenteSB.layoutCampo.esquerda}"
+                    possuiIDOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
+                    possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
+                    layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
+                    label="#{cc.attrs.label}"
+                    />
 
 
     </cc:implementation>
