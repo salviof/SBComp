@@ -7,9 +7,10 @@
     <ui:decorate  id="cores" template="#{layout.xhtmlJSF}">
         <ui:define name="input">
             <p:colorPicker
-                id="#{registro.nomeUnicoParaIDHtml}"
-                class="#{componenteVisual.classeCSS}"
-                value="#{registro.valor}" />
+                class=" #{componenteVisual.classeCSS}"
+                id="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"
+                required="#{obrigatorio}"
+                value="#{valor}"/>
         </ui:define>
     </ui:decorate>
 </html>

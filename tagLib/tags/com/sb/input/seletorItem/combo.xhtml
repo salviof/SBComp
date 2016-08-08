@@ -40,7 +40,7 @@
                         rendered="#{possuiIDOnChange}"
                         global="true"
                         event="valueChange"
-                        listener="#{idAtualizarOnChange}" />
+                        listener="#{pgUtil.atualizaTelaPorID(idAtualizarOnChange)}" />
                 </c:if>
                 <p:column>
                     #{it.nomeCurto}
