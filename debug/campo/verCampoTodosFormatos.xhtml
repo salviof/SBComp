@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:sb="http://superbitsframework/facelets"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
     >
 
@@ -20,15 +21,19 @@ and open the template in the editor.
         <p:panelGrid columns="3" >
             <p:panel header="Marca daqua"  >
                 <h:form>
-                    <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
-                                layoutCampo="#{layoutsComponenteSB.layoutCampo.resumido}" />
+
+                    <SBComp:input registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+                                  layoyt="#{layoutsComponenteSB.layoutCampo.resumido}"
+                                  />
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
             </p:panel>
             <p:panel header="Esquerda" >
                 <h:form>
-                    <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
-                                layoutCampo="#{layoutsComponenteSB.layoutCampo.esquerda}" />
+                    <SBComp:input registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+
+                                  layoyt="#{layoutsComponenteSB.layoutCampo.esquerda}"
+                                  />
 
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>
@@ -39,8 +44,10 @@ and open the template in the editor.
             <p:panel header="superior"  >
                 <h:form>
 
-                    <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
-                                layoutCampo="#{layoutsComponenteSB.layoutCampo.superior}" />
+                    <SBComp:input  id="superior"
+                                   registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+                                   layoyt="#{layoutsComponenteSB.layoutCampo.superior}"
+                                   />
 
                 </h:form>
                 <p:commandButton update="@this" value="Validar"/>

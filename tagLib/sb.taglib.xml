@@ -176,7 +176,32 @@
     </tag>
 
 
+    <tag>
+        <tag-name>botaoAcao</tag-name>
+        <source>tags/com/sb/botaoAcao.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>layoutBotao</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
 
+        <attribute>
+            <description>Se true desativiva a edição</description>
+            <name>mostrarComoLink</name>
+            <required>true</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+
+        <atribute>
+            <description>
+                Ação vinculada ao botão
+            </description>
+            <name>acao</name>
+            <required>true</required>
+            <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
+        </atribute>
+    </tag>
 
 
 

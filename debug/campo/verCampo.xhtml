@@ -8,26 +8,15 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:sb="http://superbitsframework/facelets">
-
-
-
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
     <ui:composition>
-
-
-
         <p:fieldset  legend="componente input que chama o seletor" >
             <p:panel header="Campo Input" id="asaklsdjfalkjsdf" >
-             <!--  <SBComp:input registro="#{prCampo}"  /> -->
+                <SBComp:input registro="#{prCampo}" id="verCampo" />
             </p:panel>
         </p:fieldset>
 
-        <sb:inputSB registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
-                    layoutCampo="#{layoutsComponenteSB.layoutCampo.esquerda}"
-                    possuiIDOnChange="#{false}"
-                    possuiMetodoOnChange="#{false}"
 
-                    />
     </ui:composition>
 
 </html>
