@@ -8,7 +8,6 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:sb="http://superbitsframework/facelets"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
@@ -23,6 +22,7 @@ and open the template in the editor.
                 <h:form>
 
                     <SBComp:input registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
+
                                   layoyt="#{layoutsComponenteSB.layoutCampo.resumido}"
                                   />
                 </h:form>

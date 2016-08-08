@@ -5,7 +5,6 @@
       xmlns:p="http://primefaces.org/ui">
     <p:panelGrid columns="1"  >
         <p:watermark value="#{label}" for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}" />
-        <p:outputLabel  value="#{registro.label}" for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
         <ui:insert name="input" />
         <p:tooltip  value="#{label}" for="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"  />
     </p:panelGrid>
