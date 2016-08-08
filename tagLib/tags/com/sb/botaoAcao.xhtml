@@ -2,29 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:include rendered="#{!mostrarComoLink}"
-                src="#{layoutBotao.xhtmlJSF}.xhtml"  >
-        <ui:param name="metodo" value="#{metodo}" />
-        <ui:param name="idAtualizacao" value="#{idAtualizacao}"/>
-    </ui:include>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <c:if test="#{!mostrarComoLink}">
 
-    <ui:include rendered="#{mostrarComoLink}"
-                src="#{layoutBotao.xhtmlJSF}Link.xhtml" >
-        <ui:param name="acaoComLink" value="#{infoWebApp.getAcaoComLink(pAcao)}"/>
-    </ui:include>
+        <ui:include
+            src="#{layout.xhtmlJSF}.xhtml"  >
+            <ui:param name="metodo" value="#{metodo}" />
+            <ui:param name="idAtualizacao" value="#{idAtualizacao}"/>
+        </ui:include>
+    </c:if>
+    <c:if test="#{mostrarComoLink}">
+
+        <ui:include
+            src="#{layout.xhtmlJSF}Link.xhtml" >
+            <ui:param name="acaoComLink" value="#{infoWebApp.getAcaoComLink(acao)}"
+
+                      />
+        </ui:include>
+    </c:if>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

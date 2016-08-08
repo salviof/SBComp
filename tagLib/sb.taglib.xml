@@ -181,7 +181,7 @@
         <source>tags/com/sb/botaoAcao.xhtml</source>
         <atribute>
             <description>O componente utilizado para exibição</description>
-            <name>layoutBotao</name>
+            <name>layout</name>
             <required>true</required>
             <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
         </atribute>
