@@ -18,45 +18,49 @@ and open the template in the editor.
     <ui:composition >
 
         <p:panelGrid columns="3" >
+
             <p:panel header="Marca daqua"  >
+
                 <h:form>
 
                     <SBComp:input registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
 
                                   layoyt="#{layoutsComponenteSB.layoutCampo.resumido}"
                                   />
+                    <p:commandButton update="@form" value="Validar"/>
                 </h:form>
-                <p:commandButton update="@this" value="Validar"/>
+
             </p:panel>
+
             <p:panel header="Esquerda" >
+
                 <h:form>
+
                     <SBComp:input registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
 
                                   layoyt="#{layoutsComponenteSB.layoutCampo.esquerda}"
                                   />
+                    <p:commandButton update="@form" value="Validar"/>
 
                 </h:form>
-                <p:commandButton update="@this" value="Validar"/>
+
             </p:panel>
 
-
-
             <p:panel header="superior"  >
+
                 <h:form>
 
                     <SBComp:input  id="superior"
                                    registro="#{pgEditarComponente.beanExemplo.getCampoByNomeOuAnotacao(pgTestesCampo.campoSelecionado.caminhoSemNomeClasse)}"
                                    layoyt="#{layoutsComponenteSB.layoutCampo.superior}"
                                    />
+                    <p:commandButton update="@form" value="Validar"/>
 
                 </h:form>
-                <p:commandButton update="@this" value="Validar"/>
+
             </p:panel>
 
-
         </p:panelGrid>
-
-
 
     </ui:composition>
 

@@ -9,13 +9,14 @@
         <ui:param name="registro" value="#{registro}" />
         <ui:param name="componente" value="#{registro.getComponenteDiferenciado(layoutCampoEspecial)}"  />
         <ui:param name="prefixoID" value="#{registro.prefixoUnicoParaIDHtml}"  />
-        <ui:param name="valorFor" value="#{pgUtil.buscaFilhoComEsteID(component,registro.getNomeUnicoParaIDHtml(registro.getComponenteDiferenciado(layoutCampoEspecial)))}" />
         <ui:param name="valor" value="#{registro.valor}"/>
         <ui:param name="obrigatorio" value="#{registro.obrigatorio}"/>
         <ui:param name="nomeItem" value="#{registro.label}"/>
-        <ui:param name="nomeItem" value="#{registro.label}"/>
         <ui:param rendered="#{registro.umValorComLista}" name="lista" value="#{registro.listaDeOpcoes}"/>
-        <ui:param rendered="#{registro.umValorComLista}" name="lista" value="#{registro.listaDeOpcoes}"/>
+        <ui:param name="regex" value="#{registro.validacaoRegex}" rendered="#{registro.temValidacaoRegex}"/>
+        <ui:param name="valorMaximo" value="#{registro.valorMaximo}" rendered="#{registro.temValidacaoMaximo}"/>
+        <ui:param name="valorMinimo" value="#{registro.valorMinimo}" rendered="#{registro.temValidacaoMinimo}"/>
+        <ui:param name="mascara" value="#{registro.mascaraJqueryMode}" rendered="#{registro.temMascara}"/>
     </ui:include>
 
 </html>

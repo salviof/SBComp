@@ -7,11 +7,17 @@
     <ui:decorate template="#{layout.xhtmlJSF}">
         <ui:define name="input">
             <p:calendar
-                id="#{registro.nomeUnicoParaIDHtml}"
-                class=" campoResponsivo   #{componenteVisual.classeCSS}"
-                value="#{registro.valor}"  required="#{registro.obrigatorio}"  disabled="#{desabilitarEdicao}"
+
+                class=" campoResponsivo  TexAlCenter #{componenteVisual.classeCSS}"
+                id="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"
+                required="#{obrigatorio}"
+                value="#{valor}"
+                validatorMessage="O valor informado no campo #{label} não é valido! "
+                requiredMessage="O campo #{label} não foi informado! "
+                disabled="#{desabilitarEdicao}"
                 showHour="#{true}"
                 showMinute="#{true}"
+
                 />
         </ui:define>
     </ui:decorate>

@@ -14,13 +14,17 @@
                 disabled="#{desabilitarEdicao}"
                 required="#{obrigatorio}"
                 value="#{valor}"
+                validatorMessage="O valor informado no campo #{label} não é valido! "
+                requiredMessage="O campo #{label} não foi informado! "
                 >
+
                 <c:if test="#{possuiMetodoOnChange}">
                     <p:ajax rendered="#{possuiMetodoOnChange}"
                             global="true"
                             event="valueChange"
                             listener="#{metodoOnChange}"/>
                 </c:if>
+
                 <c:if test="#{possuiIDOnChange}" >
                     <p:ajax
                         rendered="#{possuiIDOnChange}"
@@ -28,6 +32,7 @@
                         event="valueChange"
                         listener="#{idAtualizarOnChange}" />
                 </c:if>
+
             </p:inputText>
         </ui:define>
     </ui:decorate>

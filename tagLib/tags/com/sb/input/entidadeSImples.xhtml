@@ -16,7 +16,17 @@
         <c:set var="exibicaoPadrao" value="#{false}" />
 
 
-        <p:inputText  class="campoResponsivo  TexAlCenter"  value="#{registro.valor}"  required="#{registro.obrigatorio}"  disabled="#{desabilitarEdicao}" />
+        <p:inputText
+
+            class=" campoResponsivo  TexAlCenter #{componenteVisual.classeCSS}"
+            id="#{prefixoID}#{componente.idHTMLObjetoPrincipal}"
+            required="#{obrigatorio}"
+            value="#{valor}"
+            validatorMessage="O valor informado no campo #{label} não é valido! "
+            requiredMessage="O campo #{label} não foi informado! "
+            disabled="#{desabilitarEdicao}"
+
+            />
 
 
 
