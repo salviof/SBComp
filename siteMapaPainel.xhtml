@@ -22,13 +22,16 @@
                 <p:panel class="Container20 Responsive100"  header="#{modulo.nome}" >
 
                     <ui:repeat value="#{modulo.acoesGestaoMB}" var="acao" >
+
                         [
                         URL=#{infoWebApp.getAcaoComLink(acao).urlDeAcesso}
 
-                        <sb:botaoAcao mostrarComoLink="#{true}" acao="#{acao}"
-                                      layout="#{layoutsComponenteSB.layoutBotoes.iconeENome}" />]
+                        <sb:botaoAcao mostrarComoLink="#{true}"
+                                      acao="#{acao}"
+                                      layout="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                                      />
+                        ]
                     </ui:repeat>
-
 
                 </p:panel>
 
