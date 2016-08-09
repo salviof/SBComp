@@ -1,10 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:sbPr="http://java.sun.com/jsf/composite/SBComp/prime"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:sb="http://superbitsframework/facelets">
 
 
     <cc:interface>
@@ -34,17 +31,13 @@
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
+    <cc:implementation>
 
-    [cc SeletorItem.xhtml 
-    #{cc.attrs.tipoVisualizacao.xhtmlJSF}]
-    <ui:include src="#{cc.attrs.tipoVisualizacao.xhtmlJSF}">
-        <ui:param name="itemSelecionado" value="#{cc.attrs.itemSelecionado}" />
-        <ui:param name="listaOpcoes" value="#{cc.attrs.lista}" />
-        <ui:param name="desabilitarEdicao" value="#{cc.attrs.desabilitarEdicao}" />
-        <ui:param name="obrigatorio" value="#{cc.attrs.obrigatorio}" />
+        <sb:seletorItem
+            layoutCampo="#{layoutsComponenteSB.layoutSeletorItem.combo}"
+            itemSelecionado="#{cc.attrs.itemSelecionado}"
+            opcoes="#{cc.attrs.lista}" />
 
-    </ui:include>
-
-    [cc fimSeletorItem.xhtml]
+    </cc:implementation>
 
 </html>
