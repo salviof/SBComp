@@ -2,34 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <ui:include
-        src="#{registro.getComponenteDiferenciado(layoutCampoEspecial).xhtmlJSF}" >
-        <ui:param name="layout" value="#{layoutCampo}"/>
-        <ui:param name="registro" value="#{registro}" />
-        <ui:param name="componente" value="#{registro.getComponenteDiferenciado(layoutCampoEspecial)}"  />
-        <ui:param name="prefixoID" value="#{registro.prefixoUnicoParaIDHtml}"  />
-        <ui:param name="valorFor" value="#{pgUtil.buscaFilhoComEsteID(component,registro.getNomeUnicoParaIDHtml(registro.getComponenteDiferenciado(layoutCampoEspecial)))}" />
-        <ui:param name="valor" value="#{registro.valor}"/>
-        <ui:param name="obrigatorio" value="#{registro.obrigatorio}"/>
-        <ui:param name="nomeItem" value="#{registro.label}"/>
-        <ui:param name="nomeItem" value="#{registro.label}"/>
-        <ui:param rendered="#{registro.umValorComLista}" name="lista" value="#{registro.listaDeOpcoes}"/>
-        <ui:param rendered="#{registro.umValorComLista}" name="lista" value="#{registro.listaDeOpcoes}"/>
-    </ui:include>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <c:if test="#{!mostrarComoLink}">
 
+        <ui:include
+            src="#{layout.xhtmlJSF}.xhtml"  >
+            <ui:param name="metodo" value="#{metodo}" />
+            <ui:param name="idAtualizacao" value="#{idAtualizacao}"/>
+        </ui:include>
+    </c:if>
+    <c:if test="#{mostrarComoLink}">
+
+        <ui:include
+            src="#{layout.xhtmlJSF}Link.xhtml" >
+            <ui:param name="acaoComLink" value="#{infoWebApp.getAcaoComLink(acao)}"
+
+                      />
+        </ui:include>
+    </c:if>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

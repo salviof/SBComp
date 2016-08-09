@@ -5,7 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+      xmlns:sb="http://superbitsframework/facelets"
+      >
 
     <!-- INTERFACE -->
 
@@ -21,13 +22,11 @@
                 <p:panel class="Container20 Responsive100"  header="#{modulo.nome}" >
 
                     <ui:repeat value="#{modulo.acoesGestaoMB}" var="acao" >
+                        [
+                        URL=#{infoWebApp.getAcaoComLink(acao).urlDeAcesso}
 
-                        <SBComp:botaoDeAcao acao="#{acao}"
-                                            trasformarAcaoMBemLink="#{true}"
-                                            tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
-                                            armazenamentoAcaoExecutada="#{pgProjetoSBVisaoGeral.acaoSelecionada}"
-
-                                            />
+                        <sb:botaoAcao mostrarComoLink="#{true}" acao="#{acao}"
+                                      layout="#{layoutsComponenteSB.layoutBotoes.iconeENome}" />]
                     </ui:repeat>
 
 

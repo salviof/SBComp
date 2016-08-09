@@ -15,7 +15,7 @@
                       shortDescription="Ben para armazenar esta ação quando clicada, Esta opção só é exexutada com o atributo deste botão armazenarAcaoSelecionada for true "
                       />
         <cc:attribute name="metodo" method-signature="void listener()"  />
-        <cc:attribute name="update"  
+        <cc:attribute name="update"
                       shortDescription="IDs que devem ser atualizados após clicar na alção"
                       />
         <cc:attribute name="javaScriptOncomplete"  default="#{null}"
@@ -47,48 +47,16 @@
         <pe:switch  value="#{cc.attrs.tipoVisualizacao}" >
 
             <pe:case value="#{tipos.tipoVisualBotao.iconeENome}" id="botaoAcao#{tipos.tipoVisualBotao.iconeENome}" >
-                <bta:iconeENome metodo="#{cc.attrs.metodo}"
-                                armazenamentoAcaoExecutada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
-                                cor="#{cc.attrs.cor}"
-                                acao="#{cc.attrs.acao}"
-                                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                                update="#{cc.attrs.update}"
-                                linkQuandoMB="#{cc.attrs.trasformarAcaoMBemLink}"
-                                />
+
             </pe:case>
             <pe:case value="#{tipos.tipoVisualBotao.apenasIcone}" id="botaoAcao#{tipos.tipoVisualBotao.apenasIcone}" >
-                <bta:apenasIcone metodo="#{cc.attrs.metodo}"
-                                 armazenamentoAcaoExecutada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                 armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
-                                 cor="#{cc.attrs.cor}"
-                                 acao="#{cc.attrs.acao}"
-                                 javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                                 update="#{cc.attrs.update}"
-                                 trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                 />
+
             </pe:case>
             <pe:case value="#{tipos.tipoVisualBotao.botaoGigante}" id="botaoAcao#{tipos.tipoVisualBotao.botaoGigante}" >
-                <bta:botaoGitante metodo="#{cc.attrs.metodo}"
-                                  armazenamentoAcaoExecutada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                  armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
-                                  cor="#{cc.attrs.cor}"
-                                  acao="#{cc.attrs.acao}"
-                                  javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                                  update="#{cc.attrs.update}"
-                                  trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                  />
+
             </pe:case>
             <pe:case value="#{tipos.tipoVisualBotao.apenasNome}" id="botaoAcao#{tipos.tipoVisualBotao.apenasNome}" >
-                <bta:apenasNome metodo="#{cc.attrs.metodo}"
-                                armazenamentoAcaoExecutada="#{cc.attrs.armazenamentoAcaoExecutada}"
-                                armazenarAcaoSelecionada="#{cc.attrs.armazenarAcaoSelecionada}"
-                                cor="#{cc.attrs.cor}"
-                                acao="#{cc.attrs.acao}"
-                                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                                update="#{cc.attrs.update}"
-                                trasformarAcaoMBemLink="#{cc.attrs.trasformarAcaoMBemLink}"
-                                />
+
             </pe:case>
         </pe:switch>
 
