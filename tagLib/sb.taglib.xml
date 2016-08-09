@@ -41,9 +41,6 @@
             <type>java.lang.String</type>
         </atribute>
 
-
-
-
         <attribute>
             <description>Se true desativiva a edição</description>
             <name>desabilitarEdicao</name>
