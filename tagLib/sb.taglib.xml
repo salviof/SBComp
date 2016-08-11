@@ -7,12 +7,15 @@
     <tag>
         <tag-name>inputSB</tag-name>
         <source>tags/com/sb/inputSB.xhtml</source>
+
+
         <attribute>
             <description>Objeto do tipo campo instanciado</description>
             <name>registro</name>
             <required>true</required>
             <type>com.super_bits.modulosSB.SBCore.InfoCampos.campo.ItfCampoInstanciado</type>
         </attribute>
+
         <attribute>
             <description>
                 O layout do campo, que podem ser: resumido,esquerda,superior,e automatico
@@ -199,6 +202,69 @@
             <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
         </atribute>
     </tag>
+
+
+    <tag>
+        <tag-name>botaoFake</tag-name>
+        <source>tags/com/sb/botaoFake.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>layout</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+
+        <atribute>
+            <description>
+                Ação vinculada ao botão
+            </description>
+            <name>acao</name>
+            <required>true</required>
+            <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
+        </atribute>
+    </tag>
+
+    <tag>
+        <tag-name>botaoAcaoDeEntidadePaginaAtual</tag-name>
+        <source>tags/com/sb/btEntidadePgAtual.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>layout</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+
+        <atribute>
+            <description>
+                Ação vinculada ao botão
+            </description>
+            <name>acao</name>
+            <required>true</required>
+            <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
+        </atribute>
+    </tag>
+
+    <tag>
+        <tag-name>botaoAcaoDePaginaAtual</tag-name>
+        <source>tags/com/sb/btAcaoPg.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>layout</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+
+        <atribute>
+            <description>
+                Ação vinculada ao botão
+            </description>
+            <name>acao</name>
+            <required>true</required>
+            <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
+        </atribute>
+    </tag>
+
+
 
 
 
