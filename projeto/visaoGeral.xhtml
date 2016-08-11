@@ -9,60 +9,60 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/resources/SBComp/template/basico/conteudoEmBranco.xhtml">
-
-
-        <ui:define name="conteudo">
-
-            <p:fieldset legend="Detalhes de: #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.nome}" rendered="#{not empty pgProjetoSBVisaoGeral.acaoGEstaoSelecionada}">
-                <a href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}" target="projSuperBitsDocumentacao" >
-                    Ver Documentacao   #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}    </a> <br/>
-                #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}  <br/>
-                #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}   <br/>
-                Teste Gestão Relalizado?  <br/>
-                Horas Programadas <br/>
-                Nome programador executou tarefa: <br/>
-                Horas Previstas no desenvolvimento: 50<br/>
-
-                <br/>
-
-                #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.acoesVinculadas}
+    <ui:composition >
 
 
 
-                <p:progressBar value="2" labelTemplate="{value} % Sem Conexao)" displayOnly="true"  />
-            </p:fieldset>
+        <p:fieldset legend="Detalhes de: #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.nome}" rendered="#{not empty pgProjetoSBVisaoGeral.acaoGEstaoSelecionada}">
+            <a href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}" target="projSuperBitsDocumentacao" >
+                Ver Documentacao   #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.idDescritivoJira}    </a> <br/>
+            #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}  <br/>
+            #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.descricao}   <br/>
+            Teste Gestão Relalizado?  <br/>
+            Horas Programadas <br/>
+            Nome programador executou tarefa: <br/>
+            Horas Previstas no desenvolvimento: 50<br/>
+
+            <br/>
+
+            #{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada.acoesVinculadas}
 
 
-            <p:panel header="Selecione uma ação, nos modulos Abaixo" >
-                <h:panelGrid columns="3" >
+
+            <p:progressBar value="2" labelTemplate="{value} % Sem Conexao)" displayOnly="true"  />
+        </p:fieldset>
+
+
+        <p:panel header="Selecione uma ação, nos modulos Abaixo" >
+            <h:panelGrid columns="3" >
 
 
 
 
-                    <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
-                        <p:panel  header="#{modulo.nome}" >
+                <c:forEach var="modulo" items="#{pgProjetoSBVisaoGeral.modulosDoSistema}" >
+                    <p:panel  header="#{modulo.nome}" >
+                        <h:form>
                             <p:fieldset legend="Escolha um bloco de ações para obter mais detalhes">
                                 <SBComp:seletorDeAcoes  visualizacaoBotao="#{tipos.tipoVisualBotao.iconeENome}" metodo="#{pgUtil.atualizaTelaPorID(pgProjetoSBVisaoGeral.idAreaExbicaoAcaoSelecionada)}"
                                                         opcoes="#{modulo.acoesGestaoMB}"
                                                         opcaoSelecionada="#{pgProjetoSBVisaoGeral.acaoGEstaoSelecionada}"/>
                             </p:fieldset>
-                            <br/>
-                            <br/>
-                            <p:progressBar value="2" labelTemplate="{value} %(Sem conexao com Jira)" displayOnly="true"/>
-                        </p:panel>
+                        </h:form>
+                        <br/>
+                        <br/>
+                        <p:progressBar value="2" labelTemplate="{value} %(Sem conexao com Jira)" displayOnly="true"/>
+                    </p:panel>
 
 
 
 
 
-                    </c:forEach>
+                </c:forEach>
 
-                </h:panelGrid>
-            </p:panel>
+            </h:panelGrid>
+        </p:panel>
 
 
-        </ui:define>
     </ui:composition>
 </html>
 
