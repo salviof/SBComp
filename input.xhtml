@@ -31,14 +31,20 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+
         <sb:inputSB
+
             registro="#{cc.attrs.registro}"
             desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
             layoutCampo="#{cc.attrs.layoyt}"
             possuiIDOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
             possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
             layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
-            label="#{cc.attrs.label}: "
+            label="#{cc.attrs.label}:"
+
+
             />
+
     </cc:implementation>
+
 </html>
