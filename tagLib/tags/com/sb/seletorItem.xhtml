@@ -3,6 +3,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    seletorITemInclude:#{layoutCampo.xhtmlJSF}
+
+
     <ui:include
         src="#{layoutCampo.xhtmlJSF}" >
         <ui:param name="layout" value="#{layoutsComponenteSB.layoutCampo.semLabel}"/>
@@ -10,7 +13,7 @@
         <ui:param name="prefixoID" value="" />
         <ui:param name="valor" value="#{itemSelecionado}"/>
         <ui:param name="obrigatorio" value="#{obrigatorio}"/>
-        <ui:param name="lista" value="#{opcoes}"/>
+
         <ui:param rendered="#{registro.umValorComLista}" name="lista" value="#{registro.listaDeOpcoes}"/>
     </ui:include>
 </html>
