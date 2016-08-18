@@ -246,7 +246,7 @@
 
     <tag>
         <tag-name>botaoAcaoDePaginaAtual</tag-name>
-        <source>tags/com/sb/btAcaoPg.xhtml</source>
+        <source>tags/com/sb/botaoAcaoPg.xhtml</source>
         <atribute>
             <description>O componente utilizado para exibição</description>
             <name>layout</name>
@@ -262,6 +262,7 @@
             <required>true</required>
             <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
         </atribute>
+        
     </tag>
 
 
