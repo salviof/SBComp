@@ -8,12 +8,19 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
-        <p:fieldset  legend="componente input que chama o seletor" >
-            <p:panel header="Campo Input" id="asaklsdjfalkjsdf" >
-                <SBComp:input registro="#{prCampo}"/>
-            </p:panel>
+        <p:fieldset  legend="Ver campo" >
+
+            <c:if test="#{prCampo!=null}" >
+                <p:panel header="Visualizacao de #{prCampo.label}"  >
+                    <SBComp:input registro="#{prCampo}" layoyt="#{layoutsComponenteSB.layoutCampo.esquerda}"/>
+                </p:panel>
+            </c:if>
+            <c:if test="#{prCampo==null}" >
+                O parametro campo enviado para visualização é nulo
+            </c:if>
         </p:fieldset>
 
 
