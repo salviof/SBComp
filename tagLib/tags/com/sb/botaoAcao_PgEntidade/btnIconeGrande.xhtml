@@ -8,7 +8,7 @@
         onmousedown="esconderTooltips();"
         styleClass="Responsive btnIconeGrande Fs60"
         style="text-align: center; "
-        action="#{paginaAtual.infoPagina.executarAcaoSelecionada()}"
+        action="#{paginaAtual.infoPagina.comoPaginaEntidade.executarAcao(item)}"
         update="#{pgUtil.makeCaminhoCompletoID(idUpdate)}"
         oncomplete="#{javaScriptOncomplete}"
         ajax="true"

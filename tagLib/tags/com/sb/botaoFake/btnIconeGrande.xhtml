@@ -4,12 +4,17 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <p:link
+        href="#"
+        onmousedown="esconderTooltips();"
+        styleClass="Responsive btnIconeGrande "
 
-    <p:button href="#{infoWebApp.getAcaoComLink(acao).urlDeAcesso}"
-              styleClass="btnIconeENome botao"
-              icon="#{acao.iconeAcao}"
-              />
+        >
 
+
+
+        <i class="#{acao.iconeAcao} "    ></i>
+        </p:commandLink>
 </html>
 
 

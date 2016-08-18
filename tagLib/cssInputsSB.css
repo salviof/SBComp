@@ -1,6 +1,26 @@
 /* NESTE ARQUIVO FICAM OS ESTILOS PARA CAMPOS DE IMPUT */
 @charset "utf-8";
 /* CSS Document */
+
+.botao{
+    margin-top: 5px;
+}
+.btnIcone{
+
+}
+.btnIconeENome{
+
+}
+.btnIconeGrande{
+    font-size:80px !important;
+    align-items: center;
+    color: #ffffff !important;
+    background-color: #0099ff !important;
+}
+
+.btnIconeGrande:hover {
+    background-color: #00aeff !important;
+}
 .inputCampo{
     width:   100%!important;
 }
@@ -76,14 +96,5 @@
 
     display: none;
 }
-/* layoutes de botoes */
-.btnIcone{
 
-}
-.btnIconeENome{
-
-}
-.iconeGrande{
-
-}
 

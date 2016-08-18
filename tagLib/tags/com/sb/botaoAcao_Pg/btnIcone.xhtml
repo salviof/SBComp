@@ -5,10 +5,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <p:commandButton onmousedown="esconderTooltips();"
-                     style="margin-top: 5px; #{estilo} btnPgIconeENome"
+                     styleClass="btnIconeENome botao"
                      icon="#{acao.iconeAcao}"
                      action="#{paginaAtual.infoPagina.executarAcaoSelecionada()}"
-                     update="#{idupdatePrimefaces}"
+                     update="#{pgUtil.makeCaminhoCompletoID(idUpdate)}"
                      oncomplete="#{javaScriptOncomplete}"
                      >
         <f:setPropertyActionListener target="#{paginaAtual.infoPagina.acaoSelecionada}"

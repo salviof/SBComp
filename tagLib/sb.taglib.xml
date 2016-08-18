@@ -3,7 +3,7 @@
   "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
   "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
 <facelet-taglib>
-    <namespace>http://superbitsframework/facelets</namespace>
+    <namespace>http://superbitsframework/ui</namespace>
     <tag>
         <tag-name>inputSB</tag-name>
         <source>tags/com/sb/inputSB.xhtml</source>
@@ -187,11 +187,56 @@
         </atribute>
 
         <attribute>
-            <description>Se true desativiva a edição</description>
-            <name>mostrarComoLink</name>
+            <description>Método que será executado</description>
+            <name>metodo</name>
             <required>true</required>
-            <type>java.lang.Boolean</type>
+            <type>void listener()</type>
         </attribute>
+
+        <atribute>
+            <description>
+                Ação vinculada ao botão
+            </description>
+            <name>acao</name>
+            <required>true</required>
+            <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
+        </atribute>
+
+        <atribute>
+            <description>
+                JavaScript que deve ser executado ao final do Ajax
+            </description>
+            <name>javaScriptOncomplete</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+
+        </atribute>
+
+
+        <atribute>
+            <description>
+                Id do componente que deve ser atualizado (Nao precisa ser o caminho completo)
+                O Sistema utilizará o pgUtil.makeCaminhoCompletoID(idUpdate)
+            </description>
+            <name>idUpdate</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+        </atribute>
+
+
+
+
+    </tag>
+
+    <tag>
+        <tag-name>botaoLink</tag-name>
+        <source>tags/com/sb/botaoAcaoLink.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>layout</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
 
         <atribute>
             <description>
@@ -225,13 +270,20 @@
     </tag>
 
     <tag>
-        <tag-name>botaoAcaoDeEntidadePaginaAtual</tag-name>
+        <tag-name>botaoAcaoEntidadePaginaAtual</tag-name>
         <source>tags/com/sb/btEntidadePgAtual.xhtml</source>
         <atribute>
             <description>O componente utilizado para exibição</description>
             <name>layout</name>
             <required>true</required>
             <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+        <atribute>
+            <description>
+                Registro vinculado a ação
+            </description>
+            <name>registro</name>
+            <required>true</required>
         </atribute>
 
         <atribute>
@@ -242,10 +294,32 @@
             <required>true</required>
             <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
         </atribute>
+
+
+        <atribute>
+            <description>
+                JavaScript que deve ser executado ao final do Ajax
+            </description>
+            <name>javaScriptOncomplete</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+
+        </atribute>
+
+
+        <atribute>
+            <description>
+                Id do componente que deve ser atualizado (Nao precisa ser o caminho completo)
+                O Sistema utilizará o pgUtil.makeCaminhoCompletoID(idUpdate)
+            </description>
+            <name>idUpdate</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+        </atribute>
     </tag>
 
     <tag>
-        <tag-name>botaoAcaoDePaginaAtual</tag-name>
+        <tag-name>botaoAcaoPaginaAtual</tag-name>
         <source>tags/com/sb/botaoAcaoPg.xhtml</source>
         <atribute>
             <description>O componente utilizado para exibição</description>
@@ -262,8 +336,88 @@
             <required>true</required>
             <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
         </atribute>
-        
+
+        <atribute>
+            <description>
+                JavaScript que deve ser executado ao final do Ajax
+            </description>
+            <name>javaScriptOncomplete</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+
+        </atribute>
+
+
+        <atribute>
+            <description>
+                Id do componente que deve ser atualizado (Nao precisa ser o caminho completo)
+                O Sistema utilizará o pgUtil.makeCaminhoCompletoID(idUpdate)
+            </description>
+            <name>idUpdate</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+        </atribute>
+
     </tag>
+
+    <tag>
+        <tag-name>botaoAcaoAcaoTarget</tag-name>
+        <source>tags/com/sb/botaoAcaoPg.xhtml</source>
+        <atribute>
+            <description>O componente utilizado para exibição</description>
+            <name>layout</name>
+            <required>true</required>
+            <type>com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB</type>
+        </atribute>
+
+        <atribute>
+            <description>
+                Origem
+            </description>
+            <name>origem</name>
+            <required>true</required>
+        </atribute>
+
+        <atribute>
+            <description>
+                Destino
+            </description>
+            <name>destino</name>
+
+        </atribute>
+
+        <atribute>
+            <description>
+                Ação vinculada ao botão
+            </description>
+            <name>acao</name>
+            <required>true</required>
+            <type>com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema</type>
+        </atribute>
+
+        <atribute>
+            <description>
+                JavaScript que deve ser executado ao final do Ajax
+            </description>
+            <name>javaScriptOncomplete</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+
+        </atribute>
+
+
+        <atribute>
+            <description>
+                Id do componente que deve ser atualizado (Nao precisa ser o caminho completo)
+                O Sistema utilizará o pgUtil.makeCaminhoCompletoID(idUpdate)
+            </description>
+            <name>idUpdate</name>
+            <type>java.lang.String</type>
+            <required>true</required>
+        </atribute>
+
+    </tag>
+
 
 
 

@@ -2,7 +2,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:pe="http://primefaces.org/ui/extensions">
+      xmlns:sb="http://superbitsframework/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
 
@@ -22,8 +24,8 @@
                       />
         <cc:attribute name="tipoVisualizacao"
 
-                      type="java.lang.String"
-                      required="#{true}"
+                      type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+                      default="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
                       shortDescription="Tipo de visualização do botão (Utilize #tipos.tipoVisualBotao"
                       />
         <cc:attribute name="cor"
@@ -42,24 +44,45 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <c:if test="#{!cc.attrs.trasformarAcaoMBemLink}">
 
-        <pe:switch  value="#{cc.attrs.tipoVisualizacao}" >
+            <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component, 'metodo')}">
+                <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}" >
+                    <sb:botaoAcao
+                        acao="#{cc.attrs.acao}"
+                        metodo="#{cc.attrs.metodo}"
+                        javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                        idUpdate="#{cc.attrs.update}"
+                        />
+                </c:if>
 
-            <pe:case value="#{tipos.tipoVisualBotao.iconeENome}" id="botaoAcao#{tipos.tipoVisualBotao.iconeENome}" >
+                <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}">
+                    <sb:botaoAcaoAcaoTarget
+                        acao="#{cc.attrs.acao}"
+                        metodo="#{cc.attrs.metodo}"
+                        origem="#{cc.attrs.acao}"
+                        destino="#{cc.attrs.armazenarAcaoSelecionada}"
+                        javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                        idUpdate="#{cc.attrs.update}"
+                        />
+                </c:if>
 
-            </pe:case>
-            <pe:case value="#{tipos.tipoVisualBotao.apenasIcone}" id="botaoAcao#{tipos.tipoVisualBotao.apenasIcone}" >
-
-            </pe:case>
-            <pe:case value="#{tipos.tipoVisualBotao.botaoGigante}" id="botaoAcao#{tipos.tipoVisualBotao.botaoGigante}" >
-
-            </pe:case>
-            <pe:case value="#{tipos.tipoVisualBotao.apenasNome}" id="botaoAcao#{tipos.tipoVisualBotao.apenasNome}" >
-
-            </pe:case>
-        </pe:switch>
+                <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'metodo')}">
+                    <sb:botaoFake
+                        acao="#{cc.attrs.acao}"
+                        metodo="#{cc.attrs.metodo}" />
+                </c:if>
 
 
+            </c:if>
+        </c:if>
+
+        <c:if test="#{cc.attrs.trasformarAcaoMBemLink}">
+            <sb:botaoLink
+                acao="#{cc.attrs.acao}"
+                layout="#{cc.attrs.tipoVisualizacao}" />
+
+        </c:if>
 
 
     </cc:implementation>

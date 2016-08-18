@@ -3,16 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <p:commandButton onmousedown="esconderTooltips();"
-                     style="margin-top: 5px; #{estilo} btnPgIconeENome"
-                     icon="#{acao.iconeAcao}"
-                     action="#{paginaAtual.infoPagina.executarAcaoSelecionada()}"
-                     update="#{idupdatePrimefaces}"
-                     value="#{acao.nomeAcao}"
-                     oncomplete="#{javaScriptOncomplete}"
-                     >
-        <f:setPropertyActionListener target="#{paginaAtual.infoPagina.acaoSelecionada}"
-                                     value="#{acao}"  />
-    </p:commandButton>
+
+    <p:button href="#{infoWebApp.getAcaoComLink(acao).urlDeAcesso}"
+
+
+              value="#{acao.nomeAcao}"
+
+
+              />
+
+
 </html>
 

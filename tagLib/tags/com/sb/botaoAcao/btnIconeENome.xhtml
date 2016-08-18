@@ -6,30 +6,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <p:commandButton onmousedown="esconderTooltips();"
-                     style="margin-top: 5px; #{estilo}"
+                     styleClass="btnIconeENome botao"
                      icon="#{acao.iconeAcao}"
                      action="#{metodo}"
-                     update="#{idupdatePrimefaces}"
+                     update="#{pgUtil.makeCaminhoCompletoID(idUpdate)}"
                      value="#{acao.nomeAcao}"
                      oncomplete="#{javaScriptOncomplete}"
-                     id="btAcao"
+
                      >
-        <c:if test="#{armazenarAcaoSelecionada}" >
-            <f:setPropertyActionListener target="#{armazenamentoAcaoExecutada}"
-                                         value="#{acao}"  />
-        </c:if>
-        <p:tooltip for="btAcao" value=" #{acao.descricao}"/>
+
     </p:commandButton>
-
-
 </html>
-
-
-
-
-
-
-
-
-
 
