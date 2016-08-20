@@ -7,8 +7,6 @@
     <tag>
         <tag-name>inputSB</tag-name>
         <source>tags/com/sb/inputSB.xhtml</source>
-
-
         <attribute>
             <description>Objeto do tipo campo instanciado</description>
             <name>registro</name>
@@ -175,6 +173,21 @@
         </atribute>
     </tag>
 
+    <tag>
+        <tag-name>parametroMetodo</tag-name>
+        <handler-class>org.super_bits.tags.metodo.MetodoComoParametro</handler-class>
+        <attribute>
+            <name>nome</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>valor</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+
 
     <tag>
         <tag-name>botaoAcao</tag-name>
@@ -187,10 +200,10 @@
         </atribute>
 
         <attribute>
-            <description>Método que será executado</description>
             <name>metodo</name>
             <required>true</required>
-            <type>void listener()</type>
+            <method-signature>void listener()</method-signature>
+            <type>javax.el.MethodExpression</type>
         </attribute>
 
         <atribute>
@@ -362,7 +375,7 @@
 
     <tag>
         <tag-name>botaoAcaoAcaoTarget</tag-name>
-        <source>tags/com/sb/botaoAcaoPg.xhtml</source>
+        <source>tags/com/sb/botaoAcaoTarget.xhtml</source>
         <atribute>
             <description>O componente utilizado para exibição</description>
             <name>layout</name>

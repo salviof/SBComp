@@ -2,12 +2,16 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:sb="http://superbitsframework/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
 
     <p:commandButton onmousedown="esconderTooltips();"
                      styleClass="btnIconeENome botao"
                      icon="#{acao.iconeAcao}"
-                     action="#{metodo}"
+                     action="#{prMetodo}"
                      update="#{pgUtil.makeCaminhoCompletoID(idUpdate)}"
                      oncomplete="#{javaScriptOncomplete}"
                      >

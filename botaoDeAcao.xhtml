@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:sb="http://superbitsframework/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
@@ -32,7 +31,7 @@
                       default="#{null}"
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
-        <cc:attribute name="trasformarAcaoMBemLink" default="#{true}" />
+        <cc:attribute name="trasformarAcaoEmLink" default="#{cc.attrs.acao.umaAcaoGestaoDominio}"    />
 
 
         <cc:attribute name="armazenarAcaoSelecionada"
@@ -44,7 +43,10 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <c:if test="#{!cc.attrs.trasformarAcaoMBemLink}">
+
+        <c:if test="#{!cc.attrs.trasformarAcaoEmLink}">
+
+
 
             <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component, 'metodo')}">
                 <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}" >
@@ -54,9 +56,11 @@
                         javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
                         idUpdate="#{cc.attrs.update}"
                         />
+
                 </c:if>
 
                 <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}">
+
                     <sb:botaoAcaoAcaoTarget
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
@@ -66,6 +70,9 @@
                         idUpdate="#{cc.attrs.update}"
                         />
                 </c:if>
+
+
+
 
                 <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'metodo')}">
                     <sb:botaoFake
@@ -77,7 +84,7 @@
             </c:if>
         </c:if>
 
-        <c:if test="#{cc.attrs.trasformarAcaoMBemLink}">
+        <c:if test="#{cc.attrs.trasformarAcaoEmLink}">
             <sb:botaoLink
                 acao="#{cc.attrs.acao}"
                 layout="#{cc.attrs.tipoVisualizacao}" />

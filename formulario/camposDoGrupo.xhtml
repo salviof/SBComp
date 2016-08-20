@@ -2,11 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:sb="http://superbitsframework/facelets"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
@@ -16,7 +12,7 @@
         <cc:attribute name="grupoCampos" required="#{true}" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.GrupoCampos" />
         <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples" />
         <cc:attribute name="somenteLeitura" default="#{true}" />
-        <cc:attribute name="tipoVisualizacaoLabel" default="#{tipos.tipoVisualCampo.padrao}" />
+        <cc:attribute name="tipoVisualizacaoLabel" default="#{layoutsComponenteSB.layoutCampo.superior}" />
 
 
     </cc:interface>
@@ -32,7 +28,7 @@
                 <p:panel  style="margin: 1%">
 
                     <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
-                                  tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
+                                  layoyt="#{cc.attrs.tipoVisualizacaoLabel}"
                                   desabilitarEdicao="#{false}" />
 
                 </p:panel>
