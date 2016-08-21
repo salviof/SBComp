@@ -18,7 +18,7 @@
         <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
         <cc:attribute shortDescription="O layoyt indica os formatos possíveis de exibição do campo,
                       para visualizar todas as opções acesse: #layoutsComponenteSB.layoutCampo.  "
-                      name="layoyt"
+                      name="layout"
                       type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
                       default="#{layoutsComponenteSB.layoutCampo.esquerda}"
                       />
@@ -34,6 +34,7 @@
     <cc:implementation>
 
         <sb:inputSB
+
             registro="#{cc.attrs.registro}"
             desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
             layoutCampo="#{cc.attrs.layoyt}"

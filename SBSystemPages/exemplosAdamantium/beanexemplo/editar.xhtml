@@ -24,13 +24,7 @@
 
             <h:form>
 
-                <SBFormulario:formularioCard
-
-                    pagina="#{pgComponenteLab}"
-                    acaoFormulario="#{pgComponenteLab.acaoNovoRegistro}"
-                    tipoVisualizacaoLabel="#{tipos.tipoVisualCampo.labelSuperior}"
-
-                    />
+                <SBFormulario:camposDaAcao registro="#{pgCompradorGerenciar.entidadeSelecionada}" acao="#{pgCompradorGerenciar.acaoSelecionada}" />
 
             </h:form>
 

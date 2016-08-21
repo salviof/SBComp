@@ -14,7 +14,7 @@
         <cc:attribute name="armazenamentoAcaoExecutada"
                       shortDescription="Ben para armazenar esta ação quando clicada, Esta opção só é exexutada com o atributo deste botão armazenarAcaoSelecionada for true "
                       />
-        <cc:attribute name="metodo" method-signature="void listener()"  />
+        <cc:attribute name="metodo" type="javax.el.MethodExpression" />
         <cc:attribute name="update"
                       shortDescription="IDs que devem ser atualizados após clicar na alção"
                       />
@@ -34,11 +34,7 @@
         <cc:attribute name="trasformarAcaoEmLink" default="#{cc.attrs.acao.umaAcaoGestaoDominio}"    />
 
 
-        <cc:attribute name="armazenarAcaoSelecionada"
-                      default="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'armazenamentoAcaoExecutada')}"
-                      expert="#{true}"
-                      shortDescription="Indica se ao clicar a ação clicada será armazenada em algum bean"
-                      />
+
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
@@ -48,10 +44,11 @@
 
 
 
-            <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component, 'metodo')}">
-                <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}" >
-                    Botao Acao
+            <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodo')}">
+                <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc,'armazenamentoAcaoExecutada')}" >
+
                     <sb:botaoAcao
+
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
                         javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
@@ -61,13 +58,13 @@
 
                 </c:if>
 
-                <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}">
-                    Botao Acao Target
+                <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'armazenamentoAcaoExecutada')}">
+
                     <sb:botaoAcaoAcaoTarget
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
                         origem="#{cc.attrs.acao}"
-                        destino="#{cc.attrs.armazenarAcaoSelecionada}"
+                        destino="#{cc.attrs.armazenamentoAcaoExecutada}"
                         javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
                         idUpdate="#{cc.attrs.update}"
                         layout="#{cc.attrs.tipoVisualizacao}"
@@ -77,8 +74,8 @@
 
 
 
-                <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'metodo')}">
-                    Botão Fake
+                <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc,'metodo')}">
+
                     <sb:botaoFake
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
@@ -91,7 +88,7 @@
         </c:if>
 
         <c:if test="#{cc.attrs.trasformarAcaoEmLink}">
-            Botão link
+
             <sb:botaoLink
                 acao="#{cc.attrs.acao}"
                 layout="#{cc.attrs.tipoVisualizacao}" />

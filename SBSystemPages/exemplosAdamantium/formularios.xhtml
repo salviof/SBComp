@@ -39,7 +39,7 @@
 
                 <p:panelGrid columns="1"  styleClass="tabelaFormulario" >
                     <c:forEach items="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" var="campo" varStatus="rec">
-                        <SBComp:input registro="#{campo}" layoyt="#{pgDemoComponente.tipoVisualizacao}"  />
+                        <SBComp:input registro="#{campo}" layout="#{pgDemoComponente.tipoVisualizacao}"  />
                     </c:forEach>
                     <SBComp:seletorItem lista="#{pgDemoComponente.beanExemplo.todosCamposInstanciados}" itemSelecionado="#{pgDemoComponente.campoSelecionado}"  />
                 </p:panelGrid>
@@ -103,7 +103,7 @@
 
             <h:form id="testeCampo" >
                 <p:panelGrid columns="2">
-                    <SBComp:input registro="#{pgDemoComponente.campoSelecionado}" layoyt="#{pgDemoComponente.tipoVisualizacao}"  />
+                    <SBComp:input registro="#{pgDemoComponente.campoSelecionado}" layout="#{pgDemoComponente.tipoVisualizacao}"  />
                     <p:commandButton  value="Validar Campos" update="@form" />
                 </p:panelGrid>
 

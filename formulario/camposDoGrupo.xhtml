@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
     <!-- INTERFACE -->
@@ -12,31 +12,38 @@
         <cc:attribute name="grupoCampos" required="#{true}" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.GrupoCampos" />
         <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples" />
         <cc:attribute name="somenteLeitura" default="#{true}" />
-        <cc:attribute name="tipoVisualizacaoLabel" default="#{layoutsComponenteSB.layoutCampo.superior}" />
 
+        <cc:attribute shortDescription="O layoyt indica os formatos possíveis de exibição do campo,
+                      para visualizar todas as opções acesse: #layoutsComponenteSB.layoutCampo.  "
+                      name="tipoVisualizacaoLabel"
+                      type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+                      default="#{layoutsComponenteSB.layoutCampo.superior}"
+                      />
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <ui:repeat value="#{cc.attrs.grupoCampos.campos}" var="campo" >
+
+        <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="#{campo}">
+
 
 
             <div class="Container33 Responsive" style="position: relative">
-                #{campo.caminhoSemNomeClasse}
+
 
                 <p:panel  style="margin: 1%">
-
                     <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
-                                  layoyt="#{cc.attrs.tipoVisualizacaoLabel}"
+                                  tipoExibicaoCampo="#{cc.attrs.tipoVisualizacaoLabel}"
                                   desabilitarEdicao="#{false}" />
+
 
                 </p:panel>
 
             </div>
 
 
-        </ui:repeat>
+        </c:forEach>
 
 
 
