@@ -50,6 +50,7 @@
 
             <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component, 'metodo')}">
                 <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}" >
+                    Botao Acao
                     <sb:botaoAcao
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
@@ -61,7 +62,7 @@
                 </c:if>
 
                 <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'armazenarAcaoSelecionada')}">
-
+                    Botao Acao Target
                     <sb:botaoAcaoAcaoTarget
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
@@ -77,6 +78,7 @@
 
 
                 <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(component,'metodo')}">
+                    Botão Fake
                     <sb:botaoFake
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
@@ -89,6 +91,7 @@
         </c:if>
 
         <c:if test="#{cc.attrs.trasformarAcaoEmLink}">
+            Botão link
             <sb:botaoLink
                 acao="#{cc.attrs.acao}"
                 layout="#{cc.attrs.tipoVisualizacao}" />

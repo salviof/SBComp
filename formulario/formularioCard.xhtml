@@ -5,9 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
       xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -49,7 +47,7 @@
                                             metodo="#{cc.attrs.pagina.executarAcao(cc.attrs.pagina.entidadeSelecionada)}"
                                             tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"
                                             armazenamentoAcaoExecutada="#{cc.attrs.pagina.acaoSelecionada}"
-                                            trasformarAcaoMBemLink="#{false}"
+                                            trasformarAcaoEmLink="#{false}"
                                             />
                     </h:form>
 
