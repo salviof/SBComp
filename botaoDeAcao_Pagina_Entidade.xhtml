@@ -2,7 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:sb="http://superbitsframework/ui">
+      xmlns:sb="http://superbitsframework/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
 
@@ -17,8 +18,9 @@
                       shortDescription="Javascript que deve ser executado após a execucao do botão"
                       />
         <cc:attribute name="tipoVisualizacao"
+
                       type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
-                      default="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                      default="#{layoutsComponenteSB.layoutBotoes.icone}"
                       shortDescription="Tipo de visualização do botão (Utilize #tipos.tipoVisualBotao"
                       />
         <cc:attribute name="cor"
@@ -28,15 +30,28 @@
         <cc:attribute name="registro" />
 
     </cc:interface>
-    <!-- IMPLEMENTATION -->
+    <!-- O IF PRECISOU SER CRIADO POIS O DEFAULT NÃO EST'AFUNCIONANDO :(  TODO: Fazer o default funcionar e retirar este if infame -->
     <cc:implementation>
-        <sb:botaoAcaoEntidadePaginaAtual
-            acao="#{cc.attrs.acao}"
-            layout="#{cc.attrs.tipoVisualizacao}"
-            registro="#{cc.attrs.registro}"
-            javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-            idUpdate="#{cc.attrs.update}"
-            />
+        <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
+            <sb:botaoAcaoEntidadePaginaAtual
+                acao="#{cc.attrs.acao}"
+                layout="#{cc.attrs.tipoVisualizacao}"
+                registro="#{cc.attrs.registro}"
+                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                idUpdate="#{cc.attrs.update}"
+                />
+        </c:if>
+        <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
+            <sb:botaoAcaoEntidadePaginaAtual
+                acao="#{cc.attrs.acao}"
+                layout="#{layoutsComponenteSB.layoutBotoes.icone}"
+                registro="#{cc.attrs.registro}"
+                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                idUpdate="#{cc.attrs.update}"
+                />
+
+
+        </c:if>
     </cc:implementation>
 </html>
 

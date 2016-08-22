@@ -21,35 +21,17 @@
                       />
 
     </cc:interface>
-    <!-- IMPLEMENTATION -->
+
     <cc:implementation>
-
-
-        <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="#{campo}">
-
-
-
+        <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="camp"  varStatus="recnum">
             <div class="Container33 Responsive" style="position: relative">
-
-
                 <p:panel  style="margin: 1%">
-                    <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
+                    <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(camp.caminhoSemNomeClasse)}"
                                   layout="#{cc.attrs.tipoVisualizacaoLabel}"
-
                                   desabilitarEdicao="#{false}" />
-
-
                 </p:panel>
-
             </div>
-
-
         </c:forEach>
-
-
-
-
-
     </cc:implementation>
 
 </html>

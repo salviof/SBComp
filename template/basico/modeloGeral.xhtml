@@ -14,8 +14,6 @@
             <meta name="apple-mobile-web-app-capable" content="yes" />
         </f:facet>
         <title>#{paginaAtual.infoPagina.titulo}</title>
-        cssInputsSB
-        <h:outputStylesheet  name="SBComp/template/basico/css/cssInputsSB.css"  />
         <h:outputScript name="js/ripple-effect.js" library="adamantium-layout" />
         <h:outputScript name="js/perfect-scrollbar.js" library="adamantium-layout" />
         <h:outputScript name="js/layout.js" library="adamantium-layout" />
@@ -23,31 +21,13 @@
         <h:outputScript name="js/erroAjax.js" library="SBComp"  target="head" />
         <h:outputScript target="head"  name="SBComp/template/esqueleto/ativarGridsResp.js"/>
         <h:outputScript name="SBComp/js/correcaoBugJsf.js" target="head" />
-
-
         <ui:insert name="head" />
     </h:head>
-
-
     <h:body>
-
-        <h:outputStylesheet  name="css/SBLayout.css" library="SBComp/template/basico"  />
-
-        <h:outputStylesheet  name="estiloprimario.css" library="css" />
-        <h:outputStylesheet  name="css/core-layout.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/animate.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/adamantium-font.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/ripple-effect.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/perfect-scrollbar.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/font-awesome.css" library="adamantium-layout" />
-        <h:outputStylesheet name="css/adamantium-layout.css" library="adamantium-layout" />
-        <h:outputScript name="js/layout.js" library="adamantium-layout" />
-
-
+        <ui:include src="folhasDeEstiloBasicas.xhtml" />
         <c:if test="#{sessaoAtualSBWP.identificado==true}">
             <ui:include src="/site/topo.xhtml"/>
         </c:if>
-
         <!-- CODIGO QUE ENVIA INFORMACOES SOBRE A TELA DA SESSÃO DO USUÁRIO -->
         <div style="visibility: hidden;">
             <h:form id="contactfrm"  >
@@ -59,12 +39,7 @@
             <h:outputScript  name="SBComp/js/telaInfo.js"  />
             <!--FIM DO CODIGO QUE ENVIA INFORMACOES SOBRE A TELA DA SESSÃO DO USUÁRIO -->
         </c:if>
-
-
-
-
         <div id="layout-portlets-cover">
-
             <h:panelGroup id="mensagemUsuario">
                 <p:growl/>
             </h:panelGroup>
@@ -72,11 +47,7 @@
                 <ui:insert name="divConteudo" />
             </ui:insert>
             <ui:include src="/site/rodape.xhtml"/>
-
         </div>
-
-
-
         <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
             <f:facet name="start">
                 <p:graphicImage name="images/preloader.gif" library="adamantium-layout"/>
@@ -86,8 +57,6 @@
                 <h:outputText value="" />
             </f:facet>
         </p:ajaxStatus>
-
-
     </h:body>
 
 </html>
