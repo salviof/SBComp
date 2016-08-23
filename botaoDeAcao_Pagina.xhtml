@@ -34,13 +34,23 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
+            <sb:botaoAcaoPaginaAtual
+                acao="#{cc.attrs.acao}"
+                layout="#{cc.attrs.tipoVisualizacao}"
+                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                idUpdate="#{cc.attrs.update}"
+                />
+        </c:if>
+        <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
+            <sb:botaoAcaoPaginaAtual
+                acao="#{cc.attrs.acao}"
+                layout="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                idUpdate="#{cc.attrs.update}"
+                />
 
-        <sb:botaoAcaoPaginaAtual
-            acao="#{cc.attrs.acao}"
-            layout="#{cc.attrs.tipoVisualizacao}"
-            javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-            idUpdate="#{cc.attrs.update}"
-            />
+        </c:if>
 
     </cc:implementation>
 </html>
