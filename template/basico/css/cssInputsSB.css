@@ -23,7 +23,23 @@
 }
 .inputCampo{
     width:   100%!important;
+    border : none!important;
+
 }
+
+.panelGridEsquerda{
+
+    border: none;
+
+}
+
+.panelGridSuperior{
+
+    border: none;
+
+}
+
+
 .colunaLabel{
     width: 120px;
 }
@@ -47,10 +63,16 @@
 .campoCEP{}
 .campoCor{}
 .campoHTML{}
-.campoQuantidade{}
-.campoMoeda{}
+.campoQuantidade{
+    width: 10% !important;
+}
+.campoMoeda{
+    width: 10%  !important;
+}
 .campoEmail{}
-.campoData{}
+.campoData{
+    width: 15%  !important;
+}
 .campoDataHora{}
 .campoLigadoDesligado{}
 .campoEntidadeSimples{}
