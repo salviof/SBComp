@@ -14,15 +14,12 @@
             <meta name="apple-mobile-web-app-capable" content="yes" />
         </f:facet>
         <title>#{paginaAtual.infoPagina.titulo}</title>
-        <h:outputScript name="js/ripple-effect.js" library="adamantium-layout" />
-        <h:outputScript name="js/perfect-scrollbar.js" library="adamantium-layout" />
-        <h:outputScript name="js/layout.js" library="adamantium-layout" />
-        <h:outputScript target="head"  name="SBComp/template/esqueleto/ativarGridsResp.js"/>
+        <ui:include src="folhasDeEstiloBasicas.xhtml" />
         <ui:insert name="head" />
     </h:head>
     <h:body>
-        <ui:include src="folhasDeEstiloBasicas.xhtml" />
-        <h:outputScript name="js/layout.js" library="adamantium-layout"  target="head"/>
+
+
         <div id="mensagem">
             <h:panelGroup id="mensagemUsuario">
                 <p:growl/>

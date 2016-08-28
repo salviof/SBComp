@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+        <cc:attribute name="tipoProfissional" displayName="Tipo Profissional"
+                      type="com.super_bits.projeto.Jira.TipoProfissional" />
+
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <p class="w3-tooltip">
+            <img src="#{infoWebApp.urlPagina}#{cc.attrs.tipoProfissional.imgPequena}"
+                 class="w3-left w3-circle w3-margin-right" style="width:50px"/>
+            <span class="w3-text"><i> #{cc.attrs.tipoProfissional.descricao} </i></span>
+        </p>
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+
