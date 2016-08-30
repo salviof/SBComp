@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:SBRec="http://xmlns.jcp.org/jsf/composite/SBComp/requisitos"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+        <cc:attribute name="previsaoGestao" displayName="Previsao Gestao" type="com.super_bits.projeto.Jira.ItfPrevisaoGestaoEntidade" />
+
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+        <p:fieldset legend="#{cc.attrs.previsaoGestao.gestao.nomeAcao}" >
+
+            <p:panelGrid  columns="2" >
+                <p:outputLabel value="Horas Totais Programadas:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.horasProgramadas}"/>
+                <p:outputLabel value="Formulários previstos:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.qtdAcoesDeFormulario}"/>
+                <p:outputLabel value="Ações de controle prevista:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.qtdAoesDeController}"/>
+                <p:outputLabel value="Tipo de registro vinculado:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.entidadeVinculada}"/>
+            </p:panelGrid>
+
+            <c:forEach items="#{cc.attrs.previsaoGestao.tarefasVinculadas}" var="tarefa" >
+
+                <SBRec:infoTarefa tarefaSistema="#{tarefa}" />
+            </c:forEach>
+
+        </p:fieldset>
+
+
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+
