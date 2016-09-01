@@ -16,11 +16,38 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <div id="layout-portlets-cover">
+            <div class="Container100">
 
-        #{pgUtil.isAtributoPreenchidoComExpressao(component, atributo)}
+                <div class="Container100">
+                    <div class="ContainerIndent">
 
 
-        <p:fieldset legend="#{cc.attrs.previsaoGestao.gestao.nomeAcao}" class="w3-card-4" >
+                        <div class="Container33 Responsive">
+                            <p:panel header=" 33333333333331 ">
+                                <br/>
+                            </p:panel>
+
+                        </div>
+
+                        <div class="Container33  Responsive ">
+                            <p:panel header="Container 33 responsive ">
+                                <br/>
+                            </p:panel>
+
+                        </div>
+                        <div class="Container33  Responsive ">
+                            <p:panel header="Container 33 responsive ">
+                                <br/>
+                            </p:panel>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p:fieldset legend="#{cc.attrs.previsaoGestao.gestao.nomeAcao}" >
 
             <p:panelGrid  columns="2" >
                 <p:outputLabel value="Horas Totais Programadas:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.horasProgramadas}"/>
@@ -36,15 +63,10 @@
             <c:forEach items="#{cc.attrs.previsaoGestao.tarefasVinculadas}" var="tarefa" >
 
 
-                <div class="Container33 Responsive  w3-padding-16  w3-card-4">
-                    <SBRec:tipoProfissional  tipoProfissional="#{tarefa.tipoProfissionalNescessario}"/>
-                    <p class="w3-tooltip">
-                        <img src="#{infoWebApp.urlPagina}#{tarefa.tipoProfissionalNescessario.imgPequena}"
-                             class="w3-left w3-circle w3-margin-right" style="width:60px"/>
-                        <span class="w3-text"><i> #{tarefa.tipoProfissionalNescessario.descricao} </i></span>
-                    </p>
+                <div class="Container33 Responsive w3-card">
 
-
+                    <img src="#{infoWebApp.urlPagina}#{tarefa.tipoProfissionalNescessario.imgPequena}"
+                         class="w3-left w3-circle w3-margin-right" style="width:60px"/>
                     <span class="">#{tarefa.tarefaJiraOrigem.nomeTarefa}</span><br/>
                     <span>#{tarefa.tipoProfissionalNescessario.nome} </span> <br/>
                     <span>Tempo previsto: #{tarefa.minutosPrevistosTrabalho}</span>
