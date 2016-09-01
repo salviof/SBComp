@@ -1,7 +1,7 @@
 find . -name target -type d -exec rm -rf {} \;
 
-git pull
+git pull origin master
 git add --all
 git commit -m "Atualizacao automática"
-git push
+git push origin master
  

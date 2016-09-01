@@ -37,7 +37,7 @@
 
 
                         <br/><br/>
-                        <SBComp:CRUDNavegador crud="#{pgAcessos.grupoUsuariosCrud}" metodoMudaRegistro="#{pgAcessos.mudaListaTeste()}"/>
+                <!--        <SBComp:CRUDNavegador crud="#{pgAcessos.grupoUsuariosCrud}" metodoMudaRegistro="#{pgAcessos.mudaListaTeste()}"/>-->
                     </h:form>
 
 
@@ -53,7 +53,7 @@
                             <p:outputLabel value="Nome"/> <p:inputText value="#{pgAcessos.usuariosCrud.registro.nome}"/>
                             <p:outputLabel value="Senha"/>    <p:password redisplay="true" value="#{pgAcessos.usuariosCrud.registro.senha}" />
                             <p:outputLabel value="Email"/>   <p:inputText value="#{pgAcessos.usuariosCrud.registro.email}"/>
-                            <p:outputLabel value="Grupo Principal"/> <SBComp:seletorItem TIPO_VIEW_COMBO="true" lista="#{pgAcessos.grupoUsuariosCrud.registros}" registro="#{pgAcessos.usuariosCrud.registro.grupo}"/>
+                            <p:outputLabel value="Grupo Principal"/> <SBComp:seletorItem lista="#{pgAcessos.grupoUsuariosCrud.registros}" itemSelecionado="#{pgAcessos.usuariosCrud.registro.grupo}"/>
 
 
 
@@ -63,7 +63,7 @@
 
 
                             <br/><br/>
-                            <SBComp:CRUDNavegador crud="#{pgAcessos.usuariosCrud}"/>
+<!--                            <SBComp:CRUDNavegador crud="#{pgAcessos.usuariosCrud}"/> -->
 
                         </p:fieldset>
                     </h:form>
@@ -79,14 +79,14 @@
                         <p:tab title="Acesso a recursos" >
                             <p:fieldset legend="ACESSO A SER CONFIGURADO">
                                 <h:form>
-                                    <SBComp:seletorItem TIPO_VIEW_COMBO="true" atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-acessos" registro="#{pgAcessos.acessoSelecionado}" lista="#{pgAcessos.acessos}" />
+                                    <SBComp:seletorItem  atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-acessos" itemSelecionado="#{pgAcessos.acessoSelecionado}" lista="#{pgAcessos.acessos}" />
 
                                     <br /><br />
 
                                 </h:form>
                             </p:fieldset>
 
-                            <br /><br />
+                            <br />
 
 
                             <h:panelGroup id="id-panelGroup-acessos">
@@ -222,7 +222,7 @@
                                 <h1>
                                     <h:outputText value="#{pgAcessos.crudPaginasAcesso.registro.nomePagina}" />
                                 </h1>
-                                <SBComp:CRUDNavegador crud="#{pgAcessos.crudPaginasAcesso}" metodoMudaRegistro="#{pgAcessos.mudaRegistroPaginas()}" />
+                             <!--   <SBComp:CRUDNavegador crud="#{pgAcessos.crudPaginasAcesso}" metodoMudaRegistro="#{pgAcessos.mudaRegistroPaginas()}" /> -->
                                 <SBComp:seletorItens pickList="#{pgAcessos.pickListUsuarioPagina}" NomeItensSelecionados="Usuarios Permitidos" NomeOrigemItens="Usuários Disponiveis" />
 
                                 <SBComp:seletorItens pickList="#{pgAcessos.pickListGrupoUsuarioPagina}" NomeItensSelecionados="Grupos Permitidos" NomeOrigemItens="Grupos Disponíveis" />

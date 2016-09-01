@@ -14,22 +14,14 @@
         <cc:attribute name="maximo" default="999999999" />
         <cc:attribute name="minimo" default="-999999999" />
 
+
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
         <h:panelGrid columns="2">
             <h:outputLabel value="#{cc.attrs.titulo}" for="inputTexto"/>
-
-
-
-
-
             <p:spinner value="#{cc.attrs.valor}" id="inputTexto"  max="#{cc.attrs.maximo}" min="#{cc.attrs.minimo}"/>
-
-
-
-
             <p:tooltip  for="inputTexto" value="#{cc.attrs.dica}"  showEffect="clip" hideEffect="explode" />
         </h:panelGrid>
 

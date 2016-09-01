@@ -2,113 +2,98 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:sb="http://superbitsframework/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
 
     <cc:interface>
 
-        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.ItfAcaoDoSistema" />
-        <cc:attribute name="armazenamentoAcaoExecutada" default="#{null}" />
-        <cc:attribute name="metodo" method-signature="void listener()"  />
-        <cc:attribute name="update"  default="#{null}" />
-        <cc:attribute name="javaScriptOncomplete"  default="#{null}" />
-        <cc:attribute name="tipoVisualizacao" default="#{tipos.tipoVisualBotao.iconeENome}"/>
-        <cc:attribute name="cor" default="#{null}"/>
+        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema"
+                      shortDescription="A ação que será exibida " />
+        <cc:attribute name="armazenamentoAcaoExecutada"
+                      shortDescription="Ben para armazenar esta ação quando clicada, Esta opção só é exexutada com o atributo deste botão armazenarAcaoSelecionada for true "
+                      />
+        <cc:attribute name="metodo" type="javax.el.MethodExpression" />
+        <cc:attribute name="update"
+                      shortDescription="IDs que devem ser atualizados após clicar na alção"
+                      />
+        <cc:attribute name="javaScriptOncomplete"  default="#{null}"
+                      shortDescription="Javascript que deve ser executado após a execucao do botão"
+                      />
+        <cc:attribute name="tipoVisualizacao"
+                      type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+                      default="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                      shortDescription="Tipo de visualização do botão (Utilize #tipos.tipoVisualBotao"
+                      />
+        <cc:attribute name="cor"
+                      default="#{null}"
+                      shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
+                      />
+        <cc:attribute name="trasformarAcaoEmLink" default="#{cc.attrs.acao.umaAcaoGestaoDominio}"    />
+
+
+
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <c:set var="btIcone" value="#{cc.attrs.acao.iconeAcao}" />
-        <c:set var="btLabel" value="#{cc.attrs.acao.nomeAcao}" />
-
-        <c:if test="#{cc.attrs.acao.cor!=null}" >
-            <c:set var="estilo" value="color:  #{cc.attrs.acao.cor}" />
-        </c:if>
-        <c:if test="#{cc.attrs.acao.cor!=null}" >
-            <c:set var="estilo" value="" />
-        </c:if>
-
-
-        <c:choose >
-            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasIcone}">
-                <c:set var="btLabel" value="#{null}" />
-            </c:when>
+        <c:if test="#{!cc.attrs.trasformarAcaoEmLink}">
 
 
 
-            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasNome}">
-                <c:set var="btIcone" value="#{null}" />
-            </c:when>
+            <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodo')}">
+                <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc,'armazenamentoAcaoExecutada')}" >
 
-            <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasDescricao}">
-                <c:set var="btIcone" value="#{null}" />
-                <c:set var="btLabel" value="#{cc.attrs.acao.descricao}" />
-            </c:when>
+                    <sb:botaoAcao
+                        acao="#{cc.attrs.acao}"
+                        metodo="#{cc.attrs.metodo}"
+                        javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                        idUpdate="#{cc.attrs.update}"
+                        layout="#{cc.attrs.tipoVisualizacao}"
 
+                        />
 
-
-        </c:choose>
-
-        <c:if test="#{!cc.attrs.acao.umaAcaoPrincipal}" >
-            <p:commandButton onmousedown="esconderTooltips();"
-                             id="btAcao#{cc.id}"
-                             style="margin-top: 5px; #{estilo}"
-                             icon="#{btIcone}"
-                             action="#{cc.attrs.metodo}"
-                             update="#{cc.attrs.update}"
-
-                             value="#{btLabel}"
-                             oncomplete="#{cc.attrs.javaScriptOncomplete}"
-
-                             >
-
-
-
-
-
-
-                <c:if test="#{cc.attrs.armazenamentoAcaoExecutada!=null}" >
-                    <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}" value="#{cc.attrs.acao}"  />
                 </c:if>
-                <c:choose >
-                    <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasIcone}">
-                        <p:tooltip for="btAcao#{cc.id}" value="#{cc.attrs.acao.nomeAcao}"/>
-                    </c:when>
-                    <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasNome}">
-                        <p:tooltip for="btAcao#{cc.id}" value="#{cc.attrs.acao.descricao}"/>
-                    </c:when>
 
-                    <c:when test="#{cc.attrs.tipoVisualizacao==tipos.tipoVisualBotao.apenasDescricao}">
+                <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'armazenamentoAcaoExecutada')}">
 
-                    </c:when>
-
-
-
-                    <c:otherwise>
-
-                    </c:otherwise>
+                    <sb:botaoAcaoAcaoTarget
+                        acao="#{cc.attrs.acao}"
+                        metodo="#{cc.attrs.metodo}"
+                        origem="#{cc.attrs.acao}"
+                        destino="#{cc.attrs.armazenamentoAcaoExecutada}"
+                        javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+                        idUpdate="#{cc.attrs.update}"
+                        layout="#{cc.attrs.tipoVisualizacao}"
+                        />
+                </c:if>
 
 
 
 
-                </c:choose>
-            </p:commandButton>
+                <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc,'metodo')}">
+
+                    <sb:botaoFake
+                        acao="#{cc.attrs.acao}"
+                        metodo="#{cc.attrs.metodo}"
+                        layout="#{cc.attrs.tipoVisualizacao}"
+                        />
+                </c:if>
+
+
+            </c:if>
         </c:if>
 
+        <c:if test="#{cc.attrs.trasformarAcaoEmLink}">
 
-
-
-        <c:if test="#{cc.attrs.acao.umaAcaoPrincipal}" >
-
-            <p:button value="#{cc.attrs.acao.nomeAcao}" href="#{pgUtil.navegar(cc.attrs.acao)}" />
-
-
+            <sb:botaoLink
+                acao="#{cc.attrs.acao}"
+                layout="#{cc.attrs.tipoVisualizacao}" />
 
         </c:if>
+
 
     </cc:implementation>
 </html>

@@ -10,7 +10,7 @@
     <!-- INTERFACE -->
     <cc:interface>
 
-        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.ItfAcaoDoSistema" />
+        <cc:attribute name="acao" type="com.super_bits.Controller.Interfaces.acoes.ItfAcaoDoSistema" />
         <cc:attribute name="armazenamentoAcaoExecutada" />
         <cc:attribute name="metodo" method-signature="void listener()"  />
         <cc:attribute name="update"   />
@@ -19,9 +19,15 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <h:form >
-            <p:commandButton onmousedown="esconderTooltips();" id="btAcao#{cc.id}" icon="#{cc.attrs.acao.iconeAcao}" action="#{cc.attrs.metodo}" value="#{cc.attrs.acao.nomeAcao}" >
+            <p:commandButton onmousedown="esconderTooltips();"
+                             id="btAcao#{cc.id}"
+                             icon="#{cc.attrs.acao.iconeAcao}"
+                             action="#{cc.attrs.metodo}"
+                             value="#{cc.attrs.acao.nomeAcao}" >
 
-                <f:setPropertyActionListener target="#{cc.attrs.armazenamentoAcaoExecutada}" value="#{cc.attrs.acao}"  />
+                <f:setPropertyActionListener
+                    target="#{cc.attrs.armazenamentoAcaoExecutada}"
+                    value="#{cc.attrs.acao}"  />
 
             </p:commandButton>
         </h:form>
