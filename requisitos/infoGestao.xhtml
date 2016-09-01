@@ -2,7 +2,6 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:SBRec="http://xmlns.jcp.org/jsf/composite/SBComp/requisitos"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
@@ -17,48 +16,44 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        #{pgUtil.isAtributoPreenchidoComExpressao(component, atributo)}
+
+        <p:panel header="Desenvolvimento de gestão para#{cc.attrs.previsaoGestao.gestao.nome}" >
 
 
-        <p:fieldset legend="#{cc.attrs.previsaoGestao.gestao.nomeAcao}" class="w3-card-4" >
-
-            <p:panelGrid  columns="2" >
-                <p:outputLabel value="Horas Totais Programadas:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.horasProgramadas}"/>
-                <p:outputLabel value="Formulários previstos:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.qtdAcoesDeFormulario}"/>
-                <p:outputLabel value="Ações de controle prevista:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.qtdAoesDeController}"/>
-                <p:outputLabel value="Tipo de registro vinculado:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.entidadeVinculada}"/>
-            </p:panelGrid>
+            <div class="Container100 w3-card-4">
 
 
+                <div class="Container50 w3-card-4">
+                    <p:fieldset legend="Informações Gerais do desenvolvimento" >
 
+                        <p:panelGrid  columns="2" >
+                            <p:outputLabel value="Horas Totais Programadas:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.horasProgramadas}"/>
+                            <p:outputLabel value="Formulários previstos:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.qtdAcoesDeFormulario}"/>
+                            <p:outputLabel value="Ações de controle prevista:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.qtdAoesDeController}"/>
+                            <p:outputLabel value="Tipo de registro vinculado:"/> <p:outputLabel value="#{cc.attrs.previsaoGestao.entidadeVinculada.simpleName}"/>
+                        </p:panelGrid>
 
+                    </p:fieldset>
+                </div>
+                <div class="Container50 w3-card-4">
 
-            <c:forEach items="#{cc.attrs.previsaoGestao.tarefasVinculadas}" var="tarefa" >
+                    <h2 class="FontAdamantiumBold"> #{cc.attrs.previsaoGestao.gestao.nome}</h2>
 
-
-                <div class="Container33 Responsive  w3-padding-16  w3-card-4">
-                    <SBRec:tipoProfissional  tipoProfissional="#{tarefa.tipoProfissionalNescessario}"/>
-                    <p class="w3-tooltip">
-                        <img src="#{infoWebApp.urlPagina}#{tarefa.tipoProfissionalNescessario.imgPequena}"
-                             class="w3-left w3-circle w3-margin-right" style="width:60px"/>
-                        <span class="w3-text"><i> #{tarefa.tipoProfissionalNescessario.descricao} </i></span>
-                    </p>
-
-
-                    <span class="">#{tarefa.tarefaJiraOrigem.nomeTarefa}</span><br/>
-                    <span>#{tarefa.tipoProfissionalNescessario.nome} </span> <br/>
-                    <span>Tempo previsto: #{tarefa.minutosPrevistosTrabalho}</span>
+                    #{cc.attrs.previsaoGestao.gestao.descricao}
 
                 </div>
 
 
+            </div>
 
-            </c:forEach>
+            <div class="SeparatorFull"/>
 
-
-
-        </p:fieldset>
-
+            <p:fieldset legend="Equipe de desenvolvimento" >
+                <c:forEach items="#{cc.attrs.previsaoGestao.tarefasVinculadas}" var="tarefa" >
+                    <SBRec:infoTarefaPrevista tarefaSistema="#{tarefa}" />
+                </c:forEach>
+            </p:fieldset>
+        </p:panel>
 
 
     </cc:implementation>
