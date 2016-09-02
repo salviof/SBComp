@@ -18,9 +18,16 @@
 
 
 
-        <div class="Container30   w3-card-4  " style="margin:5px; margin-left: 5px!important; padding: 10px; background-color: lightgrey; min-height: 170px;">
+        <div class="Container30   w3-card-4  " style="margin:5px;
+             margin-left: 5px!important;
+             padding: 10px;
+             background-color: #dfe3ee;
+             min-height: 170px;"
+             >
             <span><p:progressBar value="2" /></span>
-            <SBRec:tipoProfissional  tipoProfissional="#{cc.attrs.tarefaSistema.tipoProfissionalNescessario}"/>
+            <SBRec:tipoProfissional
+                tipoProfissional="#{cc.attrs.tarefaSistema.tipoProfissionalNescessario}"
+                />
             <span class="">#{cc.attrs.tarefaSistema.tarefaJiraOrigem.nomeTarefa}</span><br/>
             <span>#{cc.attrs.tarefaSistema.tipoProfissionalNescessario.nome} </span> <br/>
             <span>Tempo previsto: #{cc.attrs.tarefaSistema.minutosPrevistosTrabalho}</span>
