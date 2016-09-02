@@ -18,26 +18,18 @@
     <cc:implementation>
 
         <c:if test="#{tipos.tipoVisualFormulario.gruposCampos == cc.attrs.tipoVisualizacao}">
-
-            <SBFormulario:formularioSimples acao="#{cc.attrs.acao}" registro="#{cc.attrs.registro}" somenteLeitura="#{cc.attrs.somenteLeitura}" tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
-
+            <SBFormulario:camposDaAcao registro="#{cc.attrs.registro}"
+                                       acao="#{cc.attrs.acao}"
+                                       />
         </c:if>
-
         <c:if test="#{tipos.tipoVisualFormulario.assistente ==cc.attrs.tipoVisualizacao}">
-            <SBFormulario:formularioWizard  acao="#{cc.attrs.acao}" registro="#{cc.attrs.registro}" somenteLeitura="#{cc.attrs.somenteLeitura}" tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
+            <SBFormulario:camposDaAcaoWizard
+                acao="#{cc.attrs.acao}"
+                registro="#{cc.attrs.registro}"
+                somenteLeitura="#{cc.attrs.somenteLeitura}"
+                tipoVisualizacaoLabel="#{cc.attrs.tipoVisualizacaoLabel}"/>
         </c:if>
-
-
-
     </cc:implementation>
-
-
-
-
-
-
-
-
 
 
 
