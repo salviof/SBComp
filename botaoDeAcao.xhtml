@@ -47,6 +47,7 @@
                 <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc,'armazenamentoAcaoExecutada')}" >
 
                     <sb:botaoAcao
+
                         acao="#{cc.attrs.acao}"
                         metodo="#{cc.attrs.metodo}"
                         javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
@@ -54,6 +55,8 @@
                         layout="#{cc.attrs.tipoVisualizacao}"
 
                         />
+
+
 
                 </c:if>
 
@@ -77,7 +80,7 @@
 
                     <sb:botaoFake
                         acao="#{cc.attrs.acao}"
-                        metodo="#{cc.attrs.metodo}"
+
                         layout="#{cc.attrs.tipoVisualizacao}"
                         />
                 </c:if>
