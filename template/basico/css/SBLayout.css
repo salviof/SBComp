@@ -1,5 +1,17 @@
 
 
+/* Fica mais interessante utilizando w3-btn e w3-border  */
+.botaoCard{
+    margin:5px;
+    margin-left: 5px!important;
+    padding: 10px;
+    background-color: #dfe3ee!important;
+    min-height: 170px;
+    height: auto!important;
+    color: #000!important;
+    white-space:normal!important;
+    text-align: left!important;
+}
 
 
 .colunaLabel{

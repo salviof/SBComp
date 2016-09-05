@@ -35,12 +35,18 @@
 
 
 
+        <cc:attribute name="label"
+                      shortDescription="Label do botão"
+                      default="#{cc.attrs.acao.nomeAcao}"
+                      type="java.lang.String"
+                      />
+
+
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
         <c:if test="#{!cc.attrs.trasformarAcaoEmLink}">
-
 
 
             <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodo')}">
@@ -53,6 +59,7 @@
                         javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
                         idUpdate="#{cc.attrs.update}"
                         layout="#{cc.attrs.tipoVisualizacao}"
+                        label="#{cc.attrs.label}"
 
                         />
 

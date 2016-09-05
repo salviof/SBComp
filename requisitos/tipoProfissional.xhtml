@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://java.sun.com/jsf/composite">
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -14,13 +15,20 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <p class="w3-tooltip">
+        <p:graphicImage
+            id="imagem"
+            styleClass="w3-circle w3-left  w3-margin-right" url="#{infoWebApp.urlPagina}#{cc.attrs.tipoProfissional.imgPequena}"
+            style="width:50px;background: #fff;"
+            />
 
 
-            <img src="#{infoWebApp.urlPagina}#{cc.attrs.tipoProfissional.imgPequena}"
-                 class="w3-circle w3-left  w3-margin-right" style="width:50px;background: #fff;"/>
-            <span class="w3-text FontAdamantiumLight"><i> #{cc.attrs.tipoProfissional.descricao} </i></span>
-        </p>
+        <p:tooltip for="@parent:imagem"
+                   position="bottom"
+                   hideDelay="3"
+                   value="#{cc.attrs.tipoProfissional.descricao}"/>
+
+
+
 
     </cc:implementation>
 </html>
