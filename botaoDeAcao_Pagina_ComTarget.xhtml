@@ -2,8 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:sb="http://superbitsframework/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:sb="http://superbitsframework/ui">
 
     <!-- INTERFACE -->
 
@@ -14,8 +13,9 @@
 
         <cc:attribute name="update"
                       shortDescription="IDs que devem ser atualizados após clicar na alção"
+                      type="java.lang.String"
                       />
-        <cc:attribute name="javaScriptOncomplete"  default="#{null}"
+        <cc:attribute name="javaScriptOncomplete"  default="javascript:irParaTopo();"
                       shortDescription="Javascript que deve ser executado após a execucao do botão"
                       />
         <cc:attribute name="tipoVisualizacao"
@@ -28,26 +28,50 @@
                       default="#{null}"
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
-        <cc:attribute name="label"
+
+        <cc:attribute name="origem"
+                      required="#{true}"
+                      type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples"
+
+                      shortDescription="Origem do valor que será armazenado no destino"
+                      />
+        <cc:attribute name="destino"
+                      required="#{true}"
+                      type="com.super_bits.modulosSB.SBCore.InfoCampos.registro.Interfaces.basico.ItfBeanSimples"
+
+                      shortDescription="Local onde o Bean de Origem será armazenado"
+                      />
+
+        <cc:attribute name="icone"
+                      default="#{cc.attrs.acao.iconeAcao}"
+                      shortDescription="Icone da ação selecionada"
                       type="java.lang.String"
-                      shortDescription="Label do botão"
                       />
 
 
+
+        <cc:attribute name="label"
+                      shortDescription="IDs que devem ser atualizados após clicar na alção"
+                      default="#{cc.attrs.origem.nome}"
+                      type="java.lang.String"
+                      />
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <sb:botaoAcaoPaginaAtual
+        <sb:botaoAcaoAcaoTarget
             acao="#{cc.attrs.acao}"
             layout="#{cc.attrs.tipoVisualizacao}"
             javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
             idUpdate="#{cc.attrs.update}"
+            origem="#{cc.attrs.origem}"
+            destino="#{cc.attrs.destino}"
+            metodo="#{paginaAtual.infoPagina.executarAcaoSelecionada()}"
             label="#{cc.attrs.label}"
-            icone="#{cc.attrs.acao.iconeAcao}"
-
+            icone="#{cc.attrs.icone}"
             />
+
 
 
     </cc:implementation>
