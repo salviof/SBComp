@@ -9,10 +9,10 @@
     <!-- INTERFACE -->
     <cc:interface>
 
-        <cc:attribute name="gestaoPrevista"
+        <cc:attribute name="tabelaPrevista"
                       displayName="Previsao Gestao"
                       required="#{true}"
-                      type="com.super_bits.projeto.Jira.ItfPrevisaoGestaoEntidade" />
+                      type="com.super_bits.projeto.Jira.ItfPrevisaoEntidade" />
 
 
         <cc:attribute name="updateID"
@@ -36,9 +36,9 @@
         <p:commandLink action="#{paginaAtual.infoPagina.executarAcaoSelecionada()}"
                        update="#{cc.attrs.updateID}" oncomplete="javascript:irParaTopo();" >
             <f:setPropertyActionListener target="#{paginaAtual.infoPagina.acaoSelecionada}"
-                                         value="#{pgRequisitosVisaoGeral.acaoDetalhesGestao}" />
-            <f:setPropertyActionListener target="#{cc.attrs.destino}" value="#{cc.attrs.gestaoPrevista}"/>
-            <SBRec:cardGestaoPrevista gestaoPrevista="#{cc.attrs.gestaoPrevista}"/>
+                                         value="#{pgRequisitosVisaoGeral.acaoDetalhesTabela}" />
+            <f:setPropertyActionListener target="#{cc.attrs.destino}" value="#{cc.attrs.tabelaPrevista}"/>
+            <SBRec:cardTabelaPrevista   entidadePrevisa="#{cc.attrs.tabelaPrevista}"/>
         </p:commandLink>
 
     </cc:implementation>

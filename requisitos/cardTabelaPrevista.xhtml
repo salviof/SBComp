@@ -2,6 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:SBRec="http://xmlns.jcp.org/jsf/composite/SBComp/requisitos"
       xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
@@ -18,13 +19,18 @@
 
         <div class="botaoCard Container30  w3-btn w3-border "
              >
-            #{cc.attrs.entidadePrevisa.estruturaDeEntidade.plural}
-            #{cc.attrs.entidadePrevisa.estruturaDeEntidade.nomeEntidade}
-            <span><p:progressBar value="2"  style="margin: 5px;"/></span>
 
-            #{cc.attrs.entidadePrevisa.custoDesenvolvimento.horasTotal}
-            #{cc.attrs.entidadePrevisa.custoDesenvolvimento.valorTotal}
-            #{cc.attrs.entidadePrevisa.estruturaDeEntidade.calculos}
+            <SBRec:porCentagemGrupoTarefas grupoDeTarefas="#{cc.attrs.entidadePrevisa}" />
+
+
+
+            <span> #{cc.attrs.entidadePrevisa.estruturaDeEntidade.plural}</span>
+            <span>#{cc.attrs.entidadePrevisa.estruturaDeEntidade.nomeEntidade}</span>
+
+
+            <span>   #{cc.attrs.entidadePrevisa.custoDesenvolvimento.horasTotal}</span>
+            <span>   Valor total:#{cc.attrs.entidadePrevisa.custoDesenvolvimento.valorTotal}<br/></span>
+            <span>       #{cc.attrs.entidadePrevisa.estruturaDeEntidade.calculos}</span>
 
         </div>
 

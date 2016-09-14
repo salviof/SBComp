@@ -2,6 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:SBRec="http://xmlns.jcp.org/jsf/composite/SBComp/requisitos"
       xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
@@ -17,21 +18,13 @@
 
 
         <div class="botaoCard Container30  w3-btn w3-border " >
-            <p:progressBar />
-            <br/>
-            <p:panel id="imagem" styleClass=" w3-circle w3-left  w3-margin-right">
-                <i class="#{cc.attrs.gestaoPrevista.gestao.iconeAcao} Fs30"  />
-            </p:panel>
-            <p:tooltip for="@parent:imagem"
-                       position="bottom"
-                       hideDelay="3"
-                       value="#{cc.attrs.gestaoPrevista.gestao.descricao}"/>
+            <SBRec:porCentagemGrupoTarefas grupoDeTarefas="#{cc.attrs.gestaoPrevista}" />
 
             <span>#{cc.attrs.gestaoPrevista.gestao.nomeAcao} </span> <br/>
             <span>Tempo previsto: #{cc.attrs.gestaoPrevista.horasProgramadas}</span><br/>
             <span>Formulários nescessários: #{cc.attrs.gestaoPrevista.qtdAcoesDeFormulario}</span><br/>
             <span>Ações do Sistema nescessários: #{cc.attrs.gestaoPrevista.qtdAoesDeController}</span><br/>
-            <span>Custo com desenvolvedores: #{cc.attrs.gestaoPrevista.custoDesenvolvimento.valorTotal}</span>
+            <span>Custo com desenvolvedores: #{cc.attrs.gestaoPrevista.custoDesenvolvimento.valorTotal}</span><br/>
             <span>Horas totais de desenvolvimento: #{cc.attrs.gestaoPrevista.custoDesenvolvimento.horasTotal}</span>
 
         </div>

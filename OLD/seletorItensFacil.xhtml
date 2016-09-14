@@ -96,7 +96,8 @@
                         <p:outputLabel id="id-outPutLabel-areaItens#{listaOrdenada.nomeJsfAmigavel}" value="#{listaOrdenada.nomeLista}" style="font-family:georgia; color: white; background-color:#39A180; padding: 2px" />
                         <br class="clear"/>
                         <h:form id="id-form-areaItens#{listaOrdenada.nomeJsfAmigavel}">
-                            <sbc:seletorItem id="id-seletorItem-areaItens" mostraTextoImagem="true" atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-areaItens" lista="#{listaOrdenada.itens}"  itemSelecionado="#{cc.attrs.seletorItensFacil.itemSelecionado}" />
+                            <sbc:seletorItem id="id-seletorItem-areaItens" mostraTextoImagem="true"
+                                             idOnChange="id-panelGroup-areaItens" lista="#{listaOrdenada.itens}"  itemSelecionado="#{cc.attrs.seletorItensFacil.itemSelecionado}" />
                         </h:form>
                     </p:panel>
                 </c:forEach>
