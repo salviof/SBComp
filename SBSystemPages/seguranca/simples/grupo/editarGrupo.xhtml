@@ -30,10 +30,13 @@
         <ui:define name="conteudoDireita">
             <h:form>
 
-                <sb:botaoAcaoEntidadePaginaAtual acao="#{paginaAtual.infoPagina.comoPaginaEntidade.acaoListarRegistros}"
-                                                 layout="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
-                                                 registro="#{paginaAtual.infoPagina.comoPaginaEntidade.entidadeSelecionada}"
-                                                 />
+
+                <SBComp:botaoDeAcao_Pagina_Entidade
+                    acao="#{paginaAtual.infoPagina.comoPaginaEntidade.acaoListarRegistros}"
+                    tipoVisualizacao="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                    registro="#{paginaAtual.infoPagina.comoPaginaEntidade.entidadeSelecionada}"
+                    />
+
 
 
 

@@ -79,7 +79,10 @@
                         <p:tab title="Acesso a recursos" >
                             <p:fieldset legend="ACESSO A SER CONFIGURADO">
                                 <h:form>
-                                    <SBComp:seletorItem  atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-acessos" itemSelecionado="#{pgAcessos.acessoSelecionado}" lista="#{pgAcessos.acessos}" />
+                                    <SBComp:seletorItem
+                                        idOnChange="id-panelGroup-acessos"
+                                        itemSelecionado="#{pgAcessos.acessoSelecionado}"
+                                        lista="#{pgAcessos.acessos}" />
 
                                     <br /><br />
 

@@ -31,28 +31,20 @@
         <cc:attribute name="registro" />
 
     </cc:interface>
-    <!-- O IF PRECISOU SER CRIADO POIS O DEFAULT NÃO EST'AFUNCIONANDO :(  TODO: Fazer o default funcionar e retirar este if infame -->
+
     <cc:implementation>
-        <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
-            <sb:botaoAcaoEntidadePaginaAtual
-                acao="#{cc.attrs.acao}"
-                layout="#{cc.attrs.tipoVisualizacao}"
-                registro="#{cc.attrs.registro}"
-                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                idUpdate="#{cc.attrs.update}"
-                />
-        </c:if>
-        <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
-            <sb:botaoAcaoEntidadePaginaAtual
-                acao="#{cc.attrs.acao}"
-                layout="#{layoutsComponenteSB.layoutBotoes.icone}"
-                registro="#{cc.attrs.registro}"
-                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                idUpdate="#{cc.attrs.update}"
-                />
+<<<<<<< HEAD
+=======
 
+>>>>>>> bb923ea4bdd264f622dd3b634dbdabc2ccdd6bcb
+        <sb:botaoAcaoEntidadePaginaAtual
+            acao="#{cc.attrs.acao}"
+            layout="#{cc.attrs.tipoVisualizacao}"
+            registro="#{cc.attrs.registro}"
+            javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+            idUpdate="#{cc.attrs.update}"
+            />
 
-        </c:if>
     </cc:implementation>
 </html>
 

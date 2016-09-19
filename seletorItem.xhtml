@@ -17,11 +17,11 @@
                       default="#{tipos.componentesJSF.seletorItemComponentes.padrao}"
                       />
         <cc:attribute name="statusAjax" type="java.lang.Boolean" default="#{null}" />
-        <cc:attribute name="atualizaFormOnChange" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="atualizaPorIdOnChange" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="parametroIdOnChange" type="java.lang.String" default="#{null}" />
-        <cc:attribute name="atualizaPeloMetodoOnChange" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="parametroMetodoOnChange" method-signature="void listener()" />
+
+
+        <cc:attribute name="idOnChange" type="java.lang.String" default="#{null}" />
+
+        <cc:attribute name="metodoOnChange" type="javax.el.MethodExpression"/>
         <cc:attribute name="mostraSomenteImagem" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="mostraTextoImagem" type="java.lang.Boolean" default="#{false}" />
         <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
@@ -33,10 +33,17 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
+        #{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodoOnChange')}
         <sb:seletorItem
             layoutCampo="#{layoutsComponenteSB.layoutSeletorItem.combo}"
             itemSelecionado="#{cc.attrs.itemSelecionado}"
-            opcoes="#{cc.attrs.lista}" />
+            opcoes="#{cc.attrs.lista}"
+            possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodoOnChange')}"
+            idAtualizarOnChange="#{cc.attrs.idOnChange}"
+            metodoOnChange="#{cc.attrs.metodoOnChange}"
+            possuiIDOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'idOnChange')}"
+            componente="#{cc.attrs.tipoVisualizacao}"
+            />
 
     </cc:implementation>
 

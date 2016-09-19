@@ -28,29 +28,27 @@
                       default="#{null}"
                       shortDescription="Cor do botão caso ele deva ser exibido por em uma cor especifica"
                       />
+        <cc:attribute name="label"
+                      type="java.lang.String"
+                      shortDescription="Label do botão"
+                      />
 
 
 
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
-            <sb:botaoAcaoPaginaAtual
-                acao="#{cc.attrs.acao}"
-                layout="#{cc.attrs.tipoVisualizacao}"
-                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                idUpdate="#{cc.attrs.update}"
-                />
-        </c:if>
-        <c:if test="#{!pgUtil.isAtributoPreenchidoComExpressao(cc, 'tipoVisualizacao')}">
-            <sb:botaoAcaoPaginaAtual
-                acao="#{cc.attrs.acao}"
-                layout="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
-                javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
-                idUpdate="#{cc.attrs.update}"
-                />
 
-        </c:if>
+        <sb:botaoAcaoPaginaAtual
+            acao="#{cc.attrs.acao}"
+            layout="#{cc.attrs.tipoVisualizacao}"
+            javaScriptOncomplete="#{cc.attrs.javaScriptOncomplete}"
+            idUpdate="#{cc.attrs.update}"
+            label="#{cc.attrs.label}"
+            icone="#{cc.attrs.acao.iconeAcao}"
+
+            />
+
 
     </cc:implementation>
 </html>
