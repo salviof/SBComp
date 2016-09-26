@@ -27,8 +27,17 @@
 
                 <div class="EmptyBox20"></div>
                 <div class="Card SoftGrayBack">
-                    <p:inputText id="email" label="E-Mail"  requiredMessage="O E-Mail é obrigatório" validatorMessage="O e-mail não parece ser válido" placeholder="E-mail" required="true" value="#{controleDeSessaoWeb.usuarioLogar}"  styleClass="Wid90 TexAlCenter">
+                    <p:inputText id="email" label="E-Mail"
+                                 requiredMessage="O E-Mail é obrigatório"
+                                 validatorMessage="O e-mail não parece ser válido"
+                                 placeholder="E-mail"
+                                 required="true"
+                                 value="#{controleDeSessaoWeb.usuarioLogar}"
+                                 styleClass="Wid90 TexAlCenter"
+                                 >
+
                         <f:validateLength minimum="4" />
+
                     </p:inputText>
                     <p:message for="email" />
                     <div class="EmptyBox10"></div>
