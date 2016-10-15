@@ -118,13 +118,13 @@
 
         <h:form>
             Apenas Icones:
-            <SBComp:botaoDeAcao acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.apenasIcone}"/>
+            <SBComp:botaoDeAcao metodo="#{paginaAtual.infoPagina.executarAcaoSelecionada()}" acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.apenasIcone}"/>
             Apenas Nome:
-            <SBComp:botaoDeAcao acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.apenasNome}"/>
+            <SBComp:botaoDeAcao  metodo="#{paginaAtual.infoPagina.executarAcaoSelecionada()}" acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.apenasNome}"/>
             Icone e Nome:
-            <SBComp:botaoDeAcao acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"/>
+            <SBComp:botaoDeAcao  metodo="#{paginaAtual.infoPagina.executarAcaoSelecionada()}" acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.iconeENome}"/>
             Descricao
-            <SBComp:botaoDeAcao acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.apenasDescricao}"/>
+            <SBComp:botaoDeAcao  metodo="#{paginaAtual.infoPagina.executarAcaoSelecionada()}" acao="#{pgDemoComponente.acaoSalvar}" tipoVisualizacao="#{tipos.tipoVisualBotao.apenasDescricao}"/>
 
 
         </h:form>

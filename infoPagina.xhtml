@@ -19,117 +19,11 @@
     <cc:implementation>
 
 
-        <!--
-                <p:dialog  header="Configuração de Cores" widgetVar="modalCores" minHeight="40" closable="true"  >
 
 
 
-                    <p:tabView orientation="left">
-                        <p:tab title="Cores SuperBits CSS">
 
 
-                            <h:form>
-
-                                <p:panelGrid columns="2"   >
-
-                                    <h:outputText value="pgUtil.cores.corAction " />
-                                    <p:colorPicker  value="#{pgUtil.cores.editorCorAction}" />
-                                    <h:outputText value="pgUtil.cores.corBackground" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorBackground}" />
-
-                                    <h:outputText value="pgUtil.cores.corBorda" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorBorda}" />
-                                    <h:outputText value="pgUtil.cores.corComplementa" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorComplementa}" />
-                                    <h:outputText value="pgUtil.cores.corFonte" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorFonte}" />
-                                    <h:outputText value="pgUtil.cores.corFundo1" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorFundo1}" />
-                                    <h:outputText value="pgUtil.cores.corFundo2" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorFundo2}" />
-                                    <h:outputText value="pgUtil.cores.corHeader" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorHeader}" />
-                                    <h:outputText value="pgUtil.cores.corHover" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorHover}" />
-                                    <h:outputText value="pgUtil.cores.corOpacidade" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorOpacidade}" />
-                                    <h:outputText value="pgUtil.cores.corTitulo" />
-                                    <p:colorPicker value="#{pgUtil.cores.editorCorTitulo}" />
-
-                                </p:panelGrid>
-                                <p:commandButton  value="Alterar sem salvar" update="@form:@parent:@parent"  />
-
-                                <p:commandButton  actionListener="#{pgUtil.cores.salvarCores()}" value="salvar permanente neste Servidor"  />
-                            </h:form>
-
-                        </p:tab>
-                        <p:tab title="Temas:">
-                            <br/><br/><br/><br/>
-                            <h:form >
-                                <p:panel header="Tema Oficial">
-                                    <SBComp:seletorItem itemSelecionado="#{pgUtil.tema.temaOficial}" lista="#{pgUtil.tema.temasDisponiveis}" mostraTextoImagem="true" />
-
-                                    <p:commandButton value="Alterar sem salvar" />
-                                    <p:commandButton value="Salvar Permanente neste servidor" />
-                                </p:panel>
-                            </h:form>
-
-                            <p:panel header="Importar Tema personalizado por Themeroller " >
-
-                                <h2>IMPORTANTE:</h2>
-
-                                <p:outputLabel value="PARA EDITAR O CSS PERSONALIZADO, ABRA A PASTA WEB-APP/RESOURCES/primefaces-temaPersonalizado, theme.css"/>
-                                <br/><br/>
-                                <p:outputLabel value="É importante alterar o tema oficial para 'Tema Personalizado'"/>
-
-                                <br/><br/>
-                                <p:link target="themeRoler" href="http://jqueryui.com/themeroller/" value="Ir para pagina ThemeRoller em nova Aba"  />
-
-
-                                <h:form enctype="multipart/form-data">
-
-                                    <p:fileUpload fileUploadListener="#{pgUtil.tema.importarRollerTheme}" update="#{pgUtil.makeCaminhoCompletoID('mensagemUsuario')}" />
-
-
-
-                                </h:form>
-                            </p:panel>
-
-
-                        </p:tab>
-                        <p:tab title="Salvar Ressources permanente">
-
-                            <p:outputLabel value="  Utilize este botão para copiar os arquivos da pasta resources do tomcat em execução para a pasta oficial de desenvlovimento, salvando as alterações
-                                           de forma permanente e oficial."/>
-
-
-                            <h:form>
-                                <p:commandButton actionListener="#{pgUtil.copiarRessource}" value="Copiar a pasta ressource para ambiente de desenvolvimento" update="@form"/>
-                            </h:form>
-
-                        </p:tab>
-                    </p:tabView>
-
-                </p:dialog>
-
-         <h:form >
-                                    <p:commandButton value="Editar Cores e Temas " type="button" onclick="PF(
-                                    'modalCores').show()
-                            ;" />
-
-
-
-                </h:form>
-         <h:form >
-                    <p:commandButton actionListener="#{pgUtil.cores.salvarCores}" value="salvarPermante" rendered="false" />
-                </h:form>
-
-        -->
-
-
-
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        teste3
 
         <h:form id="formInfoPagina" >
             <p:commandButton value="Atualizar info" update="formInfoPagina" />
@@ -197,17 +91,20 @@
                     </p:panel>
 
                     <p:panel header="INFOBEAN"  >
-                        <p:panelGrid columns="4" >
+                        <p:panelGrid columns="5" >
 
                             <p:outputLabel value="Tipo"/>
                             <p:outputLabel value="acesso ([chamada])"/>
                             <p:outputLabel value="Descricao"/>
                             <p:outputLabel value="aplicacao"/>
+                            <p:outputLabel value="Visualizacao padrão"/>
                             <c:forEach items="#{paginaAtual.infoPagina.infoBeans}" var="bean" >
-                                <p:outputLabel value="#{bean.classe}"/>
-                                <p:outputLabel value="#{bean.chamada}"/>
-                                <p:outputLabel value="#{bean.descricao}"/>
-                                <p:outputLabel value="#{bean.exemplo}"/>
+                                <p:outputLabel value="#{bean.infoBean.classe}"/>
+                                <p:outputLabel value="#{bean.infoBean.chamada}"/>
+                                <p:outputLabel value="#{bean.infoBean.descricao}"/>
+                                <p:outputLabel value="#{bean.infoBean.exemplo}"/>
+                                <p:outputLabel value="#{bean.infoBean.visualizacaoItem}"/>
+
                             </c:forEach>
 
 
@@ -260,6 +157,7 @@
                                 onexception="PF('exceptionDialog').show();" />
 
         <p:dialog id="exceptionDialog" header="Ouve lançamento de exceção não tratada: '#{pfExceptionHandler.type}' !" widgetVar="exceptionDialog"
+
                   height="500px">
             <h:outputText value="Mensagem: #{pfExceptionHandler.message}" /> <br/>
             <h:outputText value="StackTrace: " /> <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /> <br />

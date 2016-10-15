@@ -4,7 +4,6 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:sb="http://superbitsframework/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
     <!-- INTERFACE -->
 
     <cc:interface>
@@ -20,7 +19,7 @@
                       />
         <cc:attribute name="tipoVisualizacao"
 
-                      type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+                      type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
                       default="#{layoutsComponenteSB.layoutBotoes.icone}"
                       shortDescription="Tipo de visualização do botão (Utilize #tipos.tipoVisualBotao"
                       />
@@ -33,10 +32,7 @@
     </cc:interface>
 
     <cc:implementation>
-<<<<<<< HEAD
-=======
 
->>>>>>> bb923ea4bdd264f622dd3b634dbdabc2ccdd6bcb
         <sb:botaoAcaoEntidadePaginaAtual
             acao="#{cc.attrs.acao}"
             layout="#{cc.attrs.tipoVisualizacao}"
