@@ -13,7 +13,7 @@
                       shortDescription="Lista de opções disponíveis para seleção"
                       />
 
-        <cc:attribute name="tipoVisualizacao" type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+        <cc:attribute name="tipoVisualizacao" type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
                       default="#{tipos.componentesJSF.seletorItemComponentes.padrao}"
                       />
         <cc:attribute name="statusAjax" type="java.lang.Boolean" default="#{null}" />
@@ -33,7 +33,7 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        #{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodoOnChange')}
+
         <sb:seletorItem
             layoutCampo="#{layoutsComponenteSB.layoutSeletorItem.combo}"
             itemSelecionado="#{cc.attrs.itemSelecionado}"
