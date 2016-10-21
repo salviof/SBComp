@@ -5,12 +5,13 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario">
+      xmlns:SBFormulario="http://xmlns.jcp.org/jsf/composite/SBComp/formulario"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <!-- INTERFACE -->
     <cc:interface>
 
-        <cc:attribute name="acao" required="#{true}" type="com.super_bits.Controller.Interfaces.permissoes.ItfAcaoFormulario" />
+        <cc:attribute name="acao" required="#{true}" type="com.super_bits.modulosSB.SBCore.modulos.Controller.Interfaces.permissoes.ItfAcaoFormulario" />
         <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanSimples" />
         <cc:attribute name="somenteLeitura" default="#{true}" />
 
@@ -18,7 +19,7 @@
         <cc:attribute shortDescription="O layoyt indica os formatos possíveis de exibição do campo,
                       para visualizar todas as opções acesse: #layoutsComponenteSB.layoutCampo.  "
                       name="tipoVisualizacaoLabel"
-                      type="com.super_bits.view.fabricasCompVisual.ItfComponenteVisualSB"
+                      type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
                       default="#{layoutsComponenteSB.layoutCampo.superior}"
                       />
 
@@ -28,9 +29,10 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-        <c:forEach  var="grupo" items="#{cc.attrs.acao.gruposDeCampos}">
+        <ui:repeat  var="grupo" value="#{cc.attrs.acao.gruposDeCampos}">
 
             <p:fieldset style="margin: 2%" legend="#{grupo.nomeGrupo}">
+
                 <SBFormulario:camposDoGrupo registro="#{cc.attrs.registro}"
                                             grupoCampos="#{grupo}"
                                             somenteLeitura="#{cc.attrs.somenteLeitura}"
@@ -40,7 +42,7 @@
 
             </p:fieldset>
 
-        </c:forEach>
+        </ui:repeat>
 
     </cc:implementation>
 
