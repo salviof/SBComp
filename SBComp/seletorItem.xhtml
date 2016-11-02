@@ -33,7 +33,7 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
-
+        #{pgUtil.isAtributoPreenchidoComExpressao(cc, 'metodoOnChange')}
         <sb:seletorItem
             layoutCampo="#{layoutsComponenteSB.layoutSeletorItem.combo}"
             itemSelecionado="#{cc.attrs.itemSelecionado}"

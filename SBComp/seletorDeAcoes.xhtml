@@ -46,13 +46,10 @@
             <c:choose >
 
                 <c:when test="#{cc.attrs.visualizacaoBotao==tipos.tipoVisualBotao.apenasIcone}">
-
                     <p:commandButton  onmousedown="esconderTooltips();"
                                       id="btIcon#{cc.id}"
                                       icon="#{opc.iconeAcao}"
-                                      action="#{cc.attrs.metodo}"
-
-                                      >
+                                      action="#{cc.attrs.metodo}">
                         <f:setPropertyActionListener
                             target="#{cc.attrs.opcaoSelecionada}"
                             value="#{opc}"/>
@@ -92,7 +89,6 @@
 
 
                 <c:otherwise>
-
                     <p:commandButton style="margin-bottom: 5px; "
                                      id="btIcon#{cc.id}"
                                      value="#{opc.nomeAcao}"
