@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:sb="http://superbitsframework/ui"
-
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      >
     <!-- INTERFACE -->
     <cc:interface>
 
@@ -33,22 +32,21 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <h:panelGroup>
-            <sb:inputSB
 
-                registro="#{cc.attrs.registro}"
-                desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                layoutCampo="#{cc.attrs.layout}"
-                possuiIDOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'idAtualizarOnChange')}"
-                possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
-                layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
-                label="#{cc.attrs.label}:"
-                opcoes="#{cc.attrs.registro.listaDeOpcoes}"
-                idAtualizarOnChange="#{cc.attrs.idAtualizarOnChange}"
+        <sb:inputSB
+
+            registro="#{cc.attrs.registro}"
+            desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+            layoutCampo="#{cc.attrs.layout}"
+            possuiIDOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'idAtualizarOnChange')}"
+            possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
+            layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
+            label="#{cc.attrs.label}:"
+            opcoes="#{cc.attrs.registro.listaDeOpcoes}"
+            idAtualizarOnChange="#{cc.attrs.idAtualizarOnChange}"
 
 
-                />
-        </h:panelGroup>
+            />
 
     </cc:implementation>
 
