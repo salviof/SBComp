@@ -4,12 +4,13 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <!-- INTERFACE -->
     <cc:interface>
 
-        <cc:attribute name="grupoCampos" required="#{true}" type="com.super_bits.modulosSB.SBCore.InfoCampos.campo.GrupoCampos" />
+        <cc:attribute name="grupoCampos" required="#{true}" type="com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.GrupoCampos" />
         <cc:attribute name="registro" required="true" type="com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanSimples" />
         <cc:attribute name="somenteLeitura" default="#{true}" />
 
@@ -23,15 +24,26 @@
     </cc:interface>
 
     <cc:implementation>
-        <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="camp"  varStatus="recnum">
+
+
+        <ui:repeat value="#{cc.attrs.grupoCampos.campos}" var="camp"  varStatus="recnum">
+
             <div class="Container33 Responsive" style="position: relative">
+
                 <p:panel  style="margin: 1%">
+
+
                     <SBComp:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(camp.caminhoSemNomeClasse)}"
                                   layout="#{cc.attrs.tipoVisualizacaoLabel}"
-                                  desabilitarEdicao="#{false}" />
+                                  desabilitarEdicao="#{cc.attrs.somenteLeitura}"
+
+                                  />
                 </p:panel>
+
             </div>
-        </c:forEach>
+
+        </ui:repeat>
+
     </cc:implementation>
 
 </html>

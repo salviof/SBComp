@@ -13,22 +13,18 @@
             <i class="#{paginaAtual.infoPagina.acaoSelecionada.iconeAcao} Fs30 Fleft MarRight10"></i>
             <br/>
             <div class="EmptyBox10 ShowOnMobile"></div>
-
             <span class="CardSubTopic">
                 #{paginaAtual.infoPagina.acaoSelecionada.descricao}
-
             </span>
-
             <h:panelGroup styleClass="Fright">
-
-
-                <SBComp:botaoDeAcao_Pagina_Entidade
-                    registro="#{paginaAtual.infoPagina.comoPaginaEntidade.entidadeSelecionada}"
-                    acao="#{paginaAtual.infoPagina.comoPaginaEntidade.acaoListarRegistros}"
-
-                    />
+                <h:form>
+                    <SBComp:botaoDeAcao_Pagina_Entidade
+                        registro="#{paginaAtual.infoPagina.comoPaginaEntidade.entidadeSelecionada}"
+                        acao="#{paginaAtual.infoPagina.comoPaginaEntidade.acaoListarRegistros}"
+                        tipoVisualizacao="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                        />
+                </h:form>
             </h:panelGroup>
-
         </div>
 
         <div class="SeparatorFull"></div>
@@ -36,9 +32,7 @@
         <div class="ContainerIndent">
             <h:form >
                 <ui:insert name="conteudo" />
-
                 <p:separator />
-
                 <ui:insert name="botoesDeAcao" />
             </h:form>
         </div>

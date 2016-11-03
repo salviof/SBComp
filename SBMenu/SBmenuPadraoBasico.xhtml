@@ -17,6 +17,9 @@
     </cc:interface>
 
     <cc:implementation>
+
+
+
         <!-- TOPBAR START -->
         <div id="layout-topbar">
 
@@ -31,7 +34,7 @@
 
 
 
-            <h:graphicImage url="#{infoWebApp.urlPagina}" name="logoHorizontal.png" id="logo" style="width: 200px;" library="img" />
+            <h:graphicImage url="#{infoWebApp.urlPagina}" name="logoHorizontal.png" id="logo" style="height: 70px;" library="img" />
 
 
             <a id="topmenu-button" class="Animated1">
@@ -39,33 +42,22 @@
             </a>
 
             <ul id="top-menu">
-                <li>
-                    <a class="menulink Animated05"><i class="icon-search"></i> Campanhas</a>
 
-                </li>
+                <c:forEach items="#{cc.attrs.menu.sessoes}" var="sessao">
 
+                    <li>
+                        <a class="menulink Animated05"><i class="#{sessao.iconeAcao}"></i> #{sessao.nome}</a>
+                        <ul style="margin-left:-155px;">
+                            <c:forEach items="#{sessao.acoes}" var="acaoSessao" >
 
-                <li>
-                    <a class="menulink Animated05"><i class="fa fa-comment"></i> Comunicados</a>
-                    <ul style="margin-left:-155px;">
-                        <li><a href="#"><i class="icon-cd Fs20 Blue Fright"></i> <span class="FontAdamantiumBold Green">Mensagem Legal</span><br/><span class="Fs12">Feliz natal! hj complemtamos 1 cifra de 500 milhões em compras </span></a></li>
-                        <li><a href="#"><i class="icon-cd Fs20 Red Fright"></i> <span class="FontAdamantiumBold Red">Mensagem Imperativa</span><br/><span class="Fs12"> Não encontramos o pagamento de seu boleto, favor entrar em contato </span></a></li>
-                        <li><a href="#"><i class="icon-cd Fs20 Orange Fright"></i> <span class="FontAdamantiumBold Orange">Mensagem de Alerta</span><br/><span class="Fs12">Atenção sem boleto vence em 5 dias </span></a></li>
-                    </ul>
-                </li>
+                                <li><a href="#{infoWebApp.getAcaoComLink(acaoSessao).urlDeAcesso}"><i class="#{acaoSessao.iconeAcao} Fs18 Fleft Blue MarRight10"></i> <span class="FontAdamantiumBold"> #{acaoSessao.nome}</span></a></li>
 
-                <li>
-
-                    <h:form>
-                        <ul style="margin-left:-150px;">
-                            <li><span class="PadWithBorder10 DispBlock">
-
-                                    <p:inputText placeholder="Encontrar Campanha" styleClass="Wid60"/>
-                                    <p:button icon="fa fa-search" styleClass="Fright"/></span></li>
-
+                            </c:forEach>
                         </ul>
-                    </h:form>
-                </li>
+                    </li>
+
+
+                </c:forEach>
 
 
                 <li>

@@ -24,14 +24,11 @@
             <ui:include src="/site/topo.xhtml"/>
         </c:if>
         <!-- CODIGO QUE ENVIA INFORMACOES SOBRE A TELA DA SESSÃO DO USUÁRIO -->
-        <div style="visibility: hidden;">
-            <h:form id="contactfrm"  >
-                <p:remoteCommand name="enviarInfoTela"  actionListener="#{sessaoAtualSBWP.defineInfoTela}"  />
-                <p:inputText  id="clientinfo" />
-            </h:form>
+        <div style="visibility: hidden; float: bottom">
+
         </div>
         <c:if test="#{!sessaoAtualSBWP.tipoViewDefinido}">
-            <h:outputScript  name="SBComp/js/telaInfo.js"  />
+
             <!--FIM DO CODIGO QUE ENVIA INFORMACOES SOBRE A TELA DA SESSÃO DO USUÁRIO -->
         </c:if>
         <div id="layout-portlets-cover">

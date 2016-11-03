@@ -19,7 +19,9 @@
                       em geral é exibido a direita da pagina"
                       />
         <cc:attribute name="menuExtendido"
+
                       type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
+
                       default="#{sessaoAtualSBWP.menusDaSessao.menuAvancado}"
                       shortDescription="O menu extendido é utilizado quando é nessesário exibir muitas opções"
                       />
@@ -30,15 +32,15 @@
 
 
 
-        <c:if test="#{cc.attrs.menuBasico!=null}" >
-            <SBMenu:SBmenuPadraoBasico transient="#{true}"
+
+        <SBMenu:SBmenuPadraoBasico transient="#{true}"
+                                   rendered="#{cc.attrs.menuBasico!=null}"
+
+                                   menu="#{cc.attrs.menuBasico}"/>
 
 
-                                       menu="#{cc.attrs.menuBasico}"/>
-        </c:if>
 
-
-        <!-- <SBMenu:SBmenuPadraoExtendido transient="{true}" menu="{cc.attrs.menuExtendido}"/> -->
+        <SBMenu:SBmenuPadraoExtendido  menu="#{cc.attrs.menuExtendido}"/>
 
 
 
