@@ -95,13 +95,12 @@
 
                     </ui:repeat>
 
-                    <center>
-                        <SBComp:seletorDeAcoes
+                    <center>     <SBComp:seletorDeAcoes
 
                             metodo="#{cc.attrs.metodo}"
                             opcaoSelecionada="#{paginaAtual.infoPagina.acaoSelecionada}"
                             opcoes="#{cc.attrs.opcoes}"
-                            tipoVisualizacao="#{ layoutsComponenteSB.layoutBotoes.icone}"
+                            visualizacaoBotao="#{layoutsComponenteSB.layoutBotoes.icone}"
 
                             /> </center>
 
