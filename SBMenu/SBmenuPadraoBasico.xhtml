@@ -50,9 +50,7 @@
                         <a class="menulink Animated05"><i class="#{sessao.iconeAcao}"></i> #{sessao.nome}</a>
                         <ul style="margin-left:-155px;">
                             <c:forEach items="#{sessao.acoes}" var="acaoSessao" >
-
                                 <li><a href="#{infoWebApp.getAcaoComLink(acaoSessao).urlDeAcesso}"><i class="#{acaoSessao.iconeAcao} Fs18 Fleft Blue MarRight10"></i> <span class="FontAdamantiumBold"> #{acaoSessao.nome}</span></a></li>
-
                             </c:forEach>
                         </ul>
 
@@ -73,9 +71,6 @@
                         </li>
                         <li><a href="#"><i class="fa fa-envelope Fs18 Fleft MarRight10"></i> <span class="FontAdamantiumBold"> Enviar Mensagem </span></a></li>
                         <li><a href="#"><i class="icon-attachment Fs18 Fleft MarRight10"></i> <span class="FontAdamantiumBold">  Perfil e senha </span></a></li>
-
-
-
                         <li>  <span class="FontAdamantiumBold">
                                 <h:form>
                                     <p:commandLink actionListener="#{controleDeSessaoWeb.efetuarLogOut}"  oncomplete="javascript:window.location='#{infoWebApp.urlPagina}';">

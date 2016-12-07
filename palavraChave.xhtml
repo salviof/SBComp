@@ -7,19 +7,20 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="item" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.siteMap.ItfBeanDeclarado" />
-
-
-
+        <cc:attribute name="palavra" type="java.lang.String"  required="true"/>
+        <cc:attribute name="nivel" default="1" />
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        <c:choose  >
+            <c:when test="#{cc.attrs.nivel==2}" >
 
+            </c:when>
+            <c:otherwise>
 
-        <c:set var="item" value="#{cc.attrs.item.valor}" />
-        <c:set var="beanItem" value="#{cc.attrs.item}" />
-
-        <ui:include  src="#{cc.attrs.item.visualizacaoItem}" />
+                <h2 class="CardTopicMini" style="display: inline"   >#{cc.attrs.palavra}</h2>
+            </c:otherwise>
+        </c:choose>
 
 
 

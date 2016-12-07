@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
 
-      >
+
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -17,7 +18,8 @@
 
     <cc:implementation>
 
-
+        <p:outputLabel styleClass="fa fa-info Fs30 Fleft" id="info"/>
+        <p:tooltip for="info" value="#{cc.attrs.descricao}"/>
 
 
 
