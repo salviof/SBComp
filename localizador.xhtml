@@ -3,14 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
 
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="codigoBen" required="true"  />
-        <cc:attribute name="acaoSelecao" required="true"  method-signature="void action()" />
-        <cc:attribute name="idAtualizacao" required="true"  />
-        <cc:attribute name="textoCampoLocalizacao" required="true"  />
+        <cc:attribute name="beanTextoPesquisa" required="true"  />
+        <cc:attribute name="acaoSelecao" required="true"  type="com.super_bits.modulosSB.SBCore.modulos.Controller.Interfaces.acoes.ItfAcaoDoSistema" />
+        <cc:attribute name="idAtualizacao"  default="#{paginaAtual.infoPagina.idAreaExbicaoAcaoSelecionada}" />
+
 
 
     </cc:interface>
@@ -18,11 +19,18 @@
     <cc:implementation>
 
         <h:form>
-            <p:focus for="codBarras" />
+            <p:focus for="textoPesquisa" />
             <h:panelGroup >
-                <p:inputText  required="true" styleClass="ui-texto-destaque-ultra" value="#{cc.attrs.codigoBen}" rendered="true" id="codBarras"  />
-                <p:watermark for="codBarras" value="#{cc.attrs.textoCampoLocalizacao} " />
-                <p:commandButton  inline="true" value="Localizar" icon="ui-icon-search" style="font-size:12pt;alignment-adjust: central" accesskey="f9" action="#{cc.attrs.acaoSelecao}"  update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.idAtualizacao)}"  />
+                <p:inputText  required="true" styleClass="ui-texto-destaque-ultra"
+                              value="#{cc.attrs.beanTextoPesquisa}"
+                              rendered="true" id="textoPesquisa"
+                              />
+                <p:watermark for="textoPesquisa" value="#{cc.attrs.acaoSelecao.nomeAcao} " />
+                <SBComp:botaoDeAcao_Pagina acao="#{cc.attrs.acaoSelecao}"
+                                           update="#{cc.attrs.idAtualizacao}"
+                                           tipoVisualizacao="#{layoutsComponenteSB.layoutBotoes.icone}"
+                                           />
+
             </h:panelGroup  >
         </h:form>
 
