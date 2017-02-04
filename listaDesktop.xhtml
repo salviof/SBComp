@@ -53,10 +53,10 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        #{cc.attrs.acaoDeListagem.campos}
+
         <h:panelGroup>
 
-            asdasdasd
+
             <p:dataTable sortMode="multiple"
                          value="#{cc.attrs.itens}"
                          var="item"
@@ -70,7 +70,12 @@
                 </f:facet>
 
 
-                <p:columns var="coluna" value="#{cc.attrs.acaoDeListagem.campos}">
+                <p:columns var="coluna" value="#{cc.attrs.acaoDeListagem.campos}"
+                           sortBy="#{item[coluna.caminhoSemNomeClasse]}"
+                           filterBy="#{item[coluna.caminhoSemNomeClasse]}"
+                           filterMatchMode="contains"
+
+                           >
 
                     <f:facet name="header">
                         <h:outputText value= "#{coluna.label}"/>

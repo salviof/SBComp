@@ -20,7 +20,7 @@
 
 
 
-        <div class="layout-menu-cover-top Animated05" id="layout-menu-cover">
+        <div class=" Animated05" id="layout-menu-cover">
             <h:form>
                 <pm:menu>
                     <c:forEach items="#{sessaoAtualSBWP.menusDaSessao.menuAvancado.sessoes}" var="sessao" >
@@ -35,33 +35,28 @@
 
                                         <c:forEach   items="#{acao.acoes}"  var="subAcao" >
 
-                                            <c:if test="#{subAcao.umaAcaoGestaoDominio}">
 
-                                                <p:menuitem
-                                                    value="#{subAcao.nomeAcao} #{subAcao}"
-                                                    icon="#{subAcao.iconeAcao}"
-                                                    url="#{infoWebApp.getAcaoComLink(subAcao).urlDeAcesso}" />
-                                            </c:if>
-                                            <c:if test="#{!subAcao.umaAcaoGestaoDominio}">
-                                                <p:menuitem  value="#{subAcao.nomeAcao}  " icon="#{subAcao.iconeAcao}" url="#{infoWebApp.getAcaoComLink(subAcao).urlDeAcesso}"  />
-                                            </c:if>
+
+                                            <p:menuitem
+                                                value="#{subAcao.nomeAcao} #{subAcao}"
+                                                icon="#{subAcao.iconeAcao}"
+                                                url="#{infoWebApp.getAcaoComLink(subAcao).urlDeAcesso}" />
+
+
                                         </c:forEach>
 
                                     </p:submenu>
 
                                 </c:if>
                                 <c:if test="#{!acao.umaAcaoSessaoMenu}" >
-                                    <c:if test="#{acao.umaAcaoGestaoDominio}">
 
-                                        <p:menuitem  value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" url="#{infoWebApp.getAcaoComLink(acao).urlDeAcesso}"
 
-                                                     />
+                                    <p:menuitem  value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" url="#{infoWebApp.getAcaoComLink(acao).urlDeAcesso}"
 
-                                    </c:if>
-                                    <c:if test="#{!acao.umaAcaoGestaoDominio}">
-                                        <p:menuitem   value="#{acao.nomeAcao}" icon="#{acao.iconeAcao}" />
+                                                 />
 
-                                    </c:if>
+
+
 
                                 </c:if>
                             </c:forEach>
