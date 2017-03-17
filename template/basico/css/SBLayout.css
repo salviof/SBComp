@@ -13,14 +13,6 @@
     text-align: left!important;
 }
 
-ajustesCard{
-
-}
-
-ajustesDivGeral{
-
-}
-
 
 .linha-separacao{
 
@@ -203,12 +195,4 @@ ajustesDivGeral{
 .fancy span:after {
     left: 100%;
     margin-left: 15px;
-}
-
-.ManterNoTopo{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
 }
