@@ -4,11 +4,8 @@
  */
 
 
-<<<<<<< HEAD
 /* global PrimeFacesExt, PrimeFaces */
 
-=======
->>>>>>> 602e9fff4238b24344ae04d234952b3861f51547
 PrimeFaces.locales['pt_BR'] = {
     closeText: 'Fechar',
     prevText: 'Anterior',
