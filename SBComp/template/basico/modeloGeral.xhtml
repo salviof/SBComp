@@ -19,17 +19,32 @@
         <ui:insert name="head" />
     </h:head>
     <h:body>
+<<<<<<< HEAD
         <ui:include src="cabecalhoInicialDoBody.xhtml" />
 
 
 
         <h:panelGroup rendered="#{sessaoAtualSBWP.identificado}">
+=======
+
+        <h:panelGroup rendered="#{sessaoAtualSBWP.identificado==true}">
+>>>>>>> 602e9fff4238b24344ae04d234952b3861f51547
             <div class="ManterNoTopo">
                 <ui:include src="/site/topo.xhtml"/>
             </div>
         </h:panelGroup>
+<<<<<<< HEAD
 
         <div >
+=======
+        <!-- CODIGO QUE ENVIA INFORMACOES SOBRE A TELA DA SESSÃO DO USUÁRIO -->
+        <div style="visibility: hidden; float: bottom">
+        </div>
+        <c:if test="#{!sessaoAtualSBWP.tipoViewDefinido}">
+        </c:if>
+        <!--FIM DO CODIGO QUE ENVIA INFORMACOES SOBRE A TELA DA SESSÃO DO USUÁRIO -->
+        <div id="">
+>>>>>>> 602e9fff4238b24344ae04d234952b3861f51547
             <h:panelGroup id="mensagemUsuario">
                 <p:growl/>
             </h:panelGroup>
