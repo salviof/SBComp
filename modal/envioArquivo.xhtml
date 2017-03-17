@@ -18,7 +18,7 @@
     </h:head>
 
     <h:body>
-        <h:form>
+        <h:form rendered="false">
             <p:remoteCommand actionListener="#{pgModalSBJSF.fecharPaginaMatandoViewScoped()}"
                              name="fecharModal"
                              autoRun="false"
@@ -28,24 +28,11 @@
 
 
         <h:form>
-            <i id="customheader" class="fa fa-fw fa-car" style="display:none"></i>
-            <i id="opcaoTeste" >[#{requestScope.parametroTEste}]</i>
-            <p:commandButton value="Atualizar"
-                             update="@form"
 
-                             />
-            <br/>
-            [ChaveAcesso=[#{pgModalSBJSF.chaveAcesso}]]
-
-            #{pgModalSBJSF.paginaVinculada.acaoVinculada.nomeAcao}
 
             <p:fileUpload
-
-<<<<<<< HEAD
+                label="Escolher #{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.label}"
                 fileUploadListener="#{pgModalSBJSF.paginaVinculada.modalDados.enviarArquivoDoCampoUpload}"
-=======
-                fileUploadListener="#{pgModalSBJSF.paginaVinculada.modalDados}"
->>>>>>> 7a44f12802956e47a14f0958bec934f8e3e4b429
                 auto="true"
                 />
 
