@@ -1,12 +1,10 @@
-/*
- *  Super-Bits.com CODE CNPJ 20.019.971/0001-90
-
+/*  
+ *  Super-Bits.com CODE CNPJ 20.019.971/0001-90 
+ 
  */
 
 
-/* global PrimeFacesExt, PrimeFaces */
-
-PrimeFaces.locales['pt_BR'] = {
+PrimeFaces.locales['br'] = {
     closeText: 'Fechar',
     prevText: 'Anterior',
     nextText: 'Próximo',
@@ -84,7 +82,9 @@ PrimeFaces.locales['pt_BR'] = {
         'javax.faces.validator.RegexValidator.MATCH_EXCEPTION_detail': 'Erro na expressão regular, \'{0}\''
     }
 };
-PrimeFacesExt.locales.TimePicker['pt_BR'] = {
+
+
+PrimeFacesExt.locales.TimePicker['br'] = {
     hourText: 'Horas',
     minuteText: 'Minutos',
     amPmText: ['AM', 'PM'],
@@ -92,3 +92,6 @@ PrimeFacesExt.locales.TimePicker['pt_BR'] = {
     nowButtonText: 'Agora',
     deselectButtonText: 'Limpar seleção'
 };
+
+
+
