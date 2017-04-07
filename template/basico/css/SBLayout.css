@@ -98,10 +98,6 @@ ajustesDivGeral{
     margin-left: 4%;
 }
 
-.campoResponsivo{
-    width:   94%!important;
-
-}
 
 .seletorResponsivo{
     width:   80%!important;
@@ -212,3 +208,13 @@ ajustesDivGeral{
     width: 100%;
     z-index: 9999;
 }
+
+.tamanhoIconePequeno{
+    width: 10px;
+}
+
+
+.tamanho20px{
+    width: 10px;
+}
+
