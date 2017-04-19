@@ -220,13 +220,13 @@ ajustesDivGeral{
 
 
 .ui-growl-message {
-    padding: 0 0 5px 0;
-    width: 500px;
-    float: left;
+    padding: 0 0 5px 0!important;
+    width: 500px!important;
+    float: left!important;
 }
 .ui-growl {
     position: fixed;
-    top: 60px;
-    right: 100px;
+    top: 60px!important;
+    right: 100px!important;
     width: 800px!important;
 }
