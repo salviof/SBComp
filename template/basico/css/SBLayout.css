@@ -218,3 +218,15 @@ ajustesDivGeral{
     width: 10px;
 }
 
+
+.ui-growl-message {
+    padding: 0 0 5px 0;
+    width: 500px;
+    float: left;
+}
+.ui-growl {
+    position: fixed;
+    top: 60px;
+    right: 100px;
+    width: 800px!important;
+}
