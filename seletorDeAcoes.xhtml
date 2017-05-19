@@ -51,20 +51,17 @@
                                       id="btIcon#{cc.id}"
                                       icon="#{opc.iconeAcao}"
                                       action="#{cc.attrs.metodo}"
-
+                                      update="#{pgUtil.gerarCaminhoCompletoID(cc.attrs.update)}"
                                       >
                         <f:setPropertyActionListener
                             target="#{cc.attrs.opcaoSelecionada}"
                             value="#{opc}"/>
-                        <c:if test="#{cc.attrs.update!=null}">
 
-                        </c:if>
                         <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
                                 rendered="#{opc.acaoTemModal}"
                                 />
 
-                        <p:ajax listener="#{pgUtil.atualizaTelaPorID(cc.attrs.update)}"
-                                rendered="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'update')}" />
+
                     </p:commandButton>
                     <p:tooltip for="btIcon#{cc.id}" value="#{opc.nomeAcao}" trackMouse="true" />
                 </c:when>
