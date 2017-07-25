@@ -3,35 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:sb="http://superbitsframework/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <!-- INTERFACE -->
-    <cc:interface componentType="inputGenerico"
-                  shortDescription="Exibe um atributo para edição ou visualizção do usuário"
-                  >
+    <cc:interface>
 
         <cc:attribute name="registro"
                       required="true"
                       type="com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campoInstanciado.ItfCampoInstanciado"
-                      default="#{pgUtil.campoNaoImplementado}"
-                      shortDescription="Exibe um atributo de um Objeto para insersão de dados do usuário (Ou Visualização)"
-                      />
+                      default="#{pgUtil.campoNaoImplementado}" />
         <cc:attribute name="campoLocalizacaoCEP" default="#{null}"  />
         <cc:attribute name="desabilitarEdicao" type="java.lang.Boolean" default="#{false}" />
-        <cc:attribute name="idAtualizarOnChange"
-
-                      />
-
-        <cc:attribute name="atualizarFormOnChange" type="java.lang.Boolean" default="#{false}" />
-
-        <cc:attribute name="metodoOnChange" required="false"   type="javax.el.MethodExpression"
-                      shortDescription="Médodo que deve ser executado ao alterar um valor"
-
-                      />
-        <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"
-                      shortDescription="Label alternativo (Caso queira exibir um label diferente do label de atributo)"
-                      />
-        <cc:attribute shortDescription="O layout é o temaplate de exibição do campo, normalmente referente a localização do Label
+        <cc:attribute name="idAtualizarOnChange" />
+        <cc:attribute name="metodoExecutarAoAlterarValor" required="false" />
+        <cc:attribute name="label" required="#{false}"  default="#{cc.attrs.registro.label}"/>
+        <cc:attribute shortDescription="O layoyt indica os formatos possíveis de exibição do campo,
                       para visualizar todas as opções acesse: #layoutsComponenteSB.layoutCampo.  "
                       name="layout"
                       type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
@@ -44,46 +31,89 @@
                       type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
                       />
 
+        <cc:attribute name="metodoAdicionar"
+                      method-signature="void action()"
+                      />
+
+        <cc:attribute name="metodoReduzir"
+                      method-signature="void action()"
+                      />
+
+        <cc:attribute name="metodoAtualizacao"
+                      />
+
+
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
+        <h:panelGroup class="Container100 Responsive100">
 
-        <h:panelGroup>
+            <p:panel class="Container20 Responsive100" style="border: none">
 
 
-            <c:catch var ="catchException">
+
+                <p:commandButton
+
+                    icon="fa fa-minus"
+                    style="float: left"
+                    action="#{cc.attrs.metodoReduzir}"
+                    update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.idAtualizarOnChange)}"
+                    rendered="#{!cc.attrs.desabilitarEdicao}"
+
+                    />
+
+
+
+            </p:panel>
+
+            <p:panel class="Container50 Responsive100">
 
                 <sb:inputSB
+
                     registro="#{cc.attrs.registro}"
                     desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                     layoutCampo="#{cc.attrs.layout}"
-                    possuiIDOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'idAtualizarOnChange')}"
-                    possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoOnChange')}"
+                    possuiIDOnChange="true"
+                    possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
                     layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
                     label="#{cc.attrs.label}:"
                     opcoes="#{cc.attrs.registro.listaDeOpcoes}"
                     idAtualizarOnChange="#{cc.attrs.idAtualizarOnChange}"
-                    metodoOnChange="#{cc.attrs.metodoOnChange}"
-                    atualizarFormOnChange="#{cc.attrs.atualizarFormOnChange}"
-                    xhtmlVisualizacao="#{cc.attrs.layout.xhtmlJSF}"
-                    obrigatorio="#{cc.attrs.registro.obrigatorio}"
+                    metodoOnChange="#{cc.attrs.metodoExecutarAoAlterarValor}"
+                    atualizarFormOnChange="false"
                     atualizarGrupoOnChange="false"
+                    obrigatorio="false"
+
+                    >
+
+
+                </sb:inputSB>
+
+            </p:panel>
+
+
+
+            <p:panel class="Container20 Responsive100" style="border: none">
+
+
+
+                <p:commandButton
+
+                    icon="fa fa-plus"
+                    style="float: right"
+                    action="#{cc.attrs.metodoAdicionar}"
+                    update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.idAtualizarOnChange)}"
+                    rendered="#{!cc.attrs.desabilitarEdicao}"
 
                     />
 
-            </c:catch>
-            <c:if test = "${catchException != null}">
-                É POSSÍVEL QUE ESTE ERRO POSSA SER CONTORNADO CHAMANDO O nameSpace sb:input Direto
-                Ou que este componente esteja em desenvolvimento
 
-                <p>Erro reindeizando componente: ${catchException} <br />
-                    There is an exception: ${catchException.message}</p>
-                <br/>
-                #{cc.attrs.registro.tipoCampoSTR}
-            </c:if>
+
+            </p:panel>
 
         </h:panelGroup>
+
 
     </cc:implementation>
 
