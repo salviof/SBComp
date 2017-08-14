@@ -68,24 +68,24 @@
 
                 <f:facet name="header" >
 
-                    <div  class="container">
+                    <div  class="container-fluid">
                         <div class="row" >
-                            <div class="col-md-4 col-md-offset-4 " style="margin-top: 10px; " >
+                            <div class="col-md-4 col-md-offset-4 " style="margin-top: 10px;margin-right: 0px " >
                                 #{cc.attrs.titulo}
                             </div>
-                            <div class="col-md-4" style="" >
-                                <div class="input-group margin-bottom-sm " style="margin-top: 5px; margin-bottom: 5px;">
-
-                                    <p:inputText
-                                        id="globalFilter"
-                                        onkeyup="PF('#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}').filter()"
-                                        style="width:280px; height: 35px;"
-                                        placeholder="Pesquise aqui:"
-
-                                        />
+                            <div class="col-md-4 " style="margin-top: 5px; margin-bottom: 5px; " >
 
 
-                                </div>
+                                <p:inputText
+                                    id="globalFilter"
+                                    onkeyup="PF('#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}').filter()"
+                                    style="width:100%; height: 35px;"
+                                    placeholder="Pesquise aqui:"
+
+                                    />
+
+
+
                             </div>
                         </div>
                     </div>
@@ -93,8 +93,8 @@
 
 
                 <p:columns var="coluna" value="#{cc.attrs.campos}"
-                           sortBy="#{item[coluna.caminhoSemNomeClasse]}"
-                           filterBy="#{item[coluna.caminhoSemNomeClasse]}"
+                           sortBy="#{item[coluna.primeiroCaminhoSemNomeClasse]}"
+                           filterBy="#{item[coluna.primeiroCaminhoSemNomeClasse]}"
                            filterMatchMode="contains"
                            filterStyleClass="listaComOcoesOcultaFitro"
                            >
