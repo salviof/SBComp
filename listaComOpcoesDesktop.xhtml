@@ -1,13 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:cc="http://java.sun.com/jsf/composite"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:sb="http://superbitsframework/ui"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
-      >
+<ui:composition
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:sb="http://superbitsframework/ui"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+    >
     <!-- INTERFACE -->
     <cc:interface
         shortDescription="Exibe uma lista de registro com opções de seleção a partir de uma acao de listagem"
@@ -97,6 +96,7 @@
                            filterBy="#{item[coluna.primeiroCaminhoSemNomeClasse]}"
                            filterMatchMode="contains"
                            filterStyleClass="listaComOcoesOcultaFitro"
+
                            >
 
                     <f:facet name="header">
@@ -117,7 +117,7 @@
                 </p:columns>
 
 
-                <p:column headerText="Ações" width="180">
+                <p:column headerText="Ações" width="360">
 
                     <center>
 
@@ -141,5 +141,4 @@
         </h:panelGroup>
 
     </cc:implementation>
-
-</html>
+</ui:composition>
