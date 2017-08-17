@@ -17,10 +17,11 @@
             name="itemSelecionado"
             required="true"
             />
-        <cc:attribute name="campos"
+
+        <cc:attribute name="grupoCampos"
+                      type="com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.ItfGrupoCampos"
                       required="true"
-                      type="java.util.List"
-                      shortDescription="Listagem dos campos que serão exibidos: List->CaminhoCampoReflexao"
+                      shortDescription="Grupo de Campos a serem exibitos"
                       />
 
         <cc:attribute
@@ -54,6 +55,8 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
 
+
+        #{pgUtilLayout.gerarLayout(cc.attrs.itens[0], cc.attrs.grupoCampos, cc.attrs.opcoes)}
         <h:panelGroup>
             <p:dataTable sortMode="multiple"
                          value="#{cc.attrs.itens}"
@@ -63,6 +66,7 @@
                          paginator="true"
                          rows="10"
                          widgetVar="#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}"
+                         resizeMode="fit"
                          >
 
                 <f:facet name="header" >
@@ -91,33 +95,37 @@
                 </f:facet>
 
 
-                <p:columns var="coluna" value="#{cc.attrs.campos}"
+                <p:columns var="coluna" value="#{cc.attrs.grupoCampos.campos}"
                            sortBy="#{item[coluna.primeiroCaminhoSemNomeClasse]}"
                            filterBy="#{item[coluna.primeiroCaminhoSemNomeClasse]}"
                            filterMatchMode="contains"
                            filterStyleClass="listaComOcoesOcultaFitro"
+                           width="#{pgUtilLayout.getColunaLayoutByNomeCampoCompletoComGrupo(coluna.caminhoCompletoComGrupoCampo).porcentagemCalculada}%"
 
                            >
 
+
                     <f:facet name="header">
+                        #{pgUtilLayout.getColunaLayoutByNomeCampoCompletoComGrupo(coluna.caminhoCompletoComGrupoCampo).porcentagemCalculada}
                         <h:outputText value= "#{coluna.label}"/>
                     </f:facet>
-
-                    <sb:inputSB
-                        registro="#{item.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse)}"
-                        desabilitarEdicao="true"
-                        layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
-                        possuiIDOnChange="false"
-                        possuiMetodoOnChange="false"
-                        label="#{item.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse).label}"
-                        atualizarFormOnChange="false"
-                        atualizarGrupoOnChange="false"
-                        obrigatorio="false"
-                        />
+                    <center>
+                        <sb:inputSB
+                            registro="#{item.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse)}"
+                            desabilitarEdicao="true"
+                            layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
+                            possuiIDOnChange="false"
+                            possuiMetodoOnChange="false"
+                            label="#{item.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse).label}"
+                            atualizarFormOnChange="false"
+                            atualizarGrupoOnChange="false"
+                            obrigatorio="false"
+                            />
+                    </center>
                 </p:columns>
 
 
-                <p:column headerText="Ações" width="360">
+                <p:column headerText="Ações #{pgUtilLayout.getUltimaColunaDoLayoyt(cc.attrs.grupoCampos.nomeIdentificadorSlug).porcentagemCalculada}%" width="#{pgUtilLayout.getUltimaColunaDoLayoyt(cc.attrs.grupoCampos.nomeIdentificadorSlug).porcentagemCalculada}%">
 
                     <center>
 
