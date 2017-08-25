@@ -1,0 +1,104 @@
+/* NESTE ARQUIVO FICAM OS ESTILOS PARA CAMPOS DE IMPUT */
+@charset "utf-8";
+/* CSS Document */
+
+
+.inputCampo{
+    width:   100%!important;
+    border : none!important;
+    position: relative;
+
+}
+
+.panelGridEsquerda{
+    border: none;
+}
+
+.panelGridSuperior{
+    border: none;
+}
+
+
+.colunaLabel{
+    width: 120px;
+}
+.colunaResponsiva{
+    width: auto;
+}
+
+.campoMascara{
+
+
+}
+.campoSimples{
+
+
+}
+.campoGrande{}
+.campoMultiplasLinhas{}
+.camoMinimoEMaximo{}
+.campoSenha{}
+.campoCEP{}
+.campoCor{}
+.campoHTML{}
+.campoQuantidade{
+    width: 10% !important;
+}
+.campoMoeda{
+    width: 10%  !important;
+}
+.campoEmail{}
+.campoData{
+    width: 15%  !important;
+}
+.campoDataHora{}
+.campoLigadoDesligado{}
+.campoEntidadeSimples{}
+
+
+/* CSS OLD APENAS PARA COMPATIBILIDADE MOMENTANEA, SERÁ EXCLUIDO  */
+.colunaLabel{
+    width: 120px;
+}
+.colunaResponsiva{
+    width: auto;
+
+}
+.colunaCampoFixo{
+
+}
+.campoResponsivo{
+    width:   98%!important;
+
+}
+
+.seletorResponsivo{
+    width:   100%!important;
+}
+
+.tabelaFormulario{
+    width:   100%!important;
+}
+
+
+.invisivel{
+
+    display: none;
+}
+
+.Coluna20{
+    width: 20%;
+}
+.Coluna80{
+    width: 80%;
+}
+
+.Coluna10{
+    width: 10%;
+}
+.Coluna90{
+    width: 90%;
+}
+.IconePequeno{
+    width: 10px;
+}
