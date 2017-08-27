@@ -2,34 +2,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-<<<<<<< HEAD
-=======
-
-.inputCampo{
-    width:   100%!important;
-    border : none!important;
-    position: relative;
-
-}
-
-.panelGridEsquerda{
-    border: none;
-}
-
-.panelGridSuperior{
-    border: none;
-}
-
-
-.colunaLabel{
-    width: 120px;
-}
-.colunaResponsiva{
-    width: auto;
-}
-
-.campoMascara{
->>>>>>> 307ea7aebe907bf416020bcd40fdb12cdbbb1de3
 
 .campoSimples{
 

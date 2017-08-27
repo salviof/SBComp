@@ -8,24 +8,15 @@ and open the template in the editor.
     Author     : Salvio Furbino
 */
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 307ea7aebe907bf416020bcd40fdb12cdbbb1de3
 .colunaLabel{
     width: 120px;
     text-align: left;
 
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 307ea7aebe907bf416020bcd40fdb12cdbbb1de3
 .colunaResponsiva{
     width: auto;
 
 }
-<<<<<<< HEAD
 .listaComOcoesOcultaFitro{
     height: 5px!important;
     display: none!important;
@@ -86,10 +77,4 @@ and open the template in the editor.
 .campoResponsivo{
     width:   98%!important;
 
-=======
-
-.listaComOcoesOcultaFitro{
-    height: 5px!important;
-    display: none!important;
->>>>>>> 307ea7aebe907bf416020bcd40fdb12cdbbb1de3
 }
