@@ -60,8 +60,9 @@
         <c:if test="#{!pgUtilLayout.verificaExisteLayout(cc.attrs.grupoCampos.nomeIdentificadorSlug)}">
             #{pgUtilLayout.gerarLayout(cc.attrs.grupoCampos, cc.attrs.opcoes) }
         </c:if>
-        <h:form>
-            <h:panelGroup>
+
+        <h:panelGroup>
+            <h:form>
                 <p:dataTable sortMode="multiple"
                              value="#{cc.attrs.itens}"
                              var="item"
@@ -147,7 +148,7 @@
 
 
                 </p:dataTable>
-        </h:form>
+            </h:form>
 
         </h:panelGroup>
 
