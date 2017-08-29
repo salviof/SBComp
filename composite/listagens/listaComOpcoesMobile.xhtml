@@ -61,7 +61,7 @@
                 value="#{cc.attrs.itens}"
                 layout="grid"
                 columns="3"
-
+                widgetVar="#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}"
                 emptyMessage="#{cc.attrs.mensagemSemRegistro}"
                 paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                 rowsPerPageTemplate="6,9,12,15"
@@ -71,6 +71,13 @@
 
                 <f:facet name="header">
                     #{cc.attrs.titulo}
+
+                    <p:inputText
+                        id="globalFilter"
+                        onkeyup="PF('#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}').filter()"
+                        style="width:100%; height: 35px;"
+                        placeholder="Pesquise aqui:"/>
+
                 </f:facet>
 
                 <p:panel>
