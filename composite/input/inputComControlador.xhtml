@@ -9,7 +9,6 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <!-- INTERFACE -->
     <cc:interface>
-
         <cc:attribute name="registro"
                       required="true"
                       type="com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campoInstanciado.ItfCampoInstanciado"
@@ -71,7 +70,9 @@
             <p:panel class="Container50 Responsive100">
 
                 <sb:inputSB
-
+                    atualizarFormOnChange="false"
+                    atualizarGrupoOnChange="false"
+                    obrigatorio="#{cc.attrs.registro.obrigatorio}"
                     registro="#{cc.attrs.registro}"
                     desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
                     layoutCampo="#{cc.attrs.layout}"
