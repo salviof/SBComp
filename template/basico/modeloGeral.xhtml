@@ -35,12 +35,13 @@
             <p:growl class="mensagemGrowl"  widgetVar="#{layoutIdsAreasConhecidas.AREA_MENSAGEM_INTERFACE}"/>
         </h:panelGroup>
 
-
-        <h:panelGroup id="#{layoutIdsAreasConhecidas.AREA_CONTEUDO}" style="margin-top: 80px" >
-            <ui:insert name="divConteudo" />
-            <ui:insert name="conteudo" />
-            <ui:insert name="content"/>
-        </h:panelGroup>
+        <div style="margin-top: 80px">
+            <h:panelGroup id="#{layoutIdsAreasConhecidas.AREA_CONTEUDO}"  >
+                <ui:insert name="divConteudo" />
+                <ui:insert name="conteudo" />
+                <ui:insert name="content"/>
+            </h:panelGroup>
+        </div>
 
         <h:panelGroup id="#{layoutIdsAreasConhecidas.AREA_RODAPE}">
             <ui:include src="/site/rodape.xhtml"/>
