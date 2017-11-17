@@ -63,7 +63,7 @@
                             <tr>
                                 <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campo" >
 
-                                    <th>#{campo.label}</th>
+                                    <th>#{campo.labelDoCampo}</th>
 
                                 </c:forEach>
                                 <th>-</th>
@@ -74,7 +74,7 @@
                                 <tr scope="row">
                                     <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="cpItem" >
                                         <td class="col-md-2">
-                                            <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{layoutsComponenteSB.layoutCampo.superior}"
+                                            <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{layoutsComponenteSB.layoutCampo.resumido}"
                                                            idAtualizarOnChange="@this"
                                                            />
                                         </td>
