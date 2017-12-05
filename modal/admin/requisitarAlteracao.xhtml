@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <h:head>
@@ -15,7 +16,7 @@
         <h:form>
 
             #{pgModalRequisito.paginaVinculada.acaoVinculada.nomeUnico} <br/>
-            <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
+            <p:link href="#{pgModalRequisito.urlJira}/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
                     value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
                     target="requisitoJira:"
                     >
@@ -24,6 +25,11 @@
 
             <div class="Container25" >
                 <p:inputText value="#{pgModalRequisito.nomeUnicoAcao}" />
+
+                <p:commandButton value="Conectar com requisito Jira"
+                                 actionListener="#{pgModalRequisito.atualizarRequisito}"
+                                 update="#{pgUtil.gerarCaminhoCompletoID('detalhesRequisito')}"
+                                 />
             </div>
             <div class="Container25" >
 
@@ -35,38 +41,57 @@
 
         </h:form>
 
-        <h:form>
 
-            <p:commandButton value="Atualizar"
-                             actionListener="#{pgModalRequisito.atualizarRequisito}"
-                             update="@form"
-                             />
 
-            <p:fieldset legend="#{pgModalRequisito.requisitoVinculadoAcao.nome}" rendered="#{pgModalRequisito.requisitoVinculadoAcao!=null}">
-                <a href="#{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}"
-                   target="sbReqDoMomento"
-                   >
-                    Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
 
-                </a> <br/>
 
-                <br/>
-                <br/>
-                <p:textEditor
 
-                    value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" />
+        <p:fieldset legend="#{pgModalRequisito.requisitoVinculadoAcao.nome}"
+                    id="detalhesRequisito"
+                    rendered="#{pgModalRequisito.requisitoVinculadoAcao!=null}">
+            <a href="#{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}"
+               target="sbReqDoMomento"
+               >
+                Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
 
-                <br/>
-                <p:fieldset legend="Comentários:" >
-                    <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
-                        #{cm.nomeUsuario}->#{cm.comentario}  <br/>
-                    </c:forEach>
+            </a> <br/>
 
-                </p:fieldset>
 
+
+            <br/>
+            <br/>
+
+            <h:form >
+                <h:panelGrid columns="2" >
+                    <p:inputText value="#{pgModalRequisito.comentario}" />
+                    <p:commandButton value="Adicionar Comentário"
+                                     actionListener="#{pgModalRequisito.atualizarRequisito}"
+                                     update="@form"
+                                     />
+                </h:panelGrid>
+            </h:form>
+
+            <p:textEditor
+
+
+
+                placeholder="A descrição desta atividade não foi cadastrada."
+                value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
+                <f:facet name="toolbar">
+                </f:facet>
+            </p:textEditor>
+
+            <br/>
+            <p:fieldset legend="Comentários:" >
+                <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
+                    #{cm.nomeUsuario}->#{cm.comentario}  <br/>
+                </c:forEach>
 
             </p:fieldset>
-        </h:form>
+
+
+        </p:fieldset>
+
 
 
     </h:body>
