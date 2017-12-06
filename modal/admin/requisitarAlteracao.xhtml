@@ -8,90 +8,80 @@
 
 
     <h:head>
-
+        <title>
+            #{pgModalRequisito.paginaVinculada.acaoVinculada.nomeUnico}
+        </title>
 
     </h:head>
 
     <h:body>
+
         <h:form>
 
-            #{pgModalRequisito.paginaVinculada.acaoVinculada.nomeUnico} <br/>
-            <p:link href="#{pgModalRequisito.urlJira}/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
-                    value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
-                    target="requisitoJira:"
-                    >
-                Ver requisito, que originou a tarefa
-            </p:link>
+            <div class="Container100" >
 
-            <div class="Container25" >
-                <p:inputText value="#{pgModalRequisito.nomeUnicoAcao}" />
+                <h:inputHidden   value="#{pgModalRequisito.nomeUnicoAcao}" />
 
-                <p:commandButton value="Conectar com requisito Jira"
-                                 actionListener="#{pgModalRequisito.atualizarRequisito}"
-                                 update="#{pgUtil.gerarCaminhoCompletoID('detalhesRequisito')}"
-                                 />
-            </div>
-            <div class="Container25" >
-
-            </div>
-            <div class="Container25" >
-
+                <div class="Container30">
+                    <p:commandButton value="Conectar com requisito Jira"
+                                     actionListener="#{pgModalRequisito.atualizarRequisito()}"
+                                     update="@form"
+                                     />
+                    <p:link href="#{pgModalRequisito.ur}/browse/#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
+                            value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
+                            target="requisitoJira:"
+                            >
+                        Ver requisito, que originou a tarefa
+                    </p:link>
+                </div>
             </div>
 
+            <p:fieldset legend="#{pgModalRequisito.requisitoVinculadoAcao.nome}"
+                        id="detalhesRequisito"
+                        rendered="#{pgModalRequisito.requisitoVinculadoAcao!=null}">
+                <a href="#{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}"
+                   target="sbReqDoMomento"
+                   >
+                    Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
 
-        </h:form>
-
-
-
-
-
-
-        <p:fieldset legend="#{pgModalRequisito.requisitoVinculadoAcao.nome}"
-                    id="detalhesRequisito"
-                    rendered="#{pgModalRequisito.requisitoVinculadoAcao!=null}">
-            <a href="#{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}"
-               target="sbReqDoMomento"
-               >
-                Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
-
-            </a> <br/>
+                </a> <br/>
 
 
 
-            <br/>
-            <br/>
+                <br/>
+                <br/>
 
-            <h:form >
+
                 <h:panelGrid columns="2" >
                     <p:inputText value="#{pgModalRequisito.comentario}" />
                     <p:commandButton value="Adicionar Comentário"
-                                     actionListener="#{pgModalRequisito.atualizarRequisito}"
+                                     actionListener="#{pgModalRequisito.adicionarComentario()}"
                                      update="@form"
                                      />
                 </h:panelGrid>
-            </h:form>
-
-            <p:textEditor
 
 
+                <p:textEditor
 
-                placeholder="A descrição desta atividade não foi cadastrada."
-                value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
-                <f:facet name="toolbar">
-                </f:facet>
-            </p:textEditor>
 
-            <br/>
-            <p:fieldset legend="Comentários:" >
-                <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
-                    #{cm.nomeUsuario}->#{cm.comentario}  <br/>
-                </c:forEach>
+
+                    placeholder="A descrição desta atividade não foi cadastrada."
+                    value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
+                    <f:facet name="toolbar">
+                    </f:facet>
+                </p:textEditor>
+
+                <br/>
+                <p:fieldset legend="Comentários:" >
+                    <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
+                        #{cm.nomeUsuario}->#{cm.comentario}  <br/>
+                    </c:forEach>
+
+                </p:fieldset>
+
 
             </p:fieldset>
-
-
-        </p:fieldset>
-
+        </h:form>
 
 
     </h:body>

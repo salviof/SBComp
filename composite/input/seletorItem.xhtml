@@ -62,8 +62,8 @@
             <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoOnChange')}">
                 <p:ajax rendered="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoOnChange')}"
                         global="true"
-                        event="#{metodo}"
-                        listener="#{cc.attrs.metodoOnChange}"/>
+                        event="valueChange"
+                        listener="#{metodo}"/>
             </c:if>
 
             <c:if test="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'idOnChange')}" >
