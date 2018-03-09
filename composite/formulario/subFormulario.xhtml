@@ -22,7 +22,7 @@
                       para visualizar todas as opções acesse: #layoutsComponenteSB.layoutCampo.  "
                       name="tipoVisualizacaoLabel"
                       type="com.super_bits.modulosSB.SBCore.modulos.view.fabricasCompVisual.ItfComponenteVisualSB"
-                      default="#{layoutsComponenteSB.layoutCampo.superior}"
+                      default="#{layoutsComponenteSB.layoutCampo.resumido}"
                       />
         <cc:attribute name="Ação Salvar Alteracoes" />
         <cc:attribute name="grupoCampos" required="true" type="com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.ItfGrupoCampos" />
@@ -33,18 +33,20 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <h:panelGroup >
-            <p:commandButton
-                id="botaoRemoverSubform"
-                action="#{cc.attrs.registro.comoSubItens.subItens.removerItemSelecionadoPeloIndice() }"
-                update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
-                styleClass="invisivel"
-                process="@this"
-                />
+            <h:form>
+
+                <p:commandButton
+                    id="botaoRemoverSubform"
+                    action="#{cc.attrs.registro.comoSubItens.subItens.removerItemSelecionadoPeloIndice() }"
+                    update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
+                    styleClass="invisivel"
+
+                    />
 
 
-            <p:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
+                <p:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
 
-
+            </h:form>
 
             <h:panelGroup id="subForm" styleClass="Container100 Responsive" >
 
@@ -53,7 +55,7 @@
 
                         actionListener="#{cc.attrs.registro.comoSubItens.subItens.adicionarItem()}"
                         update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
-                        process="@this"
+
                         value="#{cc.attrs.registro.comoSubItens.subItens.acaoAdicionarItem.nomeAcao}"
                         />
                 </h:panelGroup>
@@ -74,8 +76,9 @@
                                 <tr scope="row">
                                     <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="cpItem" >
                                         <td class="col-md-2">
-                                            <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{layoutsComponenteSB.layoutCampo.resumido}"
+                                            <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{cc.attrs.tipoVisualizacaoLabel}"
                                                            idAtualizarOnChange="@this"
+
                                                            />
                                         </td>
 
@@ -103,7 +106,6 @@
         </h:panelGroup>
     </cc:implementation>
 </ui:composition>
-
 
 
 
