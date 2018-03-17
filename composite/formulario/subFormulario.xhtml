@@ -51,13 +51,25 @@
             <h:panelGroup id="subForm" styleClass="Container100 Responsive" >
 
                 <h:panelGroup styleClass="Fright" >
-                    <p:commandButton
+                    <h:form>
+                        <p:commandButton
 
+                            actionListener="#{cc.attrs.registro.comoSubItens.subItens.adicionarItem()}"
+                            update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
+
+                            value="#{cc.attrs.registro.comoSubItens.subItens.acaoAdicionarItem.nomeAcao}"
+
+<<<<<<< HEAD
+
+                            />
+                    </h:form>
+=======
                         actionListener="#{cc.attrs.registro.comoSubItens.subItens.adicionarItem()}"
                         update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
 
                         value="#{cc.attrs.registro.comoSubItens.subItens.acaoAdicionarItem.nomeAcao}"
                         />
+>>>>>>> 87f072c085d3519357c76c1f6ff2513bfe7ccc97
                 </h:panelGroup>
                 <h:form>
                     <table class="table table-striped">

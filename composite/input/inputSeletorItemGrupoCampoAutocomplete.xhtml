@@ -2,7 +2,13 @@
                 xmlns:cc="http://java.sun.com/jsf/composite"
                 xmlns:SBSeletor="http://xmlns.jcp.org/jsf/composite/SBComp/composite/seletores"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
+<<<<<<< HEAD
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+=======
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+>>>>>>> f21fed0f9907b661736831d09ce6585c704305ce
     <!-- INTERFACE -->
     <cc:interface>
         <cc:attribute name="registro"
@@ -11,6 +17,7 @@
                       default="#{pgUtil.campoNaoImplementado}"
                       shortDescription="Exibe um atributo de um Objeto para insersão de dados do usuário (Ou Visualização)"
                       />
+<<<<<<< HEAD
         <cc:attribute name="label"  default="Selecione um  #{cc.attrs.registro.label}"/>
         <cc:attribute name="idAreaPrincipal" default="seletorGrande#{cc.attrs.registro.comoCampoSeltorItem.grupoCampoExibicao.nomeIdentificadorSlug}" />
     </cc:interface>
@@ -23,6 +30,85 @@
                                                    itemSelecionado="#{cc.attrs.registro.valor}"
                                                    metodo="#{cc.attrs.registro.comoCampoSeltorItem.filtrarPorAutoComplet(pParametro)}"
                                                    titulo="#{cc.attrs.label}"/>
+=======
+        <cc:attribute name="opcoes" required="true"  />
+        <cc:attribute name="grupoCampos" type="com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.ItfGrupoCampos"/>
+        <cc:attribute name="titulo"  default="Listagem de  #{cc.attrs.registro.label}"/>
+        <cc:attribute name="idAreaPrincipal" default="seletorGrande#{cc.attrs.grupoCampos.nomeIdentificadorSlug}" />
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+        <h:panelGroup id="Pesquisa#{cc.attrs.idAreaPrincipal}">
+
+
+
+            <p:autoComplete
+                styleClass="inputTexto"
+
+                converter="conversorGenerico"
+                itemLabel="#{item.nome}"
+                itemValue="#{item}"
+                forceSelection="true"
+                emptyMessage="Nada Selecionado"
+                placeholder="Pesquise por um #{label}"
+                var="item"
+                value="#{cc.attrs.registro.valor}"
+                minQueryLength="4"
+                queryDelay="1000"
+
+                maxResults="6"
+                completeMethod="#{cc.attrs.registro.comoCampoSeltorItem.filtrarPorAutoComplet}"
+                >
+                <p:ajax event="itemSelect" update="seletorPesquisa"/>
+                <c:forEach var="campo" items="#{cc.attrs.campos}" rendered="#{pgUtil.isAtributoPreenchidoComExpressao(cc, 'campos')}">
+                    <p:column>
+                        <sb:inputSB
+                            registro="#{item.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse)}"
+                            atualizarFormOnChange="false"
+                            atualizarGrupoOnChange="false"
+                            label="#{item.getCampoByNomeOuAnotacao(campo.caminhoSemNomeClasse).label}"
+                            obrigatorio="false"
+                            possuiIDOnChange="false"
+                            possuiMetodoOnChange="false"
+                            desabilitarEdicao="true"
+                            layoutCampo="#{layoutsComponenteSB.layoutCampo.resumido}"
+                            />
+
+                    </p:column>
+
+                </c:forEach>
+
+
+            </p:autoComplete>
+
+            <sb:parametroMetodo nome="metodo" valor="#{cc.attrs.metodo}" />
+
+            <h:panelGroup id="seletorPesquisa" >
+
+                <p:commandButton rendered="#{!desabilitarEdicao and lista.size()>5}" icon="#{acoesPaginas_do_Sistema_PAGINA_PESQUISA_AVANCADA_MB_PADRAO.pagina_pesquisa_avancada_mb_padrao.icone}"
+
+                                 actionListener="#{pgUtil.exibirModalImportacaoPesquisaAvancada()}"
+                                 partialSubmit="true"
+                                 process="@this"
+                                 >
+                    <p:ajax event="dialogReturn"  update="#{pgUtil.getNomeIdComponenteInput(component)}"/>
+                    <c:if test="#{possuiIDOnChange}" >
+                        <p:ajax
+                            rendered="#{possuiIDOnChange}"
+                            global="true"
+                            event="dialogReturn"
+                            listener="#{pgUtil.atualizaTelaPorID(idAtualizarOnChange)}" />
+                    </c:if>
+                    <f:setPropertyActionListener target="#{paginaAtual.infoPagina.modalDados.campoSelecionado}"
+                                                 value="#{registro}" />
+
+                </p:commandButton>
+
+            </h:panelGroup>
+>>>>>>> f21fed0f9907b661736831d09ce6585c704305ce
 
         </h:panelGroup>
     </cc:implementation>
