@@ -33,90 +33,74 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <h:panelGroup >
-            <h:panelGroup >
-                <p:fragment>
-                    <p:commandButton
-                        id="botaoRemoverSubform"
-                        action="#{cc.attrs.registro.comoSubItens.subItens.removerItemSelecionadoPeloIndice() }"
-                        update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
-                        styleClass="invisivel"
+            <h:form>
+
+                <p:commandButton
+                    id="botaoRemoverSubform"
+                    action="#{cc.attrs.registro.comoSubItens.subItens.removerItemSelecionadoPeloIndice() }"
+                    update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
+                    styleClass="invisivel"
+
+                    />
 
 
+                <p:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
 
-
-                        />
-                    <p:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
-                </p:fragment>
-
-
-            </h:panelGroup>
+            </h:form>
 
             <h:panelGroup id="subForm" styleClass="Container100 Responsive" >
 
                 <h:panelGroup styleClass="Fright" >
-<<<<<<< HEAD
                     <h:form>
                         <p:commandButton
-=======
-
-                    <p:commandButton
->>>>>>> 541850ed12f3c55ae16ea11344adc4c7cde4dc38
 
                             actionListener="#{cc.attrs.registro.comoSubItens.subItens.adicionarItem()}"
                             update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
 
-<<<<<<< HEAD
                             value="#{cc.attrs.registro.comoSubItens.subItens.acaoAdicionarItem.nomeAcao}"
 
 
                             />
                     </h:form>
-=======
-                        value="#{cc.attrs.registro.comoSubItens.subItens.acaoAdicionarItem.nomeAcao}"
-
-
-                        />
-
->>>>>>> 541850ed12f3c55ae16ea11344adc4c7cde4dc38
                 </h:panelGroup>
+                <h:form>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campo" >
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campo" >
-
-                                <th></th>
-
-                            </c:forEach>
-                            <th>-</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="#{cc.attrs.registro.valor}" var="itemDaLista" varStatus="infoRec" >
-                            <tr scope="row" id="#{cc.attrs.grupoCampos.idNomeGrupoCampo}#{infoRec.index}">
-                                <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="cpItem" >
-                                    <td class="col-md-2">
-                                        <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{cc.attrs.tipoVisualizacaoLabel}"
-                                                       idAtualizarOnChange="@this"
-
-                                                       />
-                                    </td>
+                                    <th></th>
 
                                 </c:forEach>
-                                <td class="col-md-1">
-                                    <p:commandLink
-
-                                        onclick="modificarIntputEclicar('#{pgUtil.gerarCaminhoCompletoIDParaJavaScript('botaoRemoverSubform')}', '#{pgUtil.gerarCaminhoCompletoIDParaJavaScript('indiceSubformulario')}', '#{infoRec.index}')">
-                                        <i class="fa fa-times Fs30" aria-hidden="true"></i>
-                                    </p:commandLink>
-                                </td>
+                                <th>-</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="#{cc.attrs.registro.valor}" var="itemDaLista" varStatus="infoRec" >
+                                <tr scope="row">
+                                    <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="cpItem" >
+                                        <td class="col-md-2">
+                                            <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{cc.attrs.tipoVisualizacaoLabel}"
+                                                           idAtualizarOnChange="@this"
 
-                        </c:forEach>
-                    </tbody>
+                                                           />
+                                        </td>
 
-                </table>
+                                    </c:forEach>
+                                    <td class="col-md-1">
+                                        <p:commandLink
+                                            process="@this"
+                                            onclick="modificarIntputEclicar('#{pgUtil.gerarCaminhoCompletoIDParaJavaScript('botaoRemoverSubform')}', '#{pgUtil.gerarCaminhoCompletoIDParaJavaScript('indiceSubformulario')}', '#{infoRec.index}')">
+                                            <i class="fa fa-times Fs30" aria-hidden="true"></i>
+                                        </p:commandLink>
+                                    </td>
+                                </tr>
 
+                            </c:forEach>
+                        </tbody>
+
+                    </table>
+                </h:form>
 
 
 
