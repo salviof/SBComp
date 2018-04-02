@@ -58,6 +58,8 @@ ui-datatable-header.ui-widget-header.ui-corner-top{
 
 }
 
-ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s{
+.ui-sortable-column-icon.ui-icon.ui-icon-carat-2-n-s{
     display: none;
 }
+
+
