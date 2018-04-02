@@ -42,7 +42,9 @@
         </h:panelGroup>
 
         <h:panelGroup rendered="#{!cc.attrs.registro.umaListagemParticular}" >
-            <SBInput:input registro="#{cc.attrs.registro}"  />
+            <SBInput:input registro="#{cc.attrs.registro}"
+                           desabilitarEdicao="#{cc.attrs.somenteLeitura}"
+                           />
         </h:panelGroup>
 
 
