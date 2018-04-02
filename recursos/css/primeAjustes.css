@@ -57,3 +57,7 @@ ui-datatable-header.ui-widget-header.ui-corner-top{
     font-size: 10px!important;
 
 }
+
+ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s{
+    display: none;
+}
