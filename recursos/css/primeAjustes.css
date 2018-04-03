@@ -57,7 +57,7 @@ ui-datatable-header.ui-widget-header.ui-corner-top{
     font-size: 12px!important;
 
 }
-
+/* desabilitando o icone  shortColuna das tabelas*/
 .ui-sortable-column-icon.ui-icon.ui-icon-carat-2-n-s{
     display: none;
 }
