@@ -138,7 +138,7 @@ and open the template in the editor.
     width: 10px;
 }
 
-col-md-1.ColunaPequenaBotstrap span span input{
+.col-md-1.ColunaPequenaBotstrap span span input{
     width: 120px!important;
 
 }
