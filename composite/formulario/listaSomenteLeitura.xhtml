@@ -52,8 +52,8 @@
 
                         <c:forEach items="#{cc.attrs.registro.valor}" var="item" varStatus="infoRec" >
 
-                            <tr scope="row">
 
+                            <tr scope="row">
                                 <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campoColonaLeitura" >
                                     <th>#{campoColonaLeitura.label}</th>
 
@@ -65,9 +65,9 @@
 
                                 </c:forEach>
 
-
-                                </tbody>
-                        </c:forEach>
+                            </tr>
+                    </tbody>
+                    </c:forEach>
                 </table>
             </p:fieldset>
 
