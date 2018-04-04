@@ -55,7 +55,7 @@
                                 <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campoColonaLeitura" >
                                     <th>#{campoColonaLeitura.label}</th>
 
-                                    <td class="col-md-#{pgUtilLayout.getColunaLayoutByNomeCampoCompletoComGrupo(campoColonaLeitura.caminhoCompletoComGrupoCampo).peso}">
+                                    <td class="col-md-1 ColunaPequenaBotstrap">
                                         <SBInput:input registro="#{item.produto.getCampoByNomeOuAnotacao(campoColonaLeitura.caminhoSemNomeClasse)}"
                                                        layout="#{layoutsComponenteSB.layoutCampo.semLabel}"
                                                        desabilitarEdicao="true"/>
