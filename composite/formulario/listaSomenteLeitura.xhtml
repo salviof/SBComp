@@ -54,7 +54,7 @@
 
                             <tr scope="row">
 
-                                <c:forEach #{cc.attrs.grupoCampos.campos} var="campoColonaLeitura" >
+                                <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campoColonaLeitura" >
                                     <th>#{campoColonaLeitura.label}</th>
 
                                     <td class="col-md-#{pgUtilLayout.getColunaLayoutByNomeCampoCompletoComGrupo(campoColonaLeitura.caminhoCompletoComGrupoCampo).peso}">
