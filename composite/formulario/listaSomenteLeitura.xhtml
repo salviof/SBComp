@@ -56,7 +56,7 @@
                                     <th>#{campoColonaLeitura.label}</th>
 
                                     <td class="col-md-#{pgUtilLayout.getColunaLayoutByNomeCampoCompletoComGrupo(campoColonaLeitura.caminhoCompletoComGrupoCampo).peso}">
-                                        <SBInput:input registro="#{item.produto.getCampoByNomeOuAnotacao(campoColonaLeitura.getCaminhoSemNomeClasse)}"
+                                        <SBInput:input registro="#{item.produto.getCampoByNomeOuAnotacao(campoColonaLeitura.ultimoNome)}"
                                                        layout="#{layoutsComponenteSB.layoutCampo.semLabel}"
                                                        desabilitarEdicao="true"/>
                                     </td>
