@@ -34,7 +34,7 @@
     <cc:implementation>
         <h:panelGroup >
             <c:if test="#{!pgUtilLayout.verificaExisteLayout(cc.attrs.grupoCampos.nomeIdentificadorSlug)}">
-                #{pgUtilLayout.gerarLayout(cc.attrs.grupoCampos)}
+                #{pgUtilLayout.gerarLayout(cc.attrs.grupoCampos.campos)}
             </c:if>
             <p:fieldset >
                 <table class="table table-striped">
