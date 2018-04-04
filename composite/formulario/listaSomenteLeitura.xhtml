@@ -41,9 +41,8 @@
                     <thead>
                         <tr>
 
-                            <c:forEach #{cc.attrs.grupoCampos.campos} var="campoColonaLeitura" >
+                            <c:forEach  items="#{cc.attrs.grupoCampos.campos}" var="campoColonaLeitura" >
                                 <th>#{campoColonaLeitura.label}</th>
-
                             </c:forEach>
 
                         </tr>
