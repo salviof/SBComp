@@ -93,7 +93,7 @@
                             <tr scope="row" id="#{cc.attrs.grupoCampos.idNomeGrupoCampo}#{infoRec.index}">
                                 <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="cpItem" >
                                     <td class="col-md-2">
-                                        <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.ultimoNome)}"  layout="#{cc.attrs.tipoVisualizacaoLabel}"
+                                        <SBInput:input registro="#{itemDaLista.getCampoByNomeOuAnotacao(cpItem.caminhoSemNomeClasse)}"  layout="#{cc.attrs.tipoVisualizacaoLabel}"
                                                        idAtualizarOnChange="@this"
 
                                                        />
