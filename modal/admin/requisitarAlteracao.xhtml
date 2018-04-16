@@ -15,75 +15,87 @@
     </h:head>
 
     <h:body>
+        <p:fieldset id="dadosRequisto" >
+            <h:form>
 
-        <h:form>
+                <div class="Container100" >
 
-            <div class="Container100" >
+                    <h:inputHidden   value="#{pgModalRequisito.nomeUnicoAcao}" />
 
-                <h:inputHidden   value="#{pgModalRequisito.nomeUnicoAcao}" />
-
-                <div class="Container30">
-                    <p:commandButton value="Conectar com requisito Jira"
-                                     actionListener="#{pgModalRequisito.atualizarRequisito()}"
-                                     update="@form"
-                                     />
-                    <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
-                            value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
-                            target="requisitoJira:"
-                            >
-                        Ver requisito, que originou a tarefa
-                    </p:link>
+                    <div class="Container30">
+                        <p:commandButton value="Conectar com requisito Jira"
+                                         actionListener="#{pgModalRequisito.atualizarRequisito()}"
+                                         update="@form"
+                                         onstart="PF('blokJira').start"
+                                         oncomplete="PF('blokJira').stop"
+                                         widgetVar="botaoJira"
+                                         />
+                        <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
+                                value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
+                                target="requisitoJira:"
+                                >
+                            Ver requisito, que originou a tarefa
+                        </p:link>
+                    </div>
                 </div>
-            </div>
 
-            <p:fieldset legend="#{pgModalRequisito.requisitoVinculadoAcao.nome}"
-                        id="detalhesRequisito"
-                        rendered="#{pgModalRequisito.requisitoVinculadoAcao!=null}">
-                <a href="#{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}"
-                   target="sbReqDoMomento"
-                   >
-                    Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
+                <p:fieldset legend="#{pgModalRequisito.requisitoVinculadoAcao.nome}"
+                            id="detalhesRequisito"
+                            rendered="#{pgModalRequisito.requisitoVinculadoAcao!=null}">
+                    <a href="#{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}"
+                       target="sbReqDoMomento"
+                       >
+                        Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
 
-                </a> <br/>
-                <p:outputLabel value="Status: #{pgModalRequisito.requisitoVinculadoAcao.statusDescricao}" />
-
-
-                <br/>
-                <br/>
+                    </a> <br/>
+                    <p:outputLabel value="Status: #{pgModalRequisito.requisitoVinculadoAcao.statusDescricao}" />
 
 
-                <h:panelGrid columns="2" >
-                    <p:inputText value="#{pgModalRequisito.comentario}" />
-                    <p:commandButton value="Adicionar Comentário"
-                                     actionListener="#{pgModalRequisito.adicionarComentario()}"
-                                     update="@form"
-                                     />
-                </h:panelGrid>
+                    <br/>
+                    <br/>
+
+                    <h:panelGrid columns="2" >
+                        <p:inputText value="#{pgModalRequisito.comentario}" />
+                        <p:commandButton value="Adicionar Comentário"
+                                         actionListener="#{pgModalRequisito.adicionarComentario()}"
+                                         update="@form"
+                                         />
+                    </h:panelGrid>
 
 
-                <p:textEditor
+                    <p:textEditor
 
-                    height="150"
-                    toolbarVisible="false"
-                    placeholder="A descrição desta atividade não foi cadastrada."
-                    value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
-                    <f:facet name="toolbar">
-                    </f:facet>
-                </p:textEditor>
+                        height="100"
+                        toolbarVisible="false"
+                        placeholder="A descrição desta atividade não foi cadastrada."
+                        value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
 
-                <br/>
-                <p:fieldset legend="Comentários:" >
-                    <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
-                        #{cm.nomeUsuario}->#{cm.comentario}  <br/>
-                    </c:forEach>
+                    </p:textEditor>
+
+                    <br/>
+                    <p:fieldset legend="Comentários:" >
+                        <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
+                            #{cm.nomeUsuario}->#{cm.comentario}  <br/>
+                        </c:forEach>
+
+                    </p:fieldset>
+
 
                 </p:fieldset>
+            </h:form>
+
+            <p:blockUI block="formGerador" widgetVar="blokJira" >
+                <i class="fa fa-tasks fa-spin fa-3x fa-fw" ></i> Gerando documento, convertendo em PDF
 
 
-            </p:fieldset>
+            </p:blockUI>
+
+
+        </p:fieldset>
+        <h:form>
+            <p:remoteCommand action="PF('botaoJira').click()" autoRun="true" />
+
         </h:form>
-
-
     </h:body>
 
 </html>
