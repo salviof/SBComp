@@ -15,6 +15,11 @@
     </h:head>
 
     <h:body>
+        <p:blockUI block="dadosRequisto" widgetVar="blokJira" >
+            <i class="fa fa-tasks fa-spin fa-3x fa-fw" ></i> Gerando documento, convertendo em PDF
+
+
+        </p:blockUI>
         <p:fieldset id="dadosRequisto" >
             <h:form>
 
@@ -26,8 +31,8 @@
                         <p:commandButton value="Conectar com requisito Jira"
                                          actionListener="#{pgModalRequisito.atualizarRequisito()}"
                                          update="@form"
-                                         onstart="PF('blokJira').start()"
-                                         oncomplete="PF('blokJira').stop()"
+                                         onstart="PF('blokJira').start();"
+                                         oncomplete="PF('blokJira').stop();"
                                          widgetVar="botaoJira"
                                          />
                         <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
@@ -84,16 +89,12 @@
                 </p:fieldset>
             </h:form>
 
-            <p:blockUI block="dadosRequisto" widgetVar="blokJira" >
-                <i class="fa fa-tasks fa-spin fa-3x fa-fw" ></i> Gerando documento, convertendo em PDF
 
-
-            </p:blockUI>
 
 
         </p:fieldset>
         <h:form>
-
+            <p:remoteCommand action="PF('botaoJira').click()" autoRun="true" />
 
         </h:form>
     </h:body>
