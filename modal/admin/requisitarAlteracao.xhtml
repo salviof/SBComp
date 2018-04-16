@@ -34,6 +34,7 @@
                                          onstart="PF('blokJira').start();"
                                          oncomplete="PF('blokJira').stop();"
                                          widgetVar="botaoJira"
+                                         accesskey="botaoJira"
                                          />
                         <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
                                 value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
@@ -94,7 +95,7 @@
 
         </p:fieldset>
         <h:form>
-            <p:remoteCommand action="PF('botaoJira').click()" name="mostrarJira" />
+            <p:remoteCommand onstart="PF('botaoJira').click()" name="mostrarJira" />
             <p:button onclick="mostrarJira();" value="Teste"/>
         </h:form>
     </h:body>
