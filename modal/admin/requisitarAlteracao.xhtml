@@ -32,8 +32,8 @@
                         <p:commandButton value="Conectar com requisito Jira"
                                          actionListener="#{pgModalRequisito.atualizarRequisito()}"
                                          update="@form"
-                                         onstart="PF('blokJira').start();"
-                                         oncomplete="PF('blokJira').stop();"
+                                         onstart="PF('blokJira').show();"
+                                         oncomplete="PF('blokJira').hide();"
 
 
                                          />
@@ -66,8 +66,8 @@
                         <p:commandButton value="Adicionar Comentário"
                                          actionListener="#{pgModalRequisito.adicionarComentario()}"
                                          update="@form"
-                                         onstart="PF('blokJira').start();"
-                                         oncomplete="PF('blokJira').stop();"
+                                         onstart="PF('blokJira').show();"
+                                         oncomplete="PF('blokJira').hide();"
                                          />
                     </h:panelGrid>
 
