@@ -4,21 +4,21 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      >
 
 
     <h:head>
         <title>
             #{pgModalRequisito.paginaVinculada.acaoVinculada.nomeUnico}
         </title>
-
+        <ui:include src="../folhasDeEstiloModal.xhtml" />
     </h:head>
 
     <h:body>
         <p:blockUI block="#{pgUtil.gerarCaminhoCompletoID('dadosRequisto')}" widgetVar="blokJira" >
             <i class="fa fa-tasks fa-spin fa-3x fa-fw" ></i> Gerando documento, convertendo em PDF
-
-
         </p:blockUI>
         <p:fieldset id="dadosRequisto" >
             <h:form>
@@ -33,7 +33,7 @@
                                          update="@form"
                                          onstart="PF('blokJira').start();"
                                          oncomplete="PF('blokJira').stop();"
-                                         widgetVar="botaoJira"
+
 
                                          />
                         <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
