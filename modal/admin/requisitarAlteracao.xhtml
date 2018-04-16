@@ -27,7 +27,7 @@
                                      actionListener="#{pgModalRequisito.atualizarRequisito()}"
                                      update="@form"
                                      />
-                    <p:link href="#{infoWebApp.urlPagina} https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
+                    <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
                             value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
                             target="requisitoJira:"
                             >
@@ -45,7 +45,7 @@
                     Lnk para tarefa Vinculada:    #{pgModalRequisito.requisitoVinculadoAcao.urlRequisito}
 
                 </a> <br/>
-                <p:outputLabel value="#{pgModalRequisito.requisitoVinculadoAcao.statusDescricao}" />
+                <p:outputLabel value="Status: #{pgModalRequisito.requisitoVinculadoAcao.statusDescricao}" />
 
 
                 <br/>
@@ -63,7 +63,7 @@
 
                 <p:textEditor
 
-                    height="300"
+                    height="150"
                     toolbarVisible="false"
                     placeholder="A descrição desta atividade não foi cadastrada."
                     value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
