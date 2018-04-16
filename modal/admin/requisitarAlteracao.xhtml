@@ -34,7 +34,7 @@
                                          onstart="PF('blokJira').start();"
                                          oncomplete="PF('blokJira').stop();"
                                          widgetVar="botaoJira"
-                                         accesskey="botaoJira"
+
                                          />
                         <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
                                 value="#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
@@ -68,23 +68,24 @@
                                          />
                     </h:panelGrid>
 
+                    <p:panelGrid columns="2" >
+                        <p:textEditor
 
-                    <p:textEditor
+                            height="100"
+                            toolbarVisible="false"
+                            placeholder="A descrição desta atividade não foi cadastrada."
+                            value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
 
-                        height="100"
-                        toolbarVisible="false"
-                        placeholder="A descrição desta atividade não foi cadastrada."
-                        value="#{pgModalRequisito.requisitoVinculadoAcao.descricao}" readonly="true" >
+                        </p:textEditor>
 
-                    </p:textEditor>
 
-                    <br/>
-                    <p:fieldset legend="Comentários:" >
-                        <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
-                            #{cm.nomeUsuario}->#{cm.comentario}  <br/>
-                        </c:forEach>
+                        <p:fieldset legend="Comentários:" >
+                            <c:forEach items="#{pgModalRequisito.requisitoVinculadoAcao.comentarios}" var="cm">
+                                #{cm.nomeUsuario}->#{cm.comentario}  <br/>
+                            </c:forEach>
 
-                    </p:fieldset>
+                        </p:fieldset>
+                    </p:panelGrid>
 
 
                 </p:fieldset>
