@@ -26,8 +26,8 @@
                         <p:commandButton value="Conectar com requisito Jira"
                                          actionListener="#{pgModalRequisito.atualizarRequisito()}"
                                          update="@form"
-                                         onstart="PF('blokJira').start"
-                                         oncomplete="PF('blokJira').stop"
+                                         onstart="PF('blokJira').start()"
+                                         oncomplete="PF('blokJira').stop()"
                                          widgetVar="botaoJira"
                                          />
                         <p:link href="https://vipsol.atlassian.net/wiki/display/SKEDR/#{pgModalSBJSF.paginaVinculada.acaoSelecionada.idDescritivoJira}#{pgModalSBJSF.paginaVinculada.acaoVinculada.idDescritivoJira}"
