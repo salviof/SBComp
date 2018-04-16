@@ -94,8 +94,8 @@
 
         </p:fieldset>
         <h:form>
-            <p:remoteCommand action="PF('botaoJira').click()" autoRun="true" />
-
+            <p:remoteCommand action="PF('botaoJira').click()" name="mostrarJira" />
+            <p:button onclick="mostrarJira();" value="Teste"/>
         </h:form>
     </h:body>
 
