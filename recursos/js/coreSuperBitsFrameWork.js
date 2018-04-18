@@ -12,7 +12,7 @@ function scrollEmCampoNaoValidado() {
 
 
     var elementoErro = $('.ui-state-error');
-    if (elementoErro != null) {
+    if (elementoErro !== null) {
         PrimeFaces.scrollTo(elementoErro.attr('id'));
 
         var y = $(window).scrollTop();  //your current y position on the page
