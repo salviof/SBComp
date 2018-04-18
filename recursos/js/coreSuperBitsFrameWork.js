@@ -16,8 +16,10 @@ function scrollEmCampoNaoValidado() {
         PrimeFaces.scrollTo(elementoErro.attr('id'));
 
         var y = $(window).scrollTop();  //your current y position on the page
-        $(window).scrollTop(y - 150);
+        $(window).scrollTop(y - 300);
+        return true;
     }
+    return false;
 }
 
 
@@ -33,7 +35,10 @@ function irParTopo() {
 
 function acoesPosAjax() {
     esconderTooltips();
-    irParTopo();
+
+    if (!scrollEmCampoNaoValidado()) {
+        irParTopo();
+    }
 }
 
 /**
