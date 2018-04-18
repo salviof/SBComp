@@ -6,7 +6,18 @@
 function esconderTooltips() {
     $(".ui-tooltip").hide();
 
+}
 
+function scrollEmCampoNaoValidado() {
+
+
+    var elementoErro = $('.ui-state-error');
+    if (elementoErro != null) {
+        PrimeFaces.scrollTo(elementoErro.attr('id'));
+
+        var y = $(window).scrollTop();  //your current y position on the page
+        $(window).scrollTop(y - 150);
+    }
 }
 
 
