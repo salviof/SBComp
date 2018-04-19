@@ -13,7 +13,7 @@ function esconderTooltips() {
 function scrollEmCampoNaoValidado() {
 
 
-    var elementoErro = $('.ui-state-error');
+    var elementoErro = $('.ui-state-error,input')[0]
     if (elementoErro !== null) {
 
 
