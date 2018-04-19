@@ -8,15 +8,20 @@ function esconderTooltips() {
 
 }
 
+
+
 function scrollEmCampoNaoValidado() {
 
 
     var elementoErro = $('.ui-state-error');
     if (elementoErro !== null) {
-        PrimeFaces.scrollTo(elementoErro.attr('id'));
+        centerItVariableWidth(elementoErro, )
 
-        var y = $(window).scrollTop();  //your current y position on the page
-        $(window).scrollTop(y - 300);
+        $('html, body').animate({
+            scrollTop: elementoErro.offset().top - 200
+        }, 800);
+
+
         return true;
     }
     return false;
