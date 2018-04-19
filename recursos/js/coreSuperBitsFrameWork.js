@@ -15,7 +15,7 @@ function scrollEmCampoNaoValidado() {
 
     var elementoErro = $('.ui-state-error');
     if (elementoErro !== null) {
-        centerItVariableWidth(elementoErro, )
+
 
         $('html, body').animate({
             scrollTop: elementoErro.offset().top - 200
