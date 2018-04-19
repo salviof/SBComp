@@ -44,7 +44,7 @@ function acoesPosAjax() {
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
-    }, 1000);
+    }, 3000);
 
 }
 
