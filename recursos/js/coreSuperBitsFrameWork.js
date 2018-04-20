@@ -16,10 +16,12 @@ function scrollEmCampoNaoValidado() {
     var elementoErro = $("input.ui-state-error")[0];
     if (elementoErro !== null) {
 
+        if (typeof $(elementoErro).offset().top !== 'undefined') {
+            $('html, body').animate({
+                scrollTop: $(elementoErro).offset().top - 200
+            });
+        }
 
-        $('html, body').animate({
-            scrollTop: $(elementoErro).offset().top - 200
-        }, 800);
 
 
         return true;
@@ -41,7 +43,7 @@ function irParTopo() {
 function acoesPosAjax() {
     esconderTooltips();
 
-    alert("Agora");
+
     if (!scrollEmCampoNaoValidado()) {
         irParTopo();
     }
