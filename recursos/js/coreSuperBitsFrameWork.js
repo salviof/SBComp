@@ -40,12 +40,12 @@ function irParTopo() {
 
 function acoesPosAjax() {
     esconderTooltips();
-    setTimeout(function () {
-        alert("Agora");
-        if (!scrollEmCampoNaoValidado()) {
-            irParTopo();
-        }
-    }, 3000);
+
+    alert("Agora");
+    if (!scrollEmCampoNaoValidado()) {
+        irParTopo();
+    }
+
 
 }
 
