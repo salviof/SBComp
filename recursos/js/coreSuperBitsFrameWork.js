@@ -41,6 +41,7 @@ function irParTopo() {
 function acoesPosAjax() {
     esconderTooltips();
     setTimeout(function () {
+        alert("Agora");
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
