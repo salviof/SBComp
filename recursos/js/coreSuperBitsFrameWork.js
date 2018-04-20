@@ -12,23 +12,18 @@ function esconderTooltips() {
 
 function scrollEmCampoNaoValidado() {
 
+    try {
+        var elementoErro = $("input.ui-state-error:first");
+        if (elementoErro.length > 0) {
 
-    var elementoErro = $("input.ui-state-error")[0];
-    if (elementoErro !== null) {
-        try {
             $('html, body').animate({
-                scrollTop: $(elementoErro).offset().top - 200
+                scrollTop: elementoErro.offset().top - 200
             });
-        } catch (err) {
-
         }
 
-
-
-
-
-
         return true;
+    } catch (err) {
+
     }
     return false;
 }
