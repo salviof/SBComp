@@ -45,13 +45,14 @@ function irParTopo() {
 }
 
 function acoesPosAjax() {
-    esconderTooltips();
+    try {
+        esconderTooltips();
+        if (!scrollEmCampoNaoValidado()) {
+            irParTopo();
+        }
+    } catch (err) {
 
-
-    if (!scrollEmCampoNaoValidado()) {
-        irParTopo();
     }
-
 
 }
 
