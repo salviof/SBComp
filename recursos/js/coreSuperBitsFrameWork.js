@@ -15,12 +15,16 @@ function scrollEmCampoNaoValidado() {
 
     var elementoErro = $("input.ui-state-error")[0];
     if (elementoErro !== null) {
-
-        if (typeof $(elementoErro).offset().top !== 'undefined') {
+        try {
             $('html, body').animate({
                 scrollTop: $(elementoErro).offset().top - 200
             });
+        } catch (err) {
+
         }
+
+
+
 
 
 
