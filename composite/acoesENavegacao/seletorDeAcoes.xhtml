@@ -48,7 +48,6 @@
             <p:blockUI
                 rendered="#{pgUtil.getNomeIdPFieldSetPai(component)!=null}"
                 block="#{pgUtil.getNomeIdPFieldSetPai(component)}"
-
                 widgetVar="#{pgUtil.getNomeIdPainelGroupInputSB(component)}#{pgUtil.getNomeIdPFieldSetPai(component)}"
                 >
                 <div style="
@@ -66,7 +65,7 @@
                 </div>
 
             </p:blockUI>
-            <h:panelGroup id="#{pgUtil.getNomeIdPainelGroupInputSB(component)}divBotoesDeAcao">
+            <h:panelGroup layout="block" >
                 <ui:repeat value="#{cc.attrs.opcoes}" var="opc" varStatus="rec">
                     <c:choose >
 
