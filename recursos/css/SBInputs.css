@@ -20,14 +20,20 @@ and open the template in the editor.
 .estiloInputGrupoSuperior{
 
 }
-.colunaInputSuperiorConteudo{
+.InputColunaSuperiorConteudo{
     background-color: #f7f5f3!important;
-}
-.colunaInputSuperiorLabel{
 
 }
-.colunaInputSuperiorMensagem{
+.InputColunaSuperiorLabel{
+
 }
+.InputColunaMensagem{
+}
+
+.InputSBSuperior{
+    width: 100%;
+}
+
 
 .listaComOcoesOcultaFitro{
     height: 5px!important;
