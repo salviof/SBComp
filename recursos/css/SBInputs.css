@@ -17,6 +17,11 @@ and open the template in the editor.
     width: auto;
 
 }
+
+.colunaConteudoCampoSuperior{
+    background-color: #f7f5f3!important;
+}
+
 .listaComOcoesOcultaFitro{
     height: 5px!important;
     display: none!important;
