@@ -18,8 +18,16 @@ and open the template in the editor.
 
 }
 
-.InputColunaSuperiorConteudo{
+.InputColunaSuperiorConteudoLeitura{
     background-color: #f7f5f3!important;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 30px;
+    width: 99%;
+}
+
+.InputColunaSuperiorConteudo{
+
 
 }
 .InputColunaSuperiorLabel{
