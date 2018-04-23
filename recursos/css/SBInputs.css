@@ -17,9 +17,16 @@ and open the template in the editor.
     width: auto;
 
 }
+.estiloInputGrupoSuperior{
 
-.colunaConteudoCampoSuperior{
+}
+.colunaInputSuperiorConteudo{
     background-color: #f7f5f3!important;
+}
+.colunaInputSuperiorLabel{
+
+}
+.colunaInputSuperiorMensagem{
 }
 
 .listaComOcoesOcultaFitro{
