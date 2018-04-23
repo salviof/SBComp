@@ -84,7 +84,7 @@
 
                                 <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
                                         rendered="#{opc.acaoTemModal}"
-                                        oncomplete="fecharBloqueios();"
+                                        oncomplete="liberarBloqueios();"
                                         />
 
                                 <p:tooltip for="@parent" value="#{opc.nomeAcao}" trackMouse="true" />
