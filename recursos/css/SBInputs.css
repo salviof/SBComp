@@ -41,6 +41,7 @@ and open the template in the editor.
 }
 
 .InputSBEsquerda{
+    width: 120px;
 
 }
 .InputSBEsquerdaConteudoSomenteLeitura{
@@ -51,7 +52,7 @@ and open the template in the editor.
     width: 99%;
 }
 .InputSBEsquerdaConteudo{
-
+    width: 99%;
 }
 .InputSBEsquerdaLabel{
     text-align: center;
