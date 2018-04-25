@@ -56,8 +56,12 @@ and open the template in the editor.
 }
 .InputSBEsquerdaLabel{
     text-align: center;
-    width: 120px!important;
+    width: 120px;
 
+}
+
+.InputSBEsquerdaLabel label{
+    width: 120px;
 }
 .InputSBEsquerdaMensagem{
 
