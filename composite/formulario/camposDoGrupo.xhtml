@@ -26,7 +26,7 @@
 
 
         <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="camp"  varStatus="recnum" >
-            <h:panelGroup rendered="#{!camp.umCampoComLista}" styleClass="Container33 Responsive" style="position: relative;" >
+            <h:panelGroup rendered="#{!camp.umCampoComLista}" styleClass="Container33 Responsive" style="position: relative;" layout="block" >
                 <SBInput:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(camp.caminhoSemNomeClasse)}"
                                layout="#{cc.attrs.tipoVisualizacaoLabel}"
                                desabilitarEdicao="#{cc.attrs.somenteLeitura}"
