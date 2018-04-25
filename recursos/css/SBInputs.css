@@ -40,6 +40,26 @@ and open the template in the editor.
     width: 100%;
 }
 
+.InputSBEsquerda{
+
+}
+.InputSBEsquerdaConteudoSomenteLeitura{
+    background-color: #f7f5f3!important;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 30px;
+    width: 99%;
+}
+.InputSBEsquerdaConteudo{
+
+}
+.InputSBEsquerdaLabel{
+
+}
+.InputSBEsquerdaMensagem{
+
+}
+
 
 .listaComOcoesOcultaFitro{
     height: 5px!important;
