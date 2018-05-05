@@ -17,7 +17,7 @@
     <cc:implementation>
 
         <h:panelGroup styleClass="#{cc.attrs.container.getClasseContainerRelativoColunaSuperior(cc.attrs.colunasContainerSuperior)}"
-
+                      layout="block"
                       rendered="#{!cc.attrs.container.temVersaoMobile or(cc.attrs.container.temVersaoMobile and !sessaoAtualSBWP.telaUsuario.umMobile) }" >
             <ui:include src="#{cc.attrs.container.caminhoRelativo}" >
                 <ui:param name="item" value="#{cc.attrs.item}" />
@@ -25,6 +25,7 @@
         </h:panelGroup>
 
         <h:panelGroup styleClass="#{cc.attrs.container.getClasseContainerRelativoColunaSuperior(cc.attrs.colunasContainerSuperior)}"
+                      layout="block"
                       rendered="#{cc.attrs.container.temVersaoMobile and sessaoAtualSBWP.telaUsuario.umMobile}" >
             <ui:include src="#{cc.attrs.container.caminhoRelativoMobile}" >
                 <ui:param name="item" value="#{cc.attrs.item}" />
