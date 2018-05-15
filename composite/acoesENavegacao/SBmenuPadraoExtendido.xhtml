@@ -45,7 +45,7 @@
                                 <p:submenu
                                     label="#{subSessao.nomeAcao}"
                                     icon="#{subSessao.iconeAcao}">
-                                    <c:forEach   items="#{acao.acoes}"  var="subAcaoDeSubSessao" >
+                                    <c:forEach   items="#{subSessao.acoes}"  var="subAcaoDeSubSessao" >
                                         <p:menuitem
                                             value="#{subAcaoDeSubSessao.nomeAcao}"
                                             icon="#{subAcaoDeSubSessao.iconeAcao}"
