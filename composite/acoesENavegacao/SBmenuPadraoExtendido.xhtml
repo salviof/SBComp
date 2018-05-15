@@ -35,10 +35,25 @@
 
 
                                             <p:menuitem
-                                                value="#{subAcao.nomeAcao} #{subAcao}"
+                                                value="#{subAcao.nomeAcao} "
                                                 icon="#{subAcao.iconeAcao}"
                                                 url="#{infoWebApp.getAcaoComLink(subAcao).urlDeAcesso}" />
 
+
+                                        </c:forEach>
+
+                                        <c:forEach   items="#{acao.sessoes}"  var="subSessao" >
+
+                                            <p:submenu
+                                                label="#{subSessao.nomeAcao}"
+                                                icon="#{subSessao.iconeAcao}">
+                                                <c:forEach   items="#{acao.acoes}"  var="subAcaoDeSubSessao" >
+                                                    <p:menuitem
+                                                        value="#{subAcaoDeSubSessao.nomeAcao}"
+                                                        icon="#{subAcaoDeSubSessao.iconeAcao}"
+                                                        url="#{infoWebApp.getAcaoComLink(subAcaoDeSubSessao).urlDeAcesso}" />
+                                                </c:forEach>
+                                            </p:submenu>
 
                                         </c:forEach>
 
