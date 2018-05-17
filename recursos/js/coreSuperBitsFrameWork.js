@@ -21,6 +21,7 @@ function scrollEmCampoNaoValidado() {
     try {
         var elementoErro = $("input.ui-state-error:first");
         if (elementoErro.length > 0) {
+<<<<<<< HEAD
 
             $('html, body').animate({
                 scrollTop: elementoErro.offset().top - 200
@@ -30,6 +31,17 @@ function scrollEmCampoNaoValidado() {
         return true;
     } catch (err) {
 
+=======
+
+            $('html, body').animate({
+                scrollTop: elementoErro.offset().top - 200
+            });
+        }
+
+        return true;
+    } catch (err) {
+
+>>>>>>> d85e8aeb22035e0b31f23e8289fa5320d5a7b8ca
     }
     return false;
 }
