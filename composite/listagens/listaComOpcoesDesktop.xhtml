@@ -2,7 +2,7 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:cc="http://java.sun.com/jsf/composite"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:sb="http://superbitsframework/ui" 
+    xmlns:sb="http://superbitsframework/ui"
     xmlns:p="http://primefaces.org/ui"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:SBAcaoNav="http://xmlns.jcp.org/jsf/composite/SBComp/composite/acoesENavegacao"
@@ -85,8 +85,9 @@
 
 
                                     <p:inputText
+                                        onfocus="pesquisaDataSetComDelay(this.id, '#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}')"
                                         id="globalFilter"
-                                        onkeyup="PF('#{pgUtil.gerarNomeSlug(cc.attrs.titulo)}').filter()"
+
                                         style="width:100%; height: 35px;"
                                         placeholder="Pesquise aqui:"/>
 
@@ -109,8 +110,8 @@
 
 
                         <f:facet name="header">
-                         
-                            <h:outputText value= "#{coluna.label}"/>
+
+                            <h:outputText value= "#{coluna.labelAlternativo}"/>
                         </f:facet>
                         <center>
                             <sb:inputSB
@@ -119,7 +120,7 @@
                                 layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
                                 possuiIDOnChange="false"
                                 possuiMetodoOnChange="false"
-                                label="#{item.getCampoByNomeOuAnotacao(coluna.caminhoSemNomeClasse).label}"
+                                label="#{coluna.labelAlternativo}"
                                 atualizarFormOnChange="false"
                                 atualizarGrupoOnChange="false"
                                 obrigatorio="false"

@@ -6,7 +6,32 @@
 function esconderTooltips() {
     $(".ui-tooltip").hide();
 
+}
 
+function liberarBloqueios() {
+    for (i in PrimeFaces.widgets) {
+        if (PrimeFaces.widgets[i].show && PrimeFaces.widgets[i].blocker) {
+            PrimeFaces.widgets[i].hide();
+        }
+    }
+}
+
+function scrollEmCampoNaoValidado() {
+
+    try {
+        var elementoErro = $("input.ui-state-error:first");
+        if (elementoErro.length > 0) {
+
+            $('html, body').animate({
+                scrollTop: elementoErro.offset().top - 200
+            });
+        }
+
+        return true;
+    } catch (err) {
+
+    }
+    return false;
 }
 
 
@@ -21,8 +46,15 @@ function irParTopo() {
 }
 
 function acoesPosAjax() {
-    esconderTooltips();
-    irParTopo();
+    try {
+        esconderTooltips();
+        if (!scrollEmCampoNaoValidado()) {
+            irParTopo();
+        }
+    } catch (err) {
+
+    }
+
 }
 
 /**
@@ -80,4 +112,24 @@ function modificarIntputEclicar(idBotao, idInputEnvio, valor) {
 function copiarValoresCKEditor(idOrigem, idDestino) {
     var conteudo = CKEDITOR.instances[idOrigem].getData();
     document.getElementById(idDestino).value = conteudo;
+}
+
+function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
+    //Contribuição : https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
+    var textInput = document.getElementById(idElementoDigitacao);
+    // Init a timeout variable to be used below
+    var timeout = null;
+    // Listen for keystroke events
+    textInput.onkeyup = function (e) {
+
+        // Clear the timeout if it has already been set.
+        // This will prevent the previous task from executing
+        // if it has been less than <MILLISECONDS>
+        clearTimeout(timeout);
+        // Make a new timeout set to go off in 800ms
+        timeout = setTimeout(function () {
+
+            PF(idDataSetPrime).filter();
+        }, 800);
+    };
 }
