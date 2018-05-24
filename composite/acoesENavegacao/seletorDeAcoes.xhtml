@@ -82,9 +82,9 @@
                                     target="#{cc.attrs.opcaoSelecionada}"
                                     value="#{opc}"/>
 
-                                <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
+                                <p:ajax event="dialogReturn"
                                         rendered="false"
-                                        oncomplete="liberarBloqueios();"
+                                        oncomplete="#{pgUtil.gerarCaminhoCompletoID(paginaAtual.infoPagina.idAreaExbicaoAcaoSelecionada)}"
                                         />
 
                                 <p:tooltip for="@parent" value="#{opc.nomeAcao}" trackMouse="true" />
