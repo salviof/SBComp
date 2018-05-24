@@ -83,8 +83,9 @@
                                     value="#{opc}"/>
 
                                 <p:ajax event="dialogReturn"
-                                        rendered="false"
-                                        oncomplete="#{pgUtil.gerarCaminhoCompletoID(paginaAtual.infoPagina.idAreaExbicaoAcaoSelecionada)}"
+                                        rendered="#{opc.acaoTemModal}"
+                                        update="#{pgUtil.gerarCaminhoCompletoID(paginaAtual.infoPagina.idAreaExbicaoAcaoSelecionada)}"
+                                        oncomplete="acoesPosAjax()"
                                         />
 
                                 <p:tooltip for="@parent" value="#{opc.nomeAcao}" trackMouse="true" />
@@ -140,7 +141,7 @@
                                     target="#{cc.attrs.opcaoSelecionada}"
                                     value="#{opc}"/>
                                 <p:ajax event="dialogReturn"
-                                        listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
+
                                         oncomplete="liberarBloqueios();"
                                         rendered="false"
                                         />
@@ -158,7 +159,7 @@
                                 <f:setPropertyActionListener
                                     target="#{cc.attrs.opcaoSelecionada}"
                                     value="#{opc}"/>
-                                <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
+                                <p:ajax event="dialogReturn" 
                                         rendered="#{opc.acaoTemModal}"
                                         oncomplete="liberarBloqueios();"
                                         />
