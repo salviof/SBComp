@@ -83,7 +83,7 @@
                                     value="#{opc}"/>
 
                                 <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
-                                        rendered="#{opc.acaoTemModal}"
+                                        rendered="false"
                                         oncomplete="liberarBloqueios();"
                                         />
 
@@ -142,7 +142,7 @@
                                 <p:ajax event="dialogReturn"
                                         listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
                                         oncomplete="liberarBloqueios();"
-                                        rendered="#{opc.acaoTemModal}"
+                                        rendered="false"
                                         />
 
                             </p:commandButton>
