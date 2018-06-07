@@ -143,7 +143,7 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
         var callback = {
             metodo: elemento.onchange
         };
-        adicionarChamadaComDeleyDigitacao(idElementoDigitacao, elemento.onchange);
+        adicionarChamadaComDeleyDigitacao(idElementoDigitacao, callback);
     }
 }
 
