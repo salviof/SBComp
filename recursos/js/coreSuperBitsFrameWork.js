@@ -121,6 +121,7 @@ function adicionarChamadaComDelay(idElemento, metodo) {
 
 function adicionarChamadaComDelay(idElementoDigitacao) {
     elemento = document.getElementById(idElementoDigitacao);
+    var timeout = null;
     if (elemento.onchange !== 'undefined') {
         // Listen for keystroke events
         elemento.onkeyup = function (e) {
