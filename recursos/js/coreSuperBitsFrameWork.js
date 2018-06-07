@@ -123,7 +123,7 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
     elemento = document.getElementById(idElementoDigitacao);
     var timeout = null;
 
-    if (elemento.va)
+    if (elemento.value.length > 0)
         if (elemento.onchange) {
             elemento.metodoOnchangeComDelay = elemento.onchange;
             //elemento.onchange = null;
