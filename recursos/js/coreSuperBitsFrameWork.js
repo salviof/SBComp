@@ -137,12 +137,14 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             // if it has been less than <MILLISECONDS>
             clearTimeout(timeout);
             // Make a new timeout set to go off in 800ms
-            timeout = setTimeout(function () {
-                if (e.which <= 90 && e.which >= 48) {
-                    elemento.focus();
-                    elemento.metodoOnchangeComDelay();
 
+            timeout = setTimeout(function () {
+                if (!elemento.pesquisaEmExecucao) {
+                    elemento.pesquisaEmExecucao = true;
+                    elemento.metodoOnchangeComDelay();
+                    elemento.pesquisaEmExecucao = false;
                 }
+
             }, 800);
         };
         // Listen for keystroke events
