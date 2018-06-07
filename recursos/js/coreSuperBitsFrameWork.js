@@ -115,10 +115,40 @@ function copiarValoresCKEditor(idOrigem, idDestino) {
     document.getElementById(idDestino).value = conteudo;
 }
 
-function adicionarChamadaComDelayDigitacao(idElemento, callbackObj) {
+function adicionarChamadaComDelay(idElemento, metodo) {
+    var textInput = document.getElementById(idElementoDigitacao);
+}
+
+function adicionarChamadaComDelay(idElementoDigitacao) {
+    elemento = document.getElementById(idElementoDigitacao);
+    if (elemento.onchange !== 'undefined') {
+        // Listen for keystroke events
+        elemento.onkeyup = function (e) {
+
+            // Clear the timeout if it has already been set.
+            // This will prevent the previous task from executing
+            // if it has been less than <MILLISECONDS>
+            clearTimeout(timeout);
+            // Make a new timeout set to go off in 800ms
+            timeout = setTimeout(function () {
+
+                elemento.onchange();
+            }, 800);
+        };
+    }
+
+}
+
+
+function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
     //Contribuição : https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
-    var textInput = document.getElementById(idElemento);
-    textInput.onkeyup = function (e) {
+    elemento = document.getElementById(idElementoDigitacao);
+    // Init a timeout variable to be used below
+    var timeout = null;
+
+
+    // Listen for keystroke events
+    elemento.onkeyup = function (e) {
 
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
@@ -126,32 +156,8 @@ function adicionarChamadaComDelayDigitacao(idElemento, callbackObj) {
         clearTimeout(timeout);
         // Make a new timeout set to go off in 800ms
         timeout = setTimeout(function () {
-            if (callbackObj) {
-                var asdf = callbackObj.metodo.call(callbackObj.parametros);
 
-                if (callbackObj.hasOwnProperty('posMetodo')) {
-                    asdf[callbackObj.posMetodo]();
-                }
-            }
+            PF(idDataSetPrime).filter();
         }, 800);
     };
-}
-
-function mesclarOnChangeComDelay(idElementoDigitacao) {
-    elemento = document.getElementById(idElementoDigitacao);
-    if (elemento.onchange !== 'undefined') {
-        var callback = {
-            metodo: elemento.onchange
-        };
-        adicionarChamadaComDeleyDigitacao(idElementoDigitacao, callback);
-    }
-}
-
-
-function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
-    var timeout = null;
-//    var metodoPrime = PF(idDataSetPrime).filter();;
-    var callback = {metodo: PF, parametros: [idDataSetPrime], posMetodo: 'filter'};
-    adicionarChamadaComDelayDigitacao(idElementoDigitacao, callback);
-
 }
