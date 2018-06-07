@@ -139,11 +139,11 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             // Make a new timeout set to go off in 800ms
 
             timeout = setTimeout(function () {
-                if (!elemento.pesquisaEmExecucao) {
-                    elemento.pesquisaEmExecucao = true;
-                    elemento.metodoOnchangeComDelay();
-                    elemento.pesquisaEmExecucao = false;
-                }
+
+                elemento.pesquisaEmExecucao = true;
+                elemento.metodoOnchangeComDelay();
+                elemento.pesquisaEmExecucao = false;
+
 
             }, 800);
         };
