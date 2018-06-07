@@ -116,10 +116,10 @@ function copiarValoresCKEditor(idOrigem, idDestino) {
 }
 
 function adicionarChamadaComDelay(idElemento, metodo) {
-    var textInput = document.getElementById(idElementoDigitacao);
+
 }
 
-function adicionarChamadaComDelay(idElementoDigitacao) {
+function mesclarOnChangeComDelay(idElementoDigitacao) {
     elemento = document.getElementById(idElementoDigitacao);
     var timeout = null;
     if (elemento.onchange !== 'undefined') {
@@ -150,6 +150,8 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
 
     // Listen for keystroke events
     elemento.onkeyup = function (e) {
+
+
 
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
