@@ -115,12 +115,9 @@ function copiarValoresCKEditor(idOrigem, idDestino) {
     document.getElementById(idDestino).value = conteudo;
 }
 
-function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
+function adicionarChamadaComDelayDigitacao(idElemento, callbackObj) {
     //Contribuição : https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
-    var textInput = document.getElementById(idElementoDigitacao);
-    // Init a timeout variable to be used below
-    var timeout = null;
-    // Listen for keystroke events
+    var textInput = document.getElementById(idElemento);
     textInput.onkeyup = function (e) {
 
         // Clear the timeout if it has already been set.
@@ -129,8 +126,32 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
         clearTimeout(timeout);
         // Make a new timeout set to go off in 800ms
         timeout = setTimeout(function () {
+            if (callbackObj) {
+                var asdf = callbackObj.metodo.call(callbackObj.parametros);
 
-            PF(idDataSetPrime).filter();
+                if (callbackObj.hasOwnProperty('posMetodo')) {
+                    asdf[callbackObj.posMetodo]();
+                }
+            }
         }, 800);
     };
+}
+
+function mesclarOnChangeComDelay(idElementoDigitacao) {
+    elemento = document.getElementById(idElementoDigitacao);
+    if (elemento.onchange !== 'undefined') {
+        var callback = {
+            metodo: elemento.onchange
+        };
+        adicionarChamadaComDeleyDigitacao(idElementoDigitacao, elemento.onchange);
+    }
+}
+
+
+function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
+    var timeout = null;
+//    var metodoPrime = PF(idDataSetPrime).filter();;
+    var callback = {metodo: PF, parametros: [idDataSetPrime], posMetodo: 'filter'};
+    adicionarChamadaComDelayDigitacao(idElementoDigitacao, callback);
+
 }
