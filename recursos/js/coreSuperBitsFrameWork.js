@@ -125,35 +125,34 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
 
 
     if (elemento.onchange) {
-
         elemento.metodoOnchangeComDelay = elemento.onchange;
         elemento.onchange = null;
-
-        elemento.onkeyup = function (e) {
-
-
-            // Clear the timeout if it has already been set.
-            // This will prevent the previous task from executing
-            // if it has been less than <MILLISECONDS>
-            clearTimeout(timeout);
-            // Make a new timeout set to go off in 800ms
-
-            timeout = setTimeout(function () {
-
-                elemento.pesquisaEmExecucao = true;
-                try {
-                    elemento.metodoOnchangeComDelay();
-                } catch (t) {
-                    elemento.focus();
-                    elemento.metodoOnchangeComDelay();
-                }
-                elemento.pesquisaEmExecucao = false;
-
-
-            }, 800);
-        };
-        // Listen for keystroke events
     }
+    if (elemento.metodoOnchangeComDelay) {
+        if (!elemento.onkeyup) {
+            elemento.onkeyup = function (e) {
+
+
+                // Clear the timeout if it has already been set.
+                // This will prevent the previous task from executing
+                // if it has been less than <MILLISECONDS>
+                clearTimeout(timeout);
+                // Make a new timeout set to go off in 800ms
+
+                timeout = setTimeout(function () {
+                    elemento.pesquisaEmExecucao = true;
+                    if (!elemento.pesquisaEmExecucao) {
+                        if (elemento.metodoOnchangeComDelay) {
+                            elemento.metodoOnchangeComDelay();
+                        }
+                    }
+                    elemento.pesquisaEmExecucao = false;
+                }, 800);
+            };
+        }
+    }
+    // Listen for keystroke events
+
 
 }
 
