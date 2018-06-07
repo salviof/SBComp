@@ -141,7 +141,12 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             timeout = setTimeout(function () {
 
                 elemento.pesquisaEmExecucao = true;
-                elemento.metodoOnchangeComDelay();
+                try {
+                    elemento.metodoOnchangeComDelay();
+                } catch (t) {
+                    elemento.focus();
+                    elemento.metodoOnchangeComDelay();
+                }
                 elemento.pesquisaEmExecucao = false;
 
 
