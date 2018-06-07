@@ -138,7 +138,9 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             clearTimeout(timeout);
             // Make a new timeout set to go off in 800ms
             timeout = setTimeout(function () {
-                elemento.metodoOnchangeComDelay();
+                if (e.which <= 90 && e.which >= 48) {
+                    elemento.metodoOnchangeComDelay();
+                }
             }, 800);
         };
         // Listen for keystroke events
