@@ -139,7 +139,9 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             // Make a new timeout set to go off in 800ms
             timeout = setTimeout(function () {
                 if (e.which <= 90 && e.which >= 48) {
+                    elemento.focus();
                     elemento.metodoOnchangeComDelay();
+
                 }
             }, 800);
         };
