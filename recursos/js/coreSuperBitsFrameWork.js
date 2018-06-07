@@ -123,11 +123,14 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
     elemento = document.getElementById(idElementoDigitacao);
     var timeout = null;
 
+
     if (elemento.onchange) {
-        var metodoOnchange = elemento.onchange;
+
+        elemento.metodoOnchangeComDelay = elemento.onchange;
         elemento.onchange = null;
-        // Listen for keystroke events
+
         elemento.onkeyup = function (e) {
+
 
             // Clear the timeout if it has already been set.
             // This will prevent the previous task from executing
@@ -135,10 +138,10 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             clearTimeout(timeout);
             // Make a new timeout set to go off in 800ms
             timeout = setTimeout(function () {
-                metodoOnchange();
-
+                elemento.metodoOnchangeComDelay();
             }, 800);
         };
+        // Listen for keystroke events
     }
 
 }
