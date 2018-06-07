@@ -122,7 +122,10 @@ function adicionarChamadaComDelay(idElemento, metodo) {
 function mesclarOnChangeComDelay(idElementoDigitacao) {
     elemento = document.getElementById(idElementoDigitacao);
     var timeout = null;
-    if (elemento.onchange !== 'undefined') {
+
+    if (elemento.onchange) {
+        var metodoOnchange = elemento.onchange;
+        elemento.onchange = null;
         // Listen for keystroke events
         elemento.onkeyup = function (e) {
 
@@ -132,8 +135,8 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             clearTimeout(timeout);
             // Make a new timeout set to go off in 800ms
             timeout = setTimeout(function () {
+                metodoOnchange();
 
-                elemento.onchange();
             }, 800);
         };
     }
