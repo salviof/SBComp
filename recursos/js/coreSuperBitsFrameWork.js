@@ -130,16 +130,19 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
 
         elemento.onkeyup = function (e) {
 
+            try {
+                // Clear the timeout if it has already been set.
+                // This will prevent the previous task from executing
+                // if it has been less than <MILLISECONDS>
+                clearTimeout(timeout);
+                // Make a new timeout set to go off in 800ms
 
-            // Clear the timeout if it has already been set.
-            // This will prevent the previous task from executing
-            // if it has been less than <MILLISECONDS>
-            clearTimeout(timeout);
-            // Make a new timeout set to go off in 800ms
+                timeout = setTimeout(function () {
+                    elemento.metodoOnchangeComDelay();
+                }, 800);
+            } catch (t) {
 
-            timeout = setTimeout(function () {
-                elemento.metodoOnchangeComDelay();
-            }, 800);
+            }
         };
     }
 
