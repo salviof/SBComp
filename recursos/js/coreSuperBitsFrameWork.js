@@ -123,11 +123,11 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
     elemento = document.getElementById(idElementoDigitacao);
     var timeout = null;
 
-
-    if (elemento.onchange) {
-        elemento.metodoOnchangeComDelay = elemento.onchange;
-        elemento.onchange = null;
-    }
+    if (elemento.va)
+        if (elemento.onchange) {
+            elemento.metodoOnchangeComDelay = elemento.onchange;
+            //elemento.onchange = null;
+        }
     if (elemento.metodoOnchangeComDelay) {
 
         elemento.onkeyup = function (e) {
@@ -140,14 +140,18 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             // Make a new timeout set to go off in 800ms
 
             timeout = setTimeout(function () {
-
-                if (!elemento.pesquisaEmExecucao) {
-                    if (elemento.metodoOnchangeComDelay) {
-                        elemento.pesquisaEmExecucao = true;
-                        elemento.metodoOnchangeComDelay();
-                        elemento.pesquisaEmExecucao = false;
+                var valor = document.value;
+                if (valor.length > 3) {
+                    return false; // keep form from submitting
+                    if (!elemento.pesquisaEmExecucao) {
+                        if (elemento.metodoOnchangeComDelay) {
+                            elemento.pesquisaEmExecucao = true;
+                            elemento.metodoOnchangeComDelay();
+                            elemento.pesquisaEmExecucao = false;
+                        }
                     }
                 }
+
 
             }, 800);
         };
