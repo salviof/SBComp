@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title><ui:insert name="titulo" /> </title>
@@ -17,11 +18,64 @@
 
 
         </f:facet>
+        <style>
+            .ui-dialog-titlebar-icon span{
+                display: none!important;
+            }
+            .ui-fileupload-buttonbar .ui-button .ui-button-text {
+                display: inherit!important;
+            }
+            @media screen and (max-width: 40em){
+                .ui-fileupload-buttonbar .ui-button .ui-button-text {
+                    display: inherit!important;
+                }
+
+            }
+        </style>
+        <script >
+
+            async function myLoop() {
+                setTimeout(function () {
+                    alert(document.title);
+                    var elementosEncontrados = document.getElementsByClassName('ui-df-content');
+
+                    [].forEach.call(document.getElementsByTagName('iframe')[0].querySelectorAll('ui-dialog-titlebar-close'), function (el) {
+                        el.style.display = 'none';
+                    });
+
+
+                    if (elementosEncontrados.length === 0) {
+                        alert('nao encontrou' + elementosEncontrados.length);
+
+                    } else {
+                        alert('Encontrou' + elementosEncontrados.innerHTML);
+                        console.log(elementosEncontrados);
+                        elementosEncontrados.style.display = "none";
+
+
+                    }
+                }, 1000);
+            }
+
+
+
+
+        </script>
+
     </h:head>
 
     <h:body>
+        <h:form >
+            <p:remoteCommand autoRun="false"
+                             name="fechar"
+                             actionListener="#{pgModalREspostaComunicacao.paginaVinculada.comoFormularioWeb.selAcaoDeCtrParaUltimoFrm()}"
+                             />
+        </h:form>
 
         <ui:insert name="conteudo" />
+
+
+
 
 
 

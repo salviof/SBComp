@@ -9,6 +9,9 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:define name="titulo" >#{pgModalRespostaAcaoTransient.comunicacao.mensagem}  </ui:define>
     <ui:define name="opcoes" >
+
+
+
         <ui:repeat value="#{pgModalRespostaAcaoTransient.comunicacao.repostasPossiveis}" var="resp" >
             <div class="Container3" style="padding: 3px; ">
 
@@ -20,6 +23,7 @@
                     />
 
             </div>
+
 
 
         </ui:repeat>
