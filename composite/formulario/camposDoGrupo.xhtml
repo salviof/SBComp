@@ -38,6 +38,7 @@
                             styleClass="#{coluna.componenteVinculado.classeLarguraPorPeso}"
                             style="position: relative;" layout="block"
 
+
                             >
                             <SBInput:input registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(coluna.componenteVinculado.caminhoCampo.caminhoSemNomeClasse)}"
                                            layout="#{cc.attrs.tipoVisualizacaoLabel}"
@@ -51,21 +52,21 @@
                         </h:panelGroup>
 
                         <c:if test="#{coluna.componenteVinculado.umComponenteAtributoDeObjeto and coluna.componenteVinculado.caminhoCampo.umCampoComLista}">
+                            <h:panelGroup rendered="#{coluna.componenteVinculado.umComponenteAtributoDeObjeto}" layout="block" styleClass="Container12">
 
 
+                                <h:outputText
+                                    value="O sistema não suporta subformulários em grupo de campos, você precisa chamar o componente subformulário de maneira independente"
+                                    rendered="false"
+                                    />
 
-                            <h:outputText
-                                value="O sistema não suporta subformulários em grupo de campos, você precisa chamar o componente subformulário de maneira independente"
-                                rendered="false"
-                                />
+                                <SBForm:subFormulario
 
-                            <SBForm:subFormulario
-
-                                registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(coluna.componenteVinculado.caminhoCampo.caminhoSemNomeClasse)}"
-                                grupoCampos="#{coluna.componenteVinculado.caminhoCampo.grupoSubcampos}"
-                                somenteLeitura="#{cc.attrs.somenteLeitura}"
-                                />
-
+                                    registro="#{cc.attrs.registro.getCampoByNomeOuAnotacao(coluna.componenteVinculado.caminhoCampo.caminhoSemNomeClasse)}"
+                                    grupoCampos="#{coluna.componenteVinculado.caminhoCampo.grupoSubcampos}"
+                                    somenteLeitura="#{cc.attrs.somenteLeitura}"
+                                    />
+                            </h:panelGroup>
                         </c:if>
 
                     </c:forEach>
