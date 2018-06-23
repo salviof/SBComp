@@ -294,7 +294,7 @@ h1, h2, h3, h4, h5, h6{ margin:0px !important;
 }
 
 /*DESKTOP_NORMAL*/
-@media (min-width:1200)  and (max-width:1800) {
+@media (min-width:1200px)  and (max-width:1800px) {
     .somenteMobile{ display:none;}
     .somenteDesktop{ display:inherit;}
     .ContainerIndent{padding:5px;}
@@ -336,7 +336,7 @@ h1, h2, h3, h4, h5, h6{ margin:0px !important;
 }
 
 /*DESKTOP_GRANDE*/
-@media (min-width:1801)  {
+@media (min-width:1801px)  {
     .somenteMobile{ display:none;}
     .somenteDesktop{ display:inherit;}
     .ContainerIndent{padding:6px;}
