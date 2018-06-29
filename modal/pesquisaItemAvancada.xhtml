@@ -18,16 +18,17 @@
 
     <h:body>
 
-        <SBSeletores:seletorItemGridGrandeComColuna itemSelecionado="#{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.valor}"
-                                                    atributoBeanFriltro="#{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.comoCampoSeltorItem.filtro}"
-                                                    lista="#{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.comoCampoSeltorItem.seletor.origem}"
-                                                    frasePesquisa="Pesquise por #{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.nomeDoObjetoPlural} cadastrados"
+        <SBSeletores:seletorItemGridGrandeCol
+            itemSelecionado="#{pgModalSBJSF.campoInstanciado.valor}"
+            atributoBeanFriltro="#{pgModalSBJSF.campoInstanciado.comoCampoSeltorItem.filtro}"
+            lista="#{pgModalSBJSF.campoInstanciado.comoCampoSeltorItem.seletor.origem}"
+            frasePesquisa="Pesquise por #{pgModalSBJSF.campoInstanciado.nomeDoObjetoPlural} cadastrados"
 
-                                                    metodoAoSelecionar="#{pgModalSBJSF.fecharModal()}"
-                                                    grupoCampos="#{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.comoCampoSeltorItem.grupoCampoExibicao}"
-                                                    mensagemSemRegistros="Nenhum #{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.nomeDoObjeto} Encontrado"
-                                                    label="#{pgModalSBJSF.paginaVinculada.modalDados.campoSelecionado.label}"
-                                                    />
+            metodoAoSelecionar="#{pgModalSBJSF.fecharModal()}"
+            grupoCampos="#{pgModalSBJSF.campoInstanciado.comoCampoSeltorItem.grupoCampoExibicao}"
+            mensagemSemRegistros="Nenhum #{pgModalSBJSF.campoInstanciado.nomeDoObjeto} Encontrado"
+            label="#{pgModalSBJSF.campoInstanciado.label}"
+            />
 
 
 
