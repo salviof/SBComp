@@ -101,4 +101,4 @@ div[class^="btnSeletor"]:active{
     left: 10px;
     user-select: none;
 }
-.btnSeletor-blueBkg{ background: #e5ffee;}
+.btnSeletor-Bkg{ background: #e5ffee!important;}
