@@ -399,7 +399,6 @@ h1, h2, h3, h4, h5, h6{ margin:0px !important;
 }
 
 .OrganizadorContainerExpandido{
-
     display: flex;
     justify-content: space-between;
     display: -webkit-flex; /* Safari */
