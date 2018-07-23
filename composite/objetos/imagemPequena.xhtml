@@ -23,22 +23,23 @@
 
         <h:form >
             <p:remoteCommand name="atualizarEntidadeAtual" update="@form" >
-                <f:setPropertyActionListener target="#{paginaAtual.infoPagina.modalDados.entidadeSelecionada}" value="#{cc.attrs.item}"/>
+                <f:setPropertyActionListener target="#{paginaAtual.infoPagina.comoFormularioWeb.modalDados.entidadeSelecionada}" value="#{cc.attrs.item}"/>
 
             </p:remoteCommand>
 
         </h:form>
-        
+
         <p:graphicImage url="#{cc.attrs.item.imgPequena}"  width="74px;"  />
         <h:form rendered="#{!cc.attrs.somenteLeitura}">
 
             <h:inputHidden converter="conversorGenerico" value=""  />
             <p:fileUpload  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                           fileUploadListener="#{paginaAtual.infoPagina.modalDados.enviarImagemPequenaUpload}"
+                           fileUploadListener="#{paginaAtual.infoPagina.comoFormularioWeb.modalDados.enviarImagemPequenaUpload}"
                            multiple="false"
                            onstart="atualizarEntidadeAtual();"
 
                            >
+
 
             </p:fileUpload>
         </h:form>
