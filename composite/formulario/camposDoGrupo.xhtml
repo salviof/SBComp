@@ -34,7 +34,7 @@
                     <c:forEach items="#{linha.colunas}" var="coluna" varStatus="numCol"  >
 
                         <h:panelGroup
-                            rendered="#{coluna.componenteVinculado.umComponenteAtributoDeObjeto and !coluna.componenteVinculado.caminhoCampo.umCampoComLista and cc.attrs.registro.getCampoByNomeOuAnotacao(coluna.componenteVinculado.caminhoCampo.caminhoSemNomeClasse).umCampoNaoInstanciado}"
+                            rendered="#{coluna.componenteVinculado.umComponenteAtributoDeObjeto and !coluna.componenteVinculado.caminhoCampo.umCampoComLista and !cc.attrs.registro.getCampoByNomeOuAnotacao(coluna.componenteVinculado.caminhoCampo.caminhoSemNomeClasse).umCampoNaoInstanciado}"
                             styleClass="#{coluna.componenteVinculado.classeLarguraPorPeso}"
                             style="position: relative;" layout="block"
 
