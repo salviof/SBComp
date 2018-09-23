@@ -95,10 +95,10 @@ div[class^="btnSeletor"]:active{
 .btnSeletor-big{width: 200px;}
 .btnSeletor-small{width: 95px;}
 .btnSeletor-label{
-    position: absolute;
+    position: relative;
+    width: 100%;
     color: #000;
     font: 500 12px sans-serif;
-    left: 10px;
-    user-select: none;
+
 }
 .btnSeletor-Bkg{ background: #e5ffee!important;}
