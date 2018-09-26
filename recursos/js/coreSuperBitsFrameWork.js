@@ -107,7 +107,14 @@ function baixarArquivo(fileURL, fileName) {
 
 function modificarIntputEclicar(idBotao, idInputEnvio, valor) {
     try {
-        elementoCodigo = document.getElementById(idInputEnvio);
+        elementos = idInputEnvio.split(" ");
+
+        elementoCodigo = document.getElementById(elementos[0]);
+        if (elementoCodigo === null) {
+            elementoCodigo = document.getElementById(elementos[1]);
+        }
+
+
         elementoCodigo.value = valor;
         botao = document.getElementById(idBotao);
         botao.click();
