@@ -116,7 +116,11 @@ function modificarIntputEclicar(idBotao, idInputEnvio, valor) {
 
 
         elementoCodigo.value = valor;
-        botao = document.getElementById(idBotao);
+        botoes = idBotao.split(" ");
+        botao = document.getElementById(botoes[0]);
+        if (botao === null) {
+            botao = document.getElementById(botoes[1]);
+        }
         botao.click();
     } catch (t) {
         console.log(t);
