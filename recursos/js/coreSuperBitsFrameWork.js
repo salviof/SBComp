@@ -106,9 +106,14 @@ function baixarArquivo(fileURL, fileName) {
 }
 
 function modificarIntputEclicar(idBotao, idInputEnvio, valor) {
-    document.getElementById(idInputEnvio).value = valor;
-    document.getElementById(idBotao).click();
-
+    try {
+        elementoCodigo = document.getElementById(idInputEnvio);
+        elementoCodigo.value = valor;
+        botao = document.getElementById(idBotao);
+        botao.click();
+    } catch (t) {
+        console.log(t);
+    }
 }
 
 function copiarValoresCKEditor(idOrigem, idDestino) {
