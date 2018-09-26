@@ -48,15 +48,16 @@
 
             <h:panelGroup id="subForm" styleClass="Container12 Responsive" >
                 <h:panelGroup  styleClass="invisivel" layout="block" >
-                    <p:fragment>
-                        <p:commandButton
-                            id="botaoRemoverSubform"
-                            action="#{cc.attrs.registro.comoSubItens.subItens.removerItemSelecionadoPeloIndice() }"
-                            update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
-                            styleClass="invisivel"
-                            />
-                        <h:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
-                    </p:fragment>
+
+                    <p:commandButton
+                        id="botaoRemoverSubform"
+                        process="@parent"
+                        action="#{cc.attrs.registro.comoSubItens.subItens.removerItemSelecionadoPeloIndice() }"
+                        update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
+                        styleClass="invisivel"
+                        />
+                    <h:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
+
 
 
                 </h:panelGroup>
