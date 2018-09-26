@@ -47,7 +47,7 @@
 
 
             <h:panelGroup id="subForm" styleClass="Container12 Responsive" >
-                <h:panelGroup  styleClass="invisivel" >
+                <h:panelGroup  styleClass="invisivel" layout="block" >
                     <p:fragment>
                         <p:commandButton
                             id="botaoRemoverSubform"
@@ -55,14 +55,14 @@
                             update="#{pgUtil.makeCaminhoCompletoID('subForm')}"
                             styleClass="invisivel"
                             />
-                        <p:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
+                        <h:inputText  id="indiceSubformulario"  styleClass="invisivel"  />
                     </p:fragment>
 
 
                 </h:panelGroup>
 
 
-                <h:panelGroup styleClass="Fright" >
+                <h:panelGroup styleClass="Fright" layout="block" >
 
                     <p:commandButton
 
@@ -110,6 +110,7 @@
                                 </ui:repeat>
                                 <td class="col-md-1" >
                                     <p:commandLink
+                                        process="@this"
                                         rendered="#{!cc.attrs.somenteLeitura}"
                                         onclick="modificarIntputEclicar('#{pgUtil.gerarCaminhoCompletoIDParaJavaScript('botaoRemoverSubform')}', '#{pgUtil.gerarCaminhoCompletoIDParaJavaScript('indiceSubformulario')}', '#{infoRec.index}')">
                                         <i class="fa fa-times Fs30" aria-hidden="true"></i>
