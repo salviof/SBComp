@@ -58,12 +58,16 @@
                                     <td class="col-md-1 ColunaPequenaBotstrap">
 
                                         <sb:inputSB
-                                            registro="#{cc.attrs.registro}"
+                                            registro="#{item.getCampoInstanciadoByAnotacao(campoColonaLeitura.caminhoCampo.caminhoSemNomeClasse)}"
                                             desabilitarEdicao="true"
                                             layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
                                             possuiIDOnChange="false"
                                             possuiMetodoOnChange="false"
                                             label=""
+                                            atualizarFormOnChange="false"
+                                            atualizarGrupoOnChange="false"
+                                            obrigatorio="false"
+
                                             opcoes="#{cc.attrs.registro.listaDeOpcoes}"
                                             />
                                     </td>
