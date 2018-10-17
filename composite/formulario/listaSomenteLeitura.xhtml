@@ -53,11 +53,10 @@
                         <c:forEach items="#{cc.attrs.registro.valor}" var="item" varStatus="infoRec"  >
                             <tr scope="row">
                                 <c:forEach items="#{cc.attrs.grupoCampos.campos}" var="campoColonaLeitura"  >
-                                    <th>#{campoColonaLeitura.label}</th>
+
 
                                     <td class="col-md-1 ColunaPequenaBotstrap">
-                                        #{campoColonaLeitura.caminhoCampo.caminhoSemNomeClasse}
-                                        #{campoColonaLeitura.caminhoCampo.caminhoRelativoItemSublista}
+
                                         <sb:inputSB
                                             registro="#{item.getCampoInstanciadoByNomeOuAnotacao(campoColonaLeitura.caminhoCampo.caminhoRelativoItemSublista)}"
                                             desabilitarEdicao="true"
