@@ -52,7 +52,7 @@
 
                         <c:forEach items="#{cc.attrs.registro.valor}" var="item" rendered="#{cc.attrs.registro.umValorComLista}" varStatus="infoRec"  >
                             <tr scope="row">
-                                <c:forEach items="#{cc.attrs.grupoCampos.campos}"  var="campoColonaLeitura"  >
+                                <ui:repeat value="#{cc.attrs.grupoCampos.campos}"  var="campoColonaLeitura"  >
 
 
                                     <td class="col-md-1 ColunaPequenaBotstrap">
@@ -72,7 +72,7 @@
                                             />
                                     </td>
 
-                                </c:forEach>
+                                </ui:repeat>
 
                             </tr>
                         </c:forEach>
