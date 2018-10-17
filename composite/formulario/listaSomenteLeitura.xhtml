@@ -57,8 +57,9 @@
 
                                     <td class="col-md-1 ColunaPequenaBotstrap">
                                         #{campoColonaLeitura.caminhoCampo.caminhoSemNomeClasse}
+                                        #{campoColonaLeitura.caminhoCampo.caminhoRelativoItemSublista}
                                         <sb:inputSB
-                                            registro="#{item.getCampoInstanciadoByNomeOuAnotacao(campoColonaLeitura.caminhoCampo.caminhoSemNomeClasse)}"
+                                            registro="#{item.getCampoInstanciadoByNomeOuAnotacao(campoColonaLeitura.caminhoCampo.caminhoRelativoItemSublista)}"
                                             desabilitarEdicao="true"
                                             layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
                                             possuiIDOnChange="false"
