@@ -46,39 +46,48 @@
                      rowClasses=""
                      >
 
-            <p:outputLabel  value="#{cc.attrs.label}"
-                            for=""  />
+            <p:outputLabel  rendered="#{pgUtil.isNuloOuEmbranco(cc.attrs.label)}" value="#{cc.attrs.label}"
+                            for=""  >
+                <p:tooltip  rendered="#{registro.temDescricao}"
+                            for="@parent"
+                            value="#{registro.descricao}"
+                            />
+            </p:outputLabel>
 
             <h:panelGrid columns="3" >
                 <h:panelGroup  >
                     <p:commandLink actionListener="#{cc.attrs.metodoReduzir}"
-                                   update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.idAtualizarOnChange)}"
+                                   update="@parent:@parent"
                                    rendered="#{!cc.attrs.desabilitarEdicao}"
                                    >
+
                         <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </p:commandLink>
                 </h:panelGroup>
-                <sb:inputSB
-                    atualizarFormOnChange="false"
-                    atualizarGrupoOnChange="false"
-                    obrigatorio="#{cc.attrs.registro.obrigatorio}"
-                    registro="#{cc.attrs.registro}"
-                    desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
-                    layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
-                    possuiIDOnChange="true"
-                    possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
-                    layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
-                    label="#{cc.attrs.label}:"
-                    opcoes="#{cc.attrs.registro.listaDeOpcoes}"
-                    idAtualizarOnChange="#{cc.attrs.idAtualizarOnChange}"
-                    metodoOnChange="#{cc.attrs.metodoExecutarAoAlterarValor}"
+                <h:panelGroup  >
+                    <sb:inputSB
+                        atualizarFormOnChange="false"
+                        atualizarGrupoOnChange="false"
+                        obrigatorio="#{cc.attrs.registro.obrigatorio}"
+                        registro="#{cc.attrs.registro}"
+                        desabilitarEdicao="#{cc.attrs.desabilitarEdicao}"
+                        layoutCampo="#{layoutsComponenteSB.layoutCampo.semLabel}"
+                        possuiIDOnChange="true"
+                        possuiMetodoOnChange="#{pgUtil.isAtributoPreenchidoComExpressao(cc,'metodoExecutarAoAlterarValor')}"
+                        layoutCampoEspecial="#{cc.attrs.visualizacaoEspecial}"
+                        label="#{cc.attrs.label}:"
+                        opcoes="#{cc.attrs.registro.listaDeOpcoes}"
+                        idAtualizarOnChange="#{cc.attrs.idAtualizarOnChange}"
+                        metodoOnChange="#{cc.attrs.metodoExecutarAoAlterarValor}"
 
-                    />
+                        />
+                    <p:message   for="@previous"/>
+                </h:panelGroup>
                 <h:panelGroup rendered="#{!cc.attrs.desabilitarEdicao}" >
                     <p:commandLink actionListener="#{cc.attrs.metodoAdicionar}"
-                                   update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.idAtualizarOnChange)}"
+                                   update="@parent:@parent"
                                    >
                         <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                             <span class="glyphicon glyphicon-plus"></span>
@@ -89,11 +98,8 @@
 
             </h:panelGrid>
 
-            <p:tooltip  rendered="#{registro.temDescricao}"
-                        for="#{pgUtil.getNomeIdComponenteInput(component)}"
-                        value="#{registro.descricao}"
-                        />
-            <p:message rendered="#{pgUtil.getNomeIdComponenteInput(component)!=null}"  for="#{pgUtil.getNomeIdComponenteInput(component)}"/>
+
+
         </h:panelGrid>
 
     </cc:implementation>
