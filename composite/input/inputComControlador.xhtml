@@ -57,7 +57,7 @@
             <h:panelGrid columns="3" >
                 <h:panelGroup  >
                     <p:commandLink actionListener="#{cc.attrs.metodoReduzir}"
-                                   update="@parent:@parent"
+                                   update="#{pgUtil.getNomeIdPFieldSetPai(component)}"
                                    rendered="#{!cc.attrs.desabilitarEdicao}"
                                    >
 
@@ -86,8 +86,9 @@
                     <p:message   for="@previous"/>
                 </h:panelGroup>
                 <h:panelGroup rendered="#{!cc.attrs.desabilitarEdicao}" >
+
                     <p:commandLink actionListener="#{cc.attrs.metodoAdicionar}"
-                                   update="@parent:@parent"
+                                   update="#{pgUtil.getNomeIdPFieldSetPai(component)}"
                                    >
                         <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                             <span class="glyphicon glyphicon-plus"></span>
