@@ -15,7 +15,15 @@ function liberarBloqueios() {
         }
     }
 }
-
+function focarPrimeiroInput() {
+    $('input').each(function () {
+        if ($(this).val() == '' || $(this).val() == 0
+                ) {
+            this.focus();
+            return false;
+        }
+    });
+}
 function scrollEmCampoNaoValidado() {
 
     try {
@@ -50,6 +58,7 @@ function acoesPosAjax() {
     try {
         esconderTooltips();
         liberarBloqueios();
+        focarPrimeiroInput();
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
