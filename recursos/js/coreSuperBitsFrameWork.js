@@ -16,13 +16,21 @@ function liberarBloqueios() {
     }
 }
 function focarPrimeiroInput() {
-    $('input').each(function () {
-        if ($(this).val() == '' || $(this).val() == 0
-                ) {
-            this.focus();
-            return false;
+    try {
+        var elementoErro = $("input.ui-state-error:first");
+        if (elementoErro.length > 0) {
+
+            $('html, body').animate({
+                scrollTop: elementoErro.offset().top - 200
+            });
+            return true;
         }
-    });
+
+        return false;
+    } catch (err) {
+
+    }
+    return false;
 }
 function scrollEmCampoNaoValidado() {
 
