@@ -177,6 +177,7 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
                     elemento.ultimapesquisa = elemento.value;
                     timeout = setTimeout(function () {
 
+                        $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
 
                         elemento.metodoOnchangeComDelay();
                     }, 800);
@@ -187,7 +188,8 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
         };
     }
 
-    $(elemento).select();
+    $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
+
 
 
 
