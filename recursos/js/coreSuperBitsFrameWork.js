@@ -15,23 +15,7 @@ function liberarBloqueios() {
         }
     }
 }
-function focarPrimeiroInput() {
-    try {
-        var elementoErro = $("input.ui-state-error:first");
-        if (elementoErro.length > 0) {
 
-            $('html, body').animate({
-                scrollTop: elementoErro.offset().top - 200
-            });
-            return true;
-        }
-
-        return false;
-    } catch (err) {
-
-    }
-    return false;
-}
 function scrollEmCampoNaoValidado() {
 
     try {
@@ -66,7 +50,7 @@ function acoesPosAjax() {
     try {
         esconderTooltips();
         liberarBloqueios();
-        focarPrimeiroInput();
+
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
@@ -187,16 +171,25 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
             }
         };
     }
-
-    $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
-
-
-
-
-    // Listen for keystroke events
-
-
 }
+
+function focarComSelacaoAposAjax() {
+    try {
+        contemClientID = false;
+        for (i = 0; i < arguments.length; i++) {
+            if (document.activeElement.id.includes(arguments[i])) {
+                contemClientID = true;
+            }
+        }
+        if (contemClientID) {
+            $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
+        }
+    } catch (o) {
+
+    }
+}
+
+
 
 
 function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
@@ -220,5 +213,5 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
 
             PF(idDataSetPrime).filter();
         }, 800);
-    };
+    }
 }
