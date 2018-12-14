@@ -187,7 +187,7 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
         };
     }
 
-
+    $(elemento).select();
 
 
 
