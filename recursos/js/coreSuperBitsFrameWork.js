@@ -161,7 +161,7 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
                     elemento.ultimapesquisa = elemento.value;
                     timeout = setTimeout(function () {
 
-                        $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
+
 
                         elemento.metodoOnchangeComDelay();
                     }, 800);
