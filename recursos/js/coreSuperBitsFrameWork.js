@@ -181,7 +181,7 @@ function focarComSelacaoAposAjax() {
                 contemClientID = true;
             }
         }
-        if (contemClientID) {
+        if (!contemClientID) {
             $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
         }
     } catch (o) {
