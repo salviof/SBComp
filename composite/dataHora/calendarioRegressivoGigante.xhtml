@@ -1,36 +1,31 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-
-
-    <ui:define name="conteudo">
-
-
-        <c:if test="#{!pgTestesCampo.campoValido}" >
-            Sem entidade para exibicao
-
-        </c:if>
+<ui:composition
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-        <c:if test="#{pgTestesCampo.campoValido}" >
+</cc:interface>
+<!-- IMPLEMENTATION -->
+<cc:implementation>
+    <h:outputStylesheet name="composite/dataHora/calendarioRegressivoGigante.css" library="SBComp" />
+    <c:forEach var="tempo" items="#{cc.attrs.contagem.quantidadesTempo}" >
+
+        <div class="Container30 Responsive100">
+            <div class="calendario-Gigante">
+                <div class="grampoDireita"></div>
+                <div class="grampoEsquerda"></div>
+                <div class="calendarioGiganteValor">#{tempo.quantidade} </div>
+                <div class="calendarioGiganteDescricao">#{tempo.nome}</div>
+            </div>
+        </div>
 
 
-            REFEXAO:#{pgTestesCampo.campoInstanciado.campoReflection.type}!!!!!!!!!!
-            Ficha tecnica de input campo para:
-            #{pgTestesCampo.strNomeCampo}
+    </c:forEach>
 
 
-
-
-        </c:if>
-
-
-
-    </ui:define>
-
+</cc:implementation>
 
 </ui:composition>
-
-
