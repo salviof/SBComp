@@ -34,9 +34,9 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <c:if test="#{cc.attrs.registro.umValorEmLista}">
-            <h:panelGroup >
+            <h:panelGroup  rendered="#{cc.attrs.registro.umValorEmLista}">
 
-                <c:set var="layoutListagem" value="#{pgUtilLayout.gerarLayoutGrupoCampo(cc.attrs.grupoCampos)}" />
+                <c:set rendered="#{cc.attrs.registro.umValorEmLista}" var="layoutListagem" value="#{pgUtilLayout.gerarLayoutGrupoCampo(cc.attrs.grupoCampos)}" />
                 <p:fieldset rendered="#{cc.attrs.registro.valor !=null and cc.attrs.registro.umValorEmLista}" >
                     <table class="table table-striped">
                         <thead>
