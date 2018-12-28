@@ -48,8 +48,11 @@
                                      update="@form" />
 
                     <div class="quebraBlocoComEspacoVertical10 somenteMobile"></div>
-                    <p:commandButton value="Entrar" icon="fa fa-sign-in"  actionListener="#{controleDeSessaoWeb.efetuarLogIn()}"
+                    <p:commandButton value="Entrar" icon="fa fa-sign-in"
+                                     id="botaoEntrarSec"
+                                     actionListener="#{controleDeSessaoWeb.efetuarLogIn()}"
                                      update="@form" />
+                    <p:defaultCommand target="botaoEntrarSec"  />
 
                 </div>
 
