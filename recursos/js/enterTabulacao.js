@@ -25,8 +25,11 @@ $(document).keydown(function (e) {
                         // If not a regular hyperlink/button/textarea
                         if ($.inArray(self, focusable)) {
                             // Then prevent the default [Enter] key behaviour from submitting the form
-                            e.
-                                    preventDefault();
+                            try {
+                                e.preventDefault();
+                            } catch (t) {
+
+                            }
                         } // Otherwise follow the link/button as by design, or put new line in textarea
                     }
 
