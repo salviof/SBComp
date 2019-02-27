@@ -1,35 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:SBAcaoNav="http://xmlns.jcp.org/jsf/composite/SBComp/composite/acoesENavegacao"
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:SBAcaoNav="http://xmlns.jcp.org/jsf/composite/SBComp/composite/acoesENavegacao"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-
-    <h:head>
-        <title> #{pgModalRespostaAcaoTransient.comunicacao.mensagem} </title>
-
-    </h:head>
-
-    <h:body>
-        <h:form>
-            <div class=" OrganizadorContainer" style="width: 100%">
-                <ui:repeat value="#{pgModalRespostaAcaoTransient.comunicacao.repostasPossiveis}" var="resp" >
-                    <SBAcaoNav:botaoRespostaModal
-                        resposta="#{resp}"
-                        armazenamentoAcaoExecutada="#{pgModalRespostaAcaoTransient.respostaSelecionada}"
-                        metodo="#{pgModalRespostaAcaoTransient.enviarRespostaEExecutarAcao()}"
-
-                        />
+    xmlns:p="http://primefaces.org/ui"
+    template="../modalModeloComunicacao.xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:define name="titulo" >#{pgModalRespostaAcaoTransient.comunicacao.mensagem}  </ui:define>
+    <ui:define name="opcoes" >
 
 
-                </ui:repeat>
+
+        <ui:repeat value="#{pgModalRespostaAcaoTransient.comunicacao.repostasPossiveis}" var="resp" >
+            <div class="Container3" style="padding: 3px; ">
+
+                <SBAcaoNav:botaoRespostaModal
+                    resposta="#{resp}"
+                    armazenamentoAcaoExecutada="#{pgModalRespostaAcaoTransient.respostaSelecionada}"
+                    metodo="#{pgModalRespostaAcaoTransient.enviarRespostaEExecutarAcao()}"
+
+                    />
+
             </div>
-        </h:form>
 
 
 
-
-    </h:body>
-
-</html>
+        </ui:repeat>
+    </ui:define>
+</ui:composition>

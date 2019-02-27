@@ -8,7 +8,7 @@
             #{paginaAtual.infoPagina.acaoSelecionada.nomeAcao}
             <i class="#{paginaAtual.infoPagina.acaoSelecionada.iconeAcao} Fs30 Fleft MarRight10"></i>
             <br/>
-            <div class="EmptyBox10 ShowOnMobile"></div>
+            <div class="quebraBlocoComEspacoVertical10 somenteMobile"></div>
 
             <span class="CardSubTopic">
                 #{paginaAtual.infoPagina.acaoSelecionada.descricao}
@@ -16,11 +16,14 @@
             </span>
 
             <h:panelGroup styleClass="Fright">
-                <SBAcaoNav:botaoDeAcao_Pagina acao="#{paginaAtual.infoPagina.comoPaginaEntidade.acaoListarRegistros}"
-                                              tipoVisualizacao="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
-                                              label="Voltar"
+                <h:form>
+                    <SBAcaoNav:botaoDeAcao_Pagina acao="#{paginaAtual.infoPagina.comoPaginaEntidade.acaoListarRegistros}"
+                                                  tipoVisualizacao="#{layoutsComponenteSB.layoutBotoes.iconeENome}"
+                                                  label="Voltar"
 
-                                              />
+
+                                                  />
+                </h:form>
             </h:panelGroup>
 
         </div>

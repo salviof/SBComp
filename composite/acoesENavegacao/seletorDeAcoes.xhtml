@@ -43,7 +43,7 @@
 
 
 
-        <h:panelGroup styleClass="SbBotoesDeEscolha" style="position: relative;" layout="span"  >
+        <h:panelGroup styleClass="SbBotoesDeEscolha OrganizadorContainerEsquerda" layout="block"  >
             <f:passThroughAttribute name="marcador" value="inputFormulario" />
             <p:blockUI
                 rendered="#{pgUtil.getNomeIdPFieldSetPai(component)!=null}"
@@ -82,10 +82,17 @@
                                     target="#{cc.attrs.opcaoSelecionada}"
                                     value="#{opc}"/>
 
-                                <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
+                                <p:ajax event="dialogReturn"
                                         rendered="#{opc.acaoTemModal}"
-                                        oncomplete="liberarBloqueios();"
+                                        update="#{pgUtil.gerarCaminhoCompletoID(paginaAtual.infoPagina.idAreaExbicaoAcaoSelecionada)}"
+                                        oncomplete="acoesPosAjax()"
+
                                         />
+                                <p:ajax event="dialogReturn"
+                                        listener="#{paginaAtual.infoPagina.comoFormularioWeb.selAcaoDeCtrParaUltimoFrm()}"
+                                        />
+
+
 
                                 <p:tooltip for="@parent" value="#{opc.nomeAcao}" trackMouse="true" />
                             </p:commandButton>
@@ -102,12 +109,12 @@
                                            >
                                 <div class="ContainerIndent">
 
-                                    <div class="Container25 Responsive">
+                                    <div class="Container2 Responsive">
                                         <div class="ContainerIndent">
                                             <div class="Card RedBack SoftRed TexAlCenter HoverEffect">
-                                                <div class="EmptyBox5"></div>
+                                                <div class="quebraBlocoComEspacoVertical5"></div>
                                                 <i class="#{opc.iconeAcao} Fs50"></i>
-                                                <div class="EmptyBox5"></div>
+                                                <div class="quebraBlocoComEspacoVertical5"></div>
                                                 <div class="FontRobotoLight Fs16 SoftRed DispBlock ClearBoth">#{opc.nomeAcao}</div>
                                             </div>
                                         </div>
@@ -140,9 +147,9 @@
                                     target="#{cc.attrs.opcaoSelecionada}"
                                     value="#{opc}"/>
                                 <p:ajax event="dialogReturn"
-                                        listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
+
                                         oncomplete="liberarBloqueios();"
-                                        rendered="#{opc.acaoTemModal}"
+                                        rendered="false"
                                         />
 
                             </p:commandButton>
@@ -158,7 +165,7 @@
                                 <f:setPropertyActionListener
                                     target="#{cc.attrs.opcaoSelecionada}"
                                     value="#{opc}"/>
-                                <p:ajax event="dialogReturn" listener="#{paginaAtual.infoPagina.metodoRespostaModal}"
+                                <p:ajax event="dialogReturn"
                                         rendered="#{opc.acaoTemModal}"
                                         oncomplete="liberarBloqueios();"
                                         />

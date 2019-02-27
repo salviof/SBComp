@@ -25,9 +25,10 @@ function scrollEmCampoNaoValidado() {
             $('html, body').animate({
                 scrollTop: elementoErro.offset().top - 200
             });
+            return true;
         }
 
-        return true;
+        return false;
     } catch (err) {
 
     }
@@ -48,6 +49,7 @@ function irParTopo() {
 function acoesPosAjax() {
     try {
         esconderTooltips();
+        liberarBloqueios();
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
@@ -114,13 +116,58 @@ function copiarValoresCKEditor(idOrigem, idDestino) {
     document.getElementById(idDestino).value = conteudo;
 }
 
+function adicionarChamadaComDelay(idElemento, metodo) {
+
+}
+
+function mesclarOnChangeComDelay(idElementoDigitacao) {
+    elemento = document.getElementById(idElementoDigitacao);
+    var timeout = null;
+
+
+    if (elemento.onchange) {
+        elemento.metodoOnchangeComDelay = elemento.onchange;
+        //elemento.onchange = null;
+
+        elemento.onkeyup = function (e) {
+
+            try {
+                // Clear the timeout if it has already been set.
+                // This will prevent the previous task from executing
+                // if it has been less than <MILLISECONDS>
+                clearTimeout(timeout);
+                // Make a new timeout set to go off in 800ms
+
+                timeout = setTimeout(function () {
+                    elemento.metodoOnchangeComDelay();
+                }, 800);
+            } catch (t) {
+
+            }
+        };
+    }
+
+
+
+
+
+    // Listen for keystroke events
+
+
+}
+
+
 function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
     //Contribuição : https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
-    var textInput = document.getElementById(idElementoDigitacao);
+    elemento = document.getElementById(idElementoDigitacao);
     // Init a timeout variable to be used below
     var timeout = null;
+
+
     // Listen for keystroke events
-    textInput.onkeyup = function (e) {
+    elemento.onkeyup = function (e) {
+
+
 
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
