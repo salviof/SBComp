@@ -4,9 +4,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
-    <h:panelGroup >
-
-
+    <h:panelGroup layout="block" >
         <div class="CardTopic">
             #{paginaAtual.infoPagina.acaoSelecionada.nomeAcao}
             <i class="#{paginaAtual.infoPagina.acaoSelecionada.iconeAcao} Fs30 Fleft MarRight10"></i>
@@ -15,12 +13,14 @@
             <span class="CardSubTopic">
                 #{paginaAtual.infoPagina.acaoSelecionada.descricao}
             </span>
-            <h:panelGroup styleClass="Fright">
+            <h:panelGroup styleClass="Fright" layout="block">
                 <ui:insert name="conteudoDireita" />
             </h:panelGroup>
-
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
         <div class="quebraBlocoComEspacoVertical10"></div>
 
         <ui:insert name="conteudoCard" />

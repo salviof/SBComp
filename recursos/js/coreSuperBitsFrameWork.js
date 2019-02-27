@@ -50,6 +50,10 @@ function acoesPosAjax() {
     try {
         esconderTooltips();
         liberarBloqueios();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
@@ -106,9 +110,25 @@ function baixarArquivo(fileURL, fileName) {
 }
 
 function modificarIntputEclicar(idBotao, idInputEnvio, valor) {
-    document.getElementById(idInputEnvio).value = valor;
-    document.getElementById(idBotao).click();
+    try {
+        elementos = idInputEnvio.split(" ");
 
+        elementoCodigo = document.getElementById(elementos[0]);
+        if (elementoCodigo === null) {
+            elementoCodigo = document.getElementById(elementos[1]);
+        }
+
+
+        elementoCodigo.value = valor;
+        botoes = idBotao.split(" ");
+        botao = document.getElementById(botoes[0]);
+        if (botao === null) {
+            botao = document.getElementById(botoes[1]);
+        }
+        botao.click();
+    } catch (t) {
+        console.log(t);
+    }
 }
 
 function copiarValoresCKEditor(idOrigem, idDestino) {
@@ -121,6 +141,7 @@ function adicionarChamadaComDelay(idElemento, metodo) {
 }
 
 function mesclarOnChangeComDelay(idElementoDigitacao) {
+<<<<<<< HEAD
     elemento = document.getElementById(idElementoDigitacao);
     var timeout = null;
 
@@ -157,6 +178,70 @@ function mesclarOnChangeComDelay(idElementoDigitacao) {
 }
 
 
+=======
+    try {
+        elemento = document.getElementById(idElementoDigitacao);
+        var timeout = null;
+
+
+        if (elemento.onchange) {
+            elemento.metodoOnchangeComDelay = elemento.onchange;
+            elemento.ultimapesquisa = elemento.value;
+            //elemento.onchange = null;
+
+            elemento.onkeyup = function (e) {
+
+                try {
+                    if (elemento.value === elemento.ultimapesquisa) {
+
+                    } else {
+                        // Clear the timeout if it has already been set.
+                        // This will prevent the previous task from executing
+                        // if it has been less than <MILLISECONDS>
+                        clearTimeout(timeout);
+                        // Make a new timeout set to go off in 800ms
+                        elemento.ultimapesquisa = elemento.value;
+                        timeout = setTimeout(function () {
+
+
+                            try {
+                                elemento.metodoOnchangeComDelay();
+                            } catch (t) {
+
+                            }
+                        }, 800);
+                    }
+                } catch (t) {
+
+                }
+            };
+
+        }
+    } catch (t) {
+
+    }
+}
+
+function focarComSelacaoAposAjax() {
+    try {
+        contemClientID = false;
+        for (i = 0; i < arguments.length; i++) {
+            if (document.activeElement.id.includes(arguments[i])) {
+                contemClientID = true;
+            }
+        }
+        if (!contemClientID) {
+            $(PrimeFaces.escapeClientId(document.activeElement.id)).select();
+        }
+    } catch (o) {
+
+    }
+}
+
+
+
+
+>>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
 function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
     //Contribuição : https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
     elemento = document.getElementById(idElementoDigitacao);
@@ -167,7 +252,10 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
     // Listen for keystroke events
     elemento.onkeyup = function (e) {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
 
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
@@ -178,5 +266,5 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
 
             PF(idDataSetPrime).filter();
         }, 800);
-    };
+    }
 }
