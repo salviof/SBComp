@@ -50,10 +50,7 @@ function acoesPosAjax() {
     try {
         esconderTooltips();
         liberarBloqueios();
-<<<<<<< HEAD
-=======
 
->>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
         if (!scrollEmCampoNaoValidado()) {
             irParTopo();
         }
@@ -141,44 +138,6 @@ function adicionarChamadaComDelay(idElemento, metodo) {
 }
 
 function mesclarOnChangeComDelay(idElementoDigitacao) {
-<<<<<<< HEAD
-    elemento = document.getElementById(idElementoDigitacao);
-    var timeout = null;
-
-
-    if (elemento.onchange) {
-        elemento.metodoOnchangeComDelay = elemento.onchange;
-        //elemento.onchange = null;
-
-        elemento.onkeyup = function (e) {
-
-            try {
-                // Clear the timeout if it has already been set.
-                // This will prevent the previous task from executing
-                // if it has been less than <MILLISECONDS>
-                clearTimeout(timeout);
-                // Make a new timeout set to go off in 800ms
-
-                timeout = setTimeout(function () {
-                    elemento.metodoOnchangeComDelay();
-                }, 800);
-            } catch (t) {
-
-            }
-        };
-    }
-
-
-
-
-
-    // Listen for keystroke events
-
-
-}
-
-
-=======
     try {
         elemento = document.getElementById(idElementoDigitacao);
         var timeout = null;
@@ -241,7 +200,6 @@ function focarComSelacaoAposAjax() {
 
 
 
->>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
 function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
     //Contribuição : https://schier.co/blog/2014/12/08/wait-for-user-to-stop-typing-using-javascript.html
     elemento = document.getElementById(idElementoDigitacao);
@@ -252,10 +210,6 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
     // Listen for keystroke events
     elemento.onkeyup = function (e) {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
 
         // Clear the timeout if it has already been set.
         // This will prevent the previous task from executing
@@ -267,4 +221,29 @@ function pesquisaDataSetComDelay(idElementoDigitacao, idDataSetPrime) {
             PF(idDataSetPrime).filter();
         }, 800);
     }
+}
+
+//Funções de comunicação
+function notificacoesPush(notificacao) {
+    console.log(notificacao);
+    if (notificacao.temMensagem) {
+        PF("#{layoutIdsAreasConhecidas.AREA_MENSAGEM_INTERFACE}").renderMessage(JSON.parse(notificacao.mensagemJson));
+    }
+    if (notificacao.temCodigoConversa) {
+
+        responderConversa(notificacao.codigoConversa);
+    }
+}
+function responderConversa(codigoSelo) {
+    (document.getElementById('formularioComunicacao:codigoComunicacao')).value = codigoSelo;
+    PF('botaoAbrirModalConversa').jq.click();
+
+}
+
+function responderConversaRespostaRapida(codigoSelo, codigoResposta) {
+    (document.getElementById('formularioComunicacaoRespostaRapida:codigoSeloCMRespostaRapida')).value = codigoSelo;
+    (document.getElementById('formularioComunicacaoRespostaRapida:codigoRespostaRapida')).value = codigoResposta;
+
+    PF('respostaRapidaAct').jq.click();
+
 }

@@ -33,26 +33,8 @@
     </cc:interface>
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-<<<<<<< HEAD
-        <h:panelGroup >
-
-            <c:set var="layoutListagem" value="#{pgUtilLayout.gerarLayoutGrupoCampo(cc.attrs.grupoCampos)}" />
-            <p:fieldset >
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-
-                            <c:forEach  items="#{cc.attrs.grupoCampos.campos}" var="campoColonaLeitura" >
-                                <th>#{campoColonaLeitura.label}</th>
-                            </c:forEach>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-=======
         <c:if test="#{cc.attrs.registro.umValorEmLista}">
             <h:panelGroup  rendered="#{cc.attrs.registro.umValorEmLista}">
->>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
 
                 <c:set rendered="#{cc.attrs.registro.umValorEmLista}" var="layoutListagem" value="#{pgUtilLayout.gerarLayoutGrupoCampo(cc.attrs.grupoCampos)}" />
                 <p:fieldset rendered="#{cc.attrs.registro.valor !=null and cc.attrs.registro.umValorEmLista}" >

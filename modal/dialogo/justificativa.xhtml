@@ -9,46 +9,22 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:define name="titulo" >#{pgModalJustificativa.comunicacao.mensagem}  </ui:define>
     <ui:define name="opcoes" >
-<<<<<<< HEAD
 
-        <h:form>
-            <h:panelGroup   class="ContainerIndent" >
-                <h:panelGroup rendered="#{pgModalJustificativa.campoJustificativa != null}">
-                    <h:panelGroup layout="block" styleClass="Container12" >
-                        <SBInput:input registro="#{pgModalJustificativa.campoJustificativa}"
 
-                                       layout="#{layoutsComponenteSB.layoutCampo.superior}"
-                                       />
-                    </h:panelGroup>
-                </h:panelGroup>
-                <h:panelGroup   layout="block"  styleClass="Container12" style="" >
 
-                    <p:inputTextarea value="#{pgModalJustificativa.justificativa}"
-                                     style="width: 100%!important;margin-top: 10px; "
-                                     placeholder="Justifique esta alteração"
-                                     required="true"
-                                     id="justificativa"
-                                     validatorMessage="Escreva mais sobre esssa justificativa"
-                                     requiredMessage="Você precisa justificar esta alteração."
-                                     >
-                        <f:validateLength minimum="10" />
-                    </p:inputTextarea>
-                    <p:message for="justificativa"/>
-                </h:panelGroup>
-=======
         <h:panelGroup   class="ContainerIndent" >
             <h:panelGroup rendered="#{pgModalJustificativa.campoJustificativa != null}">
-                <div class="Container12" >
+                <h:panelGroup layout="block" styleClass="Container12" >
                     <SBInput:input registro="#{pgModalJustificativa.campoJustificativa}"
 
                                    layout="#{layoutsComponenteSB.layoutCampo.superior}"
                                    />
-                </div>
+                </h:panelGroup>
             </h:panelGroup>
-            <h:panelGroup   layout="block"  styleClass="Container12" style="margin: 10px;" >
+            <h:panelGroup   layout="block"  styleClass="Container12" style="" >
 
                 <p:inputTextarea value="#{pgModalJustificativa.justificativa}"
-                                 style="width: 100%!important; "
+                                 style="width: 100%!important;margin-top: 10px; "
                                  placeholder="Justifique esta alteração"
                                  required="true"
                                  id="justificativa"
@@ -68,40 +44,15 @@
 
         <h:panelGroup   layout="block"  styleClass="OrganizadorContainer" style="width: 100%">
             <ui:repeat value="#{pgModalJustificativa.comunicacao.repostasPossiveis}" var="resp" >
-                <div class="Container2">
+                <h:panelGroup layout="block" styleClass="Container2" >
                     <SBAcaoNav:botaoRespostaModal
                         resposta="#{resp}"
                         armazenamentoAcaoExecutada="#{pgModalJustificativa.respostaSelecionada}"
                         metodo="#{pgModalJustificativa.enviarRespostaEExecutarAcao()}"
                         />
-                </div>
+                </h:panelGroup>
             </ui:repeat>
         </h:panelGroup>
->>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
 
     </ui:define>
 </ui:composition>
-
-<<<<<<< HEAD
-            </h:panelGroup>
-
-
-            <br/>
-
-            <h:panelGroup   layout="block"  styleClass="OrganizadorContainer" style="width: 100%">
-                <ui:repeat value="#{pgModalJustificativa.comunicacao.repostasPossiveis}" var="resp" >
-                    <h:panelGroup layout="block" styleClass="Container2" >
-                        <SBAcaoNav:botaoRespostaModal
-                            resposta="#{resp}"
-                            armazenamentoAcaoExecutada="#{pgModalJustificativa.respostaSelecionada}"
-                            metodo="#{pgModalJustificativa.enviarRespostaEExecutarAcao()}"
-                            />
-                    </h:panelGroup>
-                </ui:repeat>
-            </h:panelGroup>
-        </h:form>
-    </ui:define>
-</ui:composition>
-=======
-
->>>>>>> 3b9a79cdc66ce6cc91e33c8b163260f669419b3b
