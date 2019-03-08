@@ -64,3 +64,4 @@ $(function () {
         }, 50); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
     });
 });
+
